@@ -3,7 +3,7 @@
 ## Metadata
 - Task ID: TASK-0001
 - Linked Issue: n/a (bootstrap task; tracked via this handoff and the PR)
-- Linked PR: <set after gh pr create — fill in step 18 fix-up commit>
+- Linked PR: https://github.com/bryce-murphy/amas-framework/pull/1
 - Linked ADR(s): ADR-001 (authored in this PR)
 - Linked Feature Brief: n/a (bootstrap task per lite judgment; ADR-001 is the spec)
 - Owner role: Architect (Claude.ai) → Builder (Claude Code)
