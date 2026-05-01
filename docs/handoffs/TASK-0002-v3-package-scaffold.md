@@ -4,7 +4,7 @@
 
 - Task ID: TASK-0002
 - Linked Issue: n/a (Feature-Brief-tracked; FEAT-0001 is the spec)
-- Linked PR: <set after gh pr create — fill in step 16 fix-up commit>
+- Linked PR: https://github.com/bryce-murphy/amas-framework/pull/2
 - Linked ADR(s): ADR-001 (decisions 7-8 cover this PR's scope; no new ADR for PR-2)
 - Linked Feature Brief: FEAT-0001 (`docs/features/FEAT-0001-v3-package-scaffold.md`)
 - Linked review-context file: `docs/reviews/PR-2-codex-pre-commit.md`
