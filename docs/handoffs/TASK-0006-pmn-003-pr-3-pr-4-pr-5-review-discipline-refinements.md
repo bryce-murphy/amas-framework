@@ -196,14 +196,15 @@ Both Codex findings verified accurate via §8.1.1.2 phantom-action-style verific
 
 ## Sign-off
 
-(Architect fills after §24.2(a) four-point verification per PMN-003 (g). Section deferred-to-handback per §5 placeholder-substitution audit.)
+Architect §24.2(a) four-point verification completed 2026-05-01.
 
-- §24.2(a) four-point verification:
-  - PR comments via both endpoints checked verbatim against artifact:
-  - Branch state checked:
-  - File content against prescription (PMN-003 body, TASK-0006 handoff, PR-6 review-context):
-  - Phantom-action audit:
-- Architect sign-off for §10.5 single-contributor bypass merge:
+- **PR comments via both endpoints:** verified verbatim. One substantive Codex review (COMMENTED + boilerplate body, channel (ii)), two P1/P2 line-level findings (ids 3175337989, 3175337992), two Builder replies referencing fix-up SHA `afb415d` via `in_reply_to_id`. Review-wrappers on replies (GitHub-generated, empty body) correctly identified as non-substantive. State mirrored in `## Post-PR Codex review state` block at commit `164c207`. Clean.
+- **Branch state:** three-commit sequence (`7842429` → `afb415d` → `164c207`) matches expected scope. HEAD `164c207ea5...` matches PR `headRefOid`. Working tree clean. No out-of-scope commits.
+- **File content against prescription:** PMN-003 verbatim with single named substitution. TASK-0006 handoff path-(a) revisions (lines 85 + 116) match Architect-prescribed text; step count (12) preserved post-fix-up. PR-6 review-context six claims verbatim. All three files clean against prescription.
+- **Phantom-action audit:** Builder self-audit table verified; three commits with correct diff scopes; no phantom-action discrepancies; no auto-fire narrative this cycle.
+
+Authorized for §10.5 single-contributor bypass merge.
+— Architect, 2026-05-01
 
 ## Session log archive (prior logs migrated from PR body per §13.1)
 
