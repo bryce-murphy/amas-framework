@@ -95,6 +95,8 @@ Anticipated per PMN-002 observation (b): Codex's line-anchored evidence referenc
 
 Total: 1 Minor finding on Claim 2.
 
+## Adjudication / fix-up
+
 **Path taken: (b) — close without PMN-002 change.**
 
 Architect adjudication (verbatim, 2026-05-01): PMN-002 body framing is correct as authored. The verification prompt's source-of-truth context (in `## Codex desktop request` above) drifted from PMN-002's accurate body content. The 18:06:04 UTC timestamp named in the verification prompt is the **owner's `@codex review` trigger comment**, not a Codex output. The verification prompt conflated owner-trigger timing with Codex-output sequence. PMN-002 observation (c) correctly describes two Codex outputs (18:04:04 auto-fire phantom-action narrative; 18:08:01 substantive verdict), with the owner's trigger referenced by event-type rather than timestamp — which is the correct framing because (c)'s framework focus is on Codex's dual-signal output behavior, not owner-trigger timing.
