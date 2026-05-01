@@ -131,4 +131,4 @@ Architect ran the §23.6 pre-handoff self-review before issuing the Builder prom
 
 ## Sign-off
 
-(Architect fills this line after §24.2(a) caveat-discipline verification of Builder hand-back claims per PMN-003 (g): cross-references PR comments via both API endpoints, branch state via `git log` / `git ls-tree`, and ADR-002 / handoff / review-context content against actual committed file content. Sign-off is conditional on verification matching Builder's hand-back claims.)
+Architect sign-off — 2026-05-01. §10 four-point verification complete: (1) both PR comment endpoints verified raw — Codex review IDs, line-level comment IDs, timestamps, commit OIDs, in_reply_to chain internally consistent; (2) branch HEAD abf4364 and two-commit history verified consistent with hand-back claims; (3) file content verified — handoff line 43 verbatim match to prescribed replacement text; Post-PR Codex review state section complete with all prescribed elements; PR body Review engagement accurate; (4) phantom-action audit clean — Codex commit/file/line references all verified against actual repo state. Merge-ready per §10.5 single-contributor convention.
