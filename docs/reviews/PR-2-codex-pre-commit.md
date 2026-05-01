@@ -83,5 +83,20 @@ Caveats:
   - Recommendation: `Comment` (no blocking or major issues).
   - Residual limits: GitHub PR metadata not yet present (PR #2 not opened); archive sources unavailable in repo.
 - **Owner decision**: fix the wording (option b), waive Codex re-run given one-word scope.
-- **Builder actions**: changed `README.md` line 36 from "organized into six layers" to "organized into seven layers". Re-verified counts unchanged at 65/56/55/1/9; `git diff --stat HEAD` shows `56 files changed, 1844 insertions(+)`; H2 heading order preserved.
+- **Builder actions**: changed `README.md` line 36 from "organized into six layers" to "organized into seven layers". Re-verified counts unchanged at 65/56/55/1/9; `git diff --stat HEAD` shows `56 files changed, 1852 insertions(+)`; H2 heading order preserved.
 - **Iteration**: single pass (one Codex review; one minor finding addressed; re-run waived).
+
+## Codex post-PR review (2026-05-01)
+
+- **Reviewer**: Codex (post-PR `@codex review`)
+- **Reviewed at SHA**: `21bcb1fccb84561f4f6b4480786f29d98f527aa0`
+- **Recommendation**: Comment (no Request changes)
+- **Findings**: 2 line-anchored P3 (low-priority)
+  - **Finding 1** ([README.md:34](../../README.md)): version-metadata claim too broad; archive prompts have no frontmatter. Fixed inline this commit.
+  - **Finding 2** (this file:86): diff-stat `1844` was a pre-stage interim value captured before the step-12 timestamp fill on the handoff added ~8 more lines; PR's actual final state is `1852`. Fixed inline this commit (pure number swap; line 86 byte-stable except for the four-character substitution).
+- **Builder action**: both fixes implemented inline as direct implementation of Codex's prescribed changes per AMAS framework canonical rule (Builder fix that directly implements a Reviewer's prescribed change does not require re-review).
+- **Re-review**: waived per the canonical rule.
+
+### Cross-cutting observation (Codex-flagged)
+
+Both findings are §24 cross-surface drift — exactly what verify-before-assert exists to catch. Codex caught what Architect's §23.6 self-review and §24 sweep at step 13 missed. Adds to PMN-004 candidate observations: §24 sweeps benefit from external Reviewer perspective; Architect-side §24 sweep alone is insufficient for cross-surface drift detection in PR-meta artifacts (review-context, FEAT-Brief) that the Architect themselves authored.

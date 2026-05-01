@@ -31,7 +31,7 @@ v3 production is sequenced across PR-0 (bootstrap) through PR-8 (v3 framework co
 
 ## Package layout
 
-The v3 framework package is organized into seven layers. Each file declares its `framework_version` or `template_version` in YAML frontmatter (or YAML comment for `.yml` files).
+The v3 framework package is organized into seven layers. Each stub or template declares its `framework_version` or `template_version` in YAML frontmatter (or YAML comment for `.yml` files); archived prompts preserve their original structure and carry only a provenance HTML comment.
 
 ### Canonical law (3 files)
 
