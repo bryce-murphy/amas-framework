@@ -1,0 +1,15 @@
+# template_version: 3.0.0
+# status: stub
+# filled_by: PR-7 (TASK-0007) per amas-v3-transition-plan-v0_2.md §7
+
+name: claimed-action-verification (stub)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  stub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stub
+        run: echo "PR-7 (TASK-0007) will author this workflow"
