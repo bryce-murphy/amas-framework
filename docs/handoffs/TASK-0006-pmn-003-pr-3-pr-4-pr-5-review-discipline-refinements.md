@@ -151,12 +151,48 @@ Execute the following mechanical sequence. Hand-back point is **after PR-6 is op
 
 ## Post-PR Codex review state
 
-(Builder fills after step 12 hand-back with verbatim outputs from both formal endpoints. Section deferred-to-handback per §5 placeholder-substitution audit.)
+`@codex review` invoked by owner at 2026-05-01T21:42:14Z (issue-level comment `IC_kwDOSRIPSM8AAAABA_t6IA`; Codex acknowledged with EYES reaction). Two findings surfaced via the formal endpoints; both adjudicated path (a) revise by Architect; both fixed at SHA `afb415d862b2427b77180972f8ecf8d587e699c1` and replied per §8.1.1 rule (b); accept-by-silence per Architect direction (no fresh `@codex review` invoked).
 
-- `gh pr view <N> --json reviews` output: 
-- `gh api repos/bryce-murphy/amas-framework/pulls/<N>/comments` output: 
-- Settling period observation: 
-- Findings adjudication summary: 
+### Settling-period observation (PMN-003 (e) refined)
+
+Pre-fix-up polls (two-endpoint + re-poll discipline):
+- Poll 1 at 21:43:28Z (t+1m14s) — both endpoints empty.
+- Poll 2 at 21:45:02Z (t+2m48s) — formal review + 2 line-level comments arrived; finding count 2 (P1 + P2).
+- Poll 3 at 21:46:18Z (t+4m4s) — finding count stable at 2.
+- Poll 4 at 21:47:40Z (t+5m26s) — finding count stable at 2; ≥3 polls, ≥5 min after trigger, stable results.
+
+Post-fix-up polls (accept-by-silence confirmation):
+- Poll A at 21:53:26Z (~1m post-push of `afb415d`) — original 2 findings + 2 Builder replies via `in_reply_to_id`; no new Codex findings.
+- Poll B at 21:56:28Z (~4m post-push) — same; no new Codex findings; accept-by-silence confirmed.
+
+PMN-003 (b) refined: no Codex auto-fire on PR-open this cycle (consistent with PR-5 evidence; three-cycle conditional pattern persists).
+PMN-003 (c) refined: PR-5's anti-channel pattern (fast-response issue-level "Approve" stub from `chatgpt-codex-connector`) did NOT recur this cycle. The first Codex signal after the explicit trigger was the formal Pull Request Review at t+2m36s, attached to the actual head commit. No issue-level Codex stubs appeared at any point.
+
+### `gh pr view 6 --json reviews` (final, Poll B at 21:56:28Z)
+
+Three reviews:
+1. `PRR_kwDOSRIPSM77JbA4` — chatgpt-codex-connector, state COMMENTED, submitted 2026-05-01T21:44:50Z, attached to commit `78424290fbba2d949e1da1fabfcb7c79c70a1840` (initial PR head). Body is standard Codex boilerplate ("Codex Review / automated review suggestions / Reviewed commit `78424290fb` / About Codex in GitHub"). This is the formal substantive Codex review.
+2. Reply-wrapper review, state COMMENTED, submitted 21:53:10Z, attached to commit `afb415d862b2427b77180972f8ecf8d587e699c1` (fix-up SHA), empty body. GitHub-generated wrapper for Builder reply comment id `3175359518`.
+3. Reply-wrapper review, state COMMENTED, submitted 21:53:12Z, attached to commit `afb415d862b2427b77180972f8ecf8d587e699c1`, empty body. GitHub-generated wrapper for Builder reply comment id `3175359610`.
+
+Substantive verdict: one COMMENTED Pull Request Review (review #1) with attached line-level findings — channel (i) per PMN-003 (c) refined, since the body is boilerplate-only but two line-level review comments accompany it (the "no comment ≠ no review" qualifier is moot here because suggestion comments DO follow).
+
+### `gh api repos/bryce-murphy/amas-framework/pulls/6/comments` (final, Poll B at 21:56:28Z)
+
+Four comments (line-level review comments):
+1. id `3175337989` — chatgpt-codex-connector[bot], created 2026-05-01T21:44:51Z, attached to handoff line 116 of commit `78424290fb…`, body P1 Blocking ("Handle Major pre-commit findings explicitly — The step-4 adjudication logic only defines paths for `Blocking` and `Minor` findings, but this repo's review discipline uses `Blocking`, `Major`, and `Minor`; a `Major` result currently has no prescribed handling. In a cycle where Codex reports `Major`, Builder can follow this checklist and still proceed without escalation guidance, weakening the review gate before commit."), `in_reply_to_id: null`. URL https://github.com/bryce-murphy/amas-framework/pull/6#discussion_r3175337989.
+2. id `3175337992` — chatgpt-codex-connector[bot], created 2026-05-01T21:44:51Z, attached to handoff line 85 of commit `78424290fb…`, body P2 Minor ("Correct review artifact hash evidence to committed blob — The validation evidence records `docs/reviews/PR-6-codex-pre-commit.md` as blob `8d8428df...` with `48 lines`, but this commit actually stores that file as blob `beae9714...` with `60` lines. Because this section is presented as reproducible claim-verification evidence, the wrong hash/line metadata breaks traceability and can mislead later phantom-action verification."), `in_reply_to_id: null`. URL https://github.com/bryce-murphy/amas-framework/pull/6#discussion_r3175337992.
+3. id `3175359518` — bryce-murphy (Builder via gh api), created 2026-05-01T21:53:10Z, body Builder reply with fix-up SHA, `in_reply_to_id: 3175337989`. URL https://github.com/bryce-murphy/amas-framework/pull/6#discussion_r3175359518.
+4. id `3175359610` — bryce-murphy (Builder via gh api), created 2026-05-01T21:53:12Z, body Builder reply with fix-up SHA, `in_reply_to_id: 3175337992`. URL https://github.com/bryce-murphy/amas-framework/pull/6#discussion_r3175359610.
+
+### Findings adjudication summary
+
+| # | Severity | File:line | Codex framing | Adjudication | Fix-up SHA | Reply URL |
+|---|---|---|---|---|---|---|
+| 1 | P1 Blocking | TASK-0006 handoff:116 | Handoff step 4 only names Blocking and Minor adjudication paths; Major is missing | Architect path (a) revise — step 4 sentence amended to name Blocking, Major, Minor handling explicitly, with stop-gate sentence on Major | `afb415d862b2427b77180972f8ecf8d587e699c1` | https://github.com/bryce-murphy/amas-framework/pull/6#discussion_r3175359518 |
+| 2 | P2 Minor | TASK-0006 handoff:85 | Validation run Evidence bullet records stale blob `8d8428df…`/48 lines for PR-6 review-context; committed state is `beae9714…`/60 lines | Architect path (a) revise — bullet updated to record committed blob, with parenthetical note preserving pre-§4-substitution state for cycle audit trail | `afb415d862b2427b77180972f8ecf8d587e699c1` | https://github.com/bryce-murphy/amas-framework/pull/6#discussion_r3175359610 |
+
+Both Codex findings verified accurate via §8.1.1.2 phantom-action-style verification before adjudication: Finding 1's quoted text matched authored handoff content verbatim; Finding 2's blob hash claim verified against `git ls-tree HEAD` (returned `beae9714157a38e51d95a7bd8d59613672eea8e6`) and `git show HEAD:docs/reviews/PR-6-codex-pre-commit.md | wc -l` (returned 60). Single fix-up commit `afb415d` modifies handoff only (1 file changed, 2 insertions, 2 deletions). Replies posted to both Codex line-level comments per §8.1.1 rule (b) referencing the fix-up SHA. No fresh `@codex review` invocation per Architect direction; accept-by-silence semantics applied per PR-5 cycle precedent.
 
 ## Sign-off
 
