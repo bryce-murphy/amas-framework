@@ -82,7 +82,7 @@ None at handoff time. Builder cycle is placement-only with mechanical sequence i
 - Evidence (placed-file blob hashes via `git hash-object`):
   - `docs/post-merge-notes/PMN-003-pr-3-pr-4-pr-5-review-discipline-refinements.md` — blob `ca05c38bf6606087f2fdf42e2d9faadc60626fc1`, 196 lines.
   - `docs/handoffs/TASK-0006-pmn-003-pr-3-pr-4-pr-5-review-discipline-refinements.md` — blob recomputes after this Validation-run substitution; pre-substitution blob `3a6c915deb96a5383f2ce4783f09bd4ed7bcc6c1`, 157 lines.
-  - `docs/reviews/PR-6-codex-pre-commit.md` — blob `8d8428df63d31452237c1cf6465f7ec88a274f22`, 48 lines.
+  - `docs/reviews/PR-6-codex-pre-commit.md` — blob `beae9714157a38e51d95a7bd8d59613672eea8e6`, 60 lines (pre-§4-substitution state was `8d8428df63d31452237c1cf6465f7ec88a274f22`/48 lines; post-§4 committed state is `beae9714157a38e51d95a7bd8d59613672eea8e6`/60 lines).
   - PR-6 URL: https://github.com/bryce-murphy/amas-framework/pull/6
 - Post-edit Read-verify (PMN-003 (f)): structural headings (`#`, `##`, `###`) for all three placed files extracted via grep and confirmed matching Architect-prepared content (PMN-003 14 headings, TASK-0006 handoff 15 headings, PR-6 review-context 6 headings).
 
@@ -113,7 +113,7 @@ Execute the following mechanical sequence. Hand-back point is **after PR-6 is op
    - TASK-0006 handoff file: substitute `Linked Issue`, `Timestamp (UTC)`, `Last synced commit SHA` (verify against `origin/main` HEAD), and leave `Linked PR`, `Validation run`, `Post-PR Codex review state`, `Sign-off` as placeholder-deferred sections per the prompt's §5 substitution discipline.
    - PR-6 review-context file: author per the structure in the Builder prompt's §4.
 
-4. **Pre-commit Codex review** (claim-verification-only, imperative phrasing per PMN-002 (a)). Use the prompt template provided in Builder prompt §4. Six claims to verify. Wait for Codex output. Record output verbatim into `docs/reviews/PR-6-codex-pre-commit.md`. If any finding is Blocking, hand back to Architect per PMN-001 (k); if Minor, surface to Architect for adjudication path (a) (revise) or (b) (record-and-proceed).
+4. **Pre-commit Codex review** (claim-verification-only, imperative phrasing per PMN-002 (a)). Use the prompt template provided in Builder prompt §4. Six claims to verify. Wait for Codex output. Record output verbatim into `docs/reviews/PR-6-codex-pre-commit.md`. If any finding is Blocking, hand back to Architect per PMN-001 (k). If any finding is Major or Minor, surface to Architect for adjudication path (a) (revise) or (b) (record-and-proceed). Do not proceed past the pre-commit gate without Architect direction on any Major finding.
 
 5. **§5 stop-and-show with placeholder-substitution audit (PMN-003 (d) discipline).** Enumerate ALL `(Builder fills with X)` and `(Builder updates with X)` patterns across ALL three files plus the prepared PR body. For each, name the substitution timing (now / at-PR-open / deferred-to-handback). Wait for owner approval before commit.
 
