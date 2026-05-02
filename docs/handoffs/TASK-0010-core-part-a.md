@@ -21,7 +21,7 @@ Builder completed steps 1-12 per TASK-0010 spec; PR-10 opened at branch tip; han
 Summary of `main` and working-tree state at hand-back. Filled with exact values:
 
 - `main` SHA at branch base: `3d10c76`
-- Branch tip SHA: filled at hand-back (post-commit)
+- Branch tip SHA at PR-open: `31f9555c5adfb8850c12bb47c0ee0146570b7719` (substituted post-merge with squash-merge SHA per PMN-001 (k) Linked PR fix-up substitution convention; subsequent fix-up commits on this branch produce a different tip SHA recorded by the relevant fix-up commit's own metadata)
 - Tracked-file count post-merge expected: `88`
   - Decomposition: 86 base (per inbound handoff §3) + 2 new files (`docs/handoffs/TASK-0010-core-part-a.md` + `docs/reviews/PR-10-codex-pre-commit.md`) = 88. The two modified files (`core.md` modified from stub to substantive; `README.md` cell + row modifications) do not change tracked-file count.
   - Verifiable at step-10 self-verification per spec §7.1 claim 6.
@@ -119,15 +119,16 @@ Forward-reference set (per spec §1.3.1, recognized as out-of-Part-A-scope, NOT 
 
 ## Exact next step
 
-1. Run pre-flight verification per spec §5 (Builder step 1)
-2. If pre-flight passes, create branch per spec §6 (Builder step 2)
-3. Author core.md content per spec §2.1-§2.8 (Builder steps 3-8)
-4. Author handoff per spec §3 / review-context per spec §4 / README.md modification per spec §2.9 (Builder step 9)
-5. Run step-10 self-verification per spec §7 (Builder step 10)
-6. Run Codex pre-commit review per spec §8 (Builder step 11)
-7. Stop-and-show per spec §9 (Builder step 12)
-8. After owner approval: commit, push, gh pr create per Builder steps 13-15
-9. Hand-back per spec §10 (Builder step 16)
+This handoff is delivered at cycle close (steps 1-16 complete per §Last completed step). The pending actions are post-hand-back, not Builder-execution-of-spec:
+
+1. Architect-side §24.3.1 five-point post-handback check absorption (per `core.md` §24.3.1 canonicalized in this PR).
+2. Owner invokes `@codex review` on PR-10 per ADR-001 decision 11 (Builder does not invoke).
+3. Builder absorbs Codex post-PR review via two-endpoint poll per §8.1.1.1 (formal Pull Request Review + issue-comment summary) and reconciles findings per §8.1.1.2.
+4. Path-(a) revisions via fix-up commits on `feat/task-0010-core-part-a` if Codex findings or Architect five-point check surface defects; each fix-up creates a new branch tip SHA superseding the PR-open SHA recorded in §Current state.
+5. Owner-merges PR-10 (squash-merge per repo convention); merge SHA substituted into Linked-PR field of this handoff per PMN-001 (k) fix-up convention if any field references PR-10's eventual merge SHA.
+6. Architect adjudicates PMN-006 emission per §10.3 cycle-summary observations; if emit, PMN-006 cycle (forecast PR-11) is authored before TASK-0011 / Part B per established PMN-after-cycle cadence.
+
+The Builder workflow that produced this handoff (spec-execution sequence 1-16) is documented in §Last completed step for historical record; do NOT re-execute that sequence on receipt — it is complete.
 
 ## Reassessment / expiry
 
