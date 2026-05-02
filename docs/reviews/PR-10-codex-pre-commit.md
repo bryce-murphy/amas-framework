@@ -50,9 +50,10 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
    - PowerShell: `(git ls-files | Measure-Object).Count`
    - Decomposition: 86 base + 2 new files (`docs/handoffs/TASK-0010-core-part-a.md` + `docs/reviews/PR-10-codex-pre-commit.md`) = 88. The two modified files (`core.md`, `README.md`) do not change tracked-file count.
 
-7. **Working-tree status is clean against branch tip** (`git status --porcelain` returns empty after staging and commit at step 14). Verifiable at pre-commit (post-stage, post-commit):
-   - bash: `git status --porcelain` returns empty
-   - cmd / PowerShell: same command, same expected output
+7. **Working-tree status verification** (separate pre-commit and post-commit expectations per spec §7.1 timing notes). Verifiable at pre-commit and at post-commit (step 14+):
+   - **Pre-commit, post-stage state** (Codex review-window): `git status --porcelain` returns the 4 staged changes (e.g., ` M README.md`, ` M core.md`, `A  docs/handoffs/TASK-0010-core-part-a.md`, `A  docs/reviews/PR-10-codex-pre-commit.md`). Non-empty output is the EXPECTED pre-commit state — Reviewer should NOT flag this as a Blocking failure.
+   - **Post-commit state** (step 14+): `git status --porcelain` returns empty.
+   - cmd / PowerShell: same commands, same expected outputs per timing.
 
 8. **Cumulative diff stats**: per `git diff --stat <merge-base>..HEAD` — exact insertions/deletions per file, populated at step-10 with landed exact counts only (no `~`-prefixed numbers per §23.6.1.1 sub-rule (e.1)). Verifiable at pre-commit:
    - bash: `git diff --stat $(git merge-base HEAD origin/main)..HEAD` (post-staging-and-commit; or `git diff --stat --cached` at staged-pre-commit state)

@@ -1,7 +1,7 @@
 ---
 framework_version: 3.0.0
-status: stub
-filled_by: per ADR-003
+status: partial
+filled_by: PR-10 (TASK-0010) Part A — verify-before-assert cluster (§8.1.1, §23.6, §24.3); Part B in TASK-0011+
 ---
 
 # AMAS v3 Core
