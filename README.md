@@ -27,7 +27,7 @@ AMAS (AI Multi-Agent System) is an operating-system framework for projects that 
 
 ## Roadmap
 
-v3 production is sequenced across thirteen substantive content PRs (PR-7 ADR-003 + PR-8 through PR-19 content + PR-19 release tag), with PMN insertion budget through TASK-0026. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan and [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
+v3 production is sequenced across thirteen substantive PR slots (PR-7 ADR-003 sweep + PR-8 through PR-19 substantive content, with PR-19 also tagging v3.0.0), and a PMN insertion budget through TASK-0026. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan and [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
 ## Package layout
 
