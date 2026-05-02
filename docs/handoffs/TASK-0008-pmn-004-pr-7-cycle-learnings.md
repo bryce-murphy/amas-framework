@@ -4,7 +4,7 @@
 
 - Task ID: TASK-0008
 - Linked Issue: n/a (PMN-tracked; PMN-004 is the deliverable)
-- Linked PR: <FILL AT PR-OPEN — substitute actual PR URL after `gh pr create` returns; per PMN-001 (k) handling>
+- Linked PR: https://github.com/bryce-murphy/amas-framework/pull/8
 - Linked ADR(s): ADR-003 (PMN-004 inserts under Decision 3 contingency budget; consumes one of seven slots)
 - Linked PMN(s): PMN-001, PMN-002, PMN-003 (PMN-004 builds on the lineage; specifically refines PMN-003 (a) and confirms PMN-003 (e) empirically)
 - Linked Feature Brief: n/a (PMNs do not have associated Feature Briefs)
