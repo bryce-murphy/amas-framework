@@ -51,7 +51,7 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
    - Decomposition: 86 base + 2 new files (`docs/handoffs/TASK-0010-core-part-a.md` + `docs/reviews/PR-10-codex-pre-commit.md`) = 88. The two modified files (`core.md`, `README.md`) do not change tracked-file count.
 
 7. **Working-tree status verification** (separate pre-commit and post-commit expectations per spec §7.1 timing notes). Verifiable at pre-commit and at post-commit (step 14+):
-   - **Pre-commit, post-stage state** (Codex review-window): `git status --porcelain` returns the 4 staged changes (e.g., ` M README.md`, ` M core.md`, `A  docs/handoffs/TASK-0010-core-part-a.md`, `A  docs/reviews/PR-10-codex-pre-commit.md`). Non-empty output is the EXPECTED pre-commit state — Reviewer should NOT flag this as a Blocking failure.
+   - **Pre-commit, pre-stage state** (Codex review-window; per Notes below, Codex desktop reviews the working tree pre-stage — read-only inspection without `git add`): `git status --porcelain` returns the 4 expected changes in `XY <path>` porcelain v1 format (X = index status, Y = work-tree status) — ` M README.md` and ` M core.md` (Y=M, unstaged-modified-tracked); `?? docs/handoffs/TASK-0010-core-part-a.md` and `?? docs/reviews/PR-10-codex-pre-commit.md` (untracked-new). Non-empty output is the EXPECTED pre-commit pre-stage state — Reviewer should NOT flag this as a Blocking failure.
    - **Post-commit state** (step 14+): `git status --porcelain` returns empty.
    - cmd / PowerShell: same commands, same expected outputs per timing.
 
