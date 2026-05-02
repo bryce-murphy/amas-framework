@@ -34,9 +34,10 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
    - Expected first line: `# PR-8 Codex desktop pre-commit review context`
 
 4. **Total file count change at branch tip is exactly 3** (3 new + 0 modified). Verifiable at pre-commit:
-   - bash: `git status --porcelain | wc -l` returns `3`; or `git diff --stat HEAD` shows `3 files changed`
+   - bash: `git status --porcelain | wc -l` returns `3`
    - cmd: `git status --porcelain | find /c /v ""` returns `3`
    - Each of the three files is in `??` (untracked) state pre-stage, or `A` (added) state post-stage
+   - Note: `git diff --stat HEAD` is post-stage-only (does not include untracked files); `git status --porcelain` is the correct pre-commit verifier on the untracked working tree.
 
 5. **No file outside the three new artifacts is modified**. Verifiable at pre-commit:
    - bash: `git status --porcelain | grep -v "^?? docs/" | wc -l` returns `0`
