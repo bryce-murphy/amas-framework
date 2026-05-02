@@ -119,18 +119,18 @@ Filled by Builder at step-10 self-verification per spec §7, against the working
 
 ```
 core.md                                                                  | 5 insertions, 3 deletions
-docs/handoffs/TASK-0011-pmn-006-pr-10-cycle-learnings.md                 | 127 insertions, 0 deletions (new file)
+docs/handoffs/TASK-0011-pmn-006-pr-10-cycle-learnings.md                 | 161 insertions, 0 deletions (new file)
 docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md                   | 329 insertions, 0 deletions (new file)
 docs/reviews/PR-11-codex-pre-commit.md                                   | 176 insertions, 0 deletions (new file)
-4 files changed, 637 insertions(+), 3 deletions(-)
+4 files changed, 671 insertions(+), 3 deletions(-)
 ```
 
-Per-file landed exact counts (re-derived from `git diff --numstat HEAD` against actual current branch state pre-stage per (e.1); landed exact counts only):
+Per-file landed exact counts (re-derived from `git diff --numstat HEAD~1..HEAD` against actual landed commit state per (e.1); landed exact counts only):
 - `core.md`: 5 insertions + 3 deletions (8 changes; §8.1.1.1 polling-block timestamp filters changed for both endpoints with surrounding prose addition; §24.3.1 point 2 replacement)
-- `docs/handoffs/TASK-0011-pmn-006-pr-10-cycle-learnings.md`: 127 insertions (new file; this handoff including this Evidence section as filled at step 10)
+- `docs/handoffs/TASK-0011-pmn-006-pr-10-cycle-learnings.md`: 161 insertions (new file; this handoff including this Evidence section as filled at step 10; landed-after-Evidence-section-fill count, re-derived post-commit per (e.1) sub-rule iterative application — initial pre-fill estimate was 127, post-fill landed exact is 161)
 - `docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md`: 329 insertions (new file; PMN-006 with 9 §-headers and 9 honesty record defects)
 - `docs/reviews/PR-11-codex-pre-commit.md`: 176 insertions (new file; PR-11 Codex desktop pre-commit review-context with 13 claims)
-- Total: 637 insertions, 3 deletions across 4 files. Decomposition: `5 + 127 + 329 + 176 = 637` insertions; `3 + 0 + 0 + 0 = 3` deletions.
+- Total: 671 insertions, 3 deletions across 4 files. Decomposition: `5 + 161 + 329 + 176 = 671` insertions; `3 + 0 + 0 + 0 = 3` deletions.
 
 Note: `README.md` is NOT modified in this cycle per PMN-006 §1.1 defect 9 (spec deliverable 5 asserted a non-existent "PMN file table"; routed to path-(β) record-and-proceed per bounded-continuation rule §5.3 generalized cross-surface). Spec §7.1 expectation `git status --porcelain | grep -c "^ M README.md"` should return `1` per spec; actual returns `0`. The spec expectation is the defect-9-bearing assertion; actual repo state is the corrected ground truth.
 
