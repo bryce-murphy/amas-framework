@@ -5,7 +5,7 @@ last_validated_on: 2026-04-30
 vendor_doc_urls: []
 last_breaking_change_observed: 2026-04-30
 status: stub
-filled_by: PR-8 (TASK-0008)
+filled_by: per ADR-003
 ---
 
 # Human Maintainer adapter pack

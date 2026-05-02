@@ -1,7 +1,7 @@
 ---
 framework_version: 3.0.0
 status: stub
-filled_by: PR-3 (TASK-0003)
+filled_by: per ADR-003
 ---
 
 # AMAS v3 Usage Guide
