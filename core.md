@@ -41,13 +41,15 @@ The empirical observation that cycle-trailing-clean-Approve emits to the issue-c
 
 ```bash
 # Endpoint (a) — formal Pull Request Review
-gh api repos/{owner}/{repo}/pulls/{pull_number}/reviews \
+gh api --paginate repos/{owner}/{repo}/pulls/{pull_number}/reviews \
     --jq '.[] | select(.user.login=="<reviewer>") | select(.submitted_at > "<last-known>")'
 
 # Endpoint (b) — issue-comment summary
-gh api repos/{owner}/{repo}/issues/{issue_number}/comments \
+gh api --paginate repos/{owner}/{repo}/issues/{issue_number}/comments \
     --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at > "<last-known>")'
 ```
+
+The `--paginate` flag is required: GitHub REST list endpoints return at most 30 items per page by default; on long-lived PRs (or repos where the Reviewer has emitted many objects) single-page polling produces false-negative "no emission" verdicts when newer Reviewer output lives on a subsequent page. `gh api --paginate` retrieves all pages and concatenates results before jq filtering.
 
 Both polls run; results from both are reconciled. A clean-Approve cycle-trailing pass shows no review object and a fresh issue-comment with boilerplate verdict. A substantive-finding pass shows fresh review object(s) with line-level findings and a fresh issue-comment with verdict text. A no-emission state on both endpoints means the Reviewer has not yet emitted; Builder waits and retries per the project's polling cadence.
 
