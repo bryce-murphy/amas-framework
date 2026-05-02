@@ -1,7 +1,7 @@
 ---
 template_version: 3.0.0
 status: stub
-filled_by: PR-5 (TASK-0005)
+filled_by: per ADR-003
 ---
 
 # Documents-only project type appendix

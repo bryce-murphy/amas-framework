@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-04-30
+Accepted — 2026-04-30; decision 8 PR sequence portion superseded by ADR-003 (2026-05-01)
 
 ## Context
 

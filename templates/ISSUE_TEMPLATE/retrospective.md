@@ -1,7 +1,7 @@
 ---
 template_version: 3.0.0
 status: stub
-filled_by: PR-4 (TASK-0004)
+filled_by: per ADR-003
 ---
 
 # Retrospective Issue template

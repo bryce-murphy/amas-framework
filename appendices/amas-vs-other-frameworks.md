@@ -1,7 +1,7 @@
 ---
 template_version: 3.0.0
 status: stub
-filled_by: PR-8 (TASK-0008)
+filled_by: per ADR-003
 ---
 
 # AMAS vs other frameworks appendix
