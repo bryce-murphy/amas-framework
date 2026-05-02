@@ -4,7 +4,7 @@
 
 - Task ID: TASK-0007
 - Linked Issue: n/a (ADR-tracked; ADR-003 is the spec)
-- Linked PR: <FILL AT PR-OPEN — substitute PR URL after `gh pr create` returns>
+- Linked PR: https://github.com/bryce-murphy/amas-framework/pull/7
 - Linked ADR(s): ADR-003 (this PR's substantive output); ADR-001 decision 8 (partially superseded); ADR-002 (amended)
 - Linked Feature Brief: n/a (no new FEAT for an architectural-decision PR)
 - Linked review-context file: `docs/reviews/PR-7-codex-pre-commit.md`
