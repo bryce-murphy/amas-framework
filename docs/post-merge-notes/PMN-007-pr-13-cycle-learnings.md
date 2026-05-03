@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-007
 title: PR-13 cycle learnings — bounded-continuation cost-class refinement + iterative-multi-surface pattern + PMN-001 (k) mechanism-vs-discipline + recursive-self-instantiation cluster + (h) retirement
-linked_pr: PR-15 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-15 (squash SHA ace6608)
 framework_version_dogfooded: AMAS v2.16
-status: drafted
+status: recorded
 ---
 
 # PMN-007 — PR-13 cycle learnings: bounded-continuation cost-class refinement + iterative-multi-surface pattern + PMN-001 (k) mechanism-vs-discipline + recursive-self-instantiation cluster + (h) retirement
