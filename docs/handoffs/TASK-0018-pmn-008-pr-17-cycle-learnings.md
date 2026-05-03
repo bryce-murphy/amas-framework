@@ -5,12 +5,12 @@ pr: PR-19
 branch: chore/task-0018-pmn-008-pr-17-cycle-learnings
 linked_predecessor: TASK-0017 / PR-17 (squash SHA ce44836); TASK-0017 PMN-001 (k) chore-fix-up / PR-18 (squash SHA 52ee07e)
 linked_successor: TBD (next substantive cycle, anticipated usage-guide.md / canonical-law trio third member)
-linked_pr: PR-19 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-19 (squash SHA ddc54a4)
 framework_version_dogfooded: AMAS v2.17
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/PMN-008-pr-17-cycle-learnings.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-03
-status: drafted
+status: resolved
 ---
 
 # TASK-0018 — PMN-008 PR-15 + PR-17 cycle learnings
