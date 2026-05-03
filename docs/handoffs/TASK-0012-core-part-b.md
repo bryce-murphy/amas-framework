@@ -7,12 +7,12 @@ pr: PR-13
 branch: feat/task-0012-core-part-b
 linked_predecessor: TASK-0011 / PR-11 (squash SHA 817c12f); TASK-0011 cycle fix-up PR-12 (squash SHA 594b5ace76516ff232622c8adc3bd379f341ce6b)
 linked_successor: PMN-007 (anticipated; cycle-summary-observations PMN authored after Part B merges per established PMN-after-cycle cadence)
-linked_pr: (filled at step-12 push per PMN-001 (k) Linked PR fix-up substitution convention; substituted post-PR-open with actual PR# + squash-merge SHA)
+linked_pr: PR-13 (squash SHA 6086a16)
 framework_version_dogfooded: AMAS v2.14.1 (per CLAUDE.md active framework version; canonical "AMAS framework version" published in this repo's README updates v2.15 → v2.16 per §18.4 minor-bump criteria adjudicated this cycle)
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0012-spec.md (gitignored per ADR-001 decision 15; spec at iteration 5 — Architect iterations 1-4 plus Builder pre-flight surface iteration 5 surfacing 3 additional defects per PMN-006 §1.1 multi-surface review pipeline; total spec-origination defect count 20 vs PMN-006 baseline of 4)
 date_authored: 2026-05-02
-status: active
+status: resolved
 ---
 
 ## Metadata
