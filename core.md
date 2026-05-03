@@ -42,14 +42,14 @@ The empirical observation that cycle-trailing-clean-Approve emits to the issue-c
 ```bash
 # Endpoint (a) — formal Pull Request Review
 gh api --paginate repos/{owner}/{repo}/pulls/{pull_number}/reviews \
-    --jq '.[] | select(.user.login=="<reviewer>") | select(.submitted_at >= "<last-known>" and .id > <last-seen-id>)'
+    --jq '.[] | select(.user.login=="<reviewer>") | select(.submitted_at > "<last-known>" or (.submitted_at == "<last-known>" and .id > <last-seen-id>))'
 
 # Endpoint (b) — issue-comment summary
 gh api --paginate repos/{owner}/{repo}/issues/{issue_number}/comments \
-    --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at >= "<last-known>" and .id > <last-seen-id>)'
+    --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at > "<last-known>" or (.created_at == "<last-known>" and .id > <last-seen-id>))'
 ```
 
-The `>=` plus `id` filter handles same-second emission tie-breaks symmetrically across both endpoints: strict `>` on second-granularity timestamps drops boundary-coincident emissions, while `>=` paired with a strict-`>` last-seen-ID tie-breaker catches same-second emissions and excludes the previously-seen boundary emission by ID. `<last-known>` is the timestamp of the most recently absorbed emission per endpoint; `<last-seen-id>` is that emission's `id`.
+The lexicographic `(timestamp > last-known) OR (timestamp == last-known AND id > last-seen-id)` form handles same-second emission tie-breaks symmetrically across both endpoints. The naive `>=` plus unconditional-id-gate form (`timestamp >= last-known AND id > last-seen-id`) is incorrect: it requires `id > last-seen-id` for ALL results regardless of timestamp, which drops valid new emissions whose timestamp exceeds the boundary but whose id is below the last-seen-id (possible when ids do not strictly track submitted_at/created_at — e.g., a long-drafted review id N1 submitted at t2 after a faster-drafted review id N2 > N1 submitted at t1). The correct form gates the id comparison only inside the same-timestamp tie clause; cross-timestamp emissions pass through the `timestamp > last-known` clause without id constraint. `<last-known>` is the timestamp of the most recently absorbed emission per endpoint; `<last-seen-id>` is that emission's `id`.
 
 The `--paginate` flag is required: GitHub REST list endpoints return at most 30 items per page by default; on long-lived PRs (or repos where the Reviewer has emitted many objects) single-page polling produces false-negative "no emission" verdicts when newer Reviewer output lives on a subsequent page. `gh api --paginate` retrieves all pages and concatenates results before jq filtering.
 

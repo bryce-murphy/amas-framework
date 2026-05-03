@@ -31,9 +31,9 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
    - cmd-side: PowerShell form supplied (per PMN-004 §5 (b) findstr codepage caveat for `§` byte sequence)
    - Decomposition: §1 cycle context; §2 (a) §23.6.2 convergence-count role-axis-dependence; §3 (b)→(g)+(h) split; §4 (c) pass-shape Reviewer-specificity; §5 (d) iterative-fix-up + bounded-continuation; §6 (e)/(f)/(g)/(h) refinement and convention items grouped; §7 (i) cross-document state verification; §8 refined disciplines summary; §9 anticipated forward integration + cross-references.
 
-3. **PMN-006 §1.1 honesty record enumerates 9 defects with attribution** (defects 1-7 per spec §1.1; defect 8 per owner adjudication on Builder pre-flight pass 3 — three iteration-7/iteration-8 propagation residuals routed to path-(β) record-and-proceed per bounded-continuation rule §5.3; defect 9 surfaced at step-8 execution time — spec deliverable 5 asserted a non-existent README "PMN file table"; same path-(β) routing per same-class (i) bounded-continuation). Verifiable at pre-commit:
-   - bash: `awk '/^### §1\.1/,/^### §1\.2/' docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md | grep -cE "^[0-9]+\. \*\*"` returns `9`
-   - PowerShell: `(Get-Content docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md | Select-String -Pattern '^[0-9]+\. \*\*').Count` returns `9` for the §1.1 block (manually scope to §1.1 region)
+3. **PMN-006 §1.1 honesty record enumerates 10 defects with attribution** (defects 1-7 per spec §1.1; defect 8 per owner adjudication on Builder pre-flight pass 3 — three iteration-7/iteration-8 propagation residuals routed to path-(β) per bounded-continuation rule §5.3; defect 9 surfaced at step-8 execution time — spec deliverable 5 asserted a non-existent README "PMN file table"; same path-(β) routing per same-class (i) bounded-continuation; defect 10 surfaced by Codex cloud post-PR pass 2 on PR-11 commit `421fda1` — (h.3) canonical-form articulation defect: naive `>= AND id >` form drops valid emissions when ids do not strictly track timestamps; path-(a) revised to lexicographic OR form within this same cycle). Verifiable at pre-commit:
+   - bash: `awk '/^### §1\.1/,/^### §1\.2/' docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md | grep -cE "^[0-9]+\. \*\*"` returns `10`
+   - PowerShell: `(Get-Content docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md | Select-String -Pattern '^[0-9]+\. \*\*').Count` returns `10` for the §1.1 block (manually scope to §1.1 region)
 
 4. **PMN-006 (g) and (h) discipline split structure with sub-shapes enumerated** in §3. Verifiable at pre-commit:
    - bash: `grep -nE "\(g\.[12]\)|\(h\.[123]\)" docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md | head -10` returns lines naming sub-shapes (g.1), (g.2), (h.1), (h.2), (h.3) — at least 5 distinct sub-shape labels present
@@ -50,15 +50,17 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
    - bash: `grep -n "frontmatter-vs-body" docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md` returns at least 2 lines
    - PowerShell: `Select-String -Path docs/post-merge-notes/PMN-006-pr-10-cycle-learnings.md -Pattern '\(b\.3\)|frontmatter-vs-body'`
 
-7. **`core.md` §8.1.1.1 polling-commands corrected per (h.3) symmetric application**: strict `>` removed for both `submitted_at` and `created_at` filters; `>=` plus last-seen-ID tie-breaker present on both endpoints; `select(.user.login==...)` author filter preserved on both endpoints. Verifiable at pre-commit:
+7. **`core.md` §8.1.1.1 polling-commands corrected per (h.3) symmetric application — lexicographic tie-break form**: strict `>` removed for both `submitted_at` and `created_at` filters; lexicographic `(timestamp > last-known) OR (timestamp == last-known AND id > last-seen-id)` form present on both endpoints; naive `>= AND id >` form NOT present (per defect 10 — Codex post-PR pass 2 surfaced that the naive form drops valid emissions when ids do not strictly track timestamps); `select(.user.login==...)` author filter preserved on both endpoints. Verifiable at pre-commit:
    - bash:
-     - `grep -c "submitted_at > " core.md` returns `0` (defect 1 endpoint a removed; trailing space distinguishes from `>=`)
-     - `grep -c "created_at > " core.md` returns `0` (defect 1 endpoint b removed)
-     - `grep -c "submitted_at >=" core.md` returns at least `1`
-     - `grep -c "created_at >=" core.md` returns at least `1`
+     - `grep -c "submitted_at >= " core.md` returns `0` (naive form removed per defect 10)
+     - `grep -c "created_at >= " core.md` returns `0` (naive form removed per defect 10)
+     - `grep -c "submitted_at == " core.md` returns at least `1` (lexicographic same-timestamp tie clause for endpoint a)
+     - `grep -c "created_at == " core.md` returns at least `1` (lexicographic same-timestamp tie clause for endpoint b)
+     - `grep -cE "submitted_at > \"<last-known>\" or" core.md` returns at least `1` (endpoint a lexicographic OR clause)
+     - `grep -cE "created_at > \"<last-known>\" or" core.md` returns at least `1` (endpoint b lexicographic OR clause)
      - `grep -c "select(.user.login" core.md` returns at least `2` (one per endpoint, preserved through substitution)
-   - cmd: `findstr /n /c:"submitted_at > " core.md` (literal-string match; no regex `>` issue); `findstr /n /c:"submitted_at >=" core.md`; `findstr /n /c:"select(.user.login" core.md` returns at least 2 lines
-   - PowerShell: `Select-String -Path core.md -Pattern 'submitted_at > '` returns 0 matches; `Select-String -Path core.md -Pattern 'submitted_at >='` returns at least 1 match; `(Select-String -Path core.md -Pattern 'select\(\.user\.login').Count` returns at least 2
+   - cmd: `findstr /n /c:"submitted_at >= " core.md` returns 0 lines; `findstr /n /c:"submitted_at == " core.md` returns at least 1 line; `findstr /n /c:"select(.user.login" core.md` returns at least 2 lines
+   - PowerShell: `Select-String -Path core.md -Pattern 'submitted_at >= '` returns 0 matches; `Select-String -Path core.md -Pattern 'submitted_at == '` returns at least 1 match; `(Select-String -Path core.md -Pattern 'select\(\.user\.login').Count` returns at least 2
 
 8. **`core.md` §24.3.1 point 2 corrected per (h.2)**: `git fetch && git status` removed; `git rev-parse HEAD` plus expected-SHA comparison present; `git status --porcelain` clean-tree adjunct check named. Verifiable at pre-commit:
    - bash:
