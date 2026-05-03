@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
 
-The current canonical AMAS framework version is **v2.15**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.15.
+The current canonical AMAS framework version is **v2.16**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.16.
 
 ## What is AMAS?
 
@@ -37,7 +37,7 @@ The v3 framework package is organized into seven layers. Each stub or template d
 
 | Path | Description | Filled by |
 |---|---|---|
-| `core.md` | Platform-agnostic framework canonical | PR-10 (TASK-0010) Part A — verify-before-assert cluster (§8.1.1, §23.6, §24.3); Part B in TASK-0011+ |
+| `core.md` | Platform-agnostic framework canonical | PR-10 (TASK-0010) Part A — verify-before-assert cluster (§8.1.1, §23.6, §24.3); PR-13 (TASK-0012) Part B — §17/§18 baseline + M-A7 (§18.3) + bump-trigger criteria (§18.4) + bounded-continuation rule (§8.1.1.3) |
 | `github-reference.md` | GitHub-specific implementation of core | PR-10 (TASK-0010) |
 | `usage-guide.md` | Practical operating guidance + three-tier framing | PR-11 (TASK-0011) |
 
