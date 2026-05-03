@@ -111,7 +111,7 @@ The alternation allows either a one-character summary or a longer summary that d
 
 A GitHub Action validates branch names against the §2.2 pattern on PR open. Non-matching branches do not merge without a human override and a documented reason. The reference Action ships at `actions/branch-name-check.yml` per ADR-003 Decision 2 (anticipated PR; see §6 below for the full Actions reference).
 
-The Action check executes `^(feat|fix|chore|adr|shadow|spike)/[0-9]+-([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9])$` against the head branch name; failure is non-blocking by default (advisory) but configurable to blocking via repository setting per adopter preference.
+The Action check executes the §2.2 canonical regex against the head branch name; non-matching branches produce a non-passing status check. Blocking semantics derive from branch protection per §3.1 (required-status-checks integration); without that integration, the check status is advisory. Adopters integrate the check into branch protection's required-status-checks list to enforce the §2.2 convention deterministically per the canonical "no merge without override" policy.
 
 ## §3. Branch protection and single-contributor governance
 
