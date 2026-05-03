@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-008
 title: PR-15 + PR-17 cycle learnings — (r) fifth review surface, (i.5) convention-inference verification, (t) two-data-point preliminary
-linked_pr: PR-19 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-19 (squash SHA ddc54a4)
 framework_version_dogfooded: AMAS v2.17
-status: drafted
+status: recorded
 ---
 
 # PMN-008 — PR-15 + PR-17 cycle learnings — (r) fifth review surface, (i.5) convention-inference verification, (t) two-data-point preliminary
