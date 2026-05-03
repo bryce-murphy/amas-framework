@@ -243,7 +243,28 @@ Class: (i.5) convention-inference verification sub-shape positive empirical evid
 
 **(r) Builder step-6 fifth-surface — additional empirical strengthening**: Builder step-6 caught 5 path-(a) candidates pre-Codex (verification-artifact + same-class residuals); Codex post-PR caught 2 substantive content findings. Demonstrates that Builder step-6 self-review is a PRE-FILTER (catches verification-artifact + spec-authored verification-command defects) and Codex post-PR is the SUBSTANTIVE-CONTENT review surface. Multi-surface mitigation per PMN-006 §3 framing: each surface catches different defect classes; sufficiency = composition. Carried to PMN-008 as substantive empirical material on five-surface canonicalization.
 
-[Codex post-PR pass 1 absorbed above. Owner adjudication on Codex post-PR pass 2 invocation pending — Architect recommends pass 2 to verify no Codex regression on Finding 2 fix and confirm Codex acknowledges path-(β) deferral framing.]
+**Codex post-PR review pass 2 (2026-05-03 20:07:53Z, post-fix-up-commit `d57766e`)**: owner invoked `@codex review` per Architect recommendation. Two-endpoint poll per core.md §8.1.1.1: Endpoint 1 (PR reviews) returned **1 review at 20:07:53Z (id 4216768099; commit_id d57766e31b; state COMMENTED)** with template body + 1 inline review comment at github-reference.md line 105.
+
+**Pass 2 verifications**:
+- ✅ **No regression on pass 1 Finding 2** (advisory/blocking clarification at §2.3 line 114; NOT re-raised in pass 2). Path-(a) fix held.
+- 🔁 **Pass 1 Finding 1 re-raised at line 105** as P1 with same substantive content (regex repo-convention divergence). Codex re-flags current PR state each pass; does not read prior inline reply context to acknowledge path-(β) deferral framing — expected limitation of automated reviewer surface.
+
+**Pass 2 substantive findings**: 1 P1 (re-raise of pass 1 Finding 1) / 0 P2 / 0 P3. **Disposition unchanged**: Finding 1 remains path-(β) deferred per Architect pass 1 adjudication. Reply posted (comment id 3178692142) + thread resolved (PRRT_kwDOSRIPSM5_NqZS).
+
+**Cross-pass observation (u) strengthening**: v2.14.1-canonical-vs-repo-convention divergence shape now has cross-pass empirical evidence within single cycle (raised pass 1 + raised pass 2). Demonstrates that automated-reviewer pass-shape interacts with adjudication-discipline asymmetrically: Architect adjudication (path-(β) deferral) is invisible to Codex re-poll; Codex emission persists at each pass until underlying canonical text changes. Carried to PMN-008 as substantive empirical material on **automated-reviewer-pass-shape-vs-adjudication-discipline interaction** — sub-observation candidate refining (u).
+
+**Routing**: NO additional path-(a) revisions needed (Finding 1 disposition unchanged from pass 1; Finding 2 fix held). Step 15 path-(a) iteration N/A for pass 2.
+
+**Pass-shape analysis comparison across passes**:
+- Pass 1 (clean head SHA `79511a0`): 2 substantive findings (P1 Finding 1 + P2 Finding 2)
+- Pass 2 (post-fix-up-commit head SHA `d57766e`): 1 substantive finding (P1 Finding 1 re-raise; Finding 2 absent confirming fix held)
+- Trajectory: pass-2-converging-toward-residual-deferred-shape — only path-(β)-deferred items persist; path-(a)-applied items resolve.
+
+**Cycle defect tally cycle-final**: 15 net distinct pre-merge (8 Architect §23.6 iter + 5 Builder step-6 self-review + 1 Codex pre-commit net-new + 2 Codex post-PR substantive content findings) + 0 net-new at pass 2 (re-raise of pass 1 Finding 1; not double-counted) = **15 net distinct cycle-final**. Vs PR-15 cycle baseline 11 = **~1.36x defect density** consistent with this cycle's substantive content authoring scope (~385 body lines vs PMN-007's smaller §8.1.1.3 cost-class refinement scope).
+
+**All 3 review threads resolved**: PRRT_kwDOSRIPSM5_Nnb8 (line 105 pass 1) + PRRT_kwDOSRIPSM5_Nnb9 (line 114 pass 1) + PRRT_kwDOSRIPSM5_NqZS (line 105 pass 2). Replies posted (3178689755 + 3178689768 + 3178692142).
+
+[Codex post-PR pass 1 + pass 2 absorbed above. Cycle close pending step 16 cycle-final fix-up commit + step 17 hand-back to Architect.]
 
 ## Builder hand-back attestation
 
