@@ -29,11 +29,62 @@ status: active
 
 ## Last completed step
 
-[Filled at hand-back per Builder execution. Currently in-flight at step 4 — TASK-0015 handoff creation.]
+Builder completed steps 1-15 per TASK-0015 spec; PR-15 opened ([apps#15](https://github.com/bryce-murphy/amas-framework/pull/15)); Codex desktop pre-commit review absorbed (1 Blocking finding on Claim 9 routed path-(a)); Codex post-PR review absorbed (zero findings across pass 1 + pass 2; clean-first-pass shape empirically novel relative to PR-10/PR-11/PR-13 precedents); fix-up commit on feature branch capturing post-PR Codex absorption + handoff body fill per Option 1 Architect adjudication; hand-back to Architect for §24.3.1 five-point post-handback check.
+
+Step-by-step execution: pre-flight (§5.1) iter-1 surfaced **2 spec-baseline-drift defects** at Builder pre-flight surface (Mismatch 1 docs/post-merge-notes/ count = 7 not 6 — iter-4 Architect-side self-introduced defect; (k.2) failure-mode self-instantiation; Mismatch 2 docs/reviews/ count = 11 not ≥12 — convention-inference verification gap not caught by extended pre-authoring batch; (i.5) sub-shape candidate emergence). Both routed path-(a) per §8.1.1.3 cost-class refinement extension (pure-token-swap class). Architect applied path-(a) corrections to spec §5.1 + §10 before Builder resumed step 2. Pre-flight iter-2 verified zero remaining mismatches against corrected baselines.
+
+Branch `feat/task-0015-pmn-007` created off `main` at HEAD `e6a592be8769a25987fb03e33559026924075727` (PR-14 squash-merge SHA). Steps 3-5 (PMN-007 file + TASK-0015 handoff + PR-15 review-context) authored per spec §3.1 / §3.2 / §3.3 + §4 byte-exact paste / §6.1 fifteen claims enumeration. Step 6 core.md §8.1.1.3 surgical addition: Builder read §8.1.1.3 body (lines 115-146); existing cost-class refinement clause is a self-contained one-line paragraph at line 145; byte-exact addition appended as new paragraph between line 145 and §17 boundary (now-line 148 post-paste); surgical-fit clean — no surrounding-prose restructuring. Builder step-6 self-review surfaced **1 (h.2) sub-shape defect** in own PR-15 review-context claim 8 (case-sensitivity on `grep -o "pure-token-swap"` — byte-exact spec §3.4 text contains `Pure-token-swap cascades` with capital P; case-sensitive bash returns 2 not 3); routed path-(a) per §8.1.1.3 cost-class refinement extension (pure-token-swap class; (k.1) positive self-instantiation of the very refinement this cycle canonicalizes).
+
+Step 7 stop-and-show surfaced staged content + cumulative-diff-stats (693 insertions pre-Codex-fix) + 15 verification claim summary to owner; owner approved. Step 8 Codex desktop pre-commit review run by owner per ADR-001 decision 11; Codex output absorbed verbatim per PMN-002 (a) — 14 claims clean / 1 Blocking on Claim 9 (h.2 ref-vs-tree-comparison; verification command `git diff main..feat/task-0015-pmn-007 -- README.md` is operationally insufficient because feature branch had no commits yet, so ref comparison always returns empty regardless of staged content). Class: third (h.2) cycle instance after claim 7 explicit Note + claim 8 Builder step-6 self-review. Cost-class assessment: pure-token-swap (single-iteration fix; replace ref-comparison with working-tree-vs-main); routed path-(a) per §8.1.1.3 cost-class refinement extension. Same-class sweep per (j) propagation residual discipline confirmed no additional residuals at other claim surfaces (claim 1 `git ls-files` ✅; claim 15 `git diff --staged` ✅; claims 2-8, 10-14 grep file content on disk ✅). Step 9 path-(a) revision: Claim 9 bash command updated to `git diff main -- README.md` (working tree against main; covers staged + unstaged) + `git diff --staged -- README.md` adjunct.
+
+Step 10 self-verification iterative-to-fixed-point per §23.6.2 + (e.1) cumulative-diff-stats re-derivation: iteration-2 zero-defect convergence reached. All 15 claims verified clean. Cumulative-diff-stats re-derived 693 → 703 insertions (+10 from claim 9 revision + adjudication entry + tally update); Σ per-file = 2 + 105 + 371 + 225 = 703 = total 703 ✅. Step 11 commit landed at `3d6d611ba1156bf6bcc24ec6d1458f8612b89ca4` with message "PMN-007: PR-13 cycle learnings + core.md §8.1.1.3 cost-class refinement extension"; 4 files changed, 703 insertions(+), 0 deletions(-). Step 12 push + PR-15 open at [apps#15](https://github.com/bryce-murphy/amas-framework/pull/15); base main; head 3d6d611; additions 703; deletions 0; changedFiles 4 (verified post-push via `gh pr view 15 --json ...`).
+
+Step 13 post-PR Codex review absorption via two-endpoint poll per core.md §8.1.1.1 corrected canonical form: Endpoint 1 (PR reviews) empty; Endpoint 2 (PR comments) returned 2 Codex comments at 17:17:22Z (verbose follow-up; explicit zero findings) + 17:20:27Z (auto-review template "Delightful!"); zero substantive findings across both passes. **Clean-first-pass shape** — empirically distinct from (n) cycle-trailing-clean-Approve canonicalized at PMN-007 §9.3 (which requires prior pass with findings + path-(a) absorption + subsequent clean pass). Step 14 path-(a) revisions: N/A (zero findings).
+
+Step 15 hand-back via Option 1 (Architect-adjudicated): fix-up commit on feature branch BEFORE squash-merge capturing PR-15 review-context post-PR Codex absorption + this handoff body fill. Pre-merge record-updates-as-fix-up sub-shape (PMN-001 (h.2) file-based Builder direction operationalized as cycle-record discipline; NOT §18.3 M-A7 self-instantiation per Architect framing precision). PR-16 chore-fix-up scope tightened to mechanical post-merge fields (linked_pr SHA substitution + status flip) per spec §4 PMN-001 (k) mechanism-vs-discipline canonicalization.
 
 ## Current state
 
-[Filled at hand-back. Tracked-file count post-staging expected: `96` (93 base + 3 new files: PMN-007 + TASK-0015 handoff + PR-15 review-context; core.md modification does not change count). Files changed: 4 (PMN-007 new; TASK-0015 handoff new; PR-15 review-context new; core.md modified for §8.1.1.3 cost-class sub-distinction byte-exact addition per spec §3.4).]
+Summary of `main` and feature-branch state at hand-back.
+
+- `main` SHA at branch base: `e6a592be8769a25987fb03e33559026924075727` (squash-merge SHA of PR-14 chore on main, 2026-05-03; second empirical instance of branch-protection-adapted PMN-001 (k) substitution mechanism per spec §4 mechanism-vs-discipline canonicalization).
+- Feature branch tip SHA at PR-open: `3d6d611ba1156bf6bcc24ec6d1458f8612b89ca4` (filled in pre-merge fix-up commit per Option 1; subsequent fix-up tip SHA produced by hand-back fix-up commit captures post-PR absorption + this handoff body fill).
+- Tracked-file count post-staging at first-commit: `96`
+  - Decomposition: 93 base (verified at step 1 pre-flight via `git ls-files | wc -l`) + 3 new files (`docs/post-merge-notes/PMN-007-pr-13-cycle-learnings.md` + `docs/handoffs/TASK-0015-pmn-007-pr-13-cycle-learnings.md` + `docs/reviews/PR-15-codex-pre-commit.md`) = 96. Modified file (`core.md`) does not change count.
+  - Verifiable per PR-15 review-context claim 1.
+- Files changed at first-commit: 4 (core.md modified for §8.1.1.3 byte-exact "Cost-class sub-distinction" paragraph per spec §3.4; PMN-007 new; TASK-0015 handoff new; PR-15 review-context new).
+- Cumulative-diff-stats first-commit: 703 insertions(+), 0 deletions(-) per (e.1) sub-rule; Σ per-file = 2 + 105 + 371 + 225 = 703.
+- Hand-back fix-up commit additions to PR-15 review-context (post-PR Codex absorption section) + TASK-0015 handoff (Last completed step + Current state fill) increment branch tip line counts; cumulative-diff-stats re-derived per (e.1) at fix-up commit time.
+- PR-15 state: OPEN; base main; awaiting Architect §24.3.1 five-point post-handback check + owner squash-merge per ADR-001 decision 9.
+- Codex post-PR review state: 2 passes complete; zero findings; clean-first-pass shape (empirically novel relative to PR-10/PR-11/PR-13 cycle-trailing-clean precedent); cycle-record carries forward to PMN-008 candidate observations.
+
+**Cycle defect tally final**: 11 net distinct cycle defects vs PR-13 baseline 20 ≈ **0.55x defect density**.
+
+Decomposition:
+- 7 Architect §23.6 iteration defects across iter-2/iter-3/iter-4 (per spec §10 defect log)
+- +1 Mismatch 2 net-new (Builder pre-flight; (i.5) sub-shape candidate)
+- Mismatch 1 (Builder pre-flight) overlaps with iter-4 self-introduced (counted once at iter-4)
+- +1 Builder step-6 self-review (h.2) on PR-15 review-context claim 8 case-sensitivity
+- +1 Codex pre-commit pass 1 Blocking on PR-15 review-context claim 9 (h.2) ref-vs-tree-comparison
+- +0 Codex post-PR (zero findings; clean-first-pass)
+
+Per PMN-007 §3.1 four-surface refinement: Architect §23.6 (7 defects/4 iters) + Builder pre-flight (1 net-new + 1 overlap) + Builder step-6 self-review (1 h.2) + Codex pre-commit (1 h.2) + Codex post-PR (0); five-surface application this cycle (per Architect framing — Builder step-6 self-review extends the four-surface canonical pattern to five-surface).
+
+**(i) refinement candidate empirical verdict at cycle close**: helping at surfaces it scopes to (direct-text grep verification for §-header enumeration / grep occurrence-vs-line semantics); not catching what it doesn't scope to (convention-inference gaps per Mismatch 2; iter-N self-introduced defects per Mismatch 1; verification-command operational correctness across staged-vs-committed semantics per claim 9). Multi-surface mitigation per PMN-006 §3 framing remains structurally load-bearing.
+
+**Empirical material carried to PMN-008 cycle** (per Architect adjudication):
+- Clean-first-pass post-PR Codex pass sub-shape (provisional (n.2)) — empirically distinct from (n) cycle-trailing-clean-Approve; preliminary single-data-point at PR-15 cycle close.
+- (j) same-class propagation residual sweep adequacy positive empirical evidence — Builder's step 8 sweep claim validated by post-PR clean.
+- Pre-commit pipeline sufficiency hypothesis preliminary single-data-point — five-surface pipeline reached defect-free state pre-merge.
+- Builder step-6 self-review surface as fifth iterative-multi-surface stage extending PMN-007 §3.1 four-surface refinement.
+- (i.5) sub-shape candidate (convention-inference verification gap) emergence at this cycle's Mismatch 2 surfacing.
+- Pre-merge record-updates-as-fix-up sub-shape (PMN-001 (h.2) operationalized) — Architect framing precision for cross-discipline cross-reference correctness.
+
+**Verification command outputs at hand-back** (verifiable post-fix-up-commit on feature branch):
+- `git rev-parse HEAD`: feature branch tip post-fix-up-commit (Architect verifies via §24.3.1 five-point check).
+- `git status --porcelain`: empty (clean working tree post-fix-up).
+- `git diff --staged --stat` post-fix-up: cumulative-diff-stats per (e.1) re-derivation (Architect verifies).
+- All 15 PR-15 review-context claims continue to verify clean post-fix-up (no claim verification commands reference fields modified by the fix-up itself).
 
 ## Decisions made
 

@@ -191,7 +191,29 @@ Net distinct defects: 9 (7 iteration + Mismatch 2 net-new; Mismatch 1 is the ite
 
 [Codex pre-commit findings populated at step 8 — pending owner invocation per ADR-001 decision 11.]
 
-[Codex post-PR findings populated at step 13+ — pending owner `@codex review` invocation post-PR-open per ADR-001 decision 11.]
+**Codex post-PR review pass 1 + pass 2 (2026-05-03, post-PR-15-open)**: owner invoked `@codex review` per ADR-001 decision 11. Two-endpoint poll per core.md §8.1.1.1 (corrected canonical form per PMN-006 §1.1 defect 2: `gh api ... --paginate` + lexicographic tie-break per (h.3) + author filter for `chatgpt-codex-connector[bot]`) confirmed Codex actually fired (verify-before-assert per §24; phantom-review check per §8.1.1.2). Endpoint 1 (PR reviews) empty; Endpoint 2 (PR comments) returned **2 Codex comments**:
+
+1. **Pass 1** (id 4366725804, 2026-05-03 17:17:22Z) — verbose "Review outcome (post-PR follow-up)" comment with explicit "Blocking: None identified", "Major: None identified", "Minor: None identified". Codex cited canonical line ranges in `core.md §8.1.1.3` (lines 115-147), TASK-0015 handoff (lines 4-6, 97-99), and PR-15 review-context (lines 15-17, 119-120) confirming cycle narrative consistency. Repository checks run: `git status`, `git log --oneline -10`, `nl -ba core.md | rg -n "8\.1\.1\.3|Cost-class sub-distinction|bounded-continuation"`, `nl -ba docs/reviews/PR-15-codex-pre-commit.md | sed -n '1,120p'`, `nl -ba docs/handoffs/TASK-0015-pmn-007-pr-13-cycle-learnings.md | sed -n '1,140p'`.
+
+2. **Pass 2** (id 4366731614, 2026-05-03 17:20:27Z) — standard auto-review template: "Codex Review: Didn't find any major issues. Delightful!"
+
+**Substantive findings across both passes**: 0 Blocking / 0 Major / 0 Minor. Recommended disposition: clean.
+
+**Pass-shape analysis per PMN-007 §9.3 (n) cycle-trailing-clean-Approve**: this is **NOT** a cycle-trailing-clean shape (which requires "prior pass with findings + path-(a) absorption + subsequent clean pass" per PMN-007 §9.3 + PR-10 pass 5 + PR-11 close + PR-13 close precedents). This is a **clean-first-pass** shape — empirically novel relative to PR-10/PR-11/PR-13 cycle data. **Single-data-point empirical evidence** of pre-commit-pipeline-sufficient state: the four-surface pipeline (Architect §23.6 4-iter to fixed-point + Builder pre-flight + Builder step-6 self-review + Codex desktop pre-commit) reached defect-free state without requiring post-PR iteration.
+
+**Routing**: NO path-(a) revisions needed (zero findings). Step 14 N/A.
+
+**PMN-008 candidate observation entries** (Architect-adjudicated framing per architect surface):
+
+- **Clean-first-pass post-PR Codex pass sub-shape** (provisional naming (n.2) or similar numbering at PMN-008 spec authoring): empirically distinct from (n) cycle-trailing-clean-Approve canonicalized at PMN-007 §9.3. The (n) shape requires "prior pass with findings + path-(a) absorption + subsequent clean pass" per PR-10 pass 5 + PR-11 close + PR-13 close precedents. PR-15 close = clean-first-pass (no prior post-PR findings → clean on first run). Preliminary single-data-point sub-shape candidate at PMN-007 §9.3 application surface; cross-cycle confirmation ~2-3 cycles before canonical refinement to §8.1.1.1 explicitly noting both shapes.
+
+- **(j) same-class propagation residual sweep adequacy positive empirical evidence**: Builder's step 8 same-class sweep claim ("No additional same-class residuals" after the third (h.2) cycle instance at claim 9) was empirically tested by post-PR Codex pass returning zero findings. Validates the discipline that correction at surface-of-finding + same-class sweep at adjacent surfaces prevents residual propagation. (j) cluster strengthens toward canonicalization threshold; carried to PMN-008 cycle as adequacy-confirmation evidence.
+
+- **Pre-commit pipeline sufficiency hypothesis** preliminary single-data-point: four-surface pipeline (Architect §23.6 4-iter + Builder pre-flight + Builder step-6 self-review + Codex desktop pre-commit) reached defect-free state pre-merge. Corroborates PMN-007 §3.1 four-surface refinement; the maturation interpretation is that pre-commit-pipeline can collapse the cycle-trailing-clean multi-pass pattern when applied iteratively-to-fixed-point at each surface. Carried to PMN-008 cycle as preliminary single-data-point.
+
+- **Pre-merge record-updates-as-fix-up sub-shape** (Architect framing precision per PMN-008 §1.1 honesty record entry): the discipline being self-instantiated by Option 1 (fix-up commit on feature branch BEFORE squash-merge capturing post-PR Codex absorption + handoff body fill) is the PR-13 cycle pattern of pre-merge record-updates-as-fix-up — a sub-shape of PMN-001 (h.2) file-based Builder direction operationalized as cycle-record discipline. NOT §18.3 M-A7 self-instantiation (which is about the merge-commit-body itself); the precision matters for cross-discipline cross-reference correctness.
+
+- **Cycle defect tally final**: 11 net distinct cycle defects vs PR-13 baseline 20 ≈ **0.55x defect density**. Zero post-PR findings → final tally unchanged from step 11 stop-and-show. (i) refinement candidate empirical verdict at cycle close: helping at surfaces it scopes to (direct-text grep verification for §-header enumeration / grep semantics); not catching what it doesn't scope to (convention-inference gaps; iter-N self-introduced defects). Multi-surface mitigation per PMN-006 §3 framing remains structurally load-bearing.
 
 ## Builder hand-back attestation
 
