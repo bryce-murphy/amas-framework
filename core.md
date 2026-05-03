@@ -42,12 +42,14 @@ The empirical observation that cycle-trailing-clean-Approve emits to the issue-c
 ```bash
 # Endpoint (a) — formal Pull Request Review
 gh api --paginate repos/{owner}/{repo}/pulls/{pull_number}/reviews \
-    --jq '.[] | select(.user.login=="<reviewer>") | select(.submitted_at > "<last-known>")'
+    --jq '.[] | select(.user.login=="<reviewer>") | select(.submitted_at > "<last-known>" or (.submitted_at == "<last-known>" and .id > <last-seen-id>))'
 
 # Endpoint (b) — issue-comment summary
 gh api --paginate repos/{owner}/{repo}/issues/{issue_number}/comments \
-    --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at > "<last-known>")'
+    --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at > "<last-known>" or (.created_at == "<last-known>" and .id > <last-seen-id>))'
 ```
+
+The lexicographic `(timestamp > last-known) OR (timestamp == last-known AND id > last-seen-id)` form handles same-second emission tie-breaks symmetrically across both endpoints. The naive `>=` plus unconditional-id-gate form (`timestamp >= last-known AND id > last-seen-id`) is incorrect: it requires `id > last-seen-id` for ALL results regardless of timestamp, which drops valid new emissions whose timestamp exceeds the boundary but whose id is below the last-seen-id (possible when ids do not strictly track submitted_at/created_at — e.g., a long-drafted review id N1 submitted at t2 after a faster-drafted review id N2 > N1 submitted at t1). The correct form gates the id comparison only inside the same-timestamp tie clause; cross-timestamp emissions pass through the `timestamp > last-known` clause without id constraint. `<last-known>` is the timestamp of the most recently absorbed emission per endpoint; `<last-seen-id>` is that emission's `id`.
 
 The `--paginate` flag is required: GitHub REST list endpoints return at most 30 items per page by default; on long-lived PRs (or repos where the Reviewer has emitted many objects) single-page polling produces false-negative "no emission" verdicts when newer Reviewer output lives on a subsequent page. `gh api --paginate` retrieves all pages and concatenates results before jq filtering.
 
@@ -180,7 +182,7 @@ When Builder hands back to Architect at cycle close, the hand-back contains clai
 **Default Architect-side post-handback five-point check pattern.** Where verification is cheap (a handful of API calls, a few git commands), Architect runs the five-point check against the hand-back claims:
 
 1. **Two-endpoint poll of Reviewer output** (per §8.1.1.1) — confirm Reviewer output as Builder reported it; reconcile against last-known-state via both formal-review and issue-comment endpoints.
-2. **Branch state verification** — `git fetch && git status` on the relevant branch; confirm branch tip and working-tree state match the hand-back's claim.
+2. **Branch tip-SHA verification** — `git rev-parse HEAD` output must match the expected SHA from the prior session's hand-back; additionally `git status --porcelain` must be empty (clean working tree). The `git status` clean-tree check is necessary-but-not-sufficient on its own — SHA equality is the load-bearing tip-state proof, with clean-tree as adjunct check; `git status` alone reports working-tree state and ahead/behind upstream but does not prove HEAD equals an expected SHA.
 3. **File content audit against prescription** — for each file Builder claims to have authored or modified, verify content matches the spec's §2 prescription. `git show <sha>:<path>` or equivalent.
 4. **Phantom-action audit** — verify no claimed action lacks corresponding repository state (commits exist; files exist; counts match). Inverse of §8.1.1.2 sub-shape A check applied to Builder hand-back.
 5. **Comment-content claim verification** (per §8.1.1.2) — for any Reviewer comment Builder reports as adjudicated, verify the comment's substantive content claims against actual repository state, not just delivery.
