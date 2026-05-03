@@ -5,12 +5,12 @@ pr: PR-11
 branch: feat/task-0011-pmn-006
 linked_predecessor: TASK-0010 / PR-10 (squash SHA 80f5a4aab532bc89cd14fb752b5fc07fbf42fc7f)
 linked_successor: TASK-0012 (Part B authoring; pending)
-linked_pr: (filled at step-18 fix-up per PMN-001 (k))
+linked_pr: PR-11 (squash SHA 817c12f)
 framework_version_dogfooded: AMAS v2.15
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0011-spec.md (gitignored per ADR-001 decision 15; spec at iteration 8 per §12.2; three known residuals routed to path-(b) per PMN-006 §1.1 defect 8)
 date_authored: 2026-05-02
-status: in_progress
+status: resolved
 ---
 
 # TASK-0011 — PMN-006 PR-10 cycle learnings + core.md surgical corrections
