@@ -5,12 +5,12 @@ pr: PR-15
 branch: feat/task-0015-pmn-007
 linked_predecessor: TASK-0012 / PR-13 (squash SHA 6086a16); TASK-0012 PMN-001 (k) chore-fix-up / PR-14 (squash SHA e6a592b)
 linked_successor: TBD (next substantive cycle)
-linked_pr: PR-15 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-15 (squash SHA ace6608)
 framework_version_dogfooded: AMAS v2.16
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0015-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-03
-status: active
+status: resolved
 ---
 
 # TASK-0015 — PMN-007 PR-13 cycle learnings + core.md §8.1.1.3 cost-class refinement extension
