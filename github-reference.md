@@ -1,6 +1,6 @@
 ---
 framework_version: 3.0.0
-status: drafted
+status: recorded
 filled_by: PR-17 (TASK-0017)
 ---
 

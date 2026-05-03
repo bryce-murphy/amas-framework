@@ -5,12 +5,12 @@ pr: PR-17
 branch: feat/task-0017-github-reference
 linked_predecessor: TASK-0015 / PR-15 (squash SHA ace6608); TASK-0015 PMN-001 (k) chore-fix-up / PR-16 (squash SHA d274b87)
 linked_successor: TBD (next substantive cycle; anticipated usage-guide.md authoring)
-linked_pr: PR-17 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-17 (squash SHA ce44836)
 framework_version_dogfooded: AMAS v2.17
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0017-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-03
-status: active
+status: resolved
 ---
 
 # TASK-0017 — github-reference.md substantive content authoring (canonical-law trio second member)
