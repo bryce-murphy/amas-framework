@@ -29,21 +29,34 @@ status: drafted
 
 ## Last completed step
 
-To be filled in pre-merge fix-up commit per (t) sub-shape (PMN-008 §2 demoted but pattern operationally applied this cycle as third data point — anticipated promotion of (t) to canonical-refinement-threshold-reached at TASK-0019 cycle if shape repeats).
+Builder completed all execution steps per TASK-0018 cycle convention; PR-19 opened at https://github.com/bryce-murphy/amas-framework/pull/19; Codex post-PR review absorbed (zero findings across single pass; clean-first-pass shape); fix-up commit on feature branch capturing post-PR Codex absorption + this handoff body fill per (t) sub-shape; hand-back to Architect for §24.3.1 five-point post-handback check.
+
+Step-by-step execution: pre-flight (step 1) surfaced 7 substantive defects in Architect-drafted PMN-008 spec content across two sweep passes (3 §-content + 4 frontmatter/structure per (i.5) PMN-file-shape sub-extension). All seven path-(a) routed via Architect spec-authoring revisions before Builder commit. Owner adjudicated all seven defects; Path 1 (align to PMN-007 HEAD canonical precedent) confirmed for frontmatter convention.
+
+Branch `chore/task-0018-pmn-008-pr-17-cycle-learnings` created off `main` at HEAD `52ee07e84628a2d8e5a8ffbf5d1dc6e22b2b35b0` (PR-18 squash-merge SHA). Three deliverables authored per spec convention (PMN-008 + TASK-0018 handoff + PR-19 review-context). Builder step-6 self-review (j) all-instances sweep on `PMN-007 §[0-9]+(\.[0-9]+)?` pattern across all three deliverables surfaced 1 additional §-citation residual (`PMN-007 §6 (p)` → `§8.2 (p)`; defect propagated from spec into deliverables — PMN-007 §6 is "Auto-trigger reliability — preliminary observation"; (p) is canonicalized at PMN-007 §8.2). Path-(a) routed: pure-token-swap (single-iteration fix; replace `§6` with `§8.2` in two locations). Empirical instance of (r) Builder step-6 self-review at canonical step-6 surface (post-authoring) rather than step-1 pre-flight — exact defect class per PMN-008 §3.1 surface-coverage table ("§-citation residuals that escape Architect sweep").
+
+8-defect tally final: 3 §-content (Pass 1 step-1 pre-flight) + 4 frontmatter/structure (Pass 2 step-1 pre-flight per (i.5) PMN-file-shape sub-extension) + 1 §-citation residual (Pass 3 step-6 (j) sweep post-authoring). All path-(a) routed; no path-(β) deferrals at any surface. (v) candidate observation registered at PMN-008 §5.7 — strongest possible empirical confirmation of (r) and (i.5) load-bearing role at canonicalization-PMN cycles.
+
+Stop-and-show before commit/push: cumulative-diff-stats per (e.1) sub-rule re-derivation = 3 files / 473 insertions / 0 deletions; Σ per-file = 258 + 76 + 139 = 473 = total ✓ self-stable. Owner-approved sequence (commit + push + PR-create). Commit landed at `70fa920af83fd7ee4e7060f0a4023db5a612f2c5` with proposed message; push to origin successful; PR-19 opened.
+
+Codex post-PR absorption per two-endpoint poll per core.md §8.1.1.1 corrected lexicographic canonical form: Endpoint 1 = 1 review by `chatgpt-codex-connector[bot]` at `2026-05-03T22:22:19Z` (state `COMMENTED`; auto-fire informational template only at body length 621 chars; zero substantive findings); Endpoint 2 = 1 comment from owner at `2026-05-03T22:19:01Z` (the `@codex review` invocation trigger; not a Codex finding). Clean-first-pass shape; empirically aligns with (q') candidate small-scope-clean prediction per PMN-008 §5.2 — third data point for (q') (PR-15 + PR-19 = clean-first-pass for small-scope cycles; PR-17 = findings for full-canonical-law-trio-member authoring); (q') scope-conditional pattern strengthens toward canonical-refinement threshold for next-PMN consideration.
+
+Step hand-back via fix-up commit on feature branch BEFORE squash-merge capturing PR-19 review-context post-PR Codex absorption + this handoff body fill. Pre-merge record-updates-as-fix-up sub-shape per (t) — applied for cycle-final-state-record discipline. PR-19 fix-up does NOT count toward (t) §5.6 promotion threshold (which is restricted to substantive-content cycles per §5.6 trigger framing; PR-19 is PMN-only chore-class cycle). Anticipated PMN-001 (k) chore-fix-up cycle (PR-20) post-merge for linked_pr SHA substitution + PMN-008 status flip `drafted` → `recorded` + TASK-0018 handoff status flip `drafted` → `resolved` per spec convention.
 
 ## Current state
 
-To be filled in pre-merge fix-up commit per (t) sub-shape.
+Summary of `main` and feature-branch state at hand-back.
 
-Summary of `main` and feature-branch state at hand-back will record:
-- `main` SHA at branch base (PR-18 squash-merge SHA `52ee07e84628a2d8e5a8ffbf5d1dc6e22b2b35b0`).
-- Feature branch tip SHA at PR-open (filled at hand-back).
-- Tracked-file count post-staging at first-commit (98 base + 3 new = 101).
-- Files changed at first-commit (3 new: PMN-008 + TASK-0018 handoff + PR-19 review-context).
-- Cumulative-diff-stats first-commit per (e.1) sub-rule (filled at hand-back).
-- Hand-back fix-up commit additions to PR-19 review-context (post-PR Codex absorption section) + this handoff body (Last completed step + Current state fill) per (t) pre-merge feature-branch fix-up shape.
-- PR-19 state.
-- Codex post-PR review state.
+- `main` SHA at branch base: `52ee07e84628a2d8e5a8ffbf5d1dc6e22b2b35b0` (squash-merge SHA of PR-18 chore on main, 2026-05-03; third empirical instance of branch-protection-adapted PMN-001 (k) substitution mechanism + canonical-content-frontmatter-status-flippability sub-shape interaction per PMN-008 §2.4 cross-reference framing).
+- Feature branch first-commit tip SHA: `70fa920af83fd7ee4e7060f0a4023db5a612f2c5` (PR-19 open commit; verified via `gh pr view 19 --json` byte-exact match per §24.3.1 check 3). Subsequent fix-up commit tip SHA produced by this hand-back fix-up commit captures post-PR absorption + this handoff body fill.
+- Tracked-file count post-staging at first-commit: 101.
+  - Decomposition: 98 base (verified at step 1 pre-flight via `git ls-files | wc -l`) + 3 new files (`docs/post-merge-notes/PMN-008-pr-17-cycle-learnings.md` + `docs/handoffs/TASK-0018-pmn-008-pr-17-cycle-learnings.md` + `docs/reviews/PR-19-codex-pre-commit.md`) = 101.
+  - Verifiable per PR-19 review-context claim 1.
+- Files changed at first-commit: 3 NEW (no canonical-text or existing-file modifications this cycle; PMN-008 cycle is pure post-merge-note authoring).
+- Cumulative-diff-stats first-commit: 473 insertions(+) / 0 deletions(-) per (e.1) sub-rule; Σ per-file = 258 + 76 + 139 = 473 = total ✓ self-stable.
+- Hand-back fix-up commit additions (this commit) to PR-19 review-context (post-PR Codex absorption section) + this handoff (Last completed step + Current state fill) increment branch tip line counts; cumulative-diff-stats re-derived per (e.1) at fix-up commit time and recorded in commit message.
+- PR-19 state: OPEN; base main; awaiting Architect §24.3.1 five-point post-handback check + owner squash-merge per ADR-001 decision 9.
+- Codex post-PR review state: 1 pass complete (auto-fire on owner `@codex review` invocation); zero findings; clean-first-pass shape; (q') candidate strengthens to three-data-point per §5.2 prediction (small-scope-clean confirmed by PR-15 + PR-19 vs PR-17 findings).
 
 ## Decisions made
 

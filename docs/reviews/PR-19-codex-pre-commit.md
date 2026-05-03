@@ -136,4 +136,16 @@ PR-19 cycle = single-cycle observation at PMN-008 authoring. Promotion threshold
 
 ## Post-PR Codex absorption
 
-To be filled at pre-merge fix-up commit per (t) sub-shape (third empirical instance of (t) pre-merge feature-branch fix-up commit shape if applied this cycle; would reach three-data-point canonical-refinement threshold per PMN-008 §5.6 promotion trigger).
+Codex post-PR review invoked by owner via `@codex review` issue comment at `2026-05-03T22:19:01Z`; Codex auto-fire at `2026-05-03T22:22:19Z` reviewing commit `70fa920af8`. Two-endpoint poll per core.md §8.1.1.1 corrected canonical lexicographic form:
+
+- **Endpoint 1 (PR reviews)**: 1 review by `chatgpt-codex-connector[bot]` (state `COMMENTED`; body 621 chars — auto-fire informational template only, no Blocking/Major/Minor findings, no specific feedback).
+- **Endpoint 2 (PR issue comments)**: 1 comment from owner (`@codex review` invocation trigger; not a Codex finding).
+
+**Pass-1 result: zero substantive findings — clean-first-pass shape**. Empirically aligns with (q') candidate prediction per PMN-008 §5.2 small-scope-clean prediction: PR-19 is pure post-merge-note authoring (no canonical-text changes), smaller scope than PR-15 which itself produced clean-first-pass. Third data point for (q') candidate (PR-15 + PR-19 = clean-first-pass for small-scope cycles; PR-17 = findings for full-canonical-law-trio-member authoring); strengthens (q') scope-conditional pattern toward canonical refinement threshold per §5.2 promotion trigger.
+
+Path-(a) revisions: N/A (zero findings).
+Path-(β) deferrals: N/A.
+
+**(t) sub-shape applied at this cycle close**: pre-merge fix-up commit on feature branch capturing PR-19 review-context post-PR Codex absorption + TASK-0018 handoff body fill. PR-19 fix-up does NOT count toward (t) §5.6 promotion threshold (restricted to substantive-content cycles per §5.6 promotion-trigger framing; PR-19 is PMN-only chore-class cycle). Sub-shape applies for cycle-final-state-record discipline regardless of substantive-vs-chore classification.
+
+Empirical interpretation: PMN-008 cycle close follows PR-15 cycle close shape (clean-first-pass + (t) fix-up commit for handoff body fill + review-context absorption record). (q') third-data-point strengthening is the most consequential cross-cycle observation at PMN-008 cycle close.
