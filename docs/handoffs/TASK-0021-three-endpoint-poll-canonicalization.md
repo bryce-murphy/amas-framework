@@ -5,12 +5,12 @@ pr: PR-25
 branch: feat/task-0021-three-endpoint-poll-canonicalization
 linked_predecessor: TASK-0020 (PR-23 substantive defect-fix + PR-24 auto-generated chore-fix-up)
 linked_successor: TBD
-linked_pr: PR-25 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-25 (squash SHA e4f1271)
 framework_version_dogfooded: AMAS v2.18.1
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0021-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-04
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0021
