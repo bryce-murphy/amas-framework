@@ -5,12 +5,12 @@ pr: PR-21
 branch: feat/task-0019-linked-pr-fix-up-action
 linked_predecessor: TASK-0018 / PR-19 (squash SHA ddc54a4); TASK-0018 PMN-001 (k) chore-fix-up / PR-20 (squash SHA 809b9ca)
 linked_successor: TBD (anticipated usage-guide.md authoring per ADR-003 D2; branch-regex reconciliation cycle deferred from PR-17 path-(β); first Action auto-fire empirical event at PR-22)
-linked_pr: PR-21 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-21 (squash SHA db3c9b0)
 framework_version_dogfooded: AMAS v2.18
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0019-linked-pr-fix-up-action.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-03
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0019
