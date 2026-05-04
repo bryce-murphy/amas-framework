@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-009
 title: (i.5) Architect-spec-drift catch discipline canonicalization-candidate
-linked_pr: PR-25 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-25 (squash SHA e4f1271)
 framework_version_dogfooded: AMAS v2.18.1
-status: drafted
+status: recorded
 ---
 
 # PMN-009 — (i.5) Architect-spec-drift catch discipline canonicalization-candidate
