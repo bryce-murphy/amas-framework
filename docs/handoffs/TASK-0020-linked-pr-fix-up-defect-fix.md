@@ -5,12 +5,12 @@ pr: PR-23
 branch: feat/task-0020-linked-pr-fix-up-defect-fix
 linked_predecessor: TASK-0019 (PR-21 substantive ship + PR-22 manual chore-fix-up)
 linked_successor: TBD
-linked_pr: PR-23 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-23 (squash SHA 39b700e)
 framework_version_dogfooded: AMAS v2.18
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0020-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-04
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0020
