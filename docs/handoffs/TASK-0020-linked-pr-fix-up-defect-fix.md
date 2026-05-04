@@ -19,7 +19,7 @@ status: active
 
 - Task ID: TASK-0020
 - Linked Issue: none — defect-fix cycle for TASK-0019 ship; no separate issue tracker
-- Linked PR: PR-23 (Builder fills URL post-PR-open per §5)
+- Linked PR: PR-23 — https://github.com/bryce-murphy/amas-framework/pull/23
 - Linked ADR(s): ADR-004 (this cycle amends §Consequences); ADR-001 decision 11 (owner-invokes Codex)
 - Linked PMN(s): PMN-001 (k) (chore-fix-up substitution discipline being defect-fixed); PMN-008 §5.8 (h.4) (three-endpoint Codex poll discipline)
 - Owner role: Builder (Claude Opus 4.7, Claude Code, owner's local session)
