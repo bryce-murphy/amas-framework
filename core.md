@@ -14,30 +14,34 @@ This section governs the Builder's receiving-side discipline when absorbing Revi
 
 ### §8.1. Reviewer-output absorption
 
-The Reviewer's verdict is delivered to the Builder via the GitHub API surface as one or both of: a formal Pull Request Review object and a top-level issue-comment summary. The two channels carry distinct content shapes and are not interchangeable: the formal Pull Request Review carries line-anchored findings when they exist; the issue-comment summary carries the verdict text. Subsection §8.1.1 specifies the dual-channel polling discipline that the Builder applies at every Reviewer-output absorption point in a cycle.
+The Reviewer's verdict is delivered to the Builder via the GitHub API surface across three distinct endpoints: a formal Pull Request Review object, a top-level issue-comment summary, and line-level review comments. The three endpoints carry distinct content shapes and are not interchangeable: the formal Pull Request Review carries the PR-level review state machine and any review-body prose; the issue-comment summary carries the verdict text; the line-level review-comments endpoint carries line-anchored findings. Subsection §8.1.1 specifies the three-endpoint polling discipline that the Builder applies at every Reviewer-output absorption point in a cycle.
 
 #### §8.1.1. Reviewer-output channel handling
 
-Two leaf disciplines apply at Reviewer-output absorption: dual-signal output handling (§8.1.1.1) covering the two delivery channels and their reconciliation, and claimed-action verification (§8.1.1.2) covering the receiving-side verification of any reviewer-claimed action against actual repository state.
+Two leaf disciplines apply at Reviewer-output absorption: dual-signal output handling (§8.1.1.1) covering the three delivery endpoints and their reconciliation, and claimed-action verification (§8.1.1.2) covering the receiving-side verification of any reviewer-claimed action against actual repository state.
 
 ##### §8.1.1.1. Reviewer dual-signal output handling
 
-When a Reviewer is invoked on a Pull Request, the review-rendering surface emits the Reviewer's output through two distinct GitHub API endpoints with distinct content shapes. The Builder absorbing Reviewer output cannot rely on single-channel polling.
+When a Reviewer is invoked on a Pull Request, the review-rendering surface emits the Reviewer's output through three distinct GitHub API endpoints with distinct content shapes. The Builder absorbing Reviewer output cannot rely on single-channel polling.
 
-The two endpoints are:
+The three endpoints are:
 
-(a) **Formal Pull Request Review** — accessed via `gh api repos/{owner}/{repo}/pulls/{pull_number}/reviews` or `gh pr view {pull_number} --json reviews`. Carries line-anchored substantive findings when they exist; populated by formal Pull Request Review API objects (e.g. those created via `POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews`).
+(a) **Formal Pull Request Review** — accessed via `gh api repos/{owner}/{repo}/pulls/{pull_number}/reviews` or `gh pr view {pull_number} --json reviews`. Carries the PR-level review summary state machine (APPROVED / CHANGES_REQUESTED / COMMENTED) and the substantive review body prose when the Reviewer attaches one to the formal review submission; populated by formal Pull Request Review API objects (e.g. those created via `POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews`).
 
-(b) **Issue-comment summary** — accessed via `gh api repos/{owner}/{repo}/issues/{issue_number}/comments` or `gh pr view {pull_number} --json comments`. Pull Requests are issues from the GitHub API perspective; the issue-comment endpoint receives top-level comments on the PR, including Reviewer-emitted summary verdicts.
+(b) **Issue-comment summary** — accessed via `gh api repos/{owner}/{repo}/issues/{issue_number}/comments` or `gh pr view {pull_number} --json comments`. Pull Requests are issues from the GitHub API perspective; the issue-comment endpoint receives top-level comments on the PR, including Reviewer-emitted summary verdicts and autonomous bot comments outside the formal-review submission shape.
+
+(c) **Line-level review comments** — accessed via `gh api repos/{owner}/{repo}/pulls/{pull_number}/comments`. Carries line-anchored substantive findings — review comments attached to specific file/line locations rather than to the PR as a whole. Empirically the most defect-dense Reviewer output channel.
 
 Two pass shapes are empirically observed across cycles dogfooded in the AMAS framework production project:
 
-- **Substantive-finding pass shape**: both endpoints emit. Formal Pull Request Review carries line-anchored findings; issue-comment summary carries verdict text restating the findings.
-- **Cycle-trailing-clean-Approve pass shape**: only the issue-comment endpoint emits. Formal Pull Request Review emits no object; the issue-comment summary carries boilerplate-style verdict text (typical phrasing: "Codex Review: Didn't find any major issues.").
+- **Substantive-finding pass shape**: endpoints emit jointly. Endpoint (a) carries the review state and any review-body prose; endpoint (b) carries verdict text restating the findings; endpoint (c) carries the line-anchored findings themselves.
+- **Cycle-trailing-clean-Approve pass shape**: only the issue-comment endpoint emits. Endpoint (a) emits no review object; endpoint (c) emits no line comments; endpoint (b) carries boilerplate-style verdict text (typical phrasing: "Codex Review: Didn't find any major issues.").
 
 The empirical observation that cycle-trailing-clean-Approve emits to the issue-comment endpoint only is a preliminary hypothesis under continuing test; the Builder discipline below does not depend on the hypothesis being confirmed. Single-channel polling is structurally unreliable regardless of which pass shape is actually emitted, because the Builder cannot know in advance which shape the cycle will produce.
 
-**Builder discipline.** At each Reviewer-output absorption point in a cycle, Builder polls both endpoints, filters by author and `created_at`/`submitted_at` against last-known-state, and reconciles before treating the absorption as complete:
+**Empirical pattern (substantive-verdict landing surface).** Across the framework's production-project cycle record, the substantive verdict has empirically landed at any one of the three endpoints — sometimes only at (b) (boilerplate-style summary), sometimes only at (a) (review body without line comments), sometimes only at (c) (line-anchored findings without summary verdict), and sometimes across two or all three jointly. Builder cannot pre-judge which endpoint will carry the verdict for a given cycle; the discipline is to poll all three.
+
+**Builder discipline.** At each Reviewer-output absorption point in a cycle, Builder polls all three endpoints, filters by author and `created_at`/`submitted_at` against last-known-state, and reconciles before treating the absorption as complete:
 
 ```bash
 # Endpoint (a) — formal Pull Request Review
@@ -47,21 +51,25 @@ gh api --paginate repos/{owner}/{repo}/pulls/{pull_number}/reviews \
 # Endpoint (b) — issue-comment summary
 gh api --paginate repos/{owner}/{repo}/issues/{issue_number}/comments \
     --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at > "<last-known>" or (.created_at == "<last-known>" and .id > <last-seen-id>))'
+
+# Endpoint (c) — line-level review comments
+gh api --paginate repos/{owner}/{repo}/pulls/{pull_number}/comments \
+    --jq '.[] | select(.user.login=="<reviewer>") | select(.created_at > "<last-known>" or (.created_at == "<last-known>" and .id > <last-seen-id>))'
 ```
 
-The lexicographic `(timestamp > last-known) OR (timestamp == last-known AND id > last-seen-id)` form handles same-second emission tie-breaks symmetrically across both endpoints. The naive `>=` plus unconditional-id-gate form (`timestamp >= last-known AND id > last-seen-id`) is incorrect: it requires `id > last-seen-id` for ALL results regardless of timestamp, which drops valid new emissions whose timestamp exceeds the boundary but whose id is below the last-seen-id (possible when ids do not strictly track submitted_at/created_at — e.g., a long-drafted review id N1 submitted at t2 after a faster-drafted review id N2 > N1 submitted at t1). The correct form gates the id comparison only inside the same-timestamp tie clause; cross-timestamp emissions pass through the `timestamp > last-known` clause without id constraint. `<last-known>` is the timestamp of the most recently absorbed emission per endpoint; `<last-seen-id>` is that emission's `id`.
+The lexicographic `(timestamp > last-known) OR (timestamp == last-known AND id > last-seen-id)` form handles same-second emission tie-breaks symmetrically across all three endpoints. The naive `>=` plus unconditional-id-gate form (`timestamp >= last-known AND id > last-seen-id`) is incorrect: it requires `id > last-seen-id` for ALL results regardless of timestamp, which drops valid new emissions whose timestamp exceeds the boundary but whose id is below the last-seen-id (possible when ids do not strictly track submitted_at/created_at — e.g., a long-drafted review id N1 submitted at t2 after a faster-drafted review id N2 > N1 submitted at t1). The correct form gates the id comparison only inside the same-timestamp tie clause; cross-timestamp emissions pass through the `timestamp > last-known` clause without id constraint. `<last-known>` is the timestamp of the most recently absorbed emission per endpoint; `<last-seen-id>` is that emission's `id`.
 
 The `--paginate` flag is required: GitHub REST list endpoints return at most 30 items per page by default; on long-lived PRs (or repos where the Reviewer has emitted many objects) single-page polling produces false-negative "no emission" verdicts when newer Reviewer output lives on a subsequent page. `gh api --paginate` retrieves all pages and concatenates results before jq filtering.
 
-Both polls run; results from both are reconciled. A clean-Approve cycle-trailing pass shows no review object and a fresh issue-comment with boilerplate verdict. A substantive-finding pass shows fresh review object(s) with line-level findings and a fresh issue-comment with verdict text. A no-emission state on both endpoints means the Reviewer has not yet emitted; Builder waits and retries per the project's polling cadence.
+All three polls run; results from all three are reconciled. A clean-Approve cycle-trailing pass shows no review object, no line comments, and a fresh issue-comment with boilerplate verdict. A substantive-finding pass shows some combination of fresh review object(s), fresh line comments at specific file/line locations, and a fresh issue-comment with verdict text — varying per cycle per the empirical-pattern note above. A no-emission state on all three endpoints means the Reviewer has not yet emitted; Builder waits and retries per the project's polling cadence.
 
-**Anti-channel.** Issue-level comments authored by the Reviewer outside the polled-comment shape — for example, a top-level comment that is a clarification request or a process question rather than a verdict — are non-authoritative for substantive verdict regardless of phrasing. Builder treats such comments as informational; verdict status is determined by the formal-review-or-summary pair only.
+**Anti-channel.** Comments authored by the Reviewer outside the three polled forms — for example, a top-level issue comment that is a clarification request or process question rather than a verdict, or a line-level review comment that is a clarification rather than a finding — are non-authoritative for substantive verdict regardless of phrasing. Builder treats such comments as informational; verdict status is determined by the formal-review, summary-comment, and line-comment triple only.
 
-**Cross-reference.** §8.1.1.1 is a §24.2(a) external-system-behavior assertion application at the Reviewer-output-absorption surface. The verify-before-assert mechanism is the §24 cross-surface meta-pattern applied at this specific receiving direction.
+**Cross-reference.** §8.1.1.1 is a §24.2(a) external-system-behavior assertion application at the Reviewer-output-absorption surface. The verify-before-assert mechanism is the §24 cross-surface meta-pattern applied at this specific receiving direction. The three-endpoint enumeration above absorbs the recommendation matured at PMN-008 §5.8 (h.4) across 8 cycles' empirical evidence (PR-11 / PR-13 / PR-15 / PR-17 / PR-19 / PR-21 / PR-23 / PR-24).
 
 ##### §8.1.1.2. Reviewer claimed-action verification
 
-When a Reviewer comment claims an action — that a commit was created, a file was added, a follow-up artifact exists, or a referenced identifier is valid — the comment may be delivered (the two-endpoint poll of §8.1.1.1 establishes delivery) but the claimed action may not correspond to actionable repository state. Delivery and effect are separate verifications.
+When a Reviewer comment claims an action — that a commit was created, a file was added, a follow-up artifact exists, or a referenced identifier is valid — the comment may be delivered (the three-endpoint poll of §8.1.1.1 establishes delivery) but the claimed action may not correspond to actionable repository state. Delivery and effect are separate verifications.
 
 Two empirically-observed sub-shapes of the reviewer-claimed-effects-don't-land defect class:
 
@@ -320,7 +328,7 @@ When Builder hands back to Architect at cycle close, the hand-back contains clai
 
 **Default Architect-side post-handback five-point check pattern.** Where verification is cheap (a handful of API calls, a few git commands), Architect runs the five-point check against the hand-back claims:
 
-1. **Two-endpoint poll of Reviewer output** (per §8.1.1.1) — confirm Reviewer output as Builder reported it; reconcile against last-known-state via both formal-review and issue-comment endpoints.
+1. **Three-endpoint poll of Reviewer output** (per §8.1.1.1) — confirm Reviewer output as Builder reported it; reconcile against last-known-state via all three endpoints (formal-review, issue-comment, line-comment).
 2. **Branch tip-SHA verification** — `git rev-parse HEAD` output must match the expected SHA from the prior session's hand-back; additionally `git status --porcelain` must be empty (clean working tree). The `git status` clean-tree check is necessary-but-not-sufficient on its own — SHA equality is the load-bearing tip-state proof, with clean-tree as adjunct check; `git status` alone reports working-tree state and ahead/behind upstream but does not prove HEAD equals an expected SHA.
 3. **File content audit against prescription** — for each file Builder claims to have authored or modified, verify content matches the spec's §2 prescription. `git show <sha>:<path>` or equivalent.
 4. **Phantom-action audit** — verify no claimed action lacks corresponding repository state (commits exist; files exist; counts match). Inverse of §8.1.1.2 sub-shape A check applied to Builder hand-back.
