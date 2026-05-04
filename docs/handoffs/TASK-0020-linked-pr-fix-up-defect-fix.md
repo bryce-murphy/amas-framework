@@ -139,7 +139,14 @@ Path-α confirmed by owner at step-1 stop-and-show; default amendment wording ap
   - PR-23 URL: Builder fills post-step-13
 - **Post-edit Read-verify** (PMN-003 (f)): structural headings extraction performed at step-9 self-review.
 - **(j) sweep evidence**: `grep -nE "(core\.md|github-reference\.md|ADR-00[0-9]+|PMN-00[0-9]+|TASK-[0-9]+|PR-[0-9]+)" docs/adr/ADR-004-pre-actions-batch-action-insertion.md` recorded post-step-6.
-- **Empirical-test for defect 2 fix correctness** (claim (a) per §3 step 7): local Builder environment lacks python interpreter (`python` / `python3` / `py` not on PATH). Architect-side empirical verification performed at handoff §"Last completed step" item 7; re-verification at Codex pre-commit (claim (a)). By-inspection verification: `[ \t]*$` matches horizontal whitespace (space + tab) only without consuming the line-terminator `\n` — standard Python regex idiom. Diff confirms both edits applied byte-exactly to the prescribed locations (lines 35 + 93).
+- **Empirical-test for defect 2 fix correctness** (claim (a) per §3 step 7): local Builder environment lacks python interpreter (`python` / `python3` / `py` not on PATH). Architect-side empirical verification performed at handoff §"Last completed step" item 7; re-verification at Codex pre-commit (claim (a)). By-inspection verification: `[ \t]*$` matches horizontal whitespace (space + tab) only without consuming the line-terminator `\n` — standard Python regex idiom. Diff confirms both edits applied byte-exactly to the prescribed locations (lines 35 + 93). Codex desktop pre-commit (verified-as-passing) confirmed bundled-Python newline preservation + idempotency at desktop runtime per PR-23 review-context §"Codex review output (verbatim)".
+- **Post-fix-up-5 absorption cumulative-diff-stats per (e.1)** (re-derived after Codex post-PR absorption edits to PR-23 review-context + this handoff §7): branch tip = absorption commit; per-file numstat sums (substantive-commit + fix-up-5):
+  - `.github/scripts/linked-pr-fix-up.py`: +2 / -2
+  - `README.md`: +1 / -1
+  - `docs/adr/ADR-004-pre-actions-batch-action-insertion.md`: +5 / -2
+  - `docs/handoffs/TASK-0020-linked-pr-fix-up-defect-fix.md`: +357 / -1 (post-absorption-edit total — handoff URL fill + §7 absorption + this Validation run entry)
+  - `docs/reviews/PR-23-codex-pre-commit.md`: +205 / -2 (post-absorption-edit total — claim list path-(a) fix-ups + Codex review output (verbatim) + Adjudication trace + Codex post-PR pass 1 absorption)
+  - Cumulative across all five files: ~570 insertions / ~8 deletions (Builder fills final exact values via `git diff --shortstat origin/main` post-fix-up-5 commit; per (h.2) discipline, working-tree-vs-main form).
 
 ## Exact next step
 
@@ -320,7 +327,19 @@ Builder audits this enumeration at step 9 (step-6 self-review) before commit.
 
 ## §7. Post-PR Codex review state
 
-Builder fills post-Codex-review-settling per PR-21 review-context priors (TASK-0019 cycle as form reference).
+Owner posted `@codex review` on PR-23 at 2026-05-04T17:03:54Z (issue-comment `4372907253`). Three-endpoint poll per PMN-008 §5.8 (h.4) OPERATIONAL discipline returned:
+
+- **Endpoint 1** (`pulls/23/reviews`): empty.
+- **Endpoint 2** (`issues/23/comments`): 3 comments — autonomous Codex pre-trigger comment (`4372889326`, 17:01:34Z, ~2m 20s before owner trigger; (w) sub-shape A second-instance evidence with anti-claim variant; anti-claims verified TRUE per §8.1.1.2), owner `@codex review` invocation (`4372907253`, 17:03:54Z), Codex formal verdict (`4372917992`, 17:05:18Z): "Didn't find any major issues."
+- **Endpoint 3** (`pulls/23/comments`): empty.
+
+**Substantive verdict: no findings.** Verbatim outputs + (w) sub-shape framing + (h.4) empirical-pattern refinement (first instance in 7 cycles where substantive verdict lands at endpoint 2 rather than endpoint 3) recorded canonically at `docs/reviews/PR-23-codex-pre-commit.md` §"Codex post-PR pass 1 absorption". No fix-up applied (nothing to address).
+
+Cycle-close ledger updates this turn (per Architect §24.3.1 hand-back):
+- Item 5 ✓ now actually-settled (text-propagation residual surfaced at TASK-0020 Codex pre-commit Major 1; resolved at path-(a) revise during pre-commit fix-up).
+- Item 6 (w) strengthens to two cross-cycle data points with refined sub-shape framing (sub-shape A ↔ anti-claim variant); below 3-confirm promotion threshold.
+- Item 8 (h.4) — seventh-cycle evidence with empirical-pattern refinement; strengthens canonical-text-correction case for TASK-0021.
+- (i.5) Architect-spec-drift catch discipline — 4 cross-cycle confirmations; PMN-009 promotion-overdetermined; targeted for TASK-0021 ship.
 
 ## §8. Sign-off
 
