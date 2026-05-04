@@ -19,7 +19,7 @@ status: active
 
 - Task ID: TASK-0019 (matches PR-21 anticipated; ADR-004 authored this cycle)
 - Linked Issue: none — pre-canonical-Actions-batch ADR-class substantive cycle per ADR-004 (authored this cycle); ADR-001 single-contributor convention
-- Linked PR: PR-21 (Builder fills URL post-PR-open per §5)
+- Linked PR: PR-21 — https://github.com/bryce-murphy/amas-framework/pull/21
 - Linked ADR(s): ADR-001 (decision 11 owner-invokes Codex), ADR-003 (decision 2 canonical Actions batch sequencing; decision 3 contingency slot consumption — 5 → 4), ADR-004 (this cycle — pre-batch insertion decision)
 - Linked PMN(s): PMN-001 (k) (chore-fix-up substitution discipline being automated); PMN-008 §5.8 (h.4) (three-endpoint Codex poll discipline)
 - Linked Feature Brief: none
