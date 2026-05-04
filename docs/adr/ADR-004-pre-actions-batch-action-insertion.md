@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-05-03
+Accepted — 2026-05-03; Amended 2026-05-04 (this amendment adds §Consequences point on operational dependency surfaced at PR-22 first-auto-fire empirical-validation event per TASK-0020 cycle).
 
 Consumes one ADR-003 Decision 3 contingency slot (5 remaining → 4 remaining). Does not amend ADR-003; its anticipation language at Decision 3 explicitly authorizes contingency-slot consumption for substantive cycles inserted ahead of the canonical Actions batch sequence.
 
@@ -12,7 +12,7 @@ The PMN-001 (k) chore-fix-up cycle runs after every substantive-content PR merge
 
 ADR-003 Decision 2 originally placed all Actions in a single canonical batch (one of the substantive-content PRs at TASK-0023+). ADR-003 Decision 3 reserved seven contingency slots (TASK-0020 through TASK-0026) to absorb anticipated PMN insertions or substantive cycles inserted ahead of the canonical sequence. The anticipation pattern that authorizes contingency-slot consumption via subsequent ADR amendments is canonicalized at **ADR-002 Decision 3**: "subsequent ADR amendments will document such extensions following the same pattern as ADR-002"; ADR-003 preserves the pattern by reference at its Status field ("consistent with ADR-002 Decision 3 anticipation pattern"). This ADR exercises that anticipation.
 
-Owner directive at TASK-0018 cycle close: ship the linked-pr-fix-up Action now rather than wait for the canonical Actions batch. Architect Phase 1 scoping confirmed Path X (ship as TASK-0019 substantive cycle) over Path Y (bundle into PMN-008 chore-fix-up PR-20) and Path Z (further-defer to canonical batch). The Action's own ship cycle (this cycle, PR-21) is the first production-validation event; the Action does NOT auto-fire on its own ship cycle's close — it auto-fires on PR-22 (the next substantive-content PR's close) at earliest.
+Owner directive at TASK-0018 cycle close: ship the linked-pr-fix-up Action now rather than wait for the canonical Actions batch. Architect Phase 1 scoping confirmed Path X (ship as TASK-0019 substantive cycle) over Path Y (bundle into PMN-008 chore-fix-up PR-20) and Path Z (further-defer to canonical batch). The Action's own ship cycle (this cycle, PR-21) is the first production-validation event; the Action's first auto-fire occurs at PR-21's own merge-close (the anchored recursion-guard regex per §Recursion-guard refinement permits this — PR-21's `feat/`-prefixed source branch does not match the `^chore/...` guard pattern). The first auto-fire produces the would-be PR-22 chore-fix-up branch and substitutions; whether that surfaces as an auto-opened PR depends on the §Consequences point 8 repo-setting precondition.
 
 ## Decision
 
@@ -41,6 +41,7 @@ Insert the linked-pr-fix-up GitHub Action ahead of the canonical Actions batch a
 5. **README.md Action enumeration not modified this cycle.** Existing "Actions (9 workflows)" subsection enumerates `actions/<name>.yml` template-distribution paths shipped at PR-15. The linked-pr-fix-up Action lives at `.github/workflows/linked-pr-fix-up.yml` (operational dogfood path), structurally distinct from the template-distribution layer. README enumeration of operational dogfood Actions deferred to canonical Actions batch cycle, which will create the canonical `actions/<action-name>/` source layout with both template and operational expressions. See ADR-003 D3 contingency-slot consumption (5 → 4).
 6. **README.md line 9 canonical-version-of-record bump** v2.17 → v2.18 applied this cycle per §18.4 substantive-reading minor criterion (substantive new functional content via the Action + new architectural decision via this ADR). Class A surgical edit (TWO `v2.17` → `v2.18` instances on line 9); Class B/C historical/dated cross-document state in core.md and CLAUDE.md preserved verbatim.
 7. **Pre-canonical-batch insertion precedent**. This decision sets a precedent that future Actions MAY ship pre-batch under similar conditions (owner directive + clear high-volume mechanical cycle being automated + empirical-track-record-input rationale). Future similar decisions reference this ADR as precedent.
+8. **Repo-setting operational dependency** (added 2026-05-04 amendment per TASK-0020). The linked-pr-fix-up Action's `gh pr create` step requires GitHub repo setting "Allow GitHub Actions to create and approve pull requests" (Settings → Actions → General → Workflow permissions) to be enabled. Workflow-level `permissions: pull-requests: write` declared at line 24 of `.github/workflows/linked-pr-fix-up.yml` is necessary but not sufficient; the repo-level setting is also required. Surfaced at PR-22 first-auto-fire empirical-validation event (TASK-0019 cycle close): repo setting was OFF at PR-21 ship time; Action's auto-fire on PR-21's own merge-close created the chore-fix-up branch and applied substitutions, but the `gh pr create` step failed with `pull request create failed: GraphQL: GitHub Actions is not permitted to create or approve pull requests (createPullRequest)`. Owner enabled the setting at TASK-0020 cycle execution per Architect path-α adjudication. TASK-0020's own first-auto-fire (PR-24 anticipated post-merge) is the empirical-validation event for this fix.
 
 ## Evidence / references
 
@@ -53,3 +54,5 @@ Insert the linked-pr-fix-up GitHub Action ahead of the canonical Actions batch a
 - **PMN-007 §4**: PMN-001 (k) mechanism-vs-discipline canonicalization (the discipline this cycle automates as mechanism).
 - **PMN-008 §5.8 (h.4)**: three-endpoint Codex poll discipline (operational this cycle pending canonical-text correction at core.md §8.1.1.1; deferred to separate cycle per PMN-008 §5.8 path-(β) framing).
 - **TASK-0019 handoff** (`docs/handoffs/TASK-0019-linked-pr-fix-up-action.md`) — the Builder-side execution record for this cycle.
+- **TASK-0020 handoff** (`docs/handoffs/TASK-0020-linked-pr-fix-up-defect-fix.md`) — the Builder-side execution record for the 2026-05-04 amendment cycle (defect-fix for the linked-pr-fix-up Action; adds §Consequences point 8 above).
+- **PR-23 review-context** (`docs/reviews/PR-23-codex-pre-commit.md`) — Codex pre-commit review for the amendment cycle.

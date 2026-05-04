@@ -32,7 +32,7 @@ from pathlib import Path
 # form (e.g., convention drift, manual edits) won't substitute. That's the
 # intended safety property: silent miss, not silent corruption.
 PLACEHOLDER_PATTERN = re.compile(
-    r'^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)\s*$',
+    r'^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)[ \t]*$',
     re.MULTILINE,
 )
 
@@ -90,7 +90,7 @@ def apply_substitutions(content: str, short_sha: str) -> tuple[str, bool]:
 
     # 2. status flips
     for old, new in STATUS_TRANSITIONS.items():
-        pattern = re.compile(rf'^status: {re.escape(old)}\s*$', re.MULTILINE)
+        pattern = re.compile(rf'^status: {re.escape(old)}[ \t]*$', re.MULTILINE)
         if pattern.search(new_fm):
             new_fm = pattern.sub(f'status: {new}', new_fm)
             changed = True
