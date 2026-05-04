@@ -45,7 +45,7 @@ Insert the linked-pr-fix-up GitHub Action ahead of the canonical Actions batch a
 ## Evidence / references
 
 - **ADR-001** decision 9 (admin-bypass posture for owner squash-merge); decision 11 (owner-invokes Codex per `@codex review`); decision 14 (`GITHUB_TOKEN` workflow permissions read-only by default; the Action's `permissions: contents: write + pull-requests: write` is explicit-override).
-- **ADR-003** Decision 2 (canonical Actions batch sequencing — TASK-0023+ anticipated); Decision 3 (TASK reservation extended through TASK-0026 + seven contingency slots; this ADR consumes one of seven, leaving six remaining).
+- **ADR-003** Decision 2 (canonical Actions batch sequencing — TASK-0023+ anticipated); Decision 3 (TASK reservation extended through TASK-0026; original 7 contingency slots reserved at ADR-003 D3 authoring; per spec accounting at this cycle 5 remaining → 4 remaining post-this-decision; per-cycle ledger reconciliation deferred to Architect cycle-close per §Consequences point 3 + Architect cycle-close item ledger Item 1).
 - **core.md §18.3** (M-A7 merge-commit-body data integration; PR-21 = eighth empirical instance per enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21`).
 - **core.md §8.1.1.3** (bounded-continuation rule with cost-class refinement; the recursion-guard regex tightening at Phase 1 scoping was a pure-token-swap path-(a) revision).
 - **core.md §18.4** (framework version-bump trigger criteria; substantive-reading minor criterion satisfied this cycle by new functional content + new architectural decision).

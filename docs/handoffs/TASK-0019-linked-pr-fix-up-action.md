@@ -152,7 +152,16 @@ Structural-headings extraction + cross-check filled at step 9 Builder step-6 sel
 
 ### Cumulative diff stats per (e.1) sub-rule
 
-`git diff --stat` (post-staging, pre-commit) filled at step 10 pre-commit stop-and-show per spec §3 step 10.
+**Initial commit `5222c2d`** (step 11): 6 files / 1025 insertions / 1 deletion. Σ per-file = 158 (`.github/scripts/linked-pr-fix-up.py`) + 144 (`.github/workflows/linked-pr-fix-up.yml`) + 1 (`README.md` +1/-1) + 55 (`docs/adr/ADR-004-pre-actions-batch-action-insertion.md`) + 426 (`docs/handoffs/TASK-0019-linked-pr-fix-up-action.md`) + 241 (`docs/reviews/PR-21-codex-pre-commit.md`) = **1025 ✓ self-stable**.
+
+**Fix-up commit 1 `de71e52`** (step 13 URL substitution at PR-open per §5 + (t) sub-shape pre-merge fix-up convention): 1 file / 1 insertion / 1 deletion. Σ per-file = 1 (`docs/handoffs/TASK-0019-linked-pr-fix-up-action.md` Linked PR URL substitution) = **1 ✓ self-stable**.
+
+**Fix-up commit 2** (Codex pre-commit pass 1 absorption — 3 Blocking findings path-(a) per spec §3 step 7 adjudication): re-derived per (e.1) at fix-up commit time + recorded in commit message + this Validation run section. Cumulative-diff-stats span: ADR-004 line 48 path-(a) (anticipation-slot arithmetic harmonization) + PR-21 review-context claims 8 + 15 (h.2) verification-command updates + PR-21 review-context Adjudication / fix-up section Codex pass 1 absorption record (per PMN-002 (a)) + this handoff Validation run Evidence + Cumulative diff stats subsection populates. Verification at fix-up commit: `git diff main..HEAD --shortstat` post-fix-up-commit reports cumulative-diff-stats across all three commits since base SHA `809b9ca`.
+
+**Verification commands** (temporally-robust per (h.2) sub-shape):
+- bash (post-commit canonical): `git diff main..HEAD --stat` shows per-file insertions / deletions across all three commits on feature branch.
+- bash (post-commit aggregate): `git diff main..HEAD --shortstat` returns aggregate.
+- (e.1) cumulative-diff-stats re-derivation per PMN-005 §4.4: any path-(a) revision at any surface triggers re-derivation across all dependent claims; cycle's iterative-to-fixed-point convergence per §23.6.2.
 
 ### Class A v-bump applied this cycle
 
