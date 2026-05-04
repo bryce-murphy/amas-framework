@@ -39,11 +39,11 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Checkout main with full history
+      - name: Checkout merged commit with full history
         if: steps.recursion-guard.outputs.skip == 'false'
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
 
       - name: Identify files changed in squash-merge

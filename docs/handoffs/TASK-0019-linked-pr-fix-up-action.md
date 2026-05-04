@@ -158,7 +158,9 @@ Structural-headings extraction + cross-check filled at step 9 Builder step-6 sel
 
 **Fix-up commit 2 `696a63f`** (Codex pre-commit pass 1 absorption — 3 Blocking findings path-(a) per spec §3 step 7 adjudication): **3 files / 56 insertions / 12 deletions**. Σ per-file (numstat-exact): ADR-004 (1+/1-) + handoff (10+/1-) + PR-21 review-context (45+/10-) = 56+/12- ✓ self-stable per (e.1).
 
-**Fix-up commit 3** (Codex pre-commit pass 2 absorption — 1 Blocking same-class (j) propagation residual to pass-1 finding 15 path-(a) per §8.1.1.3 cost-class refinement load-bearing carve-out; 3 small edits): cumulative-diff-stats re-derived at fix-up commit time + recorded in commit message + below.
+**Fix-up commit 3 `0303022`** (Codex pre-commit pass 2 absorption — 1 Blocking same-class (j) propagation residual to pass-1 finding 15 path-(a) per §8.1.1.3 cost-class refinement load-bearing carve-out): **2 files / 29 insertions / 4 deletions**. Σ per-file (numstat-exact): handoff (3+/1-) + PR-21 review-context (26+/3-) = 29+/4- ✓ self-stable per (e.1).
+
+**Fix-up commit 4** (Codex post-PR pass 1 absorption — 1 P1 substantive race-condition / TOCTOU finding at `.github/workflows/linked-pr-fix-up.yml:46` path-(a) per Architect Item 1 step-16 adjudication; pure-token-swap class per §8.1.1.3 cost-class refinement): single-line YAML change at workflow lines 42-47 (step name + ref pin to merge_commit_sha) + companion artifact updates (PR-21 review-context Codex post-PR absorption record per PMN-002 (a) + handoff §7 Post-PR Codex review state populate + this Cumulative diff stats subsection update). Cumulative-diff-stats re-derived at fix-up commit time + recorded in commit message.
 
 **Verification commands** (temporally-robust per (h.2) sub-shape):
 - bash (post-commit canonical): `git diff main..HEAD --stat` shows per-file insertions / deletions across all three commits on feature branch.
@@ -413,7 +415,29 @@ Builder audits this enumeration at step 9 (step-6 self-review) before commit.
 
 ## §7. Post-PR Codex review state
 
-Builder fills post-Codex-review-settling per PR-17 / PR-19 review-context priors.
+**Codex post-PR review pass 1 absorbed (2026-05-04 post-`@codex review` owner invocation per ADR-001 decision 11)**. Three-endpoint poll per PMN-008 §5.8 (h.4) OPERATIONAL discipline returned non-empty content at all three endpoints within first poll; no settling-period needed.
+
+**Three-endpoint poll evidence**:
+- Endpoint 1 (`pulls/21/reviews`) — 1 review (auto-fire informational template; no substantive content) at 2026-05-04T13:07:22Z; commit_id `030302242e`; state COMMENTED.
+- Endpoint 2 (`issues/21/comments`) — 1 comment from `chatgpt-codex-connector[bot]` at 2026-05-04T11:08:30Z. **Phantom-action sub-shape A per §8.1.1.2** — three claimed write actions (commit `c9f66e4` + file `docs/reviews/PR-21-codex-post-review.md` + PR creation via `make_pr` tool); all three verified phantom (HTTP 422 + HTTP 404 + no PR beyond PR-21). Adjudication per §8.1.1.2 sub-shape A discipline: informational only; no defensive write actions taken. (w) candidate observation registered for cycle-close ledger.
+- Endpoint 3 (`pulls/21/comments` — the (h.4) canonical-text-gap endpoint) — 1 P1 substantive finding at `.github/workflows/linked-pr-fix-up.yml:46` (id 3181737212; created 2026-05-04T13:07:23Z) — race-condition / TOCTOU class: workflow checks out moving `main` branch then derives paths from `merge_commit_sha`; concurrent merges between checkout and substitute steps could corrupt frontmatter metadata. Codex recommended fix: pin checkout to `merge_commit_sha`.
+
+**Adjudication per Architect Item 1 step-16 direction**: P1 finding routed **path-(a) per §8.1.1.3 cost-class refinement (pure-token-swap; load-bearing per data-corruption-class consequence)**. Single-line YAML change applied byte-exactly to `.github/workflows/linked-pr-fix-up.yml` lines 42-47:
+- step `name`: `Checkout main with full history` → `Checkout merged commit with full history`
+- `ref`: `main` → `${{ github.event.pull_request.merge_commit_sha }}`
+- `if:`, `uses:`, `fetch-depth:` unchanged
+
+Three reasons per Architect rationale: (i) correctness alignment with script's data model (script's `git diff --name-only <SQUASH_SHA>^ <SQUASH_SHA>` returns paths-as-of-the-squash-SHA; pinning checkout aligns with script's authoritative reference); (ii) empirical risk profile favors correctness fix over throughput control (single-contributor governance per ADR-001 D9 admin-bypass posture means concurrency-group serialization is overkill); (iii) canonical Actions batch design input (TASK-0023+ canonical Actions batch authoring inherits this Action's pin-to-SHA pattern + 1 cycle of empirical evidence).
+
+Knock-on for chore-fix-up branch derivation: chore-fix-up branch derives off squash SHA (potentially behind current main if concurrent merges have advanced main since substantive PR squash). For files this Action touches (YAML frontmatter only), conflict probability is near-zero; owner squash-merge of chore-fix-up PR onto current main proceeds normally.
+
+**Fix-up commit 4 SHA**: filled at fix-up commit time + recorded in commit message + Validation run Cumulative diff stats subsection.
+
+**(h.4) sixth-data-point empirical confirmation per Architect Item 4 cycle-close note**: P-class substantive findings emitted ONLY at endpoint 3 (`pulls/{pr}/comments`) across PR-11 / PR-13 / PR-15 / PR-17 / PR-19 / PR-21. Six-cycle confirmed pattern exceeds typical small-PMN promotion threshold (3-5 cross-cycle confirmations); empirical case for canonical-text correction at core.md §8.1.1.1 now overdetermined. Architect cycle-close handoff to TASK-0020/0021 spec authoring will reference this cycle as sixth and possibly final pre-canonicalization data point.
+
+**(w) candidate observation per Architect Item 3 cycle-close ledger**: post-PR Codex review surface emitting phantom-action sub-shape A claims of autonomous repo modifications. Single-cycle empirical evidence; first observation of post-PR Codex review surface attempting autonomous artifact creation rather than just informational findings. Promotion threshold = 2-3 cross-cycle confirmations.
+
+**No additional Codex re-invocation needed per Architect Item 4 authorization** — pure-token-swap fix; cost-class refinement allows convergence at one-iteration fixed-point per §8.1.1.3 bounded-continuation rule. Codex pre-commit pipeline + Codex post-PR pipeline both saturated for this cycle.
 
 ## §8. Sign-off
 

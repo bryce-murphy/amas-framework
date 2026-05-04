@@ -261,7 +261,51 @@ Builder pre-flight surfaced:
 
 [Codex pre-commit pass 1 + pass 2 absorbed; awaiting any subsequent passes if applicable. (j) sweep refinement candidate carry-forward to PMN-009.]
 
-[Codex post-PR review absorbed below post-`@codex review` invocation per ADR-001 decision 11; three-endpoint poll per PMN-008 §5.8 (h.4) OPERATIONAL discipline pending core.md §8.1.1.1 canonical-text correction.]
+**Codex post-PR review pass 1 (2026-05-04, post-`@codex review` owner invocation per ADR-001 decision 11)**: three-endpoint poll per PMN-008 §5.8 (h.4) OPERATIONAL discipline. **All three endpoints emitted non-empty within first poll; no settling-period needed.** Per-endpoint summary:
+
+- **Endpoint 1 (`pulls/21/reviews`)** — 1 review at 2026-05-04T13:07:22Z (id `PRR_kwDOSRIPSM77jItE`; commit_id `030302242e`; state COMMENTED). Body: auto-fire informational template only ("Here are some automated review suggestions for this pull request. Reviewed commit: `030302242e`. ..."). No substantive content.
+- **Endpoint 2 (`issues/21/comments`)** — 1 comment from `chatgpt-codex-connector[bot]` at 2026-05-04T11:08:30Z (id 4370536686). **PHANTOM-ACTION SUB-SHAPE A per §8.1.1.2.** Codex claimed three write actions: (i) committed `c9f66e4` adding `docs/reviews/PR-21-codex-post-review.md`; (ii) created PR via `make_pr` tool titled "docs(review): add Codex post-review summary for PR-21 follow-up". All three claims verified phantom per §8.1.1.2 sub-shape A discipline:
+   - `gh api repos/bryce-murphy/amas-framework/commits/c9f66e4` → HTTP 422 "No commit found for SHA: c9f66e4" ✗ phantom commit
+   - `gh api .../contents/docs/reviews/PR-21-codex-post-review.md?ref=5222c2d` → HTTP 404; same at `?ref=0303022` → HTTP 404; local `ls` → not found ✗ phantom file
+   - `gh pr list --state all` shows only PR-21 OPEN; no new PR created ✗ phantom PR
+   - Adjudication: §8.1.1.2 sub-shape A discipline: comment is informational-only; no action attributed to phantom artifacts; subsequent cycle decisions do NOT depend on claimed actions having occurred. Builder records claim was made but did not land. **No defensive write actions taken** per discipline.
+- **Endpoint 3 (`pulls/21/comments` — the (h.4) canonical-text-gap endpoint)** — 1 P1 substantive finding at `.github/workflows/linked-pr-fix-up.yml:46` (id 3181737212; created 2026-05-04T13:07:23Z). Verbatim Codex output:
+   > "**Checkout the merged commit before rewriting placeholders**. This workflow checks out the moving `main` branch, then derives paths from `github.event.pull_request.merge_commit_sha` and edits those paths in whatever content is currently on `main`. If another merge updates one of the same files before this run executes, the fix-up can write the older PR's squash SHA/status transitions into newer content, corrupting frontmatter metadata and opening an incorrect chore PR. Pin checkout to the merged commit (or otherwise serialize these runs) before applying substitutions."
+
+**Per-finding adjudication**:
+
+1. **Endpoint 3 P1 substantive finding — race-condition / TOCTOU class — ROUTED PATH-(a); FIX APPLIED per Architect adjudication Item 1**:
+   - Class: substantive content finding; concurrency / TOCTOU defect class. Workflow at lines 42-47 does `actions/checkout@v4 with: ref: main, fetch-depth: 0` — checkout pins to moving `main` HEAD, not the squash SHA. Substitute script then operates on working-tree state of files identified via `git diff <SQUASH_SHA>^ <SQUASH_SHA>`. Race window: between checkout step and substitute step, concurrent merges to main can advance HEAD; substitute script then runs against post-concurrent-merge state instead of squash-SHA state. Real-world risk for PR-21 first-auto-fire: low (single-flight Action; chore-fix-up cycle is sequential to substantive cycle per single-contributor governance posture per ADR-001 D9). Real risk emerges at multi-substantive-PR concurrency in production.
+   - Cost-class assessment per §8.1.1.3 cost-class refinement: **pure-token-swap** (single-line YAML change + step name update). No new propagation surfaces; rest of workflow continues unchanged.
+   - Routing: **path-(a) per §8.1.1.3** per Architect Item 1 adjudication. Three reasons per Architect rationale: (i) correctness alignment with script's data model — `git diff --name-only <SQUASH_SHA>^ <SQUASH_SHA>` returns paths-as-of-the-squash-SHA; pinning checkout to squash SHA aligns checkout state with script's authoritative reference; (ii) empirical risk profile favors correctness fix over throughput control — repo's substantive cadence is single-PR-at-a-time per single-contributor governance, so concurrency-group serialization is overkill; (iii) canonical Actions batch design input — when canonical Actions batch ships at TASK-0023+, the design-pattern question recurs; pin-to-SHA pattern + 1 cycle of empirical evidence is better design input than `ref: main` + race-window-record.
+   - **Architect-recommended substitute applied byte-exactly to `.github/workflows/linked-pr-fix-up.yml` lines 42-47**:
+     - step name: `Checkout main with full history` → `Checkout merged commit with full history`
+     - ref: `main` → `${{ github.event.pull_request.merge_commit_sha }}`
+     - `if:`, `uses:`, `fetch-depth:` unchanged
+   - Knock-on for chore-fix-up branch derivation: chore-fix-up branch derives off squash SHA (potentially behind current main if concurrent merges have advanced main since the substantive PR squash). For files this Action touches (YAML frontmatter only — `linked_pr` + `status` flips), conflict probability is near-zero (frontmatter changes don't typically conflict with body edits in same files across cycles). Owner squash-merge of chore-fix-up PR onto current main proceeds normally; merge-base resolution clean because squash SHA is a main-ancestor commit.
+   - Fix-up commit 4 SHA: filled at fix-up commit time + recorded in commit message + handoff Validation run Cumulative diff stats subsection.
+
+2. **Endpoint 2 PHANTOM-ACTION SUB-SHAPE A — informational only per §8.1.1.2 discipline**:
+   - All three claimed write actions verified phantom: commit `c9f66e4` (HTTP 422); file `docs/reviews/PR-21-codex-post-review.md` (HTTP 404); PR creation via `make_pr` tool (no PR found beyond PR-21).
+   - Routing: §8.1.1.2 sub-shape A — informational only; no action attributed to phantom artifacts; Builder does NOT create alleged file/commit/PR; subsequent cycle decisions do not depend on claimed actions having occurred. Verifies §8.1.1.2 phantom-action verification discipline operating correctly at this surface.
+   - **(w) candidate observation registered (per Architect Item 3 cycle-close ledger)**: post-PR Codex review surface emitting phantom-action sub-shape A claims of autonomous repo modifications. Single-cycle empirical evidence; first observation of post-PR Codex review surface attempting autonomous artifact creation rather than just informational findings. Promotion threshold = 2-3 cross-cycle confirmations per established small-PMN cadence.
+
+**Three-endpoint poll convergence per PMN-008 §5.8 (h.4)**: all three endpoints emitted non-empty within first poll; no settling-period needed. (h.4) operational discipline applied successfully — substantive P1 finding emitted ONLY at endpoint 3 (`pulls/{pr}/comments`), the canonical-text-gap endpoint per PMN-008 §5.8 (h.4). Empirical evidence strengthens (h.4) canonical-refinement candidate to **sixth-data-point** across PR-11 / PR-13 / PR-15 / PR-17 / PR-19 / PR-21 — six-cycle confirmed pattern per Architect Item 4 cycle-close note. Six data points exceed typical small-PMN promotion threshold (3-5 cross-cycle confirmations); empirical case for canonical-text correction at core.md §8.1.1.1 is now overdetermined. Architect cycle-close handoff to TASK-0020/0021 spec authoring will reference this cycle as sixth and possibly final pre-canonicalization data point.
+
+**(j) same-class sweep on Codex post-PR finding**: race-condition / TOCTOU class within `.github/workflows/linked-pr-fix-up.yml`. Sweep candidates: any other workflow steps that operate on moving-target refs vs pinned-SHA refs. Inspection: lines 49-69 (changed-files identification) operates on `${{ github.event.pull_request.merge_commit_sha }}` directly via `git diff --name-only "${SQUASH_SHA}^" "${SQUASH_SHA}"` — already pinned-SHA-based, no race ✓. Lines 71-79 (substitute step) operates on working-tree state which post-fix is now squash-SHA-pinned ✓. Lines 81-138 (chore-fix-up PR creation step) operates on staged working-tree changes + creates branch off current HEAD which post-fix is squash SHA + substitution commit ✓. **(j) sweep convergence at one iteration — only line 46 had the race-vulnerable `ref: main` form; all other workflow steps already pinned to SHA or operate on staged changes deterministically.**
+
+**Cycle defect tally update post-Codex-post-PR-pass-1**:
+- Pre-Codex-pre-commit: 8 distinct (5 step-1 + 3 step-9)
+- Codex pre-commit pass 1: +3 = 11
+- Codex pre-commit pass 2: +1 = 12
+- Codex post-PR pass 1: +1 P1 substantive finding (race-condition; routed path-(a) per Architect Item 1) + 0 endpoint-2 (phantom-action sub-shape A informational only) = **13 cumulative distinct**
+- Path-(a) routing: 13 / 13 (all path-(a); 0 path-(β))
+- Cost-class: 13 / 13 (all pure-token-swap; 0 genuinely-asymptotic)
+- (k.1) positive self-instantiation strengthens to maximum empirical strength: §8.1.1.3 cost-class refinement applied correctly to all 13 routing decisions including the substantive content correctness fix at post-PR Codex review surface
+
+**Pass-shape analysis**: Codex post-PR pass 1 caught 1 P1 substantive content finding at workflow correctness layer (the substantive content reviewer surface per PMN-008 §3.1 surface-coverage table); zero verification-artifact findings (Codex pre-commit pipeline + Builder step-9 self-review caught those). Empirical evidence reinforces PMN-008 §3.1 four-surface refinement: pre-commit pipeline catches verification-artifact + cross-section propagation; post-PR pipeline catches substantive content correctness. Different review-attack-area per surface; multi-surface mitigation per PMN-006 §3 framing remains structurally load-bearing.
+
+[Codex pre-commit pass 1 + pass 2 + post-PR pass 1 absorbed; 13 cumulative cycle defects path-(a) routed; pure-token-swap class throughout. (j) sweep refinement candidate + (w) candidate post-PR autonomous-action class carry-forward to PMN-009.]
 
 ## Builder hand-back attestation
 
