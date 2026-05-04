@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
 
-The current canonical AMAS framework version is **v2.17**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.17.
+The current canonical AMAS framework version is **v2.18**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.18.
 
 ## What is AMAS?
 
