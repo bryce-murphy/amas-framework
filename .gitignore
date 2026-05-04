@@ -21,3 +21,6 @@ $RECYCLE.BIN/
 .env
 .env.local
 *.log
+
+# Python
+__pycache__/
