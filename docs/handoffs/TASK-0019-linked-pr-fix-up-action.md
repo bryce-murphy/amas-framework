@@ -156,7 +156,9 @@ Structural-headings extraction + cross-check filled at step 9 Builder step-6 sel
 
 **Fix-up commit 1 `de71e52`** (step 13 URL substitution at PR-open per §5 + (t) sub-shape pre-merge fix-up convention): 1 file / 1 insertion / 1 deletion. Σ per-file = 1 (`docs/handoffs/TASK-0019-linked-pr-fix-up-action.md` Linked PR URL substitution) = **1 ✓ self-stable**.
 
-**Fix-up commit 2** (Codex pre-commit pass 1 absorption — 3 Blocking findings path-(a) per spec §3 step 7 adjudication): re-derived per (e.1) at fix-up commit time + recorded in commit message + this Validation run section. Cumulative-diff-stats span: ADR-004 line 48 path-(a) (anticipation-slot arithmetic harmonization) + PR-21 review-context claims 8 + 15 (h.2) verification-command updates + PR-21 review-context Adjudication / fix-up section Codex pass 1 absorption record (per PMN-002 (a)) + this handoff Validation run Evidence + Cumulative diff stats subsection populates. Verification at fix-up commit: `git diff main..HEAD --shortstat` post-fix-up-commit reports cumulative-diff-stats across all three commits since base SHA `809b9ca`.
+**Fix-up commit 2 `696a63f`** (Codex pre-commit pass 1 absorption — 3 Blocking findings path-(a) per spec §3 step 7 adjudication): **3 files / 56 insertions / 12 deletions**. Σ per-file (numstat-exact): ADR-004 (1+/1-) + handoff (10+/1-) + PR-21 review-context (45+/10-) = 56+/12- ✓ self-stable per (e.1).
+
+**Fix-up commit 3** (Codex pre-commit pass 2 absorption — 1 Blocking same-class (j) propagation residual to pass-1 finding 15 path-(a) per §8.1.1.3 cost-class refinement load-bearing carve-out; 3 small edits): cumulative-diff-stats re-derived at fix-up commit time + recorded in commit message + below.
 
 **Verification commands** (temporally-robust per (h.2) sub-shape):
 - bash (post-commit canonical): `git diff main..HEAD --stat` shows per-file insertions / deletions across all three commits on feature branch.
