@@ -34,8 +34,8 @@ The three endpoints are:
 
 Two pass shapes are empirically observed across cycles dogfooded in the AMAS framework production project:
 
-- **Substantive-finding pass shape**: endpoints emit jointly. Endpoint (a) carries the review state and any review-body prose; endpoint (b) carries verdict text restating the findings; endpoint (c) carries the line-anchored findings themselves.
-- **Cycle-trailing-clean-Approve pass shape**: only the issue-comment endpoint emits. Endpoint (a) emits no review object; endpoint (c) emits no line comments; endpoint (b) carries boilerplate-style verdict text (typical phrasing: "Codex Review: Didn't find any major issues.").
+- **Substantive-finding pass shape**: at least one endpoint carries substantive content. Endpoint (a) may carry the review state plus any review-body prose; endpoint (b) may carry verdict text; endpoint (c) may carry line-anchored findings. Per the empirical-pattern note below, the substantive content distribution across endpoints varies per cycle — Builder polls all three endpoints and reconciles.
+- **Cycle-trailing-clean-Approve pass shape**: no substantive content emits at any endpoint, with formal review state at endpoint (a) reaching APPROVED or remaining COMMENTED with boilerplate-only body (typical body phrasing: "Codex Review: Didn't find any major issues."). Builder treats no-substantive-emission across all three endpoints as a clean cycle, subject to the settling-period rule below.
 
 The empirical observation that cycle-trailing-clean-Approve emits to the issue-comment endpoint only is a preliminary hypothesis under continuing test; the Builder discipline below does not depend on the hypothesis being confirmed. Single-channel polling is structurally unreliable regardless of which pass shape is actually emitted, because the Builder cannot know in advance which shape the cycle will produce.
 

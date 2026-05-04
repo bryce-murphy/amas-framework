@@ -219,3 +219,51 @@ Review-context Claim 8 holds verbatim post-fix-up.
 ### Final post-fix-up state (Builder records at second pre-commit stop-and-show)
 
 Post-fix-up cumulative-diff-stats, blob hashes, and (j)-sweep re-run results recorded by Builder at second stop-and-show before commit. Codex re-invocation: optional per §8.1.1.3 bounded-continuation rule — pure-token-swap fix-ups + structurally-bounded PMN-009 renumbering converge at one-iteration fixed-point per TASK-0019 + TASK-0020 cycle convention.
+
+## Post-PR Codex review absorption
+
+After PR-25 was opened with the original (pre-this-section) commit `e05a92a` pushed to `feat/task-0021-three-endpoint-poll-canonicalization`, owner posted `@codex review` per ADR-001 decision 11 owner-invokes convention. Codex emitted across all three endpoints per the canonical-text-being-shipped's first canonical-application (recursive self-instantiation event). Builder ran the three-endpoint poll per the amended §8.1.1.1 discipline.
+
+### Three-endpoint poll outcomes
+
+| Endpoint | Reviewer | Submitted | State / shape | Substantive content |
+|---|---|---|---|---|
+| (a) `pulls/25/reviews` | `chatgpt-codex-connector[bot]` | 2026-05-04T19:35:14Z | COMMENTED, boilerplate body | None — review body is "Codex Review" boilerplate ("Here are some automated review suggestions"); no findings in the formal review object |
+| (b) `issues/25/comments` | `chatgpt-codex-connector[bot]` | 2026-05-04T19:32:52Z | Summary comment | Phantom-action narrative (§8.1.1.2 Sub-shape A; verified below); recommendation **Comment** with stated "no Blocking/Major findings"; minor maintenance note about line/diff metadata sync |
+| (c) `pulls/25/comments` | `chatgpt-codex-connector[bot]` | 2026-05-04T19:35:14Z | Line-level review comment at `core.md:37` | **1 Major-equivalent finding (P2 yellow badge)**: canonical-text contradiction in the freshly-shipped §8.1.1.1 pass-shape vs. empirical-pattern paragraphs |
+
+### Endpoint (b) phantom-action narrative — §8.1.1.2 Sub-shape A
+
+Codex bot autonomous emission at 19:32:52Z claimed three write actions (file `docs/reviews/PR-25-codex-post-pr-review.md`, commit `0a5ff60` titled "docs(review): add PR-25 post-PR codex review summary", `make_pr` PR titled "docs: add PR-25 post-PR Codex review summary artifact"). All three verified phantom per §8.1.1.2:
+
+- File lookup `gh api repos/bryce-murphy/amas-framework/contents/docs/reviews/PR-25-codex-post-pr-review.md`: HTTP 404 Not Found.
+- Commit lookup `gh api repos/bryce-murphy/amas-framework/commits/0a5ff60`: HTTP 422 "No commit found for SHA: 0a5ff60".
+- Open PR list `gh pr list --state open`: only PR-25 open; no second PR opened.
+
+Sub-shape A discipline applied: informational-only absorption; no defensive write actions taken; cycle decisions do not depend on the claimed actions having occurred.
+
+Cycle-close ledger Item 6 (w) third-instance evidence; PMN-010-co-ship-eligible at TASK-0022 absorption cycle. Pattern characterization across three cycles: TASK-0019 PR-21 cycle (Sub-shape A positive-action claims) + TASK-0020 PR-23 cycle (Sub-shape A-anti / negative-action claims) + TASK-0021 PR-25 cycle (Sub-shape A positive-action claims, this turn). Three cross-cycle data points; promotion-eligible.
+
+### Endpoint (c) Major finding — canonical-text contradiction (P2 / Major-equivalent)
+
+Verbatim Codex line-level comment at `core.md:37`:
+
+> **Reconcile contradictory substantive-pass definitions**
+>
+> This section now gives conflicting canonical behavior: the "Substantive-finding pass shape" says endpoint output is joint across (a)/(b)/(c), but the new empirical-pattern paragraph says substantive verdicts can appear on only one endpoint (including only (a) or only (c)). That contradiction can cause reviewers/builders to incorrectly treat valid single-endpoint substantive output as missing data or protocol failure. Please make these rules consistent (for example, define substantive passes as appearing on one or more endpoints).
+
+**Verification**: finding is real. The pass-shape paragraph stated "endpoints emit jointly" while the empirical-pattern paragraph stated substantive verdict can land at "any one of the three endpoints". PR-25's own review surface self-instantiated the empirical-pattern reality (endpoint (a) boilerplate-only; endpoint (b) phantom-narrative without verdict-text restatement; endpoint (c) substantive Major) — under the pass-shape's "joint emission" rule, this would not qualify as a substantive-finding pass; under the empirical-pattern's "any one of three" rule, it does. The pass-shape definition required softening to align with the empirical-pattern.
+
+### Adjudication and fix-up — path-(a) Option A surgical pass-shape rewrite
+
+Architect adjudicated path-(a) Option A: surgical-token-swap-equivalent rewrite at the two pass-shape bullet definitions; preserve structural shape (two-pass-shape categorization retained); align with the empirical-pattern's "one or more endpoints emit" framing. Estimated cost class bounded per §8.1.1.3; same class as Q2 settling-period token-swap from earlier this cycle.
+
+**Substantive-finding pass shape** rewritten to: "at least one endpoint carries substantive content. Endpoint (a) may carry the review state plus any review-body prose; endpoint (b) may carry verdict text; endpoint (c) may carry line-anchored findings. Per the empirical-pattern note below, the substantive content distribution across endpoints varies per cycle — Builder polls all three endpoints and reconciles."
+
+**Cycle-trailing-clean-Approve pass shape** rewritten in parallel terms: "no substantive content emits at any endpoint, with formal review state at endpoint (a) reaching APPROVED or remaining COMMENTED with boilerplate-only body (typical body phrasing: 'Codex Review: Didn't find any major issues.'). Builder treats no-substantive-emission across all three endpoints as a clean cycle, subject to the settling-period rule below."
+
+**Verifiable post-fix-up**: `grep -nE "(endpoints emit jointly|only the issue-comment endpoint emits)" core.md` returns no lines (stale assertions removed); grep for the new wording returns the rewritten paragraphs at lines 35-36 of post-fix-up core.md.
+
+### Recursive self-instantiation note
+
+PR-25's own three-endpoint poll absorption surface surfaced a defect in the canonical text being shipped at PR-25 — a defect that prior surfaces (Architect §23.6 self-review, Builder pre-flight (i.5), Codex pre-commit pass 1, Architect adjudication chain) all missed. This is the (r) fifth-surface canonical-refinement pattern self-applying at strongest-possible-strength: the three-endpoint poll discipline this cycle ships catches a defect in this cycle's own canonical-text scope at its own first canonical-application surface. Cycle-close ledger Architect-carry: this is fourth Architect Phase 1 scoping defect this cycle (§4 Amendment 2 named the empirical-pattern note addition but did not name reconciliation of the existing pass-shape definitions with the new empirical-pattern framing); strengthens (i.5) discipline candidate confirming evidence to 7 cross-cycle data points.
