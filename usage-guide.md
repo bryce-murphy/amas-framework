@@ -334,7 +334,7 @@ A project may codify a project-specific check pattern in repo-local Architect re
 
 **§10.21. "Cumulative-diff-stats from `git diff origin/main` don't match what's on the working tree."** Cumulative-diff-stats on untracked working tree don't include new files. Use `git diff --staged --shortstat origin/main` after `git add` of all modified + new files; reconcile per-file decomposition arithmetic against the staged-tree total. (e.1) sub-rule applies at the staged-tree surface.
 
-**§10.22. "The Codex post-PR auto-fire emission landed before I posted `@codex review`."** This is the (w) candidate observation pattern (autonomous emission before owner trigger). Verify the emission is autonomous (not a triggered emission timestamped after a trigger you might have missed) by checking `gh api repos/<owner>/<repo>/issues/<pr>/comments` and reconciling timestamps. Autonomous pre-trigger emissions are useful supplemental review-evidence but don't substitute for the formal three-endpoint poll per §7.4.
+**§10.22. "The Codex post-PR auto-fire emission landed before I posted `@codex review`."** This is the (w) candidate observation pattern (autonomous emission before owner trigger). Verify the emission is autonomous (not a triggered emission timestamped after a trigger you might have missed) by polling all three endpoints per §7.4 and reconciling timestamps; autonomous emissions can land at any of the three endpoints, not only `issues/<pr>/comments`. Autonomous pre-trigger emissions are useful supplemental review-evidence but don't substitute for the formal three-endpoint poll per §7.4.
 
 ---
 
