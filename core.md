@@ -265,7 +265,7 @@ This section governs the Architect's receiving-side discipline against own-autho
 
 ### §23.6. Self-review disciplines
 
-Two leaf disciplines apply at Architect pre-handoff self-review: prose-arithmetic decomposition with cumulative-diff-stats re-derivation (§23.6.1), and 4-iteration-to-fixed-point self-review (§23.6.2). Both apply iteratively to fixed-point per §23.6.2.
+Three leaf disciplines apply at Architect pre-handoff self-review: prose-arithmetic decomposition with cumulative-diff-stats re-derivation (§23.6.1), 4-iteration-to-fixed-point self-review (§23.6.2), and reference-verification before spec authoring (§23.6.3). §23.6.1 and §23.6.2 apply iteratively to fixed-point per §23.6.2; §23.6.3 applies at spec-authoring time prior to handoff.
 
 #### §23.6.1. Prose-arithmetic decomposition
 
@@ -302,6 +302,22 @@ Empirical observation across three consecutive cycles in the AMAS framework prod
 
 **Anti-pattern: attestation drift.** A §23.6 self-review record's claim about *what was verified* must itself be verified against *what was actually applied to the body*. The overclaim pattern — attestation lists citations that aren't in the body, or claims sweeps that weren't run — is a recurring failure mode where the attestation text is authored from a checklist of disciplines rather than from the actual content of the artifact under review. Iteration 2+ specifically scans the §23.6 self-review record for attestation drift.
 
+#### §23.6.3. Reference-verification before spec authoring
+
+Architect-authored deliverable specs reference specific values — line numbers, structural-element counts, convention shapes, form structures, sub-rule letter labels, version numbers, PR/TASK/PMN/ADR cross-references. Each reference is a §24.2(a) external-system-behavior assertion about a derivable value, and each is a candidate for drift between authoring time and execution time when the asserted value is not verified against actual canonical sources at authoring time.
+
+The discipline is **reference-verification before spec authoring**: every specific reference value in the spec text is either (i) verified against actual canonical source at authoring time, or (ii) explicitly marked as deferred for Builder pre-flight (i.5) batch verification. Neither path is universally preferred; the appropriate path depends on the reference class.
+
+**Default-path guidance by reference class.** Convention shapes and form structures (sub-shapes A and D per PMN-009 §2): verify at authoring time. These constrain the structural correctness of what the spec produces; discovering form divergence at Builder pre-flight forces spec revision before execution can begin. Architect samples the canonical priors form (e.g., `head -15 <prior-PMN-file>` for PMN form; sample two or three prior TASK handoffs for handoff frontmatter shape) and authors against verified shape.
+
+Line-number references and structural-element counts (sub-shapes B and C per PMN-009 §2): default to deferral. These specific values may drift between authoring time and Builder execution time even within a single cycle, particularly when intervening cycles ship to main between Architect spec authoring and Builder execution. Architect marks the value as "Builder verifies at pre-flight" rather than committing to a specific count or line number; Builder pre-flight (i.5) batch substitutes the verified value at execution time.
+
+**Architect adjudication-framework arithmetic discipline.** At adjudication-framework surfaces (path-(a) / path-(β) routing decisions, defect-tally reconciliation, cumulative-diff-stats acceptance, cycle-close ledger arithmetic), Architect re-derives from raw evidence (`git diff --shortstat`, `git log --oneline`, direct artifact reads) rather than trusting Builder-reported per-file decompositions or inherited cycle-artifact text. Builder may have applied (e.1) sub-rule cumulative-diff-stats re-derivation correctly at its own surface; the adjudication surface is a separate verification opportunity at which Architect's own arithmetic verification provides multi-surface mitigation per §24.3 receiving-side caveat-discipline applied symmetrically.
+
+**Standing pre-authoring data-currency precondition.** Reference-verification depends on the data sources used for verification being themselves current. For specs in this project, GitHub-integration-indexed canonical state is current to main HEAD before Step 1 of any spec authoring. Stale data sources produce systematic drift independent of the discipline above; data-currency is a precondition of the discipline operating at all.
+
+**Provenance.** This sub-section absorbs PMN-009's recommended canonical refinement (PMN-009 §5) per PMN-005 propose-then-absorb cadence. Empirical grounding: 4 cross-cycle (i.5) confirmations through TASK-0019 + TASK-0020 (PMN-009 §1.1 data points) plus 3 in-cycle TASK-0022 confirmations including the first downstream-gate catch (Codex pre-commit) of the spec-drift class. The TASK-0022 cycle terminated at handback before absorption could land; this cycle (TASK-0023) absorbs after the empirical pattern further matured.
+
 ## §24. Cross-surface verify-before-assert meta-pattern
 
 This section names the cross-surface verify-before-assert meta-pattern that recurs across the framework's §-section disciplines. The pattern is: claims about external-system state (repository state, tool output, file content, collaborator output) are §24.2(a) assertions requiring verification against the asserted state at receiving time, regardless of who authored the claim or which surface the claim was authored on. Subsections enumerate the meta-pattern's sub-shapes (§24.2) and the receiving-side caveat-discipline that operationalizes the pattern at each receiving direction (§24.3).
@@ -315,7 +331,7 @@ The four pre-existing sub-shapes — (a) external-system-behavior assertion, (b)
 The receiving-side caveat-discipline operationalizes the §24 meta-pattern at each receiving direction in the cycle's communication topology. Five receiving directions are canonicalized:
 
 - Builder pre-flight against Architect-asserted external-system state in prompts (§8.2)
-- Architect pre-handoff self-review against own-authored claims (§23.6, §23.6.1, §23.6.2)
+- Architect pre-handoff self-review against own-authored claims (§23.6, §23.6.1, §23.6.2, §23.6.3)
 - Builder receiving Reviewer findings (§8.1.1, §8.1.1.1, §8.1.1.2)
 - Owner receiving Builder stop-and-show (§8.3)
 - Architect ← Builder hand-back (§24.3.1 below)
