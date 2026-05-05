@@ -5,12 +5,12 @@ pr: PR-27
 branch: feat/task-0023-pmn-009-absorption
 linked_predecessor: TASK-0022 (handback at step-10 Codex pre-commit Blocking; cycle terminated; no merged artifact; HEAD on main remained at 26deabc per TASK-0021 PR-26 chore-fix-up squash)
 linked_successor: TBD
-linked_pr: PR-27 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-27 (squash SHA 6bd66c2)
 framework_version_dogfooded: AMAS v2.19
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0023-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-04
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0023
