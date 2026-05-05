@@ -31,8 +31,8 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
 2. **usage-guide.md substantive content fill — file body matches §4 content prescription verbatim** (frontmatter + 14 top-level §-sections §0–§13). Verifiable at pre-commit:
    - bash: `grep -cE "^## §" usage-guide.md` returns `14` (14 top-level §-sections: §0, §1, §2, §3, §4, §5, §6, §7, §8, §9, §10, §11, §12, §13).
    - bash: `grep -nE "^## §" usage-guide.md` returns 14 lines (one per top-level section header) with §-numbers in canonical order §0 → §13.
-   - bash: `head -5 usage-guide.md` shows frontmatter `framework_version: 3.0.0` + `status: drafted` + `filled_by: PR-29 (TASK-0024)` (Builder fills exact line count at step-9 self-review iteration).
-   - bash: `wc -l usage-guide.md` returns landed exact source-line count (Builder fills exact value at step-10; pre-staging count: 388).
+   - bash: `head -5 usage-guide.md` returns frontmatter lines: `---` + `framework_version: 3.0.0` + `status: drafted` + `filled_by: PR-29 (TASK-0024)` + `---`.
+   - bash: `wc -l usage-guide.md` returns `388` (landed exact source-line count at step-12 commit; unchanged through step-16 fix-up which modifies 2 existing lines without net line-count delta).
 
 3. **All §-citations to current core.md verified against current canonical state.** Each citation in usage-guide.md to `core.md §X` for sections that exist in current core.md (status: partial; §8/§17/§18/§23/§24 materialized) is verifiable against current `core.md` heading set. Verifiable at pre-commit:
    - bash: `grep -nE "core\.md\` §[0-9]" usage-guide.md` enumerates all `core.md §X` citations (markdown-formatted with backticks); each citation manually reconciled against `grep -nE "^#{1,6} §" core.md` heading set.

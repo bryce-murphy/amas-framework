@@ -84,7 +84,7 @@ Every real task after the kickoff bootstrap follows the same shape. Here's what 
 
 **§3.2. Feature Brief (sometimes).** Not every task needs one. The canonical-law trio gives the rules: mandatory when the task changes user-visible behavior, spans more than one session, touches architecture beyond a single file, has unresolved edge cases, or is blocked on a design decision. Optional when the task is a bug fix, a single-function change, or the Issue title already fully describes the behavior change.
 
-If a Feature Brief exists, it lives at `docs/features/FEAT-####/brief.md`. The FEAT-#### may be the same number as the TASK-#### for a single-task feature, or a separate number for a multi-task feature.
+If a Feature Brief exists, it lives at `docs/features/FEAT-####-<slug>.md`. The FEAT-#### may be the same number as the TASK-#### for a single-task feature, or a separate number for a multi-task feature.
 
 **§3.3. Branch.** The Builder creates a branch matching `<type>/<id>-<summary>` per `github-reference.md` §2.2 branch convention. Examples: `feat/0001-session-export`, `fix/0023-cache-bug`. A GitHub Action validates branch names on PR open per `github-reference.md` §6.2 anticipated Actions. Before creating the branch, the Builder runs pre-flight per `core.md` §8.2 (forthcoming at Part C+) to verify branch-name regex compliance, base-branch freshness, and working-tree state. Pre-flight is the catch point for branch-name regex mistakes — it is much cheaper than force-pushing a rename.
 
@@ -139,7 +139,7 @@ The framework's continuity promise depends on one rule: at every session boundar
 
 **§5.3. Where TASK-#### appears.**
 - GitHub Issue title: `TASK-0042: Add session-export endpoint`
-- Feature Brief filename (if one exists): `docs/features/FEAT-0042/brief.md` (same numeric ID for single-task features by convention)
+- Feature Brief filename (if one exists): `docs/features/FEAT-0042-session-export.md` (same numeric ID for single-task features by convention)
 - Handoff filename: `docs/handoffs/TASK-0042-<slug>.md`
 - PR title: `TASK-0042: add session-export endpoint`
 - Branch name (numeric portion): `feat/0042-session-export`
