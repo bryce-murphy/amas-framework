@@ -10,7 +10,7 @@ framework_version_dogfooded: AMAS v2.21
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0025-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-05
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0025

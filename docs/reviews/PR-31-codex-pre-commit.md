@@ -1,5 +1,5 @@
 ---
-status: drafted
+status: recorded
 ---
 
 # PR-31 Codex desktop pre-commit review context

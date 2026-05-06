@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-010
 title: Reference-verification sub-shape enumeration + Architect-spec-authoring-origin meta-pattern
-linked_pr: PR-31 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-31 (squash SHA ff36feb)
 framework_version_dogfooded: AMAS v2.21 → v2.22
-status: drafted
+status: recorded
 ---
 
 # PMN-010 — Reference-verification sub-shape enumeration + Architect-spec-authoring-origin meta-pattern
