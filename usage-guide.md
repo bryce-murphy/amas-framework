@@ -86,7 +86,7 @@ Every real task after the kickoff bootstrap follows the same shape. Here's what 
 
 If a Feature Brief exists, it lives at `docs/features/FEAT-####-<slug>.md`. The FEAT-#### may be the same number as the TASK-#### for a single-task feature, or a separate number for a multi-task feature.
 
-**§3.3. Branch.** The Builder creates a branch matching `<type>/<id>-<summary>` per `github-reference.md` §2.2 branch convention. Examples: `feat/0001-session-export`, `fix/0023-cache-bug`. A GitHub Action validates branch names on PR open per `github-reference.md` §6.2 anticipated Actions. Before creating the branch, the Builder runs pre-flight per `core.md` §8.2 (forthcoming at Part C+) to verify branch-name regex compliance, base-branch freshness, and working-tree state. Pre-flight is the catch point for branch-name regex mistakes — it is much cheaper than force-pushing a rename.
+**§3.3. Branch.** The Builder creates a branch matching `<type>/task-####-<kebab-slug>` per `github-reference.md` §2.2 branch convention (canonical at v3 per ADR-005). Examples: `feat/task-0001-session-export`, `fix/task-0023-cache-bug`. A GitHub Action validates branch names on PR open per `github-reference.md` §6.2 anticipated Actions. Before creating the branch, the Builder runs pre-flight per `core.md` §8.2 (forthcoming at Part C+) to verify branch-name regex compliance, base-branch freshness, and working-tree state. Pre-flight is the catch point for branch-name regex mistakes — it is much cheaper than force-pushing a rename.
 
 **§3.4. Handoff file.** The Builder creates or updates `docs/handoffs/TASK-####-<slug>.md` at the start of work per the universal handoff schema. The handoff carries the current state of the task: current branch, last completed step, blockers, exact next action, validation evidence. If you return to the task after any meaningful pause, the handoff is where you pick up — not the chat history. The "Exact next step" block in particular is what subsequent Architect-to-Builder prompts will reference (see §9 below).
 
@@ -142,7 +142,7 @@ The framework's continuity promise depends on one rule: at every session boundar
 - Feature Brief filename (if one exists): `docs/features/FEAT-0042-session-export.md` (same numeric ID for single-task features by convention)
 - Handoff filename: `docs/handoffs/TASK-0042-<slug>.md`
 - PR title: `TASK-0042: add session-export endpoint`
-- Branch name (numeric portion): `feat/0042-session-export`
+- Branch name: `feat/task-0042-session-export`
 - Review-context filename: `docs/reviews/PR-####-codex-pre-commit.md` (PR-#### is independent; review-context cross-references the TASK-####)
 - Post-merge note, session logs, and non-code artifacts all carry the same TASK-####
 
