@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
 
-The current canonical AMAS framework version is **v2.22**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.22.
+The current canonical AMAS framework version is **v2.23**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.23.
 
 ## What is AMAS?
 
@@ -76,7 +76,7 @@ The v3 framework package is organized into seven layers. Each stub or template d
 
 | Path | Description | Filled by |
 |---|---|---|
-| `actions/branch-name-check.yml` | Enforce §6.1 branch regex | PR-15 (TASK-0015) |
+| `actions/branch-name-check.yml` | Enforce `github-reference.md` §2.2 branch regex per ADR-005 | PR-15 (TASK-0015) |
 | `actions/pr-template-check.yml` | Enforce §17.6 PR template sections | PR-15 (TASK-0015) |
 | `actions/linked-records-check.yml` | Verify TASK/ADR/FEAT references resolve | PR-15 (TASK-0015) |
 | `actions/ai-session-log-check.yml` | Verify AI Session Log section present | PR-15 (TASK-0015) |

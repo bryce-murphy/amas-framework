@@ -76,7 +76,7 @@ The `docs/` directory holds durable project-state artifacts: ADRs (architectural
 
 Use the branch pattern:
 
-`<type>/<id>-<summary>`
+`<type>/task-####-<kebab-slug>`
 
 Where `<type>` is one of:
 
@@ -87,22 +87,22 @@ Where `<type>` is one of:
 - `shadow` — Reviewer's shadow implementation of an existing Issue
 - `spike` — exploratory, not intended to merge (must be closed or converted)
 
-And `<summary>` is lowercase letters, digits, hyphens, and periods. Periods are permitted only inside version-like substrings (e.g., `v2.5`, `v1.0.0`, `node-18.17`). Summaries must not start or end with a period.
+The numeric portion is a 4-digit zero-padded TASK identifier (`task-0001`, `task-0023`, `task-0410`) threading the branch into the AMAS TASK-#### centrality discipline. The `<kebab-slug>` is lowercase letters, digits, hyphens, and periods. Periods are permitted only inside version-like substrings (e.g., `v2.5`, `v1.0.0`, `node-18.17`). Slugs must not start or end with a period.
 
 Examples:
 
-- `feat/123-auth-refresh`
-- `fix/241-cache-key-bug`
-- `chore/302-bump-node-20`
-- `chore/0001-framework-upgrade-v2.5`
-- `adr/017-session-storage`
-- `shadow/123-auth-refresh`
-- `spike/410-graphql-evaluation`
+- `feat/task-0123-auth-refresh`
+- `fix/task-0241-cache-key-bug`
+- `chore/task-0302-bump-node-20`
+- `chore/task-0001-framework-upgrade-v2.5`
+- `adr/task-0017-session-storage`
+- `shadow/task-0123-auth-refresh`
+- `spike/task-0410-graphql-evaluation`
 
 The reference regex is:
 
 ```text
-^(feat|fix|chore|adr|shadow|spike)/[0-9]+-([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9])$
+^(feat|fix|chore|adr|shadow|spike)/task-[0-9]{4}-([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9])$
 ```
 
 The alternation allows either a one-character summary or a longer summary that does not start or end with a period. Periods remain permitted inside the summary; the convention is to use them for version-like substrings even though the regex does not enforce that intent mechanically.
@@ -375,7 +375,7 @@ The distinction matters for sync-check scope: the Action validates manifest-trac
 - **ADR-001**: initial repo setup decisions including reading order, branch protection, AI Session Log convention
 - **ADR-003**: full v3.0 package PR plan + tight-coupling dependency order discipline + distributed-update discipline for README and stub frontmatter
 
-- **v2.14.1 §6.1**: branch naming convention source for §2.2 above (preserved verbatim with regex)
+- **v2.14.1 §6.1**: branch naming convention substrate for §2.2 above; deliberately diverged per ADR-005 (`<type>/<id>-<summary>` substrate → `<type>/task-####-<kebab-slug>` v3 canonical) to align with AMAS TASK-#### centrality + lived practice
 - **v2.14.1 §10.5-§10.6**: single-contributor bypass source for §3.2 above
 - **v2.14.1 §15**: enforcement layer model source for §6.1 above (with §15.1 patch fix preserved)
 
