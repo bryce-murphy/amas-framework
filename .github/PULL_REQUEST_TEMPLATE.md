@@ -28,7 +28,7 @@
 - [ ] §8.2 pre-flight completed and reported
 - [ ] §8.3 stop-and-show approved by owner
 - [ ] All claimed actions in this PR are true
-- [ ] Branch name matches §6.1
+- [ ] Branch name matches `github-reference.md` §2.2 per ADR-005
 - [ ] All template sections populated
 
 ## AI Session Log (current PR-state log set per §13.2; prior superseded sets migrated per §13.1)

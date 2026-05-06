@@ -76,7 +76,7 @@ The v3 framework package is organized into seven layers. Each stub or template d
 
 | Path | Description | Filled by |
 |---|---|---|
-| `actions/branch-name-check.yml` | Enforce §6.1 branch regex | PR-15 (TASK-0015) |
+| `actions/branch-name-check.yml` | Enforce `github-reference.md` §2.2 branch regex per ADR-005 | PR-15 (TASK-0015) |
 | `actions/pr-template-check.yml` | Enforce §17.6 PR template sections | PR-15 (TASK-0015) |
 | `actions/linked-records-check.yml` | Verify TASK/ADR/FEAT references resolve | PR-15 (TASK-0015) |
 | `actions/ai-session-log-check.yml` | Verify AI Session Log section present | PR-15 (TASK-0015) |

@@ -41,6 +41,8 @@ v3 trio amends per §Migration mapping table below. `AGENTS.md` / `CLAUDE.md` pr
 | `AGENTS.md` branch convention | Option B (canonical-aligned, drift-from-v2.14.1) | Option B (preserved; citation updated to `github-reference.md` §2.2 per ADR-005) | Citation update + framing per Edit A2.4b |
 | `CLAUDE.md` branch convention | Option B (canonical-aligned, drift-from-v2.14.1) | Option B (preserved; citation updated to `github-reference.md` §2.2 per ADR-005) | Citation update + framing per Edit C.3.3b |
 | `AGENTS.md` allowed-types list | `feat, fix, chore, docs, adr, refactor, test, ci` (drift from both v2.14.1 §6.1 and v3 trio) | `feat, fix, chore, adr, shadow, spike` (v3 trio canonical; matches v2.14.1 §6.1 substrate) | Drift-correction per Edit A2.4b |
+| `.github/PULL_REQUEST_TEMPLATE.md` line 31 (Ready-for-review checklist) | `Branch name matches §6.1` (bare; intended as v2.14.1 §6.1 canonical citation; ambiguous post-ADR-005 because v3 `github-reference.md` §6.1 is enforcement-layer model topic) | `Branch name matches \`github-reference.md\` §2.2 per ADR-005` | Substantive amendment per Codex post-PR Finding 2 absorption (path-(a)) |
+| `README.md` line 79 (Actions enumeration table — `branch-name-check.yml` Description cell) | `Enforce §6.1 branch regex` (same defect class as PR template; bare §6.1 intended as v2.14.1 §6.1 canonical-regex citation) | `Enforce \`github-reference.md\` §2.2 branch regex per ADR-005` | Substantive amendment per Codex post-PR Finding 2 (j)-sweep absorption (path-(a)) |
 | Lived-practice branches | Option B (existing) | Option B (canonical-aligned) | Already aligned; no migration |
 
 ## v2.14.1 §6.1 substrate divergence rationale

@@ -197,3 +197,59 @@ Codex desktop pre-commit pass executed by owner per ADR-001 D11. Findings: 2 Maj
 
 - **Item 6** (post-step-11 absorption): Finding-1-class recurrence (handoff-staleness-relative-to-cycle-position) at second cycle; per `core.md` §8.1.1.3 bounded-continuation rule, second-instance establishes pattern. PMN-monitoring-register entry candidate at cycle-close; canonical promotion to discipline-refinement at TASK-0027+ if third instance recurs. Mitigation candidate canonical-text: Builder pre-step-11 push checklist must include "handoff Current state + Last completed step list reflect landed cycle position, not authoring-time position" (TASK-0025 cycle-close Item 6 prior framing).
 - **Item 7** (post-step-11 absorption): Finding-2-class first instance (verification-command-vs-prose-form mismatch) — Builder authored verification commands without empirical pre-Codex run. Mitigation: pre-Codex authoring discipline should run all `grep` commands against actual staged-tree state and substitute outputs into claim text; carry forward as PMN-monitoring observation.
+
+## Codex post-PR review absorption (`@codex review` invocation)
+
+Owner posted `@codex review` on PR-33 at 2026-05-06T18:03:13Z per ADR-001 D11. Codex returned at 2026-05-06T18:05:58Z. Three-endpoint poll per `core.md` §8.1.1.1:
+- (a) Formal PR review: empty.
+- (b) Issue-comment summary: **2 P2 (Major) findings** from `chatgpt-codex-connector[bot]`.
+- (c) Line-level review comments: empty.
+
+Substantive verdict landed at endpoint (b) only this cycle (per `core.md` §8.1.1.1 empirical-pattern note: substantive content distribution varies per cycle).
+
+### Post-PR Finding 1 [Major] — `linked_pr` placeholder form non-canonical
+
+**Codex finding (verbatim)**: "For this new handoff, the linked-pr fix-up action will not replace the squash SHA because `.github/scripts/linked-pr-fix-up.py` only matches the exact frontmatter form `linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))`. This variant with `squash SHA TBD at PR-open` is skipped, so after PR-33 merges the durable handoff will still carry a TBD linked_pr despite claiming PMN-001(k) substitution."
+
+**Adjudication path**: **Path-(a) revise**. Architect ratified at adjudication §2.
+
+**Empirical verification**:
+- Canonical regex at `.github/scripts/linked-pr-fix-up.py:35`: `r'^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)[ \t]*$'`.
+- TASK-0026 handoff frontmatter pre-fix: `linked_pr: PR-33 (squash SHA TBD at PR-open; substituted post-merge per PMN-001 (k))` — does NOT match canonical regex.
+- Cross-cycle: TASK-0024 + TASK-0025 handoffs use the same non-canonical form; their post-merge state confirms regression. **Architect §2 framework-level state correction**: this is NOT linked-pr-fix-up Action regression as previously characterized at TASK-0025 cycle-close — Action is working as designed per its canonical regex; the actual defect class is **handoff-frontmatter placeholder-form drift from canonical regex**.
+
+**Resolution applied**: handoff frontmatter line 8 amended to `linked_pr: PR-33 (Builder fills with squash SHA post-merge per PMN-001 (k))` — matches canonical regex exactly.
+
+**Cost-class assessment per `core.md` §8.1.1.3**: First instance of this finding class at Codex post-PR within current cycle. Path-(a) per first-finding rule.
+
+### Post-PR Finding 2 [Major] — PR template stale `§6.1` citation + (j)-sweep-discovered second instance
+
+**Codex finding (verbatim)**: "This migration leaves the required PR checklist unchanged: I checked `.github/PULL_REQUEST_TEMPLATE.md:31`, and it still says `Branch name matches §6.1`. After this commit the canonical branch rule lives at `github-reference.md` §2.2 while `github-reference.md` §6.1 is the enforcement-layer model, so builders filling the required template are pointed at the wrong/stale section for branch validation. Please include the PR template surface in this ADR/migration rather than only AGENTS/CLAUDE and the trio files."
+
+**Adjudication path**: **Path-(a) revise** per Architect adjudication §3 + re-ratification §1 (Option (a) ratified after (j)-sweep surfaced second class-(c) instance).
+
+**Empirical verification + (j)-sweep enumeration per Architect §3.1 direction**:
+
+Repo-wide grep `grep -rn "§6\.1" --include="*.md" --include="*.yml" --include="*.txt" --include="*.py" .` yielded 25 matches in non-Class-C surfaces (Class-C matches in `.claude/` + `docs/handoffs/` + `docs/post-merge-notes/` + `docs/reviews/` excluded per Architect direction).
+
+Categorization per Architect §3.1 four-class scheme:
+- **Class (b) substrate-attribution form** (preserve verbatim per intended migration form): 19 instances (AGENTS.md:39 + CLAUDE.md:34 + ADR-005 16 instances at lines 11/15/19/23/25/27/29/35/43/46/48/62/70/72/82/84 + github-reference.md:378 Edit T.4 attribution).
+- **Class (d) v3 §6.1 enforcement-layer-model topic** (preserve verbatim; legitimate v3 reference to v3 §6.1 different topic): 2 instances (github-reference.md:261 own §6.1 header + github-reference.md:380 cross-reference).
+- **Class (c) canonical-citation surface needing amendment**: **2 instances** (`.github/PULL_REQUEST_TEMPLATE.md:31` Architect-prescribed Edit P.1; `README.md:79` additional discovery surfaced at (j)-sweep, ratified at Architect re-ratification §2.1 as Edit P.2).
+- Off-scope: `usage-guide.md:157` (own §6.1 header, different topic — handoff lifecycle); README.md:80 §17.6 reference (different defect class per Architect §2.4 — defer to monitoring carry-forward MC-F).
+
+**Resolution applied** (Edits P.1 + P.2 + P.3):
+- Edit P.1 (`.github/PULL_REQUEST_TEMPLATE.md:31`): `Branch name matches §6.1` → `` Branch name matches `github-reference.md` §2.2 per ADR-005 ``.
+- Edit P.2 (`README.md:79`): `Enforce §6.1 branch regex` → `` Enforce `github-reference.md` §2.2 branch regex per ADR-005 ``.
+- Edit P.3 (`docs/adr/ADR-005-branch-convention-canonicalization.md` §Migration mapping table extension; 2 new rows): PR template line 31 row + README line 79 row added between allowed-types row and Lived-practice-branches row (table grows from 10 rows to 12 rows).
+
+**Cost-class assessment per `core.md` §8.1.1.3**: First instance of this finding class (ADR-005-canonicalization-impact bare-§ class) in current cycle. Path-(a) per first-finding rule. Pure-token-swap class; convergence anticipated at iteration 1.
+
+**(j)-sweep post-edit verification**: zero residual class-(c) `§6.1` instances expected (Edits P.1 + P.2 cover the only two enumerated class-(c) instances). Verifiable via re-running `grep -rn "§6\.1" .github/ README.md` after stage; should return only class-(b) substrate-attribution forms or class-(d) v3-§6.1-enforcement-layer-model references.
+
+### Cycle-close ledger items (additional, post-§13 Codex absorption; per Architect §4 + re-ratification §5)
+
+- **Item 12 (Architect §4 MC-C)**: `linked_pr` placeholder canonical-regex form discipline. Three-cycle empirical evidence (TASK-0024 + TASK-0025 + TASK-0026 pre-Codex-catch all drifted from canonical form). PMN-eligibility approaching threshold; promote to PMN-011 candidate at TASK-0027+ cycle-close decision. Mitigation: Builder pre-authoring (i.5) batch validates `linked_pr` placeholder against `.github/scripts/linked-pr-fix-up.py:35` regex empirically.
+- **Item 13 (Architect §4 MC-D)**: Architect-spec-authoring-origin gap on Migration-mapping-table completeness (PMN-010 §4 elevated framing extension). Architect §23.6.3 sub-shape A verify-at-authoring batch should include canonical-impact-surface enumeration sweep — for any direction-decision document amending a §-citation form, run repo-wide grep on the affected token to enumerate ALL surfaces requiring update before authoring Migration mapping table. Sub-class of PMN-010 sub-shape 1; specifically about spec-authoring discovery completeness rather than spec-authoring drift. Single-cycle observation; carry forward as PMN-eligibility candidate.
+- **Item 14 (Architect §4 MC-E state correction)**: Misdiagnosed-Action-regression. TASK-0025 cycle-close monitoring carry-forward characterizing linked-pr-fix-up Action as "regressed" was empirically incorrect. Action is working as designed per its canonical regex; the defect class is handoff-frontmatter placeholder-form drift. State correction recorded; "TASK-0027 candidate Action defect-fix cycle" deprecated. Replaced by Item 12 (MC-C) + retroactive-chore-fix-up-or-accept-as-historical owner decision (separate cycle if owner directs; non-blocking).
+- **Item 15 (Architect re-ratification §5 MC-F)**: README Actions-enumeration-table bare-§ citation structural pattern. Every Action's "Description" cell uses bare-§ shorthand for canonical citation (e.g., §17.6 for `pr-template-check.yml`). Today's class-(c) §6.1 instance was ADR-005-canonicalization-impact subset only. Future-cycle deeper sweep candidate when triggered by either: (a) v3 trio canonicalization affecting other §-citations referenced in the table, OR (b) framework decision to canonicalize all README Actions-table citations as fully-qualified `<file>.md §X.Y` form (independent style-discipline decision). Not a defect class today; documentation-style structural-pattern observation. Single-cycle observation; carry forward as PMN-eligibility candidate.

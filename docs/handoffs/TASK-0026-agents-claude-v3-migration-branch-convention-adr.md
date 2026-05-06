@@ -5,7 +5,7 @@ pr: PR-33
 branch: feat/task-0026-agents-claude-v3-migration-branch-convention-adr
 linked_predecessor: TASK-0025 (PR-31 squash ff36feb substantive: PMN-010 reference-verification sub-shape enumeration + Architect-spec-authoring-origin meta-pattern + README v2.21→v2.22; PR-32 squash 374ee6a chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-33 (squash SHA TBD at PR-open; substituted post-merge per PMN-001 (k))
+linked_pr: PR-33 (Builder fills with squash SHA post-merge per PMN-001 (k))
 framework_version_dogfooded: AMAS v2.22
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0026-spec.md (gitignored per ADR-001 decision 15)
@@ -131,32 +131,47 @@ Builder execution (this session, 2026-05-06):
 
 17. **Step-11 Codex desktop pre-commit pass** executed by owner per ADR-001 D11 (path (a) per Architect §3 recommendation). Codex returned 2 Major findings + 1 informational note + general approval of substantive content. Both Major findings empirically verified by Builder against staged-tree state.
 
-18. **Step-11 absorption** per `core.md` §8.1.1 + §8.1.1.3:
+18. **Step-11 Codex pre-commit absorption** per `core.md` §8.1.1 + §8.1.1.3:
     - Finding 1 [Major] — Handoff Current state stale (path-(a) revise; second-instance recurrence of TASK-0025 Codex post-PR Finding 1 class; PMN-monitoring-register candidate at cycle-close).
     - Finding 2 [Major] — Verification claims do not match command output (sub-finding 2A: Claim 5 anchored regex incompatible with ADR-005 prose form; sub-finding 2B: Claim 8 "11 lines" typo for actual 10 lines / 13 occurrences). Path-(a) revise both.
     - Informational — Codex desktop UPCDS upstream URL 404 (no revision required; Builder authenticated `gh api` retrieval at step-2 remains independently verified).
 
+19. **Step-12 commit + step-13 push + PR-open**: commit `16aac6d` on `feat/task-0026-...`. Push to origin (`git push -u origin feat/task-0026-...`). PR-33 opened at https://github.com/bryce-murphy/amas-framework/pull/33 via `gh pr create` with full PR template populated.
+
+20. **Step-13 owner posts `@codex review`** per ADR-001 D11 at 2026-05-06T18:03:13Z. Codex post-PR pass returned at 2026-05-06T18:05:58Z.
+
+21. **Step-13 three-endpoint Codex post-PR poll** per `core.md` §8.1.1.1: (a) Formal review empty; (b) issue-comment summary 2 P2 (Major) findings from chatgpt-codex-connector[bot]; (c) line-level review-comments empty. Substantive verdict landed at endpoint (b) only this cycle.
+
+22. **Step-13 Codex post-PR Finding 1 absorption** path-(a): handoff frontmatter `linked_pr` field amended from non-canonical form `PR-33 (squash SHA TBD at PR-open; substituted post-merge per PMN-001 (k))` to canonical-regex-matching form `PR-33 (Builder fills with squash SHA post-merge per PMN-001 (k))` per `.github/scripts/linked-pr-fix-up.py:35` regex. Architect §2 framework-level state correction: previously-named "linked-pr-fix-up Action regression" at TASK-0025 cycle-close is reframed as **handoff-frontmatter placeholder-form drift from canonical regex** (Action working as designed; defect at handoff-authoring surface).
+
+23. **Step-13 §3.1 (j)-sweep on `§6.1` repo-wide** per Architect direction. 25 matches in non-Class-C surfaces; categorized: 19 class-(b) substrate-attribution (preserve); 2 class-(d) v3-§6.1-enforcement-layer-model topic (preserve); **2 class-(c) canonical-citation surfaces needing amendment** — `.github/PULL_REQUEST_TEMPLATE.md:31` (Architect-prescribed Edit P.1) + `README.md:79` (additional discovery surfaced at (j)-sweep). Surfaced to Architect for re-ratification.
+
+24. **Step-13 Architect re-ratification §1**: Option (a) ratified — path-(a) extension to README.md:79 + retain PR template line 31 prescription. §17.6 informational observation deferred to monitoring carry-forward MC-F (different defect class).
+
+25. **Step-13 combined Finding 1 + Finding 2 path-(a) absorption** per Architect §3 prescription:
+    - Edit P.1: `.github/PULL_REQUEST_TEMPLATE.md:31` `Branch name matches §6.1` → `` Branch name matches `github-reference.md` §2.2 per ADR-005 ``.
+    - Edit P.2: `README.md:79` `Enforce §6.1 branch regex` → `` Enforce `github-reference.md` §2.2 branch regex per ADR-005 ``.
+    - Edit P.3: ADR-005 §Migration mapping table extension with 2 new rows (PR template + README); table grows from 10 to 12 rows.
+    - PR-33 review-context updated with verbatim Codex post-PR findings + applied-resolutions per Architect §4.
+
 ## Current state
 
-**Step-11 absorption complete; awaiting owner authorization to commit + push.** Final cumulative-diff-stats post-absorption pending re-stage + re-derive at this body update; surfaced to owner at final pre-commit stop-and-show below.
+**Step-13 combined absorption applied; awaiting final re-stage + cumulative-diff-stats convergence + step-10 stop-and-show pre-push gate per Architect §6 step 4 (post-substantive-revision).** Cycle-close ledger Items 12-15 added per Architect §4 MC-C / MC-D / MC-E + re-ratification §5 MC-F.
 
 Remaining cycle steps:
 - Final re-stage + re-derive cumulative-diff-stats (this body update absorption pass).
-- Step-12 owner authorization to commit + push per `core.md` §24.3 + §8.3 — pending.
-- Step-13 push + PR open + PR template fill — pending.
-- Step-14 owner posts `@codex review` per ADR-001 D11 — pending.
-- Step-15 owner merge per §10.5 single-contributor bypass — pending.
-- Step-16 PMN-001 (k) chore-fix-up auto-fire post-merge — pending.
-- Step-17 M-A7 instance count amendment (PR-33 = 13th instance) — pending Architect post-merge per `core.md` §18.3.
-- Step-18 cycle-close handoff — pending.
-- Step-19 Architect §24.3.1 five-point post-handback check — pending.
+- Step-10 stop-and-show pre-push gate AGAIN (post-substantive-revision per `core.md` §24.3 + §8.3).
+- Owner authorization to commit + push of combined absorption commit.
+- Anticipated next Codex post-PR pass; bounded-continuation rule per `core.md` §8.1.1.3 anticipates convergence within 1 additional pass.
+- Owner merge per §10.5 single-contributor bypass per ADR-001 D9 + D11 — pending convergence.
+- PMN-001 (k) chore-fix-up auto-fire post-merge — now anticipated to fire correctly given canonical-regex-matching `linked_pr` form per Edit Finding-1 absorption.
+- Architect post-merge: §18.3 M-A7 amendment (PR-33 = 13th instance); §24.3.1 five-point post-handback check; cycle-close handoff for TASK-0027.
 
-Working tree state at end of step-11 (post-absorption, pre-final-stage):
-- 5 staged-modified: `AGENTS.md` + `CLAUDE.md` + `README.md` + `github-reference.md` + `usage-guide.md`.
-- 3 staged-added: `docs/adr/ADR-005-branch-convention-canonicalization.md` + `docs/handoffs/TASK-0026-agents-claude-v3-migration-branch-convention-adr.md` (this file) + `docs/reviews/PR-33-codex-pre-commit.md`.
-- 2 unstaged-modified (this absorption pass): `docs/handoffs/TASK-0026-...md` + `docs/reviews/PR-33-codex-pre-commit.md`.
+Working tree state at end of step-13 combined absorption (pre-final-stage):
+- 5 unstaged-modified (this absorption pass): `.github/PULL_REQUEST_TEMPLATE.md` (Edit P.1) + `README.md` (Edit P.2) + `docs/adr/ADR-005-branch-convention-canonicalization.md` (Edit P.3) + `docs/handoffs/TASK-0026-...md` (this absorption update + Finding-1 frontmatter fix at line 8) + `docs/reviews/PR-33-codex-pre-commit.md` (Codex post-PR absorption section).
+- Already committed in `16aac6d` (pushed to PR-33): 5 modified + 3 added per step-12 commit history.
 
-Branch: `feat/task-0026-agents-claude-v3-migration-branch-convention-adr` on base `374ee6a`. No commits yet (step-12 commit + push gated on final stop-and-show + owner authorization).
+Branch: `feat/task-0026-agents-claude-v3-migration-branch-convention-adr` on base `374ee6a`; current branch tip `16aac6d` (PR-33 commit-1 of anticipated commit-2). Combined-absorption commit-2 pending re-stage + final stop-and-show + owner authorization.
 
 ## Decisions made
 
@@ -194,7 +209,9 @@ Per (e.1) cumulative-diff-stats sub-rule, staged-tree convention applied at each
 
 - **Step-10 baseline post-step-9 self-review (all 8 files staged)**: `git diff --numstat --cached origin/main` returns 8 rows: `20	18	AGENTS.md` + `20	16	CLAUDE.md` + `1	1	README.md` + `91	0	docs/adr/ADR-005-branch-convention-canonicalization.md` + `228	0	docs/handoffs/TASK-0026-...md` + `155	0	docs/reviews/PR-33-codex-pre-commit.md` + `11	11	github-reference.md` + `2	2	usage-guide.md`. `git diff --shortstat --cached origin/main` returns `8 files changed, 528 insertions(+), 48 deletions(-)`. Sum-stability: 20+20+1+91+228+155+11+2 = 528 ✓; 18+16+1+0+0+0+11+2 = 48 ✓.
 
-- **Step-11 Codex pre-commit absorption iter-1** (handoff Current-state + Last-completed-step + Cycle-close ledger updates per Finding 1 path-(a) revise; review-context Claim 5 verification-command restatement + Claim 8 typo correction + Codex-output-absorption section population per Finding 2 path-(a) revise; cycle-close ledger Items 6-11 added). Handoff line count grew step-10 baseline 228 → step-11 final-absorption **246** (+18); review-context line count grew step-10 baseline 155 → step-11 absorption **199** (+44). Cumulative-diff-stats: `git diff --shortstat --cached origin/main` returns `8 files changed, 590 insertions(+), 48 deletions(-)`. Sum-stability: 20+20+1+91+246+199+11+2 = **590** ✓; 18+16+1+0+0+0+11+2 = **48** ✓. Per asymptotic-convergence rule §8.1.1.3: handoff + review-context line counts are self-referential (Validation run cites handoff line count; both files cite cumulative totals). Pure-token-swap convergence anticipated at one additional iteration on the placeholder substitution (this final values fill).
+- **Step-11 Codex pre-commit absorption final** (handoff Current-state + Last-completed-step + Cycle-close ledger updates per Finding 1 path-(a) revise; review-context Claim 5 verification-command restatement + Claim 8 typo correction + Codex-output-absorption section population per Finding 2 path-(a) revise; cycle-close ledger Items 6-11 added). Handoff line count grew step-10 baseline 228 → step-11 final-absorption **246** (+18); review-context line count grew step-10 baseline 155 → step-11 absorption **199** (+44). Cumulative-diff-stats: `git diff --shortstat --cached origin/main` returns `8 files changed, 590 insertions(+), 48 deletions(-)`. Sum-stability: 20+20+1+91+246+199+11+2 = **590** ✓; 18+16+1+0+0+0+11+2 = **48** ✓. Convergence at iter-2 (pure-token-swap class per `core.md` §8.1.1.3). Commit `16aac6d` landed at step-12; pushed at step-13.
+
+- **Step-13 Codex post-PR absorption** (combined Finding 1 + Finding 2 path-(a) revise per Architect adjudication §3 + re-ratification §1; handoff frontmatter `linked_pr` canonical-regex form + Edit P.1 PR template + Edit P.2 README + Edit P.3 ADR-005 §Migration mapping table extension + handoff §"Last completed step" / Current-state / cycle-close ledger Items 12-16 + review-context Codex post-PR absorption section). Cumulative-diff-stats vs origin/main: `git diff --shortstat --cached origin/main` returns `9 files changed, 674 insertions(+), 50 deletions(-)`. Per-file numstat: `1	1	.github/PULL_REQUEST_TEMPLATE.md` + `20	18	AGENTS.md` + `20	16	CLAUDE.md` + `2	2	README.md` + `93	0	docs/adr/ADR-005-...md` + `270	0	docs/handoffs/TASK-0026-...md` + `255	0	docs/reviews/PR-33-...md` + `11	11	github-reference.md` + `2	2	usage-guide.md`. Sum-stability: 1+20+20+2+93+270+255+11+2 = **674** ✓; 1+18+16+2+0+0+0+11+2 = **50** ✓. Δ vs commit-1 (16aac6d): +1 new file (PR template) + 4 modified-grew artifacts (README +1/-1; ADR-005 +2/0; handoff +24/0; review-context +56/0); Δ stats roughly +84 ins / +2 del. Post-edit (j)-sweep on `.github/` + `README.md` confirms zero residual class-(c) `§6.1` instances.
 
 ## §8. Post-PR Codex review state
 
@@ -229,7 +246,14 @@ Surfaced at step-11 Codex pre-commit absorption (informational):
 - **Item 10 (Codex Finding 2 first-instance class)**: Verification-command-vs-prose-form mismatch — Builder authored verification commands without empirical pre-Codex run (Claim 5 anchored regex on mid-line content; Claim 8 "11 lines" typo for actual 10). First instance of this class within current cycle. Mitigation candidate: pre-Codex authoring discipline should run all `grep` commands against actual staged-tree state and substitute outputs into claim text rather than narrate intended commands; carry forward as PMN-monitoring observation.
 - **Item 11 (Codex informational note)**: Codex desktop UPCDS upstream URL accessibility limitation — possible Codex desktop environment restriction (raw.githubusercontent.com 404 within Codex desktop). Builder authenticated `gh api` retrieval at step-2 remains independently verified; future Codex desktop reviews should cite Builder pre-flight retrieval rather than expect Codex to re-fetch substrate independently. Not Builder-actionable; informational only.
 
-(Step-13+ ledger items populated post-PR-open.)
+Surfaced at step-13 Codex post-PR absorption (per Architect adjudication §4 MC-C/D/E + re-ratification §5 MC-F):
+- **Item 12 (Architect §4 MC-C)**: `linked_pr` placeholder canonical-regex form discipline. Three-cycle empirical evidence (TASK-0024 + TASK-0025 + TASK-0026 pre-Codex-catch all drifted from canonical form `PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))` per `.github/scripts/linked-pr-fix-up.py:35`). Three-cycle data point; PMN-eligibility approaching threshold; **promote to PMN-011 candidate at TASK-0027+ cycle-close decision**. Mitigation: Builder pre-authoring (i.5) batch validates `linked_pr` placeholder against `.github/scripts/linked-pr-fix-up.py:35` regex empirically before authoring handoff frontmatter. Sub-class of pre-authoring (i.5) batch.
+- **Item 13 (Architect §4 MC-D)**: Architect-spec-authoring-origin gap on Migration-mapping-table completeness (PMN-010 §4 elevated framing extension). Architect `core.md` §23.6.3 sub-shape A verify-at-authoring batch should include canonical-impact-surface enumeration sweep — for any direction-decision document amending a §-citation form (e.g., ADR-005 amending `§6.1` form), run repo-wide `grep -rn` on the affected token to enumerate ALL surfaces requiring update before authoring Migration mapping table. Sub-class of PMN-010 sub-shape 1 (forward-ref-§-citation correctness against named-source-state) but specifically about spec-authoring discovery completeness rather than spec-authoring drift. Single-cycle observation; carry forward as PMN-eligibility candidate.
+- **Item 14 (Architect §4 MC-E state correction)**: Misdiagnosed-Action-regression. TASK-0025 cycle-close monitoring carry-forward characterizing linked-pr-fix-up Action as "regressed" was empirically incorrect. Action is working as designed per its canonical regex; the actual defect class is **handoff-frontmatter placeholder-form drift from canonical regex** per Item 12. State correction recorded: "TASK-0027 candidate Action defect-fix cycle" deprecated. Replaced by Item 12 (MC-C) Builder pre-authoring discipline + retroactive-chore-fix-up-or-accept-as-historical owner decision (separate cycle if owner directs; non-blocking; TASK-0024 + TASK-0025 handoffs retain TBD `linked_pr` field post-merge as historical artifact pending owner-discretion retroactive chore-fix-up).
+- **Item 15 (Architect re-ratification §5 MC-F)**: README Actions-enumeration-table bare-§ citation structural pattern. Every Action's "Description" cell uses bare-§ shorthand for canonical citation (e.g., §17.6 for `pr-template-check.yml`). Today's class-(c) §6.1 instance was ADR-005-canonicalization-impact subset only. Future-cycle deeper sweep candidate when triggered by either: (a) v3 trio canonicalization affecting other §-citations referenced in the table, OR (b) framework decision to canonicalize all README Actions-table citations as fully-qualified `<file>.md §X.Y` form (independent style-discipline decision). Not a defect class today; documentation-style structural-pattern observation. Single-cycle observation; carry forward as PMN-eligibility candidate.
+- **Item 16 (Architect §5 (k.1) acknowledgment)**: Two (k.1) positive self-instantiations this cycle ratified per Architect step-10 §2.3 + re-ratification §5: (a) CLAUDE.md bare-§ explicitness pass (caught at Builder step-9 self-review; within-spec consistency drift caught at execution surface — per Item 6); (b) PR template + README §6.1 stale citation (caught at Codex post-PR Finding 2; Architect-spec-authoring origin gap on Migration-mapping-table completeness — multi-surface review pipeline catching what Architect + Builder pre-flight + step-9 self-review + Codex pre-commit all missed). Salience MEDIUM characterization holds; ADR-005 IS the canonicalizing document, and (k.1) instances at multiple surfaces ratify multi-surface review pipeline framing per PMN-008 §3.2.
+
+(Step-15+ post-merge ledger items populated post-merge.)
 
 ## §11. Session log archive
 
