@@ -5,12 +5,12 @@ pr: PR-33
 branch: feat/task-0026-agents-claude-v3-migration-branch-convention-adr
 linked_predecessor: TASK-0025 (PR-31 squash ff36feb substantive: PMN-010 reference-verification sub-shape enumeration + Architect-spec-authoring-origin meta-pattern + README v2.21→v2.22; PR-32 squash 374ee6a chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-33 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-33 (squash SHA fbe025b)
 framework_version_dogfooded: AMAS v2.22
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0026-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-06
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0026
