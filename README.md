@@ -45,9 +45,9 @@ The v3 framework package is organized into seven layers. Each stub or template d
 
 | Path | Description | Filled by |
 |---|---|---|
-| `prompts/greenfield.md` | Project kickoff (project-type-aware) | PR-14 (TASK-0014) |
-| `prompts/retrofit.md` | Existing-project adoption | PR-14 (TASK-0014) |
-| `prompts/upgrade.md` | Inter-version upgrade | PR-14 (TASK-0014) |
+| `prompts/greenfield.md` | Project kickoff (project-type-aware) | Batch P3 (ADR-006); pending content-fill cycle |
+| `prompts/retrofit.md` | Existing-project adoption | Batch P3 (ADR-006); pending content-fill cycle |
+| `prompts/upgrade.md` | Inter-version upgrade | Batch P3 (ADR-006); pending content-fill cycle |
 | `prompts/deep-research-design-brief.md` | Original Design Brief, archived | PR-2 (this PR) |
 | `prompts/research-deliverable.md` | Research Deliverable, archived | PR-2 (this PR) |
 
@@ -55,58 +55,58 @@ The v3 framework package is organized into seven layers. Each stub or template d
 
 | Path | Description | Filled by |
 |---|---|---|
-| `templates/AGENTS.md` | Distributed AGENTS template | PR-13 (TASK-0013) |
-| `templates/CLAUDE.md` | Distributed CLAUDE template | PR-13 (TASK-0013) |
-| `templates/PULL_REQUEST_TEMPLATE.md` | Distributed PR template | PR-13 (TASK-0013) |
-| `templates/ADR-template.md` | ADR template | PR-12 (TASK-0012) |
+| `templates/AGENTS.md` | Distributed AGENTS template | Batch P2 (ADR-006); pending content-fill cycle |
+| `templates/CLAUDE.md` | Distributed CLAUDE template | Batch P2 (ADR-006); pending content-fill cycle |
+| `templates/PULL_REQUEST_TEMPLATE.md` | Distributed PR template | Batch P2 (ADR-006); pending content-fill cycle |
+| `templates/ADR-template.md` | ADR template | Batch P1 (ADR-006); pending content-fill cycle |
 | `templates/handoff-template.md` | Universal handoff schema with Direction field | PR-35 (TASK-0027) |
 | `templates/review-template.md` | §17.7 review template | PR-35 (TASK-0027) |
-| `templates/post-merge-note-template.md` | PMN template | PR-12 (TASK-0012) |
-| `templates/role-scorecard-template.md` | Role scorecard template | PR-12 (TASK-0012) |
-| `templates/feature-brief-template.md` | Feature Brief template | PR-12 (TASK-0012) |
-| `templates/project-brief-template.md` | Project Brief template (incl. doc-MCP mechanism field) | PR-12 (TASK-0012) |
-| `templates/tool-inventory-template.md` | Tool Inventory with expanded MCP fields | PR-12 (TASK-0012) |
-| `templates/surfaces-manifest-template.yml` | `.amas/surfaces.yml` schema | PR-12 (TASK-0012) |
-| `templates/ISSUE_TEMPLATE/project-initiation.md` | Issue 0 template | PR-13 (TASK-0013) |
-| `templates/ISSUE_TEMPLATE/feature.md` | Feature Issue template | PR-13 (TASK-0013) |
-| `templates/ISSUE_TEMPLATE/chore.md` | Chore Issue template | PR-13 (TASK-0013) |
-| `templates/ISSUE_TEMPLATE/retrospective.md` | PMN companion Issue template | PR-13 (TASK-0013) |
+| `templates/post-merge-note-template.md` | PMN template | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/role-scorecard-template.md` | Role scorecard template | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/feature-brief-template.md` | Feature Brief template | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/project-brief-template.md` | Project Brief template (incl. doc-MCP mechanism field) | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/tool-inventory-template.md` | Tool Inventory with expanded MCP fields | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/surfaces-manifest-template.yml` | `.amas/surfaces.yml` schema | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/ISSUE_TEMPLATE/project-initiation.md` | Issue 0 template | Batch P2 (ADR-006); pending content-fill cycle |
+| `templates/ISSUE_TEMPLATE/feature.md` | Feature Issue template | Batch P2 (ADR-006); pending content-fill cycle |
+| `templates/ISSUE_TEMPLATE/chore.md` | Chore Issue template | Batch P2 (ADR-006); pending content-fill cycle |
+| `templates/ISSUE_TEMPLATE/retrospective.md` | PMN companion Issue template | Batch P2 (ADR-006); pending content-fill cycle |
 
 ### Actions (9 workflows)
 
 | Path | Description | Filled by |
 |---|---|---|
-| `actions/branch-name-check.yml` | Enforce `github-reference.md` §2.2 branch regex per ADR-005 | PR-15 (TASK-0015) |
-| `actions/pr-template-check.yml` | Enforce §17.6 PR template sections | PR-15 (TASK-0015) |
-| `actions/linked-records-check.yml` | Verify TASK/ADR/FEAT references resolve | PR-15 (TASK-0015) |
-| `actions/ai-session-log-check.yml` | Verify AI Session Log section present | PR-15 (TASK-0015) |
-| `actions/review-freshness-check.yml` | Detect stale review approvals | PR-15 (TASK-0015) |
-| `actions/surface-version-sync-check.yml` | Verify `.amas/surfaces.yml` matches surface frontmatter | PR-15 (TASK-0015) |
-| `actions/artifact-path-check.yml` | Enforce ADR/handoff/PMN/review/Feature filename patterns | PR-15 (TASK-0015) |
-| `actions/claimed-action-verification.yml` | Phantom-action verification (advisory; expanded scope) | PR-15 (TASK-0015) |
-| `actions/mcp-config-validation.yml` | Validate `.mcp.json` against transport-security defaults | PR-15 (TASK-0015) |
+| `actions/branch-name-check.yml` | Enforce `github-reference.md` §2.2 branch regex per ADR-005 | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/pr-template-check.yml` | Enforce §17.6 PR template sections | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/linked-records-check.yml` | Verify TASK/ADR/FEAT references resolve | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/ai-session-log-check.yml` | Verify AI Session Log section present | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/review-freshness-check.yml` | Detect stale review approvals | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/surface-version-sync-check.yml` | Verify `.amas/surfaces.yml` matches surface frontmatter | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/artifact-path-check.yml` | Enforce ADR/handoff/PMN/review/Feature filename patterns | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/claimed-action-verification.yml` | Phantom-action verification (advisory; expanded scope) | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/mcp-config-validation.yml` | Validate `.mcp.json` against transport-security defaults | Batch P4 (ADR-006); pending content-fill cycle |
 
 ### Appendices — flat (7 files)
 
 | Path | Description | Filled by |
 |---|---|---|
-| `appendices/mcp-integration.md` | Tool Inventory schema, OAuth 2.1, STDIO advisory, transport security | PR-16 (TASK-0016) |
-| `appendices/documentation-mcp-options.md` | Context7 + alternatives + selection criteria | PR-16 (TASK-0016) |
-| `appendices/tool-capability-model.md` | Capability-class taxonomy + industry-taxonomy alignment | PR-16 (TASK-0016) |
-| `appendices/vendor-surface-guidance.md` | Generic per-surface guidance (not adapters) | PR-16 (TASK-0016) |
-| `appendices/github-review-automation.md` | GitHub-specific review patterns | PR-16 (TASK-0016) |
-| `appendices/amas-vs-other-frameworks.md` | Distinctive contributions claim | PR-16 (TASK-0016) |
-| `appendices/regulated-tier-extension.md` | Additive layer for regulated projects | PR-16 (TASK-0016) |
+| `appendices/mcp-integration.md` | Tool Inventory schema, OAuth 2.1, STDIO advisory, transport security | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/documentation-mcp-options.md` | Context7 + alternatives + selection criteria | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/tool-capability-model.md` | Capability-class taxonomy + industry-taxonomy alignment | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/vendor-surface-guidance.md` | Generic per-surface guidance (not adapters) | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/github-review-automation.md` | GitHub-specific review patterns | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/amas-vs-other-frameworks.md` | Distinctive contributions claim | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/regulated-tier-extension.md` | Additive layer for regulated projects | Batch P5 (ADR-006); pending content-fill cycle |
 
 ### Appendices — project types (5 files)
 
 | Path | Description | Filled by |
 |---|---|---|
-| `appendices/project-types/api-app.md` | API/app project type | PR-17 (TASK-0017) |
-| `appendices/project-types/research-methodology.md` | Research methodology project type | PR-17 (TASK-0017) |
-| `appendices/project-types/code-reports-data-analysis.md` | Code/reports/data analysis project type | PR-17 (TASK-0017) |
-| `appendices/project-types/documents-only.md` | Documents-only project type | PR-17 (TASK-0017) |
-| `appendices/project-types/mixed.md` | Mixed project type | PR-17 (TASK-0017) |
+| `appendices/project-types/api-app.md` | API/app project type | Batch P6 (ADR-006); pending content-fill cycle |
+| `appendices/project-types/research-methodology.md` | Research methodology project type | Batch P6 (ADR-006); pending content-fill cycle |
+| `appendices/project-types/code-reports-data-analysis.md` | Code/reports/data analysis project type | Batch P6 (ADR-006); pending content-fill cycle |
+| `appendices/project-types/documents-only.md` | Documents-only project type | Batch P6 (ADR-006); pending content-fill cycle |
+| `appendices/project-types/mixed.md` | Mixed project type | Batch P6 (ADR-006); pending content-fill cycle |
 
 ### Appendices — receiving-surface adapters (7 files)
 
@@ -114,13 +114,13 @@ Each adapter pack carries an extended frontmatter with `last_validated_on`, `ven
 
 | Path | Description | Filled by |
 |---|---|---|
-| `appendices/receiving-surface-adapters/claude-code.md` | Claude Code adapter pack | PR-18 (TASK-0018) |
-| `appendices/receiving-surface-adapters/codex.md` | Codex (cloud) adapter pack — phantom-action surface | PR-18 (TASK-0018) |
-| `appendices/receiving-surface-adapters/chatgpt.md` | ChatGPT adapter pack | PR-18 (TASK-0018) |
-| `appendices/receiving-surface-adapters/cursor.md` | Cursor adapter pack — phantom-action surface | PR-18 (TASK-0018) |
-| `appendices/receiving-surface-adapters/gemini.md` | Gemini adapter pack | PR-18 (TASK-0018) |
-| `appendices/receiving-surface-adapters/copilot.md` | GitHub Copilot adapter pack | PR-18 (TASK-0018) |
-| `appendices/receiving-surface-adapters/human-maintainer.md` | Human Maintainer adapter pack | PR-18 (TASK-0018) |
+| `appendices/receiving-surface-adapters/claude-code.md` | Claude Code adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/codex.md` | Codex (cloud) adapter pack — phantom-action surface | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/chatgpt.md` | ChatGPT adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/cursor.md` | Cursor adapter pack — phantom-action surface | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/gemini.md` | Gemini adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/copilot.md` | GitHub Copilot adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/human-maintainer.md` | Human Maintainer adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
 
 ## License
 

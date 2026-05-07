@@ -309,3 +309,46 @@ Settling-period: ~4 minutes per pass (pass-1, pass-2, pass-3 all ~4 min from inv
 **Cycle-close ledger amendments** queued (per Architect step-13-pass-3 §4):
 - **Item 9 amendment** (4-instance → 5-instance): "(h.2) intra-cycle recurrence count = 5 with sub-cluster decomposition: Builder-claims-to-verify (3 instances: R.3 + R.5 + R.8) + template-byte-exact-regex (2 instances: R.1.1 + R.6 recursive chain). Per-pass rate 2→1→1→1 (decreasing); not genuinely-asymptotic per `core.md` §8.1.1.3. Lightweight canonical absorption candidate at TASK-0028+ for Builder-claims-to-verify sub-cluster sub-rule."
 - **Item 12 NEW (Builder-claims-to-verify authoring discipline lightweight canonical absorption candidate)**: 1-2 line addition to PMN-007 §2.4 (j)-sweep discipline OR `core.md` §23.6.3 sub-shape A enumeration codifying: "Builder-side verification-claim authoring sub-rule: When authoring review-context Claims-to-verify with bash/PowerShell verification commands, run the command at authoring time against the staged-tree state and incorporate actual output verbatim into claim prose. Anticipated-prose claims (authored without running the command) systematically produce (h.2) operational-correctness drift; PMN-009 (h.2) sub-shape canonical mechanism applies recursively to claim-authoring surface itself." Carry-forward to TASK-0028+ adjudication; could ride along with Item 10 template-content authoring sub-rule + Item 11 (j)-sweep enumeration completeness sub-rule as bundled lightweight canonical amendment cycle.
+
+### Codex post-PR pass 4 (UTC 2026-05-07T13:04:41Z)
+
+Three-endpoint poll evidence per `core.md` §8.1.1.1 (cumulative across passes):
+- **Endpoint A**: 4 formal reviews — pass-1 @ T00:57:20Z (`5cb5ba8`) + pass-2 @ T01:52:59Z (`602a0de`) + pass-3 @ T11:07:28Z (`6d6f3b76c2`) + **pass-4 @ T13:04:41Z (`76c650d`)**; all `COMMENTED` state with generic Codex headers.
+- **Endpoint B**: 3 owner `@codex review` invocations recorded (4th may be in flight).
+- **Endpoint C**: 6 cumulative line-level review-comments — pass-1 R.5 (absorbed) + pass-2 R.6 + R.7 (absorbed) + pass-3 R.8 (absorbed) + 2 NEW pass-4 findings (1 P2 + 1 P3). Substantive landing endpoint C confirmed across all 4 passes.
+
+**Verdict**: Major findings × 1 (P2) + Minor findings × 1 (P3).
+
+**Findings** (verbatim per `core.md` §8.1.1.2):
+
+> **<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Update stale package-plan rows with the pivot**
+>
+> After this new roadmap makes ADR-006 the governing plan, the Package layout table still advertises the superseded ADR-003 PR slots for unfilled work (for example prompts at PR-14, actions at PR-15, appendices at PR-16/17/18). In the context where an adopter or future Builder uses README as the package-status index, this contradicts the batch plan introduced here and preserves the exact stale-forecast defect ADR-006 says it is correcting; either point those rows at ADR-006/batches or otherwise mark them as superseded until filled.
+>
+> Useful? React with 👍 / 👎.
+
+> **<sub><sub>![P3 Badge](https://img.shields.io/badge/P3-lightgrey?style=flat)</sub></sub>  Keep ADR-004 out of the nine-action count**
+>
+> In this handoff metadata, ADR-004 is still described as `counted in Batch P4 as 1-of-9 already shipped`, but ADR-006 now defines `linked-pr-fix-up.yml` as shipped separately and additive to the nine canonical action stubs. When someone resumes TASK-0027 or plans Batch P4 from the handoff rather than the ADR, this understates the remaining action work by one and reintroduces the same count drift fixed elsewhere in ADR-006.
+>
+> Useful? React with 👍 / 👎.
+
+**Adjudication** (per ADR-001 D11 + `core.md` §8.1.1.3 cost-class refinement; ratified at owner-direction 2026-05-07):
+
+- **Finding 1 (P2)** at README.md:30 area (Package layout): substantive scope question — ADR-006 D2 falsified the ADR-003 forecast for Batch P3-P7 PR slots (PR-14 through PR-18) but README rows still advertised them. Owner ratified **Option (10.ii) supersession marking** on all stale-forecast rows (~38 sweep-2 estimate; 45 empirical post-PR-12-Batch-P1-remaining inclusion). Class: substantive content correctness — distributed-update discipline coverage of unfilled rows post-partial-supersession event. NEW class this cycle. Owner reasoning: shipping ADR-006 alongside README rows that advertise the falsified forecast is the same defect class ADR-006 was authored to prevent.
+- **Finding 2 (P3)** at handoff:23 (Linked ADR(s) Metadata): R.2-family 4th site (ADR-004 framing additive vs subtractive). Class: substantive content correctness; pre-(j)-sweep enumeration completeness candidate observation strengthening per Item 11 NEW. Owner ratified path-(a) revise.
+
+**Defect-class classification**: Pass-4 findings are NOT (h.2) verification-command operational correctness. (h.2) cumulative count remains at 5 from pass-3 (no new (h.2) at pass-4). Per-pass (h.2) rate trajectory: 2 → 1 → 1 → 1 → **0**. Pass-4 0-(h.2) count empirically confirms Architect step-13-pass-3 §2 cost-class analysis (decreasing per-pass rate; not genuinely-asymptotic).
+
+**Resolution applied** (path-(a)):
+
+- **Edit R.9** (Pass-4 Finding 2 P3, handoff:23 Linked ADR(s) Metadata): replaced `ADR-004 (linked-pr-fix-up Action; counted in Batch P4 as 1-of-9 already shipped)` with `ADR-004 (linked-pr-fix-up.yml shipped via ADR-004 operational insertion ahead of canonical Actions batch; additive to the 9-Action scaffold, not subtractive; see ADR-006 Decision 2 Batch P4 row for canonical framing)`. R.2-family (j)-sweep continuation closes 4th site (R.2.1 + R.2.2 ADR-006 §Context + Batch P4 row at Codex pre-commit pass-1; R.7 ADR-006:95 §Cross-references at Codex post-PR pass-2; R.9 handoff:23 at Codex post-PR pass-4). Verifiable at next-iteration: `grep -nE "1-of-9 already shipped" docs/handoffs/TASK-0027-product-delivery-pivot.md` returns 0 lines.
+- **Edit R.10** (Pass-4 Finding 1 P2, README Package layout supersession marking sweep): applied Option (10.ii) supersession marking on all stale-forecast rows. **Empirical count: 45 rows** (Builder pre-edit sweep 2 estimated 38 with regex `PR-1[3-8]`; the 7 Batch P1 remaining rows at PR-12 were missed by the regex; total empirical = 38 + 7 = 45). Per-batch breakdown: Batch P1 (7 rows) + Batch P2 (7 rows) + Batch P3 (3 rows) + Batch P4 (9 rows) + Batch P5 (7 rows) + Batch P6 (5 rows) + Batch P7 (7 rows) = 45. Cell form replacement: `PR-N (TASK-NNNN)` → `Batch P[X] (ADR-006); pending content-fill cycle`. Disambiguation handled at PR-17 (TASK-0017): line 41 `github-reference.md` row preserved as historical fill record (NOT stale forecast); only the 5 project-type appendices rows at lines 105-109 updated. Verifiable at next-iteration: `grep -cF "(ADR-006); pending content-fill cycle" README.md` returns 45; `grep -nF "PR-17 (TASK-0017)" README.md` returns exactly 1 line at line 41 (github-reference.md historical fill preserved); `grep -cE "PR-1[2-8] \(TASK-001[2-8]\)" README.md` returns 1 (only the line-41 historical fill remaining).
+
+**Pass-4 self-review iteration-1** per `core.md` §23.6.2 + bounded-continuation per §8.1.1.3: focused on R.9 + R.10 edit sites + Codex pass-4 finding scope; no new defects surfaced; convergence at iteration 1; pure-token-swap class × 1 (R.9) + bulk-substitution class × 1 (R.10 supersession marking sweep with disambiguation); no same-class recurrence.
+
+**Cycle-close ledger amendments** queued (per owner 2026-05-07 ratification + Architect step-13-pass-3 prior amendments):
+- **Item 11 amendment**: pre-(j)-sweep enumeration completeness candidate observation strengthened to **4-instance R.2-family count** (R.2.1 + R.2.2 caught at pre-commit pass-1; R.7 caught at post-PR pass-2; R.9 caught at post-PR pass-4) confirming the multi-document distinct-section enumeration discipline gap empirically.
+- **Item 14 NEW (Distributed-update discipline coverage of unfilled rows post-partial-supersession event)**: ADR-003 §Consequences distributed-update discipline ("filled at content-fill time") interacted with ADR-006 partial-supersession event to leave ~45 README rows advertising the falsified forecast post-amendment; Codex pass-4 P2 surfaced this as substantive scope question; owner ratified Option (10.ii) supersession marking sweep within-cycle. Pattern: when a partial-supersession ADR amends a forecast that was previously documented in distributed surfaces, the distributed-update discipline must be applied retroactively to the rows whose forecasts the partial-supersession falsified — NOT just at "content-fill time" of each individual row. Lightweight canonical absorption candidate at TASK-0028+: 1-2 line addition to ADR-006 §Consequences distributed-update discipline OR PMN-007 §2.4 enumeration codifying the retroactive-supersession-marking sub-rule. Single-cycle observation; carry-forward.
+
+**Bounded-continuation budget post-R.9+R.10** per owner 2026-05-07 direction §3: **no pass-5**. Pass-4 zero-(h.2) trajectory + ADR-006 D3 ship-product framing + Architect §24.3.1 five-point check at step-17 as next pipeline surface. Anything missed surfaces at next-cycle review (TASK-0028+ Batch P1 continuation) and absorbs incrementally per framework design.
