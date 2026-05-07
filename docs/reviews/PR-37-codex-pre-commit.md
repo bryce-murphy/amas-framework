@@ -15,8 +15,8 @@ status: drafted
 - Reviewer: Codex (GPT-5.5) — desktop, pre-commit, staged working tree per TASK-0025 cycle-close Item 4 lesson (claims align to staged-tree state at pre-commit time)
 - Architect (this PR's): Claude Opus 4.7 (Claude.ai Project)
 - Owner: Bryce Murphy (`@bryce-murphy`)
-- Status: drafted (pre-stage; pre-Codex-pass; transitions to recorded post-merge per linked-pr-fix-up Action substitution per PMN-001 (k))
-- Codex desktop session timestamp (UTC): pending step-11
+- Status: drafted (post-stage / post-Codex-pre-commit-pass-1 / post-Codex-post-PR-pass-1; transitions to recorded post-merge per linked-pr-fix-up Action substitution per PMN-001 (k); refreshed at step-14 R.4 path-(a) per Codex post-PR pass-1 Finding 1)
+- Codex desktop session timestamps (UTC): pre-commit pass-1 absorbed at step-11.1 (R.1/R.2/R.3 path-(a) one-iteration convergence); post-PR pass-1 absorbed at step-14 (R.4/R.5 path-(a) one-iteration convergence; UTC 2026-05-07T18:26:30Z formal-review submitted_at)
 - Framework version: AMAS v2.24 → v2.25 (Class A v-bump at this cycle per `core.md` §18.4 patch tier — lightweight canonical-text refinement criterion). First execution of ADR-006 D3 lightweight-absorption framework. Recursive-self-instantiation salience MEDIUM this cycle: cycle's content provides direct empirical evidence for ADR-006 D3 lightweight-absorption framework adopter-experienced cost-benefit; (k.1) positive self-instantiation candidate at any successful lightweight Item absorption; cycle's edits include amending the very disciplines (§23.6.3 sub-shape A; PMN-007 (j); PMN-007 (i)) being applied to spec authoring + Builder execution.
 - Severity taxonomy: Blocking / Major / Minor (three-level; per repo discipline; standing per PMN-004 §5 (a)).
 - Disciplines applied: PMN-001 (k) (linked-pr-fix-up substitution discipline; canonical regex empirical pre-application via PowerShell match returning `MATCH: PR-37` at pre-flight) + PMN-002 (a) (verbatim-output convention for Codex absorption) + PMN-002 (d) (code-fenced kickoff prompt convention) + PMN-004 §5 (a)-(f) + PMN-007 §3.3 + §9.1 (amended this cycle with cross-cycle empirical strengthening + verify-at-authoring vs anticipated-prose distinction) + PMN-007 HEAD canonical 12-field handoff frontmatter form (applied at TASK-0028 handoff frontmatter) + PMN-008 §3.1 (k.1) positive self-instantiation framework + PMN-008 §4.2 (i.5) convention-inference verification + PMN-009 / `core.md` §23.6.3 (sub-shape A verify-at-authoring batch applied at Architect spec authoring; Items 4+10 amend §23.6.3 sub-shape A discipline this cycle) + PMN-010 §2 sub-shape 1 (forward-ref §-citation correctness applied at all 6 byte-exact prescription targets line-number identification) + `core.md` §8.1.1.3 bounded-continuation rule with cost-class refinement + ADR-006 Decision 3 evidence-bar PMN-after-cycle cadence relaxation (this cycle's first execution as substantive-content cycle in lightweight-absorption form).
@@ -95,7 +95,7 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
     - Class: PMN-005 (e.1) cumulative-diff-stats re-derivation + PMN-007 §9.1 verify-at-authoring discipline absorbed this cycle (landed-exact value re-derived per Codex Major-1 Recommendation rather than anticipated-prose placeholder shape).
 
 12. **M-A7 enumeration arithmetic verification** — count by enumeration, not by claim per spec §3.5: `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 = 14 PRs`. Builder enumeration: 1-PR-9, 2-PR-10, 3-PR-11, 4-PR-13, 5-PR-15, 6-PR-17, 7-PR-19, 8-PR-21, 9-PR-25, 10-PR-27, 11-PR-29, 12-PR-31, 13-PR-33, 14-PR-35. Arithmetic-by-enumeration confirmed = 14. Verifiable at pre-commit:
-    - bash: `grep -oE "PR-[0-9]+" core.md | sort -u | wc -l` (within §18.3 enumeration line span) — count of unique PRs in enumeration matches stated count.
+    - bash: `grep -oE '`PR-9 \+ PR-10[^`]+`' core.md | grep -oE 'PR-[0-9]+' | wc -l` returns `14` (scoped to the backtick-fenced M-A7 enumeration block specifically per Codex post-PR pass-1 Finding 2 R.5 absorption; tighter scope than line-grep because the enumeration line also references "PR-13" once outside the enumeration as the "M-A7 promotion event at PR-13 / v2.16" anchor — line-grep would return 15, contaminated by the prose reference). Empirical: command returns exactly `14` matching M-A7 enumeration arithmetic by enumeration. Builder enumeration verification (count by enumeration: 14 PRs in chain) is the primary check; scoped backtick-extraction grep is secondary.
     - Class: PMN-005 prose-arithmetic decomposition discipline (per `core.md` §23.6.1) + canonical-impact-surface-completeness check (per Items 4+10 amendment this cycle).
 
 ## Reviewer focus
@@ -189,3 +189,46 @@ Recommendation
 
 Request changes before PR open. No Blocking findings. Major 1 and Major 2 should route path-(a) because they affect durable verification/resume artifacts and directly touch the cycle's own verify-at-authoring discipline. Minor 1 can route path-(b) by default, or be fixed opportunistically while editing the review-context for Major 1.
 ```
+
+### Codex post-PR pass 1 (UTC 2026-05-07T18:26:30Z)
+
+Three-endpoint poll evidence per `core.md` §8.1.1.1:
+- **Endpoint A** (`gh api repos/.../pulls/37/reviews`): 1 formal review submitted UTC 2026-05-07T18:26:30Z by `chatgpt-codex-connector[bot]`; state `COMMENTED`; `commit_id: c72a727a77c7b3b52e4f203ae3522e4513a9f81d`; body is generic Codex header (substantive content not at endpoint A).
+- **Endpoint B** (`gh api repos/.../issues/37/comments`): only owner's `@codex review` invocation at UTC 2026-05-07T18:24:01Z. No Codex-side substantive content.
+- **Endpoint C** (`gh api repos/.../pulls/37/comments`): 2 line-level review-comments, both P2 (Major-tier per repo three-level taxonomy) priority badges — substantive landing endpoint C (consistent with PMN-008 §5.8 (h.4) cross-cycle pattern; TASK-0028 = data point 9 in (h.4) distribution; reinforces (h.4) empirical cumulative rate).
+
+Settling-period rule satisfied: formal review submitted +2 minutes 29 seconds from `@codex review` invocation; both endpoints stable.
+
+**Verdict**: Major findings × 2 (both P2 priority badges).
+
+**Findings** (verbatim per `core.md` §8.1.1.2):
+
+> **<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Update the review-context phase metadata**
+>
+> After this file records the Codex pre-commit output and absorbed findings later in the same document, the metadata still says the artifact is `pre-stage; pre-Codex-pass` with a pending step-11 timestamp. In the post-absorption state this becomes a stale resume surface: a future reader or metadata-driven check will conclude the pre-commit review has not happened even though the review output and resolutions are already present.
+>
+> Useful? React with 👍 / 👎.
+
+> **<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Constrain the M-A7 PR-count verification command**
+>
+> The literal command shown here scans all of `core.md`; in this commit it returns 26 unique `PR-*` tokens, not the 14-item M-A7 enumeration, because it is not actually limited to the §18.3 enumeration line. Anyone following this verification step will get a failing result even though the intended enumeration line is correct, so the command needs an explicit line/span filter or should be replaced with the exact enumeration grep already used above.
+>
+> Useful? React with 👍 / 👎.
+
+**Adjudication** (per ADR-001 D11 + `core.md` §8.1.1.3 cost-class refinement):
+
+- **Finding 1 (P2)**: ratified path-(a) revise. Class: stale-state recurrence at review-context Metadata surface. **DIRECT EMPIRICAL INSTANCE of Item 11 PMN-007 §3.3 (j) sub-rule canonicalized this cycle (pre-(j)-sweep enumeration completeness check)** — Codex pre-commit Major 2 corrected stale state at handoff surface; R.2 absorption did NOT sweep all stale-state-prone surfaces (review-context Metadata had same authoring conditions + same susceptibility). Recursive (h.2) at the canonicalizing surface for Item 11. Bidirectional (k.1) self-instantiation: Item 12 positive (k.1) at pre-commit Major 1 + Item 11 recursive (h.2) at post-PR Finding 1 — both within single cycle. (k.1) salience escalates MEDIUM-HIGH → **MAXIMUM** per PMN-008 §3.1 framework (multi-instance recursive bidirectional self-instantiation at canonicalizing cycle).
+- **Finding 2 (P2)**: ratified path-(a) revise. Class: pure-token-swap (verification-command scope correctness; (h.2) sub-shape per PMN-009 canonical sub-shape framework). One-iteration convergence anticipated.
+
+Bounded-continuation rule per `core.md` §8.1.1.3: Codex pre-commit pass-1 (3 findings) + post-PR pass-1 (2 findings) = 5 cumulative findings within TASK-0028; 1 recursive (h.2) at the canonicalizing surface. Within bounded-continuation tolerance for substantive cycles per priors (TASK-0027 had 5+ findings at intra-cycle); not at structural-meta-pattern threshold per spec §5 risk monitoring.
+
+**Resolution applied** (path-(a)):
+
+- **Edit R.4** (Codex post-PR Finding 1): review-context Metadata Status field + Codex desktop session timestamp lines refreshed to reflect post-pre-commit-pass + post-post-PR-pass-1 state. Pre-commit pass-1 absorbed at step-11.1 (R.1/R.2/R.3); post-PR pass-1 absorbed at step-14 (R.4/R.5). Sweep-target enumeration applied retroactively per Item 11 sub-rule: review-context Metadata Status + timestamp + handoff Status + Last-completed-step + Current-state — all stale-state-prone surfaces enumerated and verified post-this-fix-up.
+- **Edit R.5** (Codex post-PR Finding 2, claim-12 verification command): replaced unscoped `grep -oE "PR-[0-9]+" core.md | sort -u | wc -l` (returns 26 — all unique PR-* tokens in entire core.md) with scoped form `grep -oE '`PR-9 \+ PR-10[^`]+`' core.md | grep -oE 'PR-[0-9]+' | wc -l` returns `14` (extracts the backtick-fenced M-A7 enumeration block specifically). Tighter scoping than line-grep was required: line-grep `grep -E "PR-9 \+ PR-10" core.md | grep -oE "PR-[0-9]+" | wc -l` would return 15 (contaminated by the prose reference "M-A7 promotion event at PR-13" appearing on the same line outside the enumeration); backtick-extraction returns exactly 14 = M-A7 enumeration arithmetic by enumeration. Self-review pass-3 (j) propagation residual catch — first-attempt scoped form (line-grep) was empirically tested via Bash tool returning 15, refined to backtick-extraction returning 14 within same Builder iteration before staging final R.5; documents that sweep-target enumeration completeness check (Item 11 sub-rule) plus empirical-verification-at-authoring (Item 12 sub-rule) compose at fix-up authoring surface. Builder enumeration verification preserved as primary check; scoped backtick-extraction grep is secondary.
+
+**Pass-3 self-review iteration-1** per `core.md` §23.6.2 + bounded-continuation per §8.1.1.3: focused on R.4 + R.5 edit sites + recursive (h.2) cluster scope; sweep-target enumeration applied to all stale-state-prone surfaces this iteration; no new defects surfaced; convergence at iteration 1; pure-token-swap class for both fixes; no further same-class recurrence anticipated.
+
+**Cycle-close ledger entry queued** (lightweight per ADR-006 D3 evidence-bar discipline):
+- **Item C-1 — Recursive (h.2) at the canonicalizing surface for Item 11**: TASK-0028 absorbed PMN-007 §3.3 (j) sub-cluster cross-cycle empirical strengthening + sub-rule refinement (Item 11) — pre-(j)-sweep enumeration completeness check before applying (j)-sweep. R.2 absorption (handoff state refresh) did NOT apply this very sub-rule at the cycle authoring it; review-context Metadata stale-state surfaced as propagation residual at downstream gate (Codex post-PR pass-1). Direct empirical refutation of Builder application at the cycle authoring the sub-rule, AND direct empirical confirmation of multi-surface mitigation pipeline catching the drift at downstream gate (per PMN-008 §3.1 (k.1) framework + PMN-006 §3 multi-surface mitigation). Single-cycle observation; not PMN-eligible per ADR-006 D3 evidence-bar discipline (single-cycle (k.1) recursive instance at canonicalization cycle is expected pattern shape per PMN-008 §3.1; cumulative monitoring carry-forward).
+- **Item C-2 — (k.1) salience MAXIMUM escalation**: bidirectional self-instantiation at single cycle — Item 12 positive (k.1) at pre-commit Major 1 + Item 11 recursive (h.2) at post-PR Finding 1. Per PMN-008 §3.1 framework: multi-instance recursive bidirectional self-instantiation at canonicalizing cycle is MAXIMUM-tier signature.
