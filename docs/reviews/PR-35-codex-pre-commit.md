@@ -48,7 +48,7 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
    - bash: `grep -nE "PMN-007 HEAD canonical" templates/handoff-template.md` returns 1 line at §Frontmatter heading.
    - bash: `grep -cE "^- \*\*(task_id|title|pr|branch|linked_predecessor|linked_successor|linked_pr|framework_version_dogfooded|production_target|spec_source|date_authored|status)\*\*" templates/handoff-template.md` returns `12` (12-field semantics enumeration).
    - bash: `grep -nE "Frontmatter conformance discipline.*MC-C" templates/handoff-template.md` returns 1 line (MC-C absorption subsection).
-   - bash: `grep -nE "^\\^linked_pr: PR-\\\\\\(d\\+\\\\\\) \\\\\\(Builder fills" templates/handoff-template.md` — anchor regex documentation in canonical-form code block.
+   - bash: `grep -F '^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)' templates/handoff-template.md` returns 3 lines (the canonical regex anchor code-block + positive `PR-1` python verification example + counter-example `PR-XX` python verification, all referencing the same canonical regex literal; fixed-string match avoids ERE escaping pitfalls per Codex post-PR pass-1 P2 finding R.5 absorption).
 
 6. **review-template.md substantive content fill — frontmatter status + 1-field canonical + two variants**. Verifiable at pre-commit:
    - bash: `head -5 templates/review-template.md` shows `status: filled` + `filled_by: PR-35 (TASK-0027)`.
@@ -195,3 +195,37 @@ All findings pure-token-swap class per `core.md` §8.1.1.3; no genuinely-asympto
 - **Edit R.4** (Finding 4, review-context Claim 20 first bullet): replaced "within ~757-962 ins anticipation per Architect §6 update + Y within ~12-17 del anticipation" prose with "where N is the empirical landed insertion count at the final pre-commit staged-tree state (post-Codex pass-1 absorption + path-(a) resolutions); empirical landed N tracked below the original Architect §6 anticipation low bound (~757); per spec §5 risk paragraph, divergence within MC-A ±20% tolerance is non-blocking; final landed N + tolerance percentage surfaced at Builder step-10 stop-and-show §2 cumulative-diff-stats table." Removes the false within-range claim; references the empirically-surfaced final count at the durable step-10 stop-and-show without embedding a recursion-susceptible literal. Verifiable at next-iteration: `grep -nE "below the original Architect §6 anticipation low bound" docs/reviews/PR-35-codex-pre-commit.md` returns 1 line.
 
 **Final cumulative-diff-stats post-Codex-pass-1 + path-(a) resolutions**: surfaced at Builder step-10-resolution stop-and-show §2 (re-derived per (e.1) staged-tree convention against `e71a4bd` base). Per-file numstat sum-stable.
+
+### Codex post-PR pass 1 (UTC 2026-05-07T00:57:20Z)
+
+Three-endpoint poll evidence per `core.md` §8.1.1.1:
+- **Endpoint A** (`gh pr view 35 --json reviews`): 1 formal review submitted UTC 2026-05-07T00:57:20Z by `chatgpt-codex-connector`; state `COMMENTED`; body is generic Codex header (substantive content not at endpoint A).
+- **Endpoint B** (`gh api repos/.../issues/35/comments`): only owner's `@codex review` invocation at UTC 2026-05-07T00:53:12Z. No Codex-side substantive content.
+- **Endpoint C** (`gh api repos/.../pulls/35/comments`): 1 line-level review-comment, P2 (Major-tier) priority badge — substantive landing (consistent with PMN-008 §5.8 (h.4) cross-cycle pattern; TASK-0027 = data point 8 in (h.4) distribution).
+
+Settling-period rule satisfied: formal review submitted +4 minutes from `@codex review` invocation; both endpoints stable.
+
+**Verdict**: Major findings × 1 (P2 priority badge).
+
+**Findings** (verbatim per `core.md` §8.1.1.2):
+
+> **<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Fix the invalid grep verification command**
+>
+> When a reviewer runs this verification claim exactly, GNU `grep -E` errors with `Unmatched ( or \(` rather than proving that the `linked_pr` regex anchor is documented, so the review-context now contains a false Builder-verification claim. In the pre-commit review workflow this line is intended to be copy-runnable evidence; use a literal match (`grep -F`) or a corrected ERE so claim 5 can actually be verified.
+>
+> Useful? React with 👍 / 👎.
+
+**Adjudication** (per ADR-001 D11 + `core.md` §8.1.1.3 cost-class refinement; ratified at Architect step-13 §3):
+
+- **Finding (P2)**: ratified path-(a) revise. Class: pure-token-swap (verification-command operational correctness; (h.2) sub-shape per PMN-009 canonical sub-shape framework). One-iteration convergence anticipated.
+
+Bounded-continuation rule per `core.md` §8.1.1.3: one resolution iteration; if hypothetical Codex pass-2 surfaces 4th-instance (h.2) recurrence within TASK-0027, escalate per §8.1.1.3 cost-class refinement (genuinely-asymptotic distinction). Three-instance intra-cycle is at the bounded-continuation tolerance edge.
+
+**Resolution applied** (path-(a)):
+
+- **Edit R.5** (Codex post-PR Finding, review-context Claim 5 fourth bullet line 51): replaced invalid ERE-escaped command `grep -nE "^\\^linked_pr: PR-\\\\\\(d\\+\\\\\\) \\\\\\(Builder fills" templates/handoff-template.md` (which errored `Unmatched ( or \(` under GNU `grep -E`) with `grep -F '^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)' templates/handoff-template.md` (Builder Option (i) fixed-string match form ratified at Architect §3). Empirical: returns 3 lines covering (a) canonical regex anchor code-block + (b) positive `PR-1` python verification example + (c) counter-example `PR-XX` python verification — all three lines reference the same canonical regex literal. Verifiable at next-iteration: command runs without ERE-parse errors and returns exactly 3 lines. Verified via Bash inline at Edit application.
+
+**Pass-2 self-review iteration-1** per `core.md` §23.6.2 + bounded-continuation per §8.1.1.3: focused on R.5 edit site + Codex finding scope; no new defects surfaced; convergence at iteration 1; pure-token-swap class; no same-class recurrence.
+
+**Cycle-close ledger entry queued** (lightweight per ADR-006 D3 + Architect §4 ratification):
+- **Item 9 — (h.2) intra-cycle recurrence empirical observation**: 3-instance (h.2) cluster within TASK-0027 (Codex pre-commit R.1.1+R.1.2 + Codex pre-commit R.3 + Codex post-PR R.5). (h.2) is already canonical at PMN-009 sub-shape framework; intra-cycle recurrence is empirical confirmation of existing canonical, not new defect class. Builder-side authoring discipline observation: verification-claim authoring against template-content-with-embedded-regex-patterns surfaces (h.2) at higher intra-cycle rate when templates with regex content are the authoring substrate. Single-cycle observation; carry-forward for monitoring at future template-content cycles (Batch P1 continuing TASK-0028+). Empirically strengthens (k.1) MEDIUM-HIGH framing (multi-surface review pipeline catches (h.2) drift at distinct surfaces, individually one-iteration-resolved).

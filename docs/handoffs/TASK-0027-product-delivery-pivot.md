@@ -113,9 +113,13 @@ Per spec §2: step-2 stop-and-show (Builder pre-flight findings) + step-10 pre-c
 - **Step 11.2 §23.6.2 self-review pass-2**: complete; convergence at iteration 1; no same-class recurrence.
 - **Step 11.3 step-10-resolution stop-and-show**: surfaced; Architect ratified resolution gate authorizing commit + push + PR-open per Architect §7 direction.
 - **Step 12 commit**: in progress (composite spec §4.7 commit message + R.1-R.4 absorption appendix per Architect §7 direction).
-- **Step 13 push branch + open PR-35**: pending step-12 completion.
-- **Steps 14-16 Codex post-PR review absorption**: pending PR-open + `@codex review` invocation per ADR-001 D11 owner-invokes convention; three-endpoint poll per `core.md` §8.1.1.1.
-- **Step 17 Architect §24.3.1 five-point post-handback check**: pending.
+- **Step 13 push branch + open PR-35**: complete; PR-35 opened at https://github.com/bryce-murphy/amas-framework/pull/35 with full template populated.
+- **Step 14 Codex post-PR pass-1 (UTC 2026-05-07T00:57:20Z)**: complete; verdict Major findings × 1 (P2); substantive landing endpoint C; consistent with PMN-008 §5.8 (h.4) cross-cycle pattern.
+- **Step 14.1 Architect step-13 ratification + Edit R.5 application**: complete per Architect step-13 §3 + §4 ratification; pure-token-swap class one-iteration convergence per `core.md` §8.1.1.3.
+- **Step 14.2 §23.6.2 self-review pass-3**: complete; convergence at iteration 1; no same-class recurrence.
+- **Step 14.3 fix-up commit + push**: in progress.
+- **Steps 15-16 Codex post-PR pass-2 (hypothetical)**: settling-period rule per `core.md` §8.1.1.1 — wait 5-10 min post-fix-up-push for any pass-2 trigger.
+- **Step 17 Architect §24.3.1 five-point post-handback check**: pending post-step-14 absorption convergence.
 
 ## §4. Substantive-content evidence per deliverable
 
@@ -142,7 +146,7 @@ Pending — populated post-step-12 + step-13.
 
 ## §8. Post-PR Codex review state (populated step-13+)
 
-Pending — populated post-`@codex review` invocation per ADR-001 D11 owner-invokes convention; three-endpoint poll evidence per `core.md` §8.1.1.1.
+Codex post-PR pass-1 complete (UTC 2026-05-07T00:57:20Z): verdict Major findings × 1 (P2 priority badge); substantive landing endpoint C per `core.md` §8.1.1.1 (line-level review-comment on `docs/reviews/PR-35-codex-pre-commit.md:51`); consistent with PMN-008 §5.8 (h.4) cross-cycle empirical pattern (TASK-0027 = data point 8). Three-endpoint poll evidence + verbatim findings recorded in [docs/reviews/PR-35-codex-pre-commit.md](docs/reviews/PR-35-codex-pre-commit.md) Codex post-PR pass-1 absorption section per `core.md` §8.1.1.2. Finding adjudicated path-(a) revise (pure-token-swap class; (h.2) verification-command operational correctness sub-shape per PMN-009 canonical sub-shape framework); Architect step-13 §3 ratified Edit R.5 prescription (Builder Option (i) `grep -F` fixed-string match form); Resolution applied: Edit R.5 (review-context Claim 5 fourth bullet `grep -nE` invalid ERE escaping → `grep -F` fixed-string match; verified empirically returns 3 lines). §23.6.2 self-review pass-2 iteration-1 converged; no same-class recurrence. (h.2) intra-cycle recurrence count = 3 (within bounded-continuation tolerance edge; 4th-instance break-out condition per `core.md` §8.1.1.3). Step-13 absorption fix-up commit + push pending; step-17 hand-back to Architect anticipated post-fix-up if pass-2 stable empty (settling-period rule per §8.1.1.1).
 
 ## §9. Sign-off (step-17 §24.3.1 five-point check; Architect populates)
 
@@ -173,7 +177,9 @@ In-cycle observations + carry-forward monitoring + new PMN candidates. Per ADR-0
 
 - **Item 7 — ADR-003 §Status descriptive-form drift (Class C, non-blocking)**: spec §1.1 Honesty record described §Status as single combined `/`-separated form; empirical state is two paragraphs. Prescription anchor in spec §4.5 actionable verbatim against empirical line 7. Class: PMN-010 sub-shape 4 (spec-context-vs-body-citation conflation) sub-class — descriptive form vs prescription form. Single-cycle observation; carry-forward monitoring per ADR-006 D3.
 
-- **Item 8 — Cumulative-diff-stats anticipation update**: spec §1 anticipated ~755-960 ins / ~10-15 del across 8 files. Architect §6 path-(a) expansion adjusted to ~757-962 ins / ~12-17 del across 10 files (AGENTS.md + CLAUDE.md added). Empirical landed surfaces at step-10 stop-and-show per (e.1) re-derivation.
+- **Item 8 — Cumulative-diff-stats anticipation update**: spec §1 anticipated ~755-960 ins / ~10-15 del across 8 files. Architect §6 path-(a) expansion adjusted to ~757-962 ins / ~12-17 del across 10 files (AGENTS.md + CLAUDE.md added). Empirical landed pre-Codex 730 ins (-3.6% under low bound; within MC-A tolerance); post-Codex-pre-commit-absorption 786 ins (+3.8% above low bound; within range non-blocking); post-Codex-post-PR-Edit-R.5 fix-up: surfaced at step-13-absorption stop-and-show.
+
+- **Item 9 — (h.2) intra-cycle recurrence empirical observation** (added at Codex post-PR pass-1 absorption per Architect step-13 §4 ratification): 3-instance (h.2) verification-command operational correctness cluster within TASK-0027 cycle alone — Codex pre-commit Finding 1 (R.1.1 + R.1.2 handoff-template `linked_pr` exemplar) + Codex pre-commit Finding 3 (R.3 review-context Claim 10 PR-12 count) + Codex post-PR pass-1 (R.5 review-context Claim 5 fourth bullet ERE escaping). (h.2) is already canonical at PMN-009 sub-shape framework; intra-cycle recurrence is empirical confirmation of existing canonical, not new defect class. Builder-side authoring discipline observation: verification-claim authoring against template-content-with-embedded-regex-patterns surfaces (h.2) at higher intra-cycle rate when templates with regex content are the authoring substrate. Each instance individually under bounded-continuation rule (pure-token-swap one-iteration convergence × 3); no cascade. Three-instance count is at bounded-continuation tolerance edge per `core.md` §8.1.1.3; 4th-instance break-out condition would warrant Architect-side step-back to assess whether template-content authoring discipline needs refinement before Batch P1 continuation. Single-cycle observation; carry-forward for monitoring at future template-content cycles (Batch P1 continuing TASK-0028+). Empirically strengthens (k.1) MEDIUM-HIGH framing — multi-surface review pipeline catches (h.2) drift at distinct surfaces, individually one-iteration-resolved; no PMN-promotion needed for already-canonical sub-shape.
 
 ## §11. Session log archive
 
