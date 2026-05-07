@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
 
-The current canonical AMAS framework version is **v2.23**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.23.
+The current canonical AMAS framework version is **v2.24**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.24.
 
 ## What is AMAS?
 
@@ -27,7 +27,7 @@ AMAS (AI Multi-Agent System) is an operating-system framework for projects that 
 
 ## Roadmap
 
-v3 production is sequenced across thirteen substantive PR slots (PR-7 ADR-003 sweep + PR-8 through PR-19 substantive content, with PR-19 also tagging v3.0.0), and a PMN insertion budget through TASK-0026. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan and [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
+v3 production is sequenced across eight content batches (P1 process templates, P2 GitHub-artifact templates, P3 prompts, P4 Actions, P5 flat appendices, P6 project-type appendices, P7 receiving-surface adapter packs, P8 v3.0.0 release tag) per [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md), which amends [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) Decision 2 PR plan. ADR-003 Decision 1 (v3.0 ship scope = 50 stubs filled) and Decision 3 (TASK reservation + PMN insertion budget pattern) remain in force. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
 ## Package layout
 
@@ -59,8 +59,8 @@ The v3 framework package is organized into seven layers. Each stub or template d
 | `templates/CLAUDE.md` | Distributed CLAUDE template | PR-13 (TASK-0013) |
 | `templates/PULL_REQUEST_TEMPLATE.md` | Distributed PR template | PR-13 (TASK-0013) |
 | `templates/ADR-template.md` | ADR template | PR-12 (TASK-0012) |
-| `templates/handoff-template.md` | Universal handoff schema with Direction field | PR-12 (TASK-0012) |
-| `templates/review-template.md` | §17.7 review template | PR-12 (TASK-0012) |
+| `templates/handoff-template.md` | Universal handoff schema with Direction field | PR-35 (TASK-0027) |
+| `templates/review-template.md` | §17.7 review template | PR-35 (TASK-0027) |
 | `templates/post-merge-note-template.md` | PMN template | PR-12 (TASK-0012) |
 | `templates/role-scorecard-template.md` | Role scorecard template | PR-12 (TASK-0012) |
 | `templates/feature-brief-template.md` | Feature Brief template | PR-12 (TASK-0012) |
