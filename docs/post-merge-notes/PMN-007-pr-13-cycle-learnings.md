@@ -132,6 +132,8 @@ Two empirical instances within this cycle:
 
 PMN-007 records (j) as substantive new observation cluster; canonicalization deferred.
 
+**Cross-cycle empirical strengthening (post-canonicalization, as of TASK-0027 / PR-35)**: 4-instance count within single TASK-0027 cycle (R.2-family pre-(j)-sweep enumeration completeness gap; multi-section + multi-document scope) extends original 2-instance evidence base. Sub-rule refinement: (j)-sweep enumeration completeness check before applying (j)-sweep — sweep-target enumeration must cover all sections within document AND all documents within enumeration scope BEFORE the sweep itself runs. Pre-(j)-sweep enumeration incompleteness reproduces propagation-residual defect class at the sweep's own surface. Lightweight canonical absorption at TASK-0028; PMN-007 §3.3 status remains canonicalization-deferred (sub-rule refinement records observed pattern; full canonical promotion to core.md or new PMN deferred per ADR-006 D3 evidence-bar framework).
+
 ## §4. PMN-001 (k) execution form refinement
 
 This §-section canonicalizes the (e) candidate from PR-11 cycle handoff §4 — PMN-001 (k) execution form refinement with mechanism-vs-discipline distinction. Two-instance evidence reached this cycle.
@@ -266,6 +268,8 @@ Mechanism candidates per PR-13 spec defect log §18 (gitignored per ADR-001 deci
 **Refinement candidate**: extend pre-authoring verification batch to include direct `grep -nE "^#{1,6} §[0-9]" core.md` (bash) or `Select-String -Path core.md -Pattern '^#{1,6} §[0-9]'` (PowerShell, per (b) cmd-portability discipline) for §-header enumeration when authoring spec baseline assertions, rather than inferring baseline from prior-PR review-context's "leaves" framing. This refinement is empirically tested at PMN-007 spec authoring time (this very spec) — applied at TASK-0015 spec authoring per architect-to-architect handoff §C.1 verification result; ground truth for PMN-007 baseline §-counts.
 
 Single-cycle empirical evidence at PR-13 cycle (insufficient-as-standalone) + single-cycle empirical application at TASK-0015 (extended-batch-as-tested). PMN-007 records (i) as substantive new observation cluster with refinement candidate carried forward to PMN-008+ for canonicalization adjudication based on PMN-007 cycle defect count vs PR-13 cycle's 17 Architect-side baseline.
+
+**Additional refinement candidate (post-canonicalization, as of TASK-0027)**: Builder-claims-to-verify authoring sub-rule — verify-at-authoring vs anticipated-prose distinction. When Builder authors review-context Builder-claims-to-verify section + handoff Validation run section, claims should be empirically verified against pre-stage state at authoring time (verify-at-authoring) rather than authored as anticipated-prose form ("the post-staging tree will show..." constructions). Anticipated-prose claims propagate verification debt forward to Codex pre-commit + Architect §24.3.1 surfaces. Empirically grounded at TASK-0027 (h.2) intra-cycle 5-instance recurrence: Builder-claims-to-verify sub-cluster (3 instances) consistently traceable to anticipated-prose authoring shape vs verify-at-authoring shape. Combine with §9.1 base refinement candidate (extended pre-authoring verification batch) — both are pre-authoring data-currency disciplines, distinct surfaces of the same underlying refinement. Lightweight canonical absorption at TASK-0028; full canonical promotion deferred per ADR-006 D3.
 
 ### §9.2. (m) Reviewer-side citation correctness sub-shape B
 

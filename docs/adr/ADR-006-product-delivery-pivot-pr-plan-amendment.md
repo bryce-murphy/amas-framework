@@ -75,6 +75,8 @@ Most cycles become content-production cycles. Meta-discipline cycles continue wh
 
 - **Each batch's PR(s) update README "Package layout" rows** at content-fill time per ADR-003 §Consequences distributed-update discipline (preserved). Each filled stub's `filled_by` frontmatter updated from `per ADR-003` to `PR-N (TASK-NNNN)`.
 
+- **Decision 4 distributed-update discipline applies retroactively to forecasts falsified by partial-supersession.** When this ADR (or any future partial-supersession ADR) amends a previously-documented forecast in distributed surfaces (README "Package layout" rows, "Roadmap" text, stub `filled_by` frontmatter, etc.), the distributed-update sweep MUST be applied retroactively at the partial-supersession event — not deferred to per-row content-fill cycles. Otherwise the distributed surfaces continue advertising the falsified forecast post-amendment, reproducing the exact stale-forecast defect class the partial-supersession was authored to correct. Empirically grounded at TASK-0027 / PR-35 Edit R.10: 45-row supersession-marking sweep `PR-N (TASK-NNNN)` → `Batch P[X] (ADR-006); pending content-fill cycle` across Batches P1-P7 applied within-cycle per owner direction 2026-05-07 §1 ratification.
+
 - **PMN insertion budget reset** for remaining cycles per Decision 3 cadence relaxation. Specific count not committed (anti-fragile to drift). Empirical PMN rate may fall to 5-15% of substantive cycles under cadence relaxation (vs ~31% historical observed rate).
 
 - **Cycle-count forecast not committed.** Each batch ships in 1-N cycles depending on per-template/per-action/per-appendix content scope. Architect-side cycle-count anticipation per cycle remains in scope (per `core.md` §23.6.3 sub-shape A discipline).
