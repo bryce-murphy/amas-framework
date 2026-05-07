@@ -98,7 +98,7 @@ The Builder asserts the following at hand-off to Codex desktop pre-commit review
     - bash: `grep -rln "ADR-006" --include="*.md" .` returns 5 files (ADR-006 itself + ADR-003 §Status + README Roadmap + TASK-0027 handoff + PR-35 review-context).
 
 16. **(j) sweep new PR-35 reference enumeration**. Verifiable at pre-commit:
-    - bash: `grep -rln "PR-35" --include="*.md" .` returns ≥4 files (TASK-0027 handoff frontmatter + body Metadata + PR-35 review-context filename + body Metadata + README Templates table 2 cells + handoff-template.md filled_by + review-template.md filled_by + core.md §18.3 amendment + ADR-006 not present per Decision 4 forward-reference convention).
+    - bash: `grep -rln "PR-35" --include="*.md" .` returns 7 committed-tree files containing `PR-35` references — TASK-0027 handoff (frontmatter `pr` + `linked_pr` + body Metadata) + PR-35 review-context (filename + body Metadata) + README (Templates table 2 cells) + handoff-template.md (`filled_by: PR-35 (TASK-0027)`) + review-template.md (`filled_by: PR-35 (TASK-0027)`) + core.md (§18.3 amendment "at PR-35 / TASK-0027") + ADR-006 (§Consequences distributed-update text "PR-35 (TASK-0027)" × 2 occurrences at line ~84). All 7 sites consistent with Builder step-10 stop-and-show §4 (j)-sweep enumeration (intra-document Claim-16-vs-step-10-table consistency restored at Edit R.8 per Codex post-PR pass-3 P2 finding absorption).
 
 17. **TASK-0027 handoff frontmatter PMN-007 HEAD canonical 12-field form**. Verifiable at pre-commit:
     - bash: `head -14 docs/handoffs/TASK-0027-product-delivery-pivot.md` shows 12-field frontmatter (`task_id` + `title` + `pr` + `branch` + `linked_predecessor` + `linked_successor` + `linked_pr` + `framework_version_dogfooded` + `production_target` + `spec_source` + `date_authored` + `status`).
@@ -272,3 +272,40 @@ Three-endpoint poll evidence per `core.md` §8.1.1.1 (cumulative across passes):
 - **Item 9 amendment**: (h.2) intra-cycle recurrence framing strengthened: "single-cycle observation, 3-instance count" → "4-instance count + recursive (k.1) MAXIMUM at R.1.1 → R.6". (h.2) sub-shape canonical at PMN-009 already; cycle's empirical record strengthens existing canonical, not new sub-shape.
 - **Item 10 NEW (template-content authoring meta-pattern)**: structural tension between byte-exact-canonical-form-as-copy-source vs explanatory-annotation-needs. Resolution pattern: byte-exact regions byte-exact ONLY; discipline at adjacent prose surfaces. Single-cycle observation; multi-cycle confirmation at Batch P1 continuation. Lightweight canonical absorption candidate at TASK-0028+ (`core.md` §23.6.3 sub-shape A 2-3 line enumeration addition codifying: "When prescribing edits for templates that are copy-sources for canonical-regex-bound content, byte-exact regions must remain byte-exact. Explanatory discipline belongs at adjacent prose surfaces, NOT inline within regex-bound regions. The regex's tolerance window (e.g., `[ \t]*$`) governs what may follow the canonical content on the same line.").
 - **Item 11 NEW (R.7 (j)-sweep continuation)**: R.2 defect class (ADR-004 framing additive vs subtractive) had third surface at ADR-006:95 §Cross-references not covered by R.2.1+R.2.2 (j)-sweep at Codex pre-commit. Pre-(j)-sweep enumeration completeness candidate observation; carry-forward.
+
+### Codex post-PR pass 3 (UTC 2026-05-07T11:07:28Z)
+
+Three-endpoint poll evidence per `core.md` §8.1.1.1 (cumulative across passes):
+- **Endpoint A**: 3 formal reviews — pass-1 @ T00:57:20Z (`5cb5ba8`) + pass-2 @ T01:52:59Z (`602a0de`) + pass-3 @ T11:07:28Z (`6d6f3b76c2`); all `COMMENTED` state with generic Codex headers.
+- **Endpoint B**: 3 owner `@codex review` invocations.
+- **Endpoint C**: 4 cumulative line-level review-comments — pass-1 R.5 (absorbed) + pass-2 R.6 + R.7 (absorbed) + 1 NEW pass-3 P2 finding. Substantive landing endpoint C confirmed across all 3 passes; reinforces PMN-008 §5.8 (h.4) cross-cycle pattern at empirical-pattern data point 8 with three intra-cycle confirmations.
+
+Settling-period: ~4 minutes per pass (pass-1, pass-2, pass-3 all ~4 min from invocation to formal review). Stable empirical cadence.
+
+**Verdict**: Major findings × 1 (P2).
+
+**Findings** (verbatim per `core.md` §8.1.1.2):
+
+> **<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Correct the PR-35 sweep claim for ADR-006**
+>
+> When claim 16 is checked, `docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md` is actually in the result set because ADR-006 line 84 mentions `PR-35 (TASK-0027)`, so the parenthetical `ADR-006 not present` is a false Builder-verification claim. In this review-context workflow, readers use these sweep records to prove which surfaces were checked; leaving ADR-006 documented as absent can cause that ADR surface to be skipped in later claim verification.
+>
+> Useful? React with 👍 / 👎.
+
+**Adjudication** (per ADR-001 D11 + `core.md` §8.1.1.3 cost-class refinement; ratified at Architect step-13-pass-3 §1):
+
+- **Finding (P2)** at docs/reviews/PR-35-codex-pre-commit.md:101: ratified path-(a) revise. Class: pure-token-swap (h.2) verification-command operational correctness — 5th-instance (h.2) at different location (NOT recursive R.1.1 → R.6 cycle). One-iteration convergence anticipated.
+
+**Re-assessment per Architect step-13-pass-2 §7 trigger** (5th-instance (h.2) at different location): completed at Architect step-13-pass-3 §2 + §3 — bounded-continuation rule continues to apply per `core.md` §8.1.1.3 cost-class refinement (per-pass rate trajectory 2 → 1 → 1 → 1 = decreasing, NOT genuinely-asymptotic; high-density-of-claim-surfaces cycle is the driver, not asymptotic loop). Each individual finding remains pure-token-swap one-iteration; no cascade at fix-location.
+
+**Sub-cluster diagnosis**: 3 of 5 (h.2) instances cluster at "Builder-claims-to-verify forward-looking claims" sub-shape (R.3 + R.5 + R.8) — common authoring mechanism: claims authored as anticipated-prose rather than verify-at-authoring-output. Builder writes prose enumerating expected output without running the verification command at authoring time AND incorporating actual output verbatim. PMN-009 (h.2) sub-shape canonical mechanism applies recursively to claim-authoring surface. **Lightweight canonical absorption candidate at TASK-0028+** per Architect §3 ratification (Item 12 NEW in cycle-close ledger): 1-2 line addition to PMN-007 §2.4 (j)-sweep discipline OR `core.md` §23.6.3 sub-shape A enumeration codifying Builder-side verification-claim authoring sub-rule.
+
+**Resolution applied** (path-(a)):
+
+- **Edit R.8** (Pass-3 P2 finding, review-context Claim 16 line 101): replaced false `ADR-006 not present per Decision 4 forward-reference convention` parenthetical with empirically-correct 7-site enumeration restoring intra-document consistency between Claim 16 and Builder's own step-10 stop-and-show §4 (j)-sweep table. Verifiable at next-iteration: `grep -rln "PR-35" --include="*.md" .` returns 7 committed-tree files matching the enumeration (TASK-0027 handoff + PR-35 review-context + README + handoff-template + review-template + core.md + ADR-006); `grep -nE "ADR-006 not present" docs/reviews/PR-35-codex-pre-commit.md` returns 0 lines (false-claim parenthetical fully removed).
+
+**Pass-3 self-review iteration-1** per `core.md` §23.6.2 + bounded-continuation per §8.1.1.3: focused on R.8 edit site + Codex pass-3 finding scope; no new defects surfaced; convergence at iteration 1; pure-token-swap class; no same-class recurrence at R.8 site.
+
+**Cycle-close ledger amendments** queued (per Architect step-13-pass-3 §4):
+- **Item 9 amendment** (4-instance → 5-instance): "(h.2) intra-cycle recurrence count = 5 with sub-cluster decomposition: Builder-claims-to-verify (3 instances: R.3 + R.5 + R.8) + template-byte-exact-regex (2 instances: R.1.1 + R.6 recursive chain). Per-pass rate 2→1→1→1 (decreasing); not genuinely-asymptotic per `core.md` §8.1.1.3. Lightweight canonical absorption candidate at TASK-0028+ for Builder-claims-to-verify sub-cluster sub-rule."
+- **Item 12 NEW (Builder-claims-to-verify authoring discipline lightweight canonical absorption candidate)**: 1-2 line addition to PMN-007 §2.4 (j)-sweep discipline OR `core.md` §23.6.3 sub-shape A enumeration codifying: "Builder-side verification-claim authoring sub-rule: When authoring review-context Claims-to-verify with bash/PowerShell verification commands, run the command at authoring time against the staged-tree state and incorporate actual output verbatim into claim prose. Anticipated-prose claims (authored without running the command) systematically produce (h.2) operational-correctness drift; PMN-009 (h.2) sub-shape canonical mechanism applies recursively to claim-authoring surface itself." Carry-forward to TASK-0028+ adjudication; could ride along with Item 10 template-content authoring sub-rule + Item 11 (j)-sweep enumeration completeness sub-rule as bundled lightweight canonical amendment cycle.
