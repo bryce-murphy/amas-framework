@@ -6,6 +6,8 @@ Accepted — 2026-05-01
 
 Amends ADR-002 (further reservation extension, consistent with ADR-002 Decision 3 anticipation pattern). Partially supersedes ADR-001 decision 8 (PR sequence portion only; other ADR-001 decisions unchanged).
 
+Decision 2 PR sequence portion superseded by ADR-006 (2026-05-06; PR plan amended for product-delivery pivot). Decision 1 (v3.0 ship scope) and Decision 3 (TASK reservation + PMN insertion budget) preserved.
+
 ## Context
 
 ADR-001 decision 8 named a PR-0 through PR-9 sequence with PR-9 = UPCDS adoption (a separate-repo cycle). ADR-002 extended the in-repo TASK reservation to TASK-0012 to accommodate PMN insertions and explicitly anticipated further extensions: "subsequent ADR amendments will document such extensions following the same pattern as ADR-002" (ADR-002 Decision 3).
