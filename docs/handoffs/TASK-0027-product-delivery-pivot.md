@@ -5,12 +5,12 @@ pr: PR-35
 branch: feat/task-0027-product-delivery-pivot
 linked_predecessor: TASK-0026 (PR-33 squash fbe025b substantive: ADR-005 branch-convention canonicalization (Option B) + AGENTS.md/CLAUDE.md → v3 migration + v3 trio reconciliation + README v2.22→v2.23; PR-34 squash e71a4bd chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-35 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-35 (squash SHA 272853e)
 framework_version_dogfooded: AMAS v2.23
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0027-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-06
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0027
