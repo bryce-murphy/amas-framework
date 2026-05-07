@@ -92,7 +92,7 @@ Most cycles become content-production cycles. Meta-discipline cycles continue wh
 - **ADR-001** decisions 1-7, 9-15 unchanged; decision 8 PR sequence portion superseded by ADR-003 (preserved); ADR-001 §Status field unchanged (already reflects ADR-003 partial-supersession).
 - **ADR-002** Decision 3 anticipation pattern; ADR-002 Status field unchanged per amendment convention.
 - **ADR-003** Decision 1 (v3.0 ship scope) preserved; Decision 2 (PR plan) partially superseded by this ADR Decision 2; Decision 3 (TASK reservation + PMN insertion budget) preserved; §Consequences distributed-update discipline preserved.
-- **ADR-004** linked-pr-fix-up Action ship; counted in Batch P4 as 1-of-9 already shipped.
+- **ADR-004** linked-pr-fix-up.yml shipped via ADR-004 operational insertion ahead of canonical Actions batch (additive to the 9-Action scaffold, not subtractive); see Decision 2 Batch P4 row for canonical framing.
 - **ADR-005** branch convention canonicalization + partial-supersession-via-deliberate-divergence precedent; ADR-006 follows same partial-supersession pattern.
 - **PMN-001 through PMN-010** post-merge learning evidence justifying the cadence reflexivity diagnosis in §Context.
 - **Transition plan v0.2 §3 / §10** package structure + UPCDS-relative PR sequence (distinct from amas-framework's in-repo sequence governed by ADR-003 + this ADR).

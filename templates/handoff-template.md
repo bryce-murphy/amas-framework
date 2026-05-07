@@ -18,7 +18,7 @@ pr: PR-N  # N = anticipated or actual PR number, numeric digits per regex \d+ (e
 branch: <type>/task-####-<kebab-slug>  # per github-reference.md §2.2 + ADR-005
 linked_predecessor: TASK-#### (PR-N squash <short-sha> <description>)
 linked_successor: TBD  # populated when subsequent cycle anchors
-linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))  # N MUST be numeric digits per .github/scripts/linked-pr-fix-up.py:35 regex (\d+); literal "N" / "XX" / "####" cause Action to silently skip substitution
+linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))
 framework_version_dogfooded: AMAS vX.Y[.Z]  # current canonical at handoff-authoring time
 production_target: AMAS v3.0  # or as-applicable for non-amas-framework projects
 spec_source: <path-to-spec>  # e.g., .claude/session-handoffs/TASK-####-spec.md (gitignored per ADR-001 D15)
