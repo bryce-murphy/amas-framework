@@ -5,12 +5,12 @@ pr: PR-39
 branch: adr/task-0029-adr-007-part-c-scoping
 linked_predecessor: TASK-0028 (PR-37 squash f677532 substantive: bundled lightweight absorption Items 4+10+11+12+14 + M-A7 14th + Class A v2.24 → v2.25 patch v-bump; PR-38 squash 3b722d6 chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-39 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-39 (squash SHA 6f28997)
 framework_version_dogfooded: AMAS v2.25 → v2.26
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0029-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-07
-status: drafted
+status: recorded
 ---
 
 # HANDOFF: TASK-0029
