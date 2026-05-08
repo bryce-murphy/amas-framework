@@ -138,4 +138,41 @@ Initial state: placeholder — populated post-Codex-pass per PMN-002 (a) verbati
 
 **Resolution applied** (if path-(a)):
 
-- None by Reviewer. No path-(a) edit applied to the handoff.
+- Builder applied path-(a) revise post-Codex-pass-1 absorption per `core.md` §8.1.1.3 pure-token-swap class one-iteration cost: handoff §Current state line 55 `7 files in working tree` → `8 files staged on branch adr/task-0029-adr-007-part-c-scoping (5 modified + 3 added)`; handoff §3 step-record + §6 absorption record updated coupled. Rationale: cycle's MAXIMAL surface-enumeration directive + within-surface sub-component-enumeration sub-discipline applied from inception this cycle make path-(a) one-line revise the canonical-correct routing for delivery-artifact self-consistency drift even at Minor severity (improves durable resume anchor + signals discipline application at within-cycle granularity). One-iteration convergence verified by re-derived staged-tree state: 8 files / 451 ins / 7 del (matches Codex final-staged report exactly).
+
+### Codex post-PR pass 1 (UTC 2026-05-08T10:51:26Z formal-review submitted_at; reviewed commit `cc99bfed62`)
+
+**Three-endpoint poll** per `core.md` §8.1.1.1:
+- `pulls/39/reviews`: 1 formal review (ID 4251668342, state COMMENTED; boilerplate "💡 Codex Review" header — substantive landing endpoint A line-level)
+- `issues/39/comments`: 1 owner kickoff `@codex review` from `bryce-murphy` 2026-05-08T10:48:38Z (no Codex issue-comment summary)
+- `pulls/39/comments`: 1 line-comment from `chatgpt-codex-connector[bot]` at `docs/handoffs/TASK-0029-adr-007-part-c-scoping.md` line 51 (P2 severity)
+
+**Verdict**: COMMENTED (substantive landing endpoint A line-level)
+
+**Findings** (verbatim per PMN-002 (a)):
+
+> **P2  Update the stale last-completed-step state**
+>
+> This handoff is the durable resume point for TASK-0029, but it still says execution is only at Step 8 and is awaiting self-review/pre-commit. Later in the same new handoff it records that steps 1–11 and Codex pre-commit absorption are complete, and the current-state summary says the pre-commit finding was already absorbed, so anyone resuming from the required `Last completed step` field would be sent back to already-completed work instead of the actual next step.
+
+**Adjudication** (per `core.md` §8.1.1.3 + ADR-006 D3 evidence-bar + Item 13 sub-class diagnostic refinement framing):
+
+- **Severity**: P2 (Codex yellow tier ≈ Major in three-level taxonomy). Substantive defect at durable resume anchor.
+- **Class**: Delivery-artifact self-consistency drift in handoff state-snapshot fields. **Same defect class as pre-commit pass-1 Minor** (handoff §Current state L55 "7 files" undercount); within-cycle 2nd instance.
+- **Generative-gap diagnosis**: Item 14 sub-discipline applied at substantive-content authoring time but NOT extended to absorption-time updates of structurally-parallel state-snapshot fields. At step-11 pre-commit absorption time, §Current state + §3 + §6 were updated coupled but `## Last completed step` was missed — same generative gap. (k.1) self-instantiation evidence at MAXIMUM salience for Item 14 absorption-time-extension candidacy.
+- **Routing**: path-(a) revise. Pure-token-swap class on a single field. One-iteration cost. Architect ratified path-(a) per Builder enumeration of 6 surfaces 2026-05-08.
+
+**Resolution applied** (path-(a) Architect-ratified 2026-05-08):
+
+- Edit 13.1.1: handoff `## Last completed step` field rewritten to reflect actual state (Step 12 commit `cc99bfe` + push + PR-39 OPEN; Step 13 post-PR Codex pass-1 absorption fix-up commit in progress). Verifiable: `grep -nE "Step 13 post-PR Codex pass-1 path-\(a\) absorption fix-up commit" docs/handoffs/TASK-0029-adr-007-part-c-scoping.md` returns 1 line at line 51.
+- Edit 13.1.2: handoff §3 step-record extended to Steps 1-13.1 with full execution detail.
+- Edit 13.1.3: handoff §6 unchanged (already adequate; post-PR record at §8 per body-section convention).
+- Edit 13.1.4: handoff §8 populated verbatim per PMN-002 (a) + TASK-0028 §8 pattern (parallel to this section).
+- Edit 13.1.5: handoff §10 ledger Item carry-forward added with Architect-ratified wording (within-cycle defect-class recurrence; Item 14 absorption-time-extension refinement candidate at TASK-0030+).
+- Edit 13.1.6: this section appended to review-context per PMN-002 (a) verbatim convention.
+
+**Pass-2 anticipation per Item 13 anti-binary-routing**:
+- Most likely: clean APPROVE/COMMENT with no findings (path-(a) absorption converges; same-class recurrence resolved at all 6 enumerated surfaces).
+- Possible: incidental refinements at adjacent surfaces (sub-class diagnostic refinement; e.g., review-context post-PR section formatting nuance, §10 ledger Item wording).
+- Less likely but admissible: NEW defect class surfaces (would route new path-(a)/(β) per `core.md` §8.1.1.3 evidence-bar at adjudication time).
+- Bandwidth budget: ~1 path-(a) iteration at most.
