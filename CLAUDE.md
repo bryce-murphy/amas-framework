@@ -6,7 +6,7 @@ Operating instructions for Claude (Claude Code, Claude.ai Projects) working on t
 
 This repository **is** the AMAS framework. Work in this repo follows AMAS itself ("dogfooding"): the framework operates under its own rules.
 
-- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.25 — see README)
+- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.26 — see README)
 - **Substrate canonical reference**: AMAS v2.14.1 lives at https://github.com/recruiting-tech/upcds/blob/main/docs/ai-operating-system.md and is the substrate from which the v3 canonical-law trio is being authored per ADR-003
 - **Repository status**: AMAS v3.0 trio is in active production in this repository (canonical-law trio: `core.md`, `github-reference.md`, `usage-guide.md` — all materialized; full v3.0 package per ADR-003 D2 thirteen-substantive-PR sequence in progress).
 

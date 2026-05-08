@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
 
-The current canonical AMAS framework version is **v2.25**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.25.
+The current canonical AMAS framework version is **v2.26**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.26.
 
 ## What is AMAS?
 
@@ -27,7 +27,7 @@ AMAS (AI Multi-Agent System) is an operating-system framework for projects that 
 
 ## Roadmap
 
-v3 production is sequenced across eight content batches (P1 process templates, P2 GitHub-artifact templates, P3 prompts, P4 Actions, P5 flat appendices, P6 project-type appendices, P7 receiving-surface adapter packs, P8 v3.0.0 release tag) per [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md), which amends [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) Decision 2 PR plan. ADR-003 Decision 1 (v3.0 ship scope = 50 stubs filled) and Decision 3 (TASK reservation + PMN insertion budget pattern) remain in force. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
+The current canonical PR plan reference is the combined [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) sequence: ADR-003 establishes v3.0.0 ship scope (50 stubs); ADR-006 amends the canonical framework-package batch sequence (Batch P1-P8); ADR-007 inserts Part C.1 + Part C.2 as canonical-law-Part-C materialization batches internal to `core.md`. Part C.1 lands within P1 (after first 2 of 9 process templates filled at PR-35; before remaining 7 templates that reference §14 / §17.5 / §17.7); Part C.2 lands between P3 (prompts) and P4 (Actions; grounds operating-instruction surface disciplines that Actions enforce). Effective batch sequence: P1 (process templates) → C.1 → P1[continuation] → P2 (GitHub-artifact templates) → P3 (prompts) → C.2 → P4 (Actions) → P5 (flat appendices) → P6 (project-type appendices) → P7 (receiving-surface adapter packs) → P8 (release + README polish). Per-batch progress tracked via the Package layout tables. ADR-003 Decision 1 (v3.0 ship scope = 50 stubs filled) and Decision 3 (TASK reservation + PMN insertion budget pattern) remain in force. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
 ## Package layout
 
