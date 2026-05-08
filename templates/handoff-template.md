@@ -6,7 +6,7 @@ filled_by: PR-35 (TASK-0027)
 
 # Handoff template
 
-Universal handoff for AMAS cycle-execution. Carries the current state of a task: branch, last completed step, blockers, exact next action, validation evidence. Per `core.md` §14 (forthcoming at Part C+) handoff schema and v2.14.1 §14 substrate.
+Universal handoff for AMAS cycle-execution. Carries the current state of a task: branch, last completed step, blockers, exact next action, validation evidence. Per `core.md` §14 handoff schema and v2.14.1 §14 substrate.
 
 ## Frontmatter (canonical 12-field form per PMN-007 HEAD canonical)
 
@@ -139,7 +139,7 @@ python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with
 
 ## Usage notes
 
-- **Direction-specific variants**: this template is the universal Architect → Builder direction. Other directions (Builder → Reviewer, Reviewer → Builder, Builder → Architect, Reviewer → Architect, Human → AI, AI → Human) follow the same frontmatter form with direction-specific body adjustments per v2.14.1 §14.2-§14.7 substrate (forthcoming at Part C+ in v3 core.md).
+- **Direction-specific variants**: this template is the universal Architect → Builder direction. Other directions (Builder → Reviewer, Reviewer → Builder, Builder → Architect, Reviewer → Architect, Human → AI, AI → Human) follow the same frontmatter form with direction-specific body adjustments per `core.md` §14.2-§14.7 (canonical at v3) and v2.14.1 §14.2-§14.7 substrate.
 - **Pre-flight discipline**: Builder runs `core.md` §8.2 (forthcoming at Part C+) pre-flight before authoring handoff body — verify branch-name regex compliance, base-branch freshness, working-tree state.
 - **Stop-and-show discipline**: Before commit/push, Builder presents handoff at step-2 stop-and-show (pre-flight findings) + step-10 stop-and-show (pre-commit) per `core.md` §8.3 (forthcoming at Part C+).
 - **Hand-back to Architect**: Architect receives handoff at step-17 + performs `core.md` §24.3.1 five-point post-handback check before authorizing merge per ADR-001 D9 admin-bypass posture.
@@ -147,7 +147,7 @@ python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with
 
 ## Cross-references
 
-- **core.md §14** (handoff schema; forthcoming at Part C+) — universal handoff structure substrate.
+- **core.md §14** (handoff schema; canonical at v3) — universal handoff structure.
 - **core.md §8.2 / §8.3** (forthcoming at Part C+) — pre-flight + stop-and-show disciplines.
 - **core.md §23.6 / §23.6.1 / §23.6.2 / §23.6.3** — Architect-side spec authoring + self-review disciplines applied at handoff-source-spec authoring.
 - **core.md §24.3.1** — Architect five-point post-handback check applied at handoff hand-back.
