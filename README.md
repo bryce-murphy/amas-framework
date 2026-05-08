@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
 
-The current canonical AMAS framework version is **v2.27**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.27.
+The current canonical AMAS framework version is **v2.28**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.28.
 
 ## What is AMAS?
 
@@ -27,7 +27,7 @@ AMAS (AI Multi-Agent System) is an operating-system framework for projects that 
 
 ## Roadmap
 
-The current canonical PR plan reference is the combined [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) sequence: ADR-003 establishes v3.0.0 ship scope (50 stubs); ADR-006 amends the canonical framework-package batch sequence (Batch P1-P8); ADR-007 inserts Part C.1 + Part C.2 as canonical-law-Part-C materialization batches internal to `core.md`. Part C.1 (cycle-execution canonical surfaces: §14 universal handoff schema + §14.1-§14.7 direction variants + §17.5 template lifecycle + §17.7 review template) shipped at PR-41 (TASK-0030); Part C.2 (operating-discipline canonical surfaces: §8.2 + §8.3 + §13 + §10.5 + §23.6.5) anticipated at subsequent substantive cycle before Batch P4 Actions. Effective batch sequence: P1 (process templates; 2 of 9 filled at PR-35) → C.1 (shipped at PR-41) → P1[remaining 7 templates] → P2 (GitHub-artifact templates) → P3 (prompts) → C.2 → P4 (Actions) → P5 (flat appendices) → P6 (project-type appendices) → P7 (receiving-surface adapter packs) → P8 (release tag + final README polish). Per-batch progress tracked via the Package layout tables. ADR-003 Decision 1 (v3.0 ship scope = 50 stubs filled) and Decision 3 (TASK reservation + PMN insertion budget pattern) remain in force. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
+The current canonical PR plan reference is the combined [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) sequence: ADR-003 establishes v3.0.0 ship scope (50 stubs); ADR-006 amends the canonical framework-package batch sequence (Batch P1-P8); ADR-007 inserts Part C.1 + Part C.2 as canonical-law-Part-C materialization batches internal to `core.md`. Part C.1 (cycle-execution canonical surfaces: §14 universal handoff schema + §14.1-§14.7 direction variants + §17.5 template lifecycle + §17.7 review template) shipped at PR-41 (TASK-0030); Part C.2 (operating-discipline canonical surfaces: §8.2 + §8.3 + §13 + §10.5 + §23.6.5) anticipated at subsequent substantive cycle before Batch P4 Actions. Batch P1 process templates 4 of 9 filled post-PR-43 (handoff + review at PR-35; post-merge-note + ADR at PR-43); 5 remaining (role-scorecard + feature-brief + project-brief + tool-inventory + surfaces-manifest) anticipated at TASK-0032+ cycles. Effective batch sequence: P1 (process templates; 4/9 filled) → C.1 (shipped at PR-41) → P1[remaining 5 templates] → P2 (GitHub-artifact templates) → P3 (prompts) → C.2 → P4 (Actions) → P5 (flat appendices) → P6 (project-type appendices) → P7 (receiving-surface adapter packs) → P8 (release tag + final README polish). Per-batch progress tracked via the Package layout tables. ADR-003 Decision 1 (v3.0 ship scope = 50 stubs filled) and Decision 3 (TASK reservation + PMN insertion budget pattern) remain in force. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
 ## Package layout
 
@@ -58,10 +58,10 @@ The v3 framework package is organized into seven layers. Each stub or template d
 | `templates/AGENTS.md` | Distributed AGENTS template | Batch P2 (ADR-006); pending content-fill cycle |
 | `templates/CLAUDE.md` | Distributed CLAUDE template | Batch P2 (ADR-006); pending content-fill cycle |
 | `templates/PULL_REQUEST_TEMPLATE.md` | Distributed PR template | Batch P2 (ADR-006); pending content-fill cycle |
-| `templates/ADR-template.md` | ADR template | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/ADR-template.md` | ADR template | PR-43 (TASK-0031) |
 | `templates/handoff-template.md` | Universal handoff schema with Direction field | PR-35 (TASK-0027) |
 | `templates/review-template.md` | §17.7 review template | PR-35 (TASK-0027) |
-| `templates/post-merge-note-template.md` | PMN template | Batch P1 (ADR-006); pending content-fill cycle |
+| `templates/post-merge-note-template.md` | PMN template | PR-43 (TASK-0031) |
 | `templates/role-scorecard-template.md` | Role scorecard template | Batch P1 (ADR-006); pending content-fill cycle |
 | `templates/feature-brief-template.md` | Feature Brief template | Batch P1 (ADR-006); pending content-fill cycle |
 | `templates/project-brief-template.md` | Project Brief template (incl. doc-MCP mechanism field) | Batch P1 (ADR-006); pending content-fill cycle |
