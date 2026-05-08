@@ -5,12 +5,12 @@ pr: PR-37
 branch: chore/task-0028-bundled-lightweight-absorption-m-a7
 linked_predecessor: TASK-0027 (PR-35 squash 272853e substantive: ADR-006 product-delivery pivot + handoff/review templates Batch P1 kickoff + M-A7 13-instance amendment + README v2.23 → v2.24; PR-36 squash ac5d3b8 chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-37 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-37 (squash SHA f677532)
 framework_version_dogfooded: AMAS v2.24
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0028-spec.md (gitignored per ADR-001 decision 15)
 date_authored: 2026-05-07
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0028
