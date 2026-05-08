@@ -5,12 +5,12 @@ pr: PR-41
 branch: feat/task-0030-part-c1-materialization
 linked_predecessor: TASK-0029 (PR-39 squash 6f28997 substantive: ADR-007 Part C materialization scoping decision; PR-40 squash f8b2db0 chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-41 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-41 (squash SHA 46d6467)
 framework_version_dogfooded: AMAS v2.26 → v2.27
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0030-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-08
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0030
