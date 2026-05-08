@@ -149,4 +149,92 @@ Verbatim-output convention: capture review verbatim into the review-context file
 
 ## Post-PR Codex review state
 
-(Populated at step-13+ post-PR Codex passes per `core.md` §8.1.1.1 three-endpoint poll + §14.4 Reviewer → Architect direction.)
+### Codex post-PR pass 1 — 2026-05-08T17:44:27Z
+
+**Three-endpoint poll** (per `core.md` §8.1.1.1; verbatim per PMN-002 (a) + §8.1.1.2 phantom-action verification):
+
+**Endpoint A — `pulls/41/reviews`** (formal review):
+
+- review_id: 4254216784
+- state: `COMMENTED`
+- submitted_at: 2026-05-08T17:44:27Z
+- commit_id: `c977c95d22097a5c07005285d7c518d72996ece6`
+- reviewer: `chatgpt-codex-connector[bot]`
+- body (verbatim):
+
+> ### 💡 Codex Review
+>
+> Here are some automated review suggestions for this pull request.
+>
+> **Reviewed commit:** `c977c95d22`
+>
+> [Sentinel header — substantive findings on endpoint C line-comments]
+
+**Endpoint B — `issues/41/comments`** (issue-comment summary):
+
+- 1 comment: owner `bryce-murphy` `@codex review` trigger at 2026-05-08T17:42:19Z
+- No Codex-emitted issue-comment summary present
+
+**Endpoint C — `pulls/41/comments`** (line-level review-comments): 1 substantive finding
+
+#### Finding 1 (P2 / Major) — `docs/handoffs/TASK-0030-part-c1-materialization.md` line 13
+
+**Title (verbatim)**: P2 Set handoff status to active before merge
+
+**Body (verbatim)**:
+
+> For this PR handoff, leaving the frontmatter at `status: drafted` means the linked-pr-fix-up Action will apply its global `drafted` → `recorded` transition from `.github/scripts/linked-pr-fix-up.py`, not the handoff lifecycle's resolved state documented in `core.md` §14 and in this handoff's own assumptions. When PR-41 is merged, the task handoff will therefore be misclassified like a review-context unless the handoff is moved to `active` before merge or the action is made handoff-aware.
+
+**Comment ID**: 3210390739
+**Diff anchor**: line 13 (`status: drafted` field in handoff frontmatter)
+
+### §24 verify-before-assert side-check on Finding 1 load-bearing claim
+
+- `.github/scripts/linked-pr-fix-up.py` STATUS_TRANSITIONS verified at lines 41-44: `{'drafted': 'recorded', 'active': 'resolved'}`. Both transitions applied uniformly to all eligible files (`.md`, `.yml`, `.yaml`) per ELIGIBLE_SUFFIXES (line 48); script is NOT handoff-aware vs review-context-aware (no per-file-type discrimination at substitution time).
+- `core.md` §14 (this cycle's authoring) Status field lifecycle: `drafted` (pre-stage) → `active` (post-stage / pre-merge) → `resolved` (post-merge per PMN-001 (k) Action substitution). Confirmed at L169 of staged core.md.
+- Cross-cycle observation: TASK-0029 handoff `status: recorded` post-merge implies it was at `drafted` pre-merge (not `active`). Pattern is recurring across cycles, not novel to this cycle. Codex Finding 1 surfaces both the in-cycle defect AND a cross-cycle latent gap that prior cycles all instantiated without surfacing.
+
+### Adjudication (Builder routing recommendations; awaits Architect ratification)
+
+**Item 13 anti-binary-routing — multi-option framing**:
+
+- (α) **path-(a) revise handoff `status: drafted` → `status: active` pre-merge**: aligns this cycle's handoff with §14 canonical lifecycle this very cycle authored. Pure-token-swap class (one character / one-token swap). Action will substitute `active → resolved` per existing logic. Internal-consistency mandatory at §14 self-instantiation surface (same logic as Builder-discovery #9 ratification). Cost trivial.
+- (β) **path-(β) record-and-proceed**: ship at `drafted`; Action substitutes to `recorded`. Defeats §14 canonical lifecycle authored at this very cycle. Not viable for internal-consistency reasons (parallel to Codex pre-commit pass-1 Finding 2 routing).
+- (α') **path-(a) + cycle-close ledger augmentation acknowledging cross-cycle gap**: applies in-cycle fix per (α); records cross-cycle observation as ledger entry / PMN candidate noting prior cycles all transitioned via wrong path AND Action lacks handoff-aware discrimination. Cycle-close artifact, not in-cycle scope expansion.
+- (δ) **Action-side fix**: amend `linked-pr-fix-up.py` to discriminate handoff vs review-context by file path. Out-of-scope this cycle; separate Action-class change cycle (Batch P4 Actions per ADR-006 D2 batch sequence).
+
+**Builder routing recommendation**: (α') path-(a) revise + cycle-close ledger augmentation. Route reasoning:
+- (α) alone fixes in-cycle but loses the cross-cycle observation (prior cycles all transitioned via wrong path).
+- (α') captures both: in-cycle internal-consistency fix + cross-cycle empirical record for cycle-close ledger.
+- (δ) Action-side fix correctly belongs to Batch P4 cycle; surfacing as PMN candidate for that cycle is appropriate.
+
+**Cost-class per §8.1.1.3**: pure-token-swap (1-character handoff frontmatter substitution). One-iteration fixed-point convergence anticipated. Codex pass-2 re-invocation at post-PR window: discouraged per §8.1.1.3 cost-class refinement; owner-ratification gate at re-derived (e.1) post-fix surface sufficient.
+
+**Item 14 absorption-time extension scope**: handoff `status: drafted` → `status: active` field update triggers state-snapshot field consistency sweep across:
+- handoff §3 step-by-step execution record (add step-13.X entry)
+- handoff §5 self-review iteration log (add iteration 4 entry)
+- handoff §10 cycle-close ledger (add Codex post-PR pass-1 entries — including cross-cycle handoff-status-lifecycle-gap observation per (α'))
+- handoff §11 Session log archive (add post-PR Codex pass-1 absorption session entry)
+- handoff Last completed step (update to step-13.X path-(α') absorption)
+- review-context "Post-PR Codex review state" section (this section; absorption-status field transition)
+
+**Anticipated post-fix delta**: pure-token-swap on handoff frontmatter (0 line change) + Item 14 sweep across state-snapshot fields (+30-50 ins for ledger augmentation + step records + iteration entry); review-context "Post-PR Codex review state" section already expanded (+~75 ins from this absorption).
+
+### Architect ratification
+
+Routing: **(α') RATIFIED** — in-cycle handoff frontmatter fix + cross-cycle observation recording per ADR-006 D3 evidence-bar. Architect adjudication summary:
+
+- (β) record-and-proceed REJECTED: ships internal contradiction with §14 canonical lifecycle authored this cycle; same logic as pre-commit Finding 2 rejection.
+- (α) path-(a) without ledger WEAKER: misses cross-cycle observation-recording per ADR-006 D3 evidence-bar.
+- (δ) Action-side fix DEFERRED: correct long-term solution; out-of-scope per Batch P4 Actions per ADR-006 D2; carry-forward as PMN-candidate.
+- §24 side-check on Builder verification confirmed Action script `STATUS_TRANSITIONS` uniform application; cross-cycle TASK-0029 retroactive observation verified.
+- Codex pass-2 re-invocation NOT REQUIRED per §8.1.1.3 pure-token-swap one-iteration convergence (same convergence assumption empirically validated at pre-commit pass-1 Findings 1+2+3 absorption).
+
+### Resolution applied (path-(α'))
+
+- Edit 2.1: `docs/handoffs/TASK-0030-part-c1-materialization.md` frontmatter L13 `status: drafted` → `status: active`. Verifiable at next-iteration: `grep -nE "^status: active$" docs/handoffs/TASK-0030-part-c1-materialization.md` returns 1 line at L13; `grep -nE "^status: drafted$" docs/handoffs/TASK-0030-part-c1-materialization.md` returns 0 lines.
+- Item 14 absorption-time extension swept: handoff §3 step-13.1 entry + §5 iteration 4 entry + §10 cycle-close ledger entries (VI)+(VII)+(VIII) + §11 step-13.1 session entry + Last completed step rewrite + this Adjudication/Resolution-applied/Absorption-status block.
+
+### Absorption status
+
+Pass-1 path-(α') absorption complete. Pure-token-swap class one-iteration fixed-point convergence per `core.md` §8.1.1.3 (post-PR window). Pending step-13.1 (e.1) re-derivation surfacing + owner ratification before step-17 §24.3.1 hand-back to Architect. Codex pass-2 re-invocation NOT required per Architect ratification + §8.1.1.3 cost-class refinement.
