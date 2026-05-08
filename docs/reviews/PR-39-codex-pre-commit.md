@@ -176,3 +176,45 @@ Initial state: placeholder — populated post-Codex-pass per PMN-002 (a) verbati
 - Possible: incidental refinements at adjacent surfaces (sub-class diagnostic refinement; e.g., review-context post-PR section formatting nuance, §10 ledger Item wording).
 - Less likely but admissible: NEW defect class surfaces (would route new path-(a)/(β) per `core.md` §8.1.1.3 evidence-bar at adjudication time).
 - Bandwidth budget: ~1 path-(a) iteration at most.
+
+### Codex post-PR pass 2 (UTC 2026-05-08T11:07:25Z formal-review submitted_at; reviewed commit `7f45785e528cf01225d092deabce6ef569c3fbf0`)
+
+**Three-endpoint poll** per `core.md` §8.1.1.1:
+- `pulls/39/reviews`: pass-2 formal review (ID 4251749913, state COMMENTED; boilerplate "💡 Codex Review" header — substantive landing endpoint A line-level)
+- `issues/39/comments`: pass-2 owner kickoff `@codex review` from `bryce-murphy` 2026-05-08T11:05:07Z
+- `pulls/39/comments`: 1 NEW line-comment from `chatgpt-codex-connector[bot]` at `docs/adr/ADR-007-part-c-materialization-scoping.md` line 23 (P2 severity)
+
+**Verdict**: COMMENTED (substantive landing endpoint A line-level)
+
+**Findings** (verbatim per PMN-002 (a)):
+
+> **P2  Correct the Part C qualifier count**
+>
+> The empirical qualifier population in this ADR is overstated: rerunning `rg -o --fixed-strings '(forthcoming at Part C+)' usage-guide.md templates/handoff-template.md templates/review-template.md AGENTS.md CLAUDE.md core.md github-reference.md` on the reviewed tree gives 35 instances across 28 lines, with `templates/handoff-template.md` contributing 5 instances rather than 7. Because this count is used here to justify and scope the Part C.1/C.2 materialization batches and future cleanup sweeps, leaving the ADR with the wrong baseline will make those follow-up cycles verify against a stale target.
+
+**Adjudication** (per `core.md` §8.1.1.3 + ADR-006 D3 evidence-bar + Item 13 anti-binary-routing framing):
+
+- **Severity**: P2 (Codex yellow tier ≈ Major). Substantive defect at ADR-007 §Context empirical evidence base — count is load-bearing for ADR scoping rationale and downstream cleanup-sweep cycles will verify against a stale target if uncorrected.
+- **Class**: **NEW defect class** — Methodological calibration in empirical-evidence enumeration. Distinct from prior 2 within-cycle instances (delivery-artifact self-consistency drift). Pre-flight qualifier sweep used loose regex `forthcoming at Part C` rather than strict literal `(forthcoming at Part C+)`.
+- **Routing**: path-(a) revise. Substantive content correctness gating ADR scoping rationale; not record-and-proceed candidate. Architect ratified path-(a) per Builder enumeration of 7 surfaces with §Context two-form/sub-variant framing + §10 ledger Items N+1/N+2/N+3 wording refinements 2026-05-08.
+- **Item 13 empirical positive**: pass-2 surfaced the "less likely but admissible: NEW defect class" outcome explicitly admitted in pass-1 absorption pass-2 anticipation framing. Direct empirical positive for Item 13 anti-binary-routing sub-discipline (1st explicit empirical-positive instance).
+
+**Empirical verification** (Builder re-ran strict-literal pattern at adjudication time):
+- `grep -oF "(forthcoming at Part C+)"` per surface: usage-guide.md 27/20; templates/handoff-template.md 5/5; templates/review-template.md 0/0; AGENTS.md 1/1; CLAUDE.md 2/2; core.md 0/0; github-reference.md 0/0. Sum: **35 instances / 28 distinct lines** ✓ (matches Codex exactly).
+- Diagnostic on Builder pre-flight loose-regex over-count: 2 lines at templates/handoff-template.md L142 (`...substrate (forthcoming at Part C+ in v3 core.md)`) + L150 (`(handoff schema; forthcoming at Part C+)`) match loose pattern but not strict literal — Form (a) syntactic sub-variant per ADR-007 §Context corrected wording.
+
+**Resolution applied** (path-(a) Architect-ratified 2026-05-08; 7 surfaces per Architect refinements):
+
+- Edit 13.2.1: ADR-007 §Context — count corrected from 37/30 to 35/28 strict-literal canonical with two-form/sub-variant framing (Form (a) canonical sub-variant 35/28 + Form (a) syntactic sub-variant 2 instances at templates/handoff-template.md L142+L150 + Form (b) unmarked forward-references at §13.2/§17.7/§23.6.5).
+- Edit 13.2.2: handoff §1.1 Honesty record — methodological calibration acknowledgment.
+- Edit 13.2.3: handoff `## Last completed step` — Step 13.2 absorption in progress.
+- Edit 13.2.4: handoff §3 step-record extended Steps 1-13.1 → Steps 1-13.2.
+- Edit 13.2.5: handoff §8 populated verbatim per PMN-002 (a) + TASK-0028 §8 pattern.
+- Edit 13.2.6: handoff §10 ledger — Items N+1/N+2/N+3 added with Architect-refined wording (NEW defect class multi-surface chain + Item 13 empirical positive + Item 14 absorption-time extension durable).
+- Edit 13.2.7: this section appended to review-context per PMN-002 (a).
+
+**Pass-3 anticipation per Item 13 anti-binary-routing**:
+- Most likely: clean APPROVE/COMMENT (path-(a) absorption converges; corrected count + acknowledged calibration; multi-surface defect chain absorbed at all 7 enumerated surfaces).
+- Possible: incidental refinements at adjacent surfaces (e.g., §Context wording, §10 ledger wording, sub-variant labeling).
+- Less likely but admissible: ANOTHER new defect class would extend bounded-continuation rule iteration count per `core.md` §8.1.1.3 cost-class refinement (3 iteration ceiling at default-cycle; can extend to 4-5 at architectural-class with owner ratification).
+- Bandwidth budget: ~1 path-(a) iteration at most.
