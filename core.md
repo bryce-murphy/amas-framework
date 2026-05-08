@@ -154,15 +154,235 @@ Family members compose: bounded-continuation governs path-(a) vs path-(β) routi
 
 **Cost-class sub-distinction — genuinely-asymptotic vs pure-token-swap cascades**: when applying the cost-class refinement to determine path-(a) revise vs path-(β) record-and-proceed routing, distinguish (i) genuinely-asymptotic recursion boundaries — structural changes that shift downstream surface line counts, where each iteration's correction introduces new propagation surfaces requiring further iteration; bounded-iteration acceptance is appropriate at the asymptote — from (ii) pure-token-swap cascades — single-iteration convergence at a stable fixed-point where text values match git stat in one iteration without introducing new propagation surfaces. Pure-token-swap cascades terminate at one-iteration fixed-point and always route path-(a); only structural-shift cascades (genuinely-asymptotic class) warrant bounded-iteration acceptance via path-(β). The distinction is empirically grounded by PMN-007 §2 (PR-13 cycle iteration-5 (e.1) cascade routed path-(β) under preliminary cost-class refinement at canonicalizing cycle; Codex post-PR pass 1 surfaced the routing as load-bearing failure case — durable repo surfaces inconsistent across three numbers; cascade was avoidable, not asymptotic).
 
+## §14. Universal handoff schema
+
+A handoff is a cross-role or cross-session work-transition artifact that records the current state of a cycle for the receiving role or session. Handoffs are the durable-context bridge between roles (Architect → Builder, Builder → Architect, Builder → Reviewer) and across sessions of the same role; in-chat context is ephemeral and cannot serve this function. The artifact is git-tracked at `docs/handoffs/TASK-####-<kebab-slug>.md`, where `<kebab-slug>` matches the branch-name slug per `github-reference.md` §2.2 (Option B per ADR-005).
+
+The schema serves three functions: (a) durable cycle-state preservation across role and session boundaries; (b) verification anchor for receiving-role pre-flight per §8.2 (forthcoming at Part C+); (c) audit-trail anchor for cycle-close ledger authoring at hand-back and post-merge-note authoring at cycle close.
+
+**Frontmatter form**: PMN-007 HEAD canonical 12-field form. The 12-field enumeration and `linked_pr` MC-C canonical-regex form are canonicalized at `templates/handoff-template.md` filled content; that template is the canonical surface. Per the mechanism-not-policy framing of §17, this section names the discipline and cites the template; the template carries the substantive form-detail.
+
+**Body section structure**: canonical sections per observable cycle patterns at TASK-0021 onward — Metadata, Objective, Last completed step, Current state (including cumulative-diff-stats per §23.6.1.1 (e.1) staged-tree re-derivation), Decisions made, Assumptions, Risks, Blocking questions, Validation run, Exact next step, then numbered §-prescription sections (§1 through §N) per cycle structure, Cycle-close ledger, and Session log archive. The filled body section template at `templates/handoff-template.md` is the canonical surface.
+
+**Path conventions**: `docs/handoffs/TASK-####-<kebab-slug>.md`. The TASK-#### counter is monotonically incremented across cycles; the highest existing TASK-#### across any artifact in the repo is authoritative for the next-cycle counter assignment.
+
+**Status field lifecycle**: `drafted` (pre-stage) → `active` (post-stage / pre-merge) → `resolved` (post-merge per PMN-001 (k) Action substitution). Drift from these exact values breaks the linked-pr-fix-up Action's status transition per `.github/scripts/linked-pr-fix-up.py` canonical regex.
+
+**Direction-variant overview**: §14.1 through §14.7 enumerate seven direction-specific variants. Each inherits the §14 universal frontmatter and body section structure with per-variant adjustments specified at the variant's section. The variants are: Architect → Builder (§14.1), Builder → Reviewer (§14.2), Reviewer → Builder (§14.3), Reviewer → Architect (§14.4), Builder → Architect (§14.5), Human → AI (§14.6), AI → Human (§14.7).
+
+### §14.1. Architect → Builder
+
+The canonical primary handoff direction. Architect authors a TASK-#### spec at session start; Builder receives spec at Claude Code session kickoff per PMN-002 (d) code-fenced kickoff prompt convention.
+
+**Frontmatter**: §14 universal 12-field form unchanged.
+
+**Body structure**: §14 universal canonical sections; §-prescription sections (§1-§N) prescribe substantive deliverables per cycle structure. Cycle-class designation in §1 (substantive-content / architectural / lightweight-absorption / chore) determines anticipated cycle-bandwidth + recursive-self-instantiation salience.
+
+**Architect-side responsibilities**:
+- Spec authoring with §24 verify-before-assert at all claims about repo state
+- §23.6 self-review pass before handoff hand-off (§23.6 + §23.6.1 + §23.6.2 + §23.6.3)
+- Phase 1 staged adjudications enumerated in spec for owner ratification at Builder step-1 stop-and-show
+- §23.6.3 sub-shape A canonical-impact-surface-completeness check + template-content authoring meta-pattern applied at spec authoring
+
+**Builder-side responsibilities**:
+- Pre-flight verification batch per §8.2 substrate (Part C.2; v2.14.1 §8.2 substrate) — branch-name regex compliance, base-branch freshness, working-tree state, (i.5) sub-shape sweeps
+- Step-1 stop-and-show surfacing all Phase 1 adjudications + pre-flight findings before Step-2 branch creation
+- Substantive content authoring per spec §4 prescriptions
+- Step-10 pre-commit stop-and-show with cumulative-diff-stats per (e.1) + verification claims
+
+**File path**: `docs/handoffs/TASK-####-<kebab-slug>.md`. `<kebab-slug>` matches branch-name slug.
+
+**Cross-references**: §14 (universal); §23.6.3; `github-reference.md` §2.2; `templates/handoff-template.md`.
+
+### §14.2. Builder → Reviewer
+
+The Builder hands a review-context kickoff prompt to the Reviewer (Codex desktop or `@codex review` invocation) per PMN-002 (d) code-fenced kickoff prompt convention. The transition surface is the review-context file rather than a separate handoff file; the review-context body's "Codex desktop pre-commit kickoff" or "Codex post-PR kickoff" section carries the kickoff prompt.
+
+**Frontmatter**: review-context 1-field canonical form per §17.7. Status field lifecycle: `drafted` (pre-Codex-pass) → `recorded` (post-merge per PMN-001 (k) Action substitution).
+
+**Body structure**: review-context body sections per §17.7 — Metadata, Builder claims to verify, Reviewer focus, kickoff section, output absorption section.
+
+**Builder-side responsibilities**:
+- Author the review-context Builder claims with cross-platform verification commands per PMN-004 §5 (b) cross-platform verification discipline
+- Author the Reviewer focus section enumerating cycle-relevant focus areas
+- Author the kickoff prompt code-fenced per PMN-002 (d) reliable-copy convention
+- Pose the kickoff to the Reviewer per ADR-001 D11 owner-invokes convention (the project owner is the actual paster on Codex desktop)
+
+**Reviewer-side responsibilities**:
+- Run the review per the kickoff prompt directives
+- Emit findings per the convention's severity taxonomy per PMN-004 §5 (a) three-level (Blocking / Major / Minor)
+
+**File path**: `docs/reviews/PR-NN-codex-pre-commit.md` (pre-commit variant) or `docs/reviews/PR-NN-codex-post-pr.md` (post-PR variant).
+
+**Cross-references**: §17.7; §8.1.1; ADR-001 D11; PMN-002 (d); PMN-004 §5 (a) + (b); `templates/review-template.md`.
+
+### §14.3. Reviewer → Builder
+
+Reviewer output (Codex pre-commit or post-PR review) absorbed verbatim per PMN-002 (a) verbatim-output convention into the review-context output-absorption section. The absorption is the durable record; the receiving Builder reads the absorbed output as input to fix-up authoring or path-(β) record-and-proceed adjudication.
+
+**Frontmatter**: review-context 1-field form unchanged at this direction; status remains `drafted` until post-merge transition.
+
+**Body structure**: review-context output-absorption section populated. Each Codex pass appears as a numbered subsection (Codex pass 1, Codex pass 2, ...) with verdict, verbatim findings, adjudication routing per §8.1.1.3 (path-(a) revise / path-(β) record-and-proceed / Blocking handback), and resolution applied at path-(a) iterations.
+
+**Builder-side responsibilities**:
+- Capture Reviewer output verbatim — no paraphrase, no summary substitution per §8.1.1.2 phantom-action verification discipline
+- Adjudicate routing per §8.1.1.3 cost-class refinement (pure-token-swap one-iteration vs genuinely-asymptotic break-out)
+- Apply severity taxonomy three-level per PMN-004 §5 (a) at adjudication time
+- Re-stage + (j)-sweep + cumulative-diff-stats re-derivation per §23.6.1.1 (e.1) at each path-(a) iteration
+
+**Reviewer-side note**: the Reviewer does not author this section directly; the Builder absorbs the Reviewer output into it. The verbatim convention prevents Builder paraphrase from masking phantom-action discrepancies between claimed and actual Reviewer output.
+
+**Cross-references**: §8.1.1; §8.1.1.2; §8.1.1.3; §17.7; §23.6.1.1; PMN-002 (a); PMN-004 §5 (a).
+
+### §14.4. Reviewer → Architect
+
+Reviewer post-PR feedback surfaces to the Architect via the review-context "Post-PR Codex review state" section paired with the handoff "Post-PR Codex review state" section. No new file is created; communication flows through the existing review-context and handoff artifacts at the post-PR window.
+
+**Frontmatter**: existing review-context 1-field form and existing handoff 12-field form; no new artifact.
+
+**Body structure**: review-context post-PR section populated per §17.7 Codex post-PR variant — three-endpoint poll record per §8.1.1.1, verdict, verbatim findings, adjudication routing.
+
+**Receiver (Architect) responsibilities**:
+- Three-endpoint poll of Reviewer output per §8.1.1.1 (`pulls/{pr}/reviews` + `issues/{pr}/comments` + `pulls/{pr}/comments`)
+- Adjudicate findings per §8.1.1.3 cost-class refinement (path-(a) revise vs path-(β) record-and-proceed vs Blocking handback)
+- Surface adjudication via cycle-close ledger or in-cycle path-(a) fix-up authoring as appropriate
+
+**Reviewer-side note**: the same verbatim-output discipline as §14.3 applies; the Architect absorbs Reviewer output verbatim into the post-PR section.
+
+**Cross-references**: §8.1.1.1; §8.1.1.3; §17.7; §24.3.1; PMN-002 (a).
+
+### §14.5. Builder → Architect
+
+The Builder hands back to the Architect at stop-and-show points and at cycle-close hand-back. The transition surface is the existing TASK-#### handoff file with `## Last completed step` updated to the current cycle position and the cycle-close ledger populated at hand-back.
+
+**Frontmatter**: handoff §14 universal 12-field form unchanged; `status` field remains `drafted` or `active` per the cycle's progression at hand-back.
+
+**Body structure**: §14 universal canonical sections; absorption surfaces include `## Last completed step` updated at each hand-back, `## Current state` re-derived per (e.1) staged-tree convention, `## Decisions made` extended with in-cycle adjudications, and `## §10. Cycle-close ledger` populated at cycle-close hand-back with carry-forward observations and PMN candidacy notes.
+
+**Builder-side responsibilities**:
+- Update `## Last completed step` to the resume-anchor for the next session
+- Re-derive `## Current state` cumulative-diff-stats per §23.6.1.1 (e.1) at each hand-back
+- Author cycle-close ledger items per ADR-006 D3 evidence-bar discipline (observation-recording, not canonicalization-pre-commitment)
+- Surface stop-and-show prompt per §8.3 (forthcoming at Part C+) at each hand-back
+
+**Architect-side responsibilities**:
+- Run the §24.3.1 five-point post-handback check at cycle-close hand-back (three-endpoint poll, branch tip-SHA verification, file-content audit, phantom-action audit, comment-content claim verification)
+- Author squash-merge body content at owner squash-merge instant
+- Adjudicate cycle-close ledger items for next-cycle scope or PMN candidacy
+
+**Cross-references**: §8.3 (forthcoming at Part C+); §10.5 (forthcoming at Part C+); §23.6.1.1; §24.3.1; ADR-006 D3.
+
+### §14.6. Human → AI
+
+Owner kickoff messages, Phase 1 adjudication ratifications, scoping ratifications, and strategic-direction decisions flow from the human owner to the AI roles (Architect, Builder, Reviewer). No file artifact carries this direction; communication is via the chat interface (Claude.ai for Architect, Claude Code for Builder, Codex desktop for Reviewer).
+
+**Frontmatter / body structure**: not applicable; no file artifact.
+
+**Owner-side role**:
+- Ratify Phase 1 adjudications at Builder step-1 stop-and-show before substantive authoring proceeds
+- Ratify or override Architect recommendations on adjudications surfaced at any cycle gate
+- Hold squash-merge authority per ADR-001 D9 admin-bypass posture (the owner is the only role authorized to merge)
+- Set strategic direction across cycles, including ADR-class decisions and out-of-band scope adjustments
+
+**AI-side note**: AI roles act within owner-ratified scope; out-of-scope or ambiguous conditions route back to the owner per §8.3 (forthcoming at Part C+) stop-and-show discipline.
+
+**Cross-references**: ADR-001 D9; ADR-001 D11; §8.3 (forthcoming at Part C+); spec §0 standing-scope ratifications convention.
+
+### §14.7. AI → Human
+
+The AI surfaces options, recommendations, decision tables, and stop-and-show findings to the human owner for ratification or override. No file artifact carries this direction; communication is via the chat interface paired with the durable handoff and review-context artifacts the AI authors.
+
+**Frontmatter / body structure**: not applicable; no file artifact for the chat surfacing itself. The AI authors decision-supporting content into the durable artifacts (handoff for Builder/Architect surfacings; review-context for Reviewer-related surfacings).
+
+**AI-side responsibilities**:
+- Surface options with explicit benefits, trade-offs, and Architect or Builder recommendations
+- Apply Item 13 anti-binary-routing at outcome adjudications — surface multi-option framings rather than binary "do or don't" routings when judgment is involved
+- Retain analytical and authoring judgment within owner-ratified scope; escalate out-of-scope or ambiguous conditions per §8.3 (forthcoming at Part C+)
+- Apply §24 verify-before-assert at all claim-making contexts in the surfacing
+
+**Architect-side surfacing pattern**: Phase 1 adjudication recommendations at spec authoring; cycle-close ledger surfacing at cycle close.
+
+**Builder-side surfacing pattern**: pre-flight findings at step-1 stop-and-show; cumulative-diff-stats and verification-claims surfacing at step-10 pre-commit stop-and-show.
+
+**Cross-references**: §24; ADR-006 D3 evidence-bar discipline; spec §1.3 Phase 1 adjudication convention.
+
 ## §17. Templates
 
 This section houses the canonical template forms for project artifacts. Each template specifies required structure, required fields, and authoring surface for an artifact class. Template leaves canonicalize incrementally across the v3.0 substantive-content authoring sequence; this cycle establishes the parent frame, with leaf canonicalization (ADR template, PR template, Review summary template, CLAUDE.md template, AGENTS.md template, project-instruction-files template) deferred to subsequent template-batch cycles per ADR-003 Decision 2 (PR-15 / PR-16).
 
-Templates are mechanism, not policy. The discipline that templates encode (handoff schema at §14.1, review schema at §8.1.1, post-merge note schema at §18.2) is canonicalized in the §-section that defines the discipline. The template form at §17 is the artifact-construction surface that pairs with the discipline.
+Templates are mechanism, not policy. The discipline that templates encode (handoff schema at §14, review schema at §8.1.1, post-merge note schema at §18.2) is canonicalized in the §-section that defines the discipline. The template form at §17 is the artifact-construction surface that pairs with the discipline.
+
+### §17.5. Template lifecycle
+
+Templates progress through canonical lifecycle phases tracked in YAML frontmatter `status` field:
+
+- **`stub`**: scaffold-stub state per FEAT-0001 v3 framework package scaffold (PR-2). Frontmatter `status: stub` + `filled_by: per ADR-003` (or successor canonical plan reference). Body content minimal (4-9 lines typical) — scaffolding only, no substantive content.
+- **`drafted`**: substantive content authored at template-batch substantive cycle. Frontmatter `status: drafted` + `filled_by: PR-NN (TASK-####)` (actual PR/TASK number at content-fill time). Body fully populated with canonical content.
+- **`filled`**: synonym for `drafted` post-merge; some templates use `filled` directly when content-fill cycle ratifies substantive content as final at merge. Frontmatter `status: filled` + `filled_by: PR-NN (TASK-####)`.
+- **`recorded`** (review-context only): post-merge state for review-context files per PMN-001 (k) Action substitution. Status field transitions `drafted` → `recorded` at chore-fix-up squash post-merge.
+
+**Template version vs framework version**:
+
+Templates carry `template_version: 3.0.0` in YAML frontmatter (or YAML comment for `.yml` files). Framework version is carried in canonical-law trio (`core.md` / `github-reference.md` / `usage-guide.md`) frontmatter `framework_version` field + README.md Class A canonical-version-of-record line. Template-version vs framework-version distinction: templates version with the framework major version (template_version 3.0.0 ships with framework_version 3.0.0); per-cycle minor/patch framework-version bumps do NOT bump template_version unless template content materially changes.
+
+**Filled-by field semantics**:
+
+`filled_by` field on every stub points at canonical plan reference (currently `per ADR-003`, post-ADR-006 reference may rotate to `per ADR-006` for unfilled stubs at content-fill time per ADR-003 §Consequences distributed-update discipline + ADR-006 D4 + Item 14 retroactive-supersession-marking sub-rule). Each substantive content PR updates its filled stub's `filled_by` field to `PR-NN (TASK-####)` at content-fill time.
+
+**Authoring surface**:
+
+Substantive template content fills at template-batch substantive cycles per ADR-006 D2 batch sequence (Batch P1 process templates / Batch P2 GitHub-artifact templates / Batch P3 prompts). Per-cycle distributed-update sweeps drop forward-reference qualifiers across just-relevant surfaces at each content-fill cycle per ADR-006 D4.
+
+**Cross-references**: §17 (parent frame); §18.4 (framework version-bump trigger criteria); ADR-003 (canonical plan reference + distributed-update discipline); ADR-006 (batch sequence); ADR-007 (Part C materialization scoping).
+
+### §17.7. Review template
+
+The review template canonicalizes the form for Codex desktop pre-commit + post-PR review-context files per ADR-001 D11 owner-invokes convention. Two variants share substantive structure with per-variant body section adjustments. Canonical surface: `templates/review-template.md` filled at PR-35 (TASK-0027); this section names the discipline per the mechanism-not-policy framing of §17.
+
+**Frontmatter (canonical 1-field form)**:
+
+```yaml
+---
+status: drafted
+---
+```
+
+Status field lifecycle (per `.github/scripts/linked-pr-fix-up.py` canonical transitions):
+- `drafted` (pre-stage; pre-Codex-pass) → `recorded` (post-merge per PMN-001 (k) Action substitution).
+
+Drift from this exact form breaks Action transition. Verification via `.github/scripts/linked-pr-fix-up.py` canonical pattern matching at frontmatter-only scope.
+
+**Body sections (Codex desktop pre-commit variant)**:
+
+Canonical body section sequence: Metadata / Builder claims to verify / Reviewer focus / Codex desktop pre-commit kickoff / Codex desktop pre-commit output absorption.
+
+- **Builder claims to verify**: numbered list of claims about staged-tree state. Each claim includes verification command (bash + PowerShell + cmd-side as cross-platform Builder requires per PMN-004 §5 (b) findstr codepage caveat for `§` byte sequence). Claim coverage per cycle scope: cumulative-diff-stats per §23.6.1.1 (e.1) + §-citation correctness + Class A v-bump per cycle scope + stub frontmatter updates per ADR-003 §Consequences + M-A7 enumeration verification + (j) all-instances grep sweep results + frontmatter shape conformance + cross-document state preservation.
+- **Reviewer focus**: focus areas for Codex desktop pre-commit attention — substantive content shape verification + §-citation resolution + cumulative-diff-stats reconciliation + frontmatter shape conformance + (j)/(g)/(h)/(i) sweeps + recursive-self-instantiation salience check per PMN-008 §3.1.
+- **Codex desktop pre-commit kickoff**: copy-paste-ready prompt for owner to paste into Codex desktop with project repository attached. Code-fenced per PMN-002 (d) reliable-copy convention.
+- **Codex desktop pre-commit output absorption**: verbatim Codex output captured per PMN-002 (a) verbatim-output convention + `core.md` §8.1.1.2 phantom-action verification discipline.
+
+**Body sections (Codex post-PR variant)**:
+
+Differential structure from pre-commit variant:
+- **Builder claims** preserved (already verified at pre-commit; serve as forward-reference for post-PR Codex against actual-merged state).
+- **Reviewer focus** adjusts to post-PR scope (full-PR diff, not staged-tree only).
+- **Three-endpoint poll record** populated per `core.md` §8.1.1.1: `pulls/{pr}/reviews` + `issues/{pr}/comments` + `pulls/{pr}/comments` outputs verbatim.
+- **(w) cross-cycle data point** noted if Codex emits autonomously pre-trigger.
+
+**Path conventions**:
+
+- Pre-commit: `docs/reviews/PR-NN-codex-pre-commit.md`
+- Post-PR: `docs/reviews/PR-NN-codex-post-pr.md` (when separate file; some cycles consolidate to single review-context per cycle convention)
+
+**Bounded-continuation rule application**:
+
+Review iterations bounded per `core.md` §8.1.1.3 cost-class refinement (pure-token-swap one-iteration; genuinely-asymptotic break-out). Each path-(a) revision triggers re-stage + (j)-sweep + cumulative-diff-stats re-derivation per §23.6.1.1 (e.1).
+
+**Cross-references**: §8.1.1.1 (three-endpoint poll); §8.1.1.2 (phantom-action verification); §8.1.1.3 (bounded-continuation rule + cost-class refinement); §17 (parent frame); §17.5 (template lifecycle); §23.6.1.1 (e.1 cumulative-diff-stats re-derivation); ADR-001 D11; PMN-001 (k); PMN-002 (a) + (d); PMN-008 §5.8 (h.4); `templates/review-template.md` (canonical surface).
 
 ## §18. Post-merge note discipline
 
-Post-merge notes (PMNs) are durable artifacts capturing learnings from merged PRs that warrant cross-cycle preservation. The PMN convention separates from in-cycle artifacts (handoff at §14.1, review-context at §8.1.1, AI Session Log at §13) by spanning across cycles: a PMN authored at cycle N captures observations from cycle N's merged PR(s) that future cycles N+1 through cycle close apply as standing discipline.
+Post-merge notes (PMNs) are durable artifacts capturing learnings from merged PRs that warrant cross-cycle preservation. The PMN convention separates from in-cycle artifacts (handoff at §14, review-context at §8.1.1, AI Session Log at §13) by spanning across cycles: a PMN authored at cycle N captures observations from cycle N's merged PR(s) that future cycles N+1 through cycle close apply as standing discipline.
 
 §18 organizes into four leaves. §18.1 names the trigger criteria that determine when a merged PR warrants a PMN. §18.2 specifies the PMN artifact form (directory, naming, required sections, authoring surface). §18.3 covers the merge-commit-body data integration pattern that captures cycle-close-window content adjacent to the PMN itself. §18.4 names the framework version-bump trigger criteria, structurally parallel to §18.1's PMN-trigger criteria but applied to the framework's own canonical-document version sequence.
 
@@ -188,7 +408,7 @@ A post-merge note is required, not optional, when the merged PR involved any of 
 
 ### §18.2. PMN artifact form spec
 
-The PMN artifact form is canonical, not advisory. The framework already specifies form for analogous durable artifacts — handoffs at §14.1, ADRs at §7.1, templates at §17 — because specifying a discipline without specifying a form produces a discipline-erosion failure mode where the rule survives across cycles but the content does not. PMNs are repo-tracked artifacts under version control; the form below is the canonical structure.
+The PMN artifact form is canonical, not advisory. The framework already specifies form for analogous durable artifacts — handoffs at §14, ADRs at §7.1, templates at §17 — because specifying a discipline without specifying a form produces a discipline-erosion failure mode where the rule survives across cycles but the content does not. PMNs are repo-tracked artifacts under version control; the form below is the canonical structure.
 
 **Directory.** `docs/post-merge-notes/`. PMNs are version-controlled alongside other durable repository artifacts.
 
@@ -235,11 +455,11 @@ Between PR-open and squash-merge, post-PR-window content accumulates that is rel
 3. `80f5a4a` (PR-10 squash, same commit) — instance of class (d) self-referential pattern-promotion entry: explicit "M-A7 promotion trigger met (second instance of the merge-commit-body data integration pattern this cycle)" — strongest possible empirical confirmation by pattern self-naming at the cycle that promotes it.
 4. `817c12f` (PR-11 squash, 2026-05-02) — instance of class (a) Reviewer-engagement absorption summary: 5-finding Codex post-PR review absorption (4 path-(a) + 1 path-(β); cycle close at 3 review passes within spec §5 step 15's 4-pass cap), bounded-continuation rule applications recorded.
 
-**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.26 canonicalization at PR-39 / TASK-0029):
+**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.27 canonicalization at PR-41 / TASK-0030):
 
-The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 = 15` empirical instances spanning v2.16 through v2.25 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
+The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 = 16` empirical instances spanning v2.16 through v2.26 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
 
-The pattern has stabilized into operational steady-state across 15 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
+The pattern has stabilized into operational steady-state across 16 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
 
 Four-instance evidence (PMN-005 §6/§7 candidate framing → PMN-006 §6.2 operationally canonical → PMN-006 §6.2 explicit canonical-text deferral to Part B → this PR canonical §-section text) promotes M-A7 from operationally canonical to canonical §-section text.
 
