@@ -8,6 +8,8 @@ Amends ADR-003 (further partial-supersession of D2 PR plan portion only; D1 ship
 
 Effective: immediately for v3 in-repo cycle direction; remaining 47 unfilled stubs filled per revised dependency order documented below.
 
+Amended 2026-05-07 by ADR-007 (Part C materialization scoping; further partial-supersession of Decision 2 batch sequence; D1 + D3 + D4 preserved unchanged).
+
 ## Context
 
 ADR-003 D2 (2026-05-01) named a 12-PR substantive content sequence (PR-7 through PR-19) to ship v3.0.0 + a PMN insertion budget of 7 contingency slots (TASK-0020 through TASK-0026; "extrapolating across thirteen substantive cycles suggests three to seven PMN PRs likely") with an empirical PMN rate of 3 PMNs per 4 cycles (75%) measured through PR-6.
