@@ -170,4 +170,81 @@ Pass-1 path-(α') × 2 absorption complete. Pure-prose-rewrite + pure-token-swap
 
 ## Post-PR Codex review state
 
-(Populated at step-15 post-PR Codex three-endpoint poll per `core.md` §8.1.1.1 + verbatim absorption per PMN-002 (a) + §8.1.1.2 phantom-action verification + Adjudication + Resolution applied + Absorption status sub-sections per templates/review-template.md convention.)
+### Codex post-PR pass 1 — 2026-05-09T19:28:28Z
+
+**Three-endpoint poll** (per `core.md` §8.1.1.1; verbatim per PMN-002 (a) + §8.1.1.2 phantom-action verification):
+
+**Endpoint A — `pulls/48/reviews`** (formal review):
+
+- review_id: 4258401204
+- state: `COMMENTED`
+- submitted_at: 2026-05-09T19:28:28Z
+- commit_id: `00ab440bfc05d149070c0c2c7547250bb86e0521`
+- reviewer: `chatgpt-codex-connector[bot]`
+- body (verbatim):
+
+> ### 💡 Codex Review
+>
+> Here are some automated review suggestions for this pull request.
+>
+> **Reviewed commit:** `00ab440bfc`
+>
+> [Sentinel header — substantive findings on endpoint C line-comments]
+
+**Endpoint B — `issues/48/comments`** (issue-comment summary):
+
+- 1 comment: owner-invoked `@codex review` at 2026-05-09T19:25:49Z (id 4413481015 by bryce-murphy). PMN-008 §5.8 (h.4) outcome-shape empirical record at this cycle: **(h.4) outcome at owner-invoke leg** — substantive findings landed at endpoint C only; endpoint A sentinel + endpoint B = owner invocation comment only (no Codex content at endpoint B).
+
+**Endpoint C — `pulls/48/comments`** (line-level review-comments): 1 substantive finding
+
+#### Finding 1 (P2 / Major) — `docs/handoffs/TASK-0033-batch-p1-templates-system-docs-pmn-011.md` line 22
+
+**Title (verbatim)**: Correct the linked PR commit SHA
+
+**Body (verbatim)**:
+
+> For this reviewed revision, the durable handoff records PR-48 as opened with commit `b36fb9b`, but `b36fb9b` is not in the history of `400b9f4`—both commits are siblings with parent `7ccb44a` (`git merge-base --is-ancestor b36fb9b 400b9f4` is false). If `400b9f4` is the commit being reviewed or merged, the TASK-0033 audit trail points readers to a different tree; the same incorrect SHA is also repeated in `docs/reviews/PR-48-codex-pre-commit.md`. Please either use this revision's actual SHA or leave the deferred placeholder until the post-merge substitution step.
+
+**Comment ID**: 3213778773
+**Diff anchor**: handoff line 22 (Metadata bullet `Linked PR` field; commit_id `00ab440bfc05d149070c0c2c7547250bb86e0521` per Endpoint A)
+
+### §24 verify-before-assert side-check at receiving surface (§24.3 receiving-discipline)
+
+**Empirical verification of Codex Finding 1 referenced SHAs**:
+
+- Codex's reviewed commit per Endpoint A `commit_id` field: `00ab440bfc05d149070c0c2c7547250bb86e0521` (= `00ab440` short).
+- Codex Finding 1 body asserts the reviewed revision is `400b9f4` and that `b36fb9b` is "not in the history of `400b9f4`".
+- **Empirical**: `git rev-parse 400b9f4` returns `fatal: ambiguous argument '400b9f4': unknown revision or path not in the working tree`. `git merge-base --is-ancestor b36fb9b 400b9f4` returns `fatal: Not a valid object name 400b9f4`. **The SHA `400b9f4` does not exist anywhere in the repo.** Codex Finding 1 references a hallucinated SHA.
+- **PR-48 actual commit graph** per `gh api repos/.../pulls/48/commits`:
+  - `b36fb9ba4772f7b55b1f0d1ab975cbf527927b3f` (substantive — `feat(task-0033): batch P1 close ...`)
+  - `00ab440bfc05d149070c0c2c7547250bb86e0521` (step-13 placeholder substitution — `chore(task-0033): step-13 placeholder substitution ...`)
+- **Empirical**: `git merge-base --is-ancestor b36fb9b 00ab440` returns success → `b36fb9b IS ancestor of 00ab440`. The handoff's `b36fb9b` reference IS in the history of the reviewed commit `00ab440` (parent-child relationship); they are NOT siblings.
+- **Cross-cycle precedent verification**: PR-43 review-context references substantive commit `ce90d1e` at step-13 (TASK-0031); PR-45 review-context likewise references substantive commit at step-13 (TASK-0032); pattern is to anchor durable Linked PR field on the **substantive commit SHA** (the commit containing reviewable substantive content), not the most-recent feat-branch HEAD post-step-13-placeholder-substitution. The handoff's `b36fb9b` reference is canonical-precedent-aligned (3 cross-cycle precedents).
+
+**Empirical conclusion**: Codex Finding 1 contains a hallucinated SHA (`400b9f4`) and asserts a sibling-commits relationship that doesn't hold (`b36fb9b` IS ancestor of the reviewed commit `00ab440`). The handoff + review-context references to `b36fb9b` are correct per cross-cycle precedent. **Builder-side §24.3 receiving-discipline empirical positive — caught Codex post-PR pass-1 phantom-SHA-hallucination at receiving surface before applying any spurious correction.**
+
+### Adjudication (Builder-side recommendation; Architect ratifies)
+
+- **Finding 1**: recommend **path-(β) record-and-proceed** — finding is factually incorrect (hallucinated `400b9f4` SHA + false sibling-commits assertion); content references in handoff + review-context are canonical-precedent-aligned (substantive commit SHA per PR-43/PR-45 precedent). No content edits warranted.
+- **Cycle-close ledger entry NEW [Codex-side §24 violation; phantom-SHA-hallucination class]**: Codex post-PR pass-1 referenced a SHA (`400b9f4`) that does not exist anywhere in the repo + asserted a sibling-commits relationship that empirically doesn't hold. New defect class observation: Codex post-PR review can hallucinate SHAs. Cross-surface meta-class refinement: (XXIV) cross-surface meta-class extends to Codex-side authoring (not just Architect-side spec-authoring + Builder-side claim authoring); 4 distinct authoring-surface manifestations now enumerated (Architect spec / Builder handoff frontmatter + claims / Codex reviewer output). §24.3 receiving-discipline empirical positive at Builder side.
+- **§8.1.1.3 cost-class adjudication**: path-(β) record-and-proceed has zero edit cost; one-iteration convergence trivially. **10th cross-cycle empirical positive** for cost-class refinement if applied (TASK-0030 ×4 + TASK-0031 ×2 + TASK-0032 ×2 + TASK-0033 step-10.X + step-12.X + step-15 = 10).
+- **(h.4) outcome-shape**: 11th cycle confirmation candidacy at this cycle reach. Owner-invoked Codex review (vs auto-fire) at endpoint B; substantive findings at endpoint C only; endpoint A sentinel.
+- **PMN-007 §9.3 (n) cycle-trailing-clean Approve at endpoint B**: NOT REACHED at this cycle (substantive finding present, even if factually incorrect). Candidacy carries forward.
+- **(XXVI) two-gate §24.3.1 discipline 2nd-instance test**: this cycle's Codex post-PR pass-1 absorption iteration is the 2nd-instance test surface per cycle-close ledger (VI). Test outcome: §24.3 receiving-discipline empirical positive at Builder side caught Codex defect; if Architect ratifies path-(β) without Builder applying spurious "correction", (XXVI) Gate A + Gate B discipline reinforced (no merge against pre-absorption state).
+
+### Resolution applied (path-(β) record-and-proceed)
+
+Per Architect ratification: path-(β) record-and-proceed RATIFIED — Codex Finding 1 factually incorrect (hallucinated SHA `400b9f4` + false sibling-commits assertion); handoff/review-context references to substantive commit `b36fb9b` are canonical-precedent-aligned per 3 cross-cycle precedents (PR-43 + PR-45 + PR-48); no content edits warranted. Reply-to-Codex-thread documenting §24.3 verification + path-(β) routing rationale deferred to post-merge cleanup phase per TASK-0032 cleanup pattern.
+
+- **Edit 1.1**: review-context "## Post-PR Codex review state" verbatim absorption (above sections) per PMN-002 (a) + §8.1.1.2 phantom-action verification.
+- **Edit 1.2**: Adjudication + Resolution applied (this section) + Absorption status sub-sections appended per templates/review-template.md convention + TASK-0030 / TASK-0031 / TASK-0032 review-context precedent.
+- **Edit 1.3**: handoff state-snapshot fields swept per Item 14 minimal-scope absorption (path-(β) zero-edit cost) — handoff §3 step-15 entry NEW + §5 iteration 4 entry NEW + §11 step-15 session entry NEW + Last completed step rewrite + §10 ledger entry **(XV) NEW** Codex-side §24 violation phantom-SHA-hallucination class + (XXIV.f) sub-shape extension framing per (XIII) NEW (XIV) sweep-scope completeness gap recurrence ledger refinement.
+- **Edit 1.4**: re-staged + re-derived (e.1) cumulative-diff-stats post-step-15 with bidirectional sum-stability check at all 3 axes per Adj 10 (= 7th in-cycle application; **10th cross-cycle empirical positive** for §8.1.1.3 cost-class one-iteration convergence per Architect ratification; path-(β) zero-edit triviality).
+
+### Absorption status
+
+Pass-1 path-(β) absorption complete. Zero-edit cost; one-iteration trivially per `core.md` §8.1.1.3 (10th cross-cycle empirical positive). Codex pass-2 re-invocation NOT required per Architect ratification + path-(β) zero-edit triviality. **Builder-side §24.3 receiving-discipline empirical positive at this cycle** — caught Codex post-PR pass-1 phantom-SHA-hallucination at receiving surface before applying any spurious correction; (XXVI) two-gate §24.3.1 discipline 2nd-instance test surface reinforced.
+
+**(XXIV) cross-surface meta-class extension per Architect step-15 ratification**: cross-surface accumulation now spans 6 distinct authoring-surface manifestations across 3 distinct authoring agents (Architect spec / Architect template-conformant artifact / Builder handoff frontmatter + claim authoring / Codex reviewer output) per (XXIV.a)-(XXIV.f) emergent typology; cross-cycle reach 3/3+ (TASK-0031 + TASK-0032 + TASK-0033); meets ADR-006 D3 evidence-bar 3+ promotion threshold strongly via cross-cycle + cross-surface + cross-agent triple accumulation. Strong canonical-text amendment candidacy at TASK-0034+ §23.6.3 sub-shape A consolidation cycle.
+
+Pending step-16 Gate A Architect §24.3.1 staged-tree five-point check + step-16.X Gate B Builder origin/feat empirical attestation per (XXVI) two-gate discipline 2nd-instance test, before step-17 owner merge via §10.5 single-contributor bypass.
