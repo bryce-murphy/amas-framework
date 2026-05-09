@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-011
 title: PR-45 cycle learnings — verify-before-assert cross-surface meta-class + envelope/anticipation discipline + cycle-protocol resilience
-linked_pr: PR-48 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-48 (squash SHA eb606f1)
 framework_version_dogfooded: AMAS v2.29 → v2.30
-status: drafted
+status: recorded
 ---
 
 # PMN-011 — PR-45 cycle learnings — verify-before-assert cross-surface meta-class + envelope/anticipation discipline + cycle-protocol resilience
