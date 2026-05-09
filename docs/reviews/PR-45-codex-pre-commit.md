@@ -6,7 +6,7 @@ status: drafted
 
 ## Metadata
 
-- PR: PR-45 (anticipated)
+- PR: [PR-45](https://github.com/bryce-murphy/amas-framework/pull/45) (opened at step-13 2026-05-09; commit `ce90d1e`)
 - Branch: feat/task-0032-batch-p1-templates-process-docs (Option B per ADR-005; feat-type)
 - Cycle: TASK-0032
 - Linked handoff: docs/handoffs/TASK-0032-batch-p1-templates-process-docs.md
