@@ -149,4 +149,104 @@ Recommendation: Request changes before commit. No handback is needed for primary
 
 ## Post-PR Codex review state
 
-(Populated at step-13+ post-PR Codex passes per `core.md` §8.1.1.1 three-endpoint poll.)
+### Codex post-PR pass 1 — 2026-05-08T23:08:54Z
+
+**Three-endpoint poll** (per `core.md` §8.1.1.1; verbatim per PMN-002 (a) + §8.1.1.2 phantom-action verification):
+
+**Endpoint A — `pulls/43/reviews`** (formal review):
+
+- review_id: 4255930340
+- state: `COMMENTED`
+- submitted_at: 2026-05-08T23:08:54Z
+- commit_id: `5345a31c512b42fabcd57f74d5d63784402e3b26`
+- reviewer: `chatgpt-codex-connector[bot]`
+- body (verbatim):
+
+> ### 💡 Codex Review
+>
+> Here are some automated review suggestions for this pull request.
+>
+> **Reviewed commit:** `5345a31c51`
+>
+> [Sentinel header — substantive findings on endpoint C line-comments]
+
+**Endpoint B — `issues/43/comments`** (issue-comment summary):
+
+- 0 comments (no Codex-emitted issue-comment summary; no owner trigger comment captured at this poll — owner invoked `@codex review` per ADR-001 D11 prior to poll)
+
+**Endpoint C — `pulls/43/comments`** (line-level review-comments): 1 substantive finding
+
+#### Finding 1 (P2 / Major) — `docs/handoffs/TASK-0031-batch-p1-templates-pmn-adr.md` lines 107-108
+
+**Title (verbatim)**: P2 Correct stale H2 validation claims
+
+**Body (verbatim)**:
+
+> These validation bullets still assert that the PMN and ADR templates contain actual `## Status`, `## §1. Cycle context`, `## Context`, `## Decision N`, etc. headings, but in the changed template files those are only bullet-listed examples under `## Body section structure`; the only matching actual H2s are the template meta sections such as `## Path conventions` and `## Authoring surface`. Because this handoff is the durable verification record for TASK-0031, leaving known-false validation claims here undermines the repo's phantom-claim discipline and can mislead the next reviewer/Builder into treating the pre-commit finding as fully absorbed when this surface is still stale.
+
+**Comment ID**: 3211812205
+**Diff anchor**: handoff lines 107-108 (start_line 107 / line 108; side RIGHT; subject_type line)
+
+### §24 verify-before-assert side-check on Finding 1 load-bearing claim
+
+- handoff L107-L108 §Validation run section verified empirically: contains `H2 sections \`## Status\` + \`## §1. Cycle context\` + ... present` for PMN template (L107) and `H2 sections \`## Status\` + \`## Context\` + \`## Decision N\` + ... present` for ADR template (L108). Same false-claim class as Codex pre-commit pass-1 Finding 1 (anchored H2 grep miscount), in DIFFERENT durable surface (handoff §Validation run, not review-context Builder claims #1+#2).
+- Anchored grep `^## ` returns 5 PMN H2s + 6 ADR H2s (verified at step-10.2 path-(α.alt) absorption); claims `## Status` + `## §1. Cycle context` + `## Context` + `## Decision N` + `## Alternatives considered` + `## Consequences` are documented as bullet-listed examples within `## Body section structure` parent section, NOT actual H2 headings.
+- **Cross-cycle observation**: Item 14 absorption-time extension scope at step-10.2 path-(α.alt) Item 14 sweep MISSED handoff §Validation run section. The Item 14 sweep target list at step-10.2 (handoff §3 step-10/10.1/10.2 + Last completed step + §5 iter 3 + §10 MC-A + (X)+(XI) + §11 step-10.2) did NOT include §Validation run, despite §Validation run containing parallel claims to review-context Builder claims #1+#2. Multi-surface review pipeline empirical positive: Codex post-PR caught defect that Builder + Codex pre-commit + path-(α.alt) Item 14 sweep all missed.
+- **Cross-surface defect class continuity**: NEW defect class entry (XI) verification-command-anchor-specificity vs documented-content-shape mismatch (1 cycle empirical observation at step-10.2) → 2nd in-cycle instance at step-13.X (post-PR pass-1 Finding 1). Cross-cycle accumulation now extends WITHIN cycle (parallel-surface manifestations of same defect class).
+
+### Adjudication (Builder routing recommendations; awaits Architect ratification)
+
+**Item 13 anti-binary-routing — multi-option framing per §14.7 ¶3 (continuing 1st cross-cycle exercise this cycle)**:
+
+For Codex post-PR Finding 1 substantive routing:
+- (α) **path-(a) revise handoff §Validation run L107-L108 to bullet-aware reframing**: same path-(α.alt) framing applied at step-10.2 to review-context claims #1+#2 — distinguish actual H2 headings (5 PMN + 6 ADR per anchored grep `^## `) from documented body sequence (bullet-listed examples within Body section structure). Pure-prose-rewrite class; one-iteration convergence anticipated per §8.1.1.3.
+- (α') **path-(a) + Item 14 absorption-time extension scope refinement at cycle-close ledger**: applies (α) + records cross-cycle observation as cycle-close ledger augmentation (entry (XII) — Item 14 absorption-time extension scope completeness gap; sub-class observation: Item 14 sweep at fix-up iteration must enumerate ALL surfaces containing parallel claim manifestations of the underlying defect, not just primary-finding-cited surface). Cycle-bandwidth ~+5-10 ins for ledger entry.
+- (α'') **(α') + cross-cycle pattern observation reinforces (XI) NEW defect class**: 2nd in-cycle instance of (XI) verification-command-anchor-specificity vs documented-content-shape mismatch at parallel-surface manifestation; advances (XI) cross-cycle accumulation beyond 1-cycle baseline at step-10.2 ledger framing. Adjusts (XI) framing from "1 cycle empirical observation" to "1 cycle 2 in-cycle instances at distinct durable surfaces (review-context claims + handoff §Validation run); cross-cycle accumulation pending TASK-0032+".
+- (β) **path-(β) record-and-proceed**: NOT viable — claim factually wrong; same logic as Codex pre-commit pass-1 Finding 1 + 2 rejection.
+- (δ) **Action-side fix at Batch P4 cycle**: Item 14 absorption-time-extension-scope-completeness as canonical-text refinement candidate at §23.6.1.1 sub-rule extension cycle. Out-of-scope this cycle; carry-forward as PMN-candidate or §23.6.3 sub-shape A consolidation cycle scope (TASK-0033+ candidate).
+
+**Builder routing recommendation**: **(α'')** path-(a) + Item 14 absorption-time extension scope refinement at cycle-close ledger entry (XII) + (XI) framing update. Route reasoning:
+- (α) alone fixes in-cycle but misses meta-observation (Item 14 sweep scope gap = same class observation as TASK-0030 ledger entry (V) absorption-as-staged-tree-mutation); cross-cycle empirical record valuable per ADR-006 D3 evidence-bar.
+- (α') captures Item 14 sweep-scope gap as cycle-close ledger; (α'') additionally advances (XI) framing to reflect 2 in-cycle instances.
+- (δ) Action-side fix correctly belongs to TASK-0033+ §23.6.3 sub-shape A consolidation cycle; surfacing as PMN candidate appropriate.
+
+For Architect-asserted file-precedent discrepancy (`docs/reviews/PR-43-codex-post-pr.md` NEW vs actual single-file precedent):
+- (α.f) **absorb into EXISTING `PR-43-codex-pre-commit.md` "Post-PR Codex review state" section** (this absorption — applied per actual cross-cycle precedent): 21 of 21 review-context files use single-file pattern; TASK-0030 PR-41 precedent (referenced by Architect as "split") is actually single-file with §-section split internally.
+- (β.f) **create NEW `PR-43-codex-post-pr.md`** per Architect rec: diverges from cross-cycle precedent without explicit canonical-text basis; would establish new convention requiring §17.7 amendment or canonical clarification.
+
+**Builder routing recommendation for file-precedent**: **(α.f) — absorb into existing PR-43-codex-pre-commit.md** per actual cross-cycle precedent verified empirically (21 of 21 cross-cycle review-context files use single-file pattern). Architect file-precedent rec was inaccurate at receiving surface per §24 verify-before-assert §24.3 receiving-discipline application. Cycle-close ledger candidate (XIII) for canonical-clarification opportunity at usage-guide.md or §17.7 amendment at TASK-0033+ consolidation cycle.
+
+**Cost-class per §8.1.1.3**: pure-prose-rewrite (handoff §Validation run L107-L108 reframing) + ledger augmentation entries (X) + (XI) update + (XII) NEW + (XIII) NEW. One-iteration fixed-point convergence anticipated. Codex pass-2 re-invocation at post-PR window: discouraged per §8.1.1.3 cost-class refinement (pure-token-swap + pure-prose-rewrite class); owner-ratification gate at re-derived (e.1) post-fix surface sufficient.
+
+**Item 14 absorption-time extension scope at this iteration**:
+- handoff §Validation run L107-L108 (primary path-(a) edit)
+- handoff §3 step-13.1 entry NEW (post-PR Codex pass-1 absorption + path-(α'') iteration)
+- handoff §5 self-review iteration 4 entry NEW (post-PR pass-1 absorption iteration)
+- handoff §8 Post-PR Codex review state population (per §17.7 placeholder)
+- handoff §10 cycle-close ledger augmentation: (XI) framing update (1 cycle 2 in-cycle instances) + (XII) NEW (Item 14 sweep-scope completeness gap) + (XIII) NEW (file-precedent canonical-clarification candidate)
+- handoff §11 step-13.1 session entry NEW
+- handoff Last completed step rewrite (post-step-13.1 anchor)
+- review-context "Post-PR Codex review state" section (this section; absorption-status field transition)
+
+**Anticipated post-fix delta**: pure-prose-rewrite handoff §Validation run (~+5-10 ins / ~-2 del) + Item 14 sweep across handoff state-snapshot fields (~+50-80 ins for 4 new entries + 3 ledger augmentations) + review-context Adjudication/Resolution/Absorption-status (~+30-50 ins from this iteration block already authored). Anticipated step-13.1 staged-tree state: ~+85-140 ins delta from current PR-43 staged-tree state (467 ins) → ~552-607 ins. **MAY BREACH MC-A envelope ceiling 540 ins** at upper anticipation; Builder surfaces breach risk for Architect ratification.
+
+### Architect ratification
+
+Architect ratified at step-13.1 ratification turn:
+
+- **Path-(α.f) file-precedent**: RATIFIED (already applied — absorb into existing PR-43-codex-pre-commit.md per 21/21 cross-cycle precedent). Architect openly acknowledged §24 verify-before-assert violation at prior turn surface ("invented 'split' framing not verified against canonical reference"); Builder §24.3 receiving-discipline empirical positive at first cross-surface test against Architect drift; recursive-self-instantiation surface (Architect violating §24 while directing on §24-related discipline within cycle that has §24 cross-surface meta-pattern as canonical) — same recursive-irony class as TASK-0030 cycle-close observation.
+- **Path-(α'') substantive routing**: RATIFIED. Pure-prose-rewrite class; one-iteration convergence anticipated per §8.1.1.3.
+- **Ledger numbering reconciliation**: Builder-labeled (XII)+(XIII) renumbered to (XIV)+(XV)+(XVI) — slots (XII) PR-anticipation hit at #43 + (XIII) PR title-vs-commit-subject parallel-surface convention candidacy were already queued at step-13 + §24 side-check resolution. Final entry assignments: (XI) framing update + (XII)+(XIII) standing + (XIV) Item 14 sweep-scope completeness gap NEW + (XV) Architect §24 violation + Builder §24.3 receiving-discipline empirical positive + recursive-self-instantiation NEW + (XVI) MC-A envelope breach Item 10 refinement candidacy NEW.
+- **MC-A envelope breach acknowledgment**: RATIFIED as anticipated cross-cycle pattern per TASK-0030 step-13.1 precedent (614 → 713 = +99 ins; that cycle had ceiling refined upward to 720). (XVI) carries Item 10 default-cycle MC-A anticipation refinement candidacy (distinguish substantive-content base vs pre-commit-absorption vs post-PR-absorption envelope tiers).
+- **Codex pass-2 re-invocation**: NOT REQUIRED per §8.1.1.3 pure-prose-rewrite + pure-token-swap one-iteration convergence (6th cross-cycle empirical positive: TASK-0030 ×4 + TASK-0031 step-10.2 + step-13.1).
+
+### Resolution applied (path-(α'')/(α.f))
+
+- **Edit 2.1**: handoff §Validation run L107-L108 prose reframe — replaced "H2 sections `## Status` + `## §1. Cycle context` + ... present" claim with "anchored grep `^## ` returns 5 PMN H2s + 6 ADR H2s; Body section structure documents the canonical body sequence as bullet-listed examples per PMN-004-010 + ADR-001-007 observable patterns, not authored as actual H2 headings". Verifiable at next-iteration: `grep -nE "anchored grep \`\^## \` returns 5 H2 headings" docs/handoffs/TASK-0031-batch-p1-templates-pmn-adr.md` returns 1 line at L107; `grep -nE "anchored grep \`\^## \` returns 6 H2 headings" docs/handoffs/TASK-0031-batch-p1-templates-pmn-adr.md` returns 1 line at L108.
+- **Edit 2.2**: Item 14 absorption-time extension swept (refined per (XIV) NEW discipline candidate enumerating ALL durable surfaces containing parallel claim manifestations) — handoff §3 step-13.1 entry NEW + §5 iteration 4 entry NEW + §8 Post-PR Codex review state population + §10 ledger MC-A step-13.1 progression chain extension + (XI) framing update (1 cycle 2 in-cycle instances) + (XIV) NEW (Item 14 sweep-scope completeness gap) + (XV) NEW (Architect §24 violation + recursive-self-instantiation surface) + (XVI) NEW (MC-A envelope breach Item 10 refinement) + §11 step-13.1 session entry NEW + Last completed step rewrite. Verifiable at next-iteration: handoff §10 ledger contains entries (I) through (XVI) per Architect-ratified numbering.
+- **Edit 2.3**: review-context "Post-PR Codex review state" section verbatim absorption (this section content above) + Adjudication + Resolution applied (this section) + Absorption status subsections per templates/review-template.md convention + TASK-0030 PR-41 review-context precedent.
+- **Edit 2.4**: re-staged + re-derived (e.1) cumulative-diff-stats post-(α'')/(α.f) iteration with bidirectional sum-stability check at ins/del/file-count axes per methodological refinement candidate ratified at step-10 + first in-cycle application at step-10.1 (2nd in-cycle application at this surface).
+
+### Absorption status
+
+Pass-1 path-(α'')/(α.f) absorption complete. Pure-prose-rewrite + pure-token-swap class one-iteration fixed-point convergence per `core.md` §8.1.1.3 (post-PR window). Pending step-13.2 (e.1) re-derivation surfacing + owner ratification before step-17 §24.3.1 hand-back to Architect. Codex pass-2 re-invocation NOT required per Architect ratification + §8.1.1.3 cost-class refinement (6th cross-cycle empirical positive).
