@@ -6,7 +6,7 @@ Operating instructions for AI agents (Codex, GitHub Copilot, etc.) working on th
 
 This repository **is** the AMAS framework. Work in this repo follows AMAS itself ("dogfooding"): the framework operates under its own rules.
 
-- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.29 — see README)
+- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.30 — see README)
 - **Substrate canonical reference**: AMAS v2.14.1 lives at https://github.com/recruiting-tech/upcds/blob/main/docs/ai-operating-system.md and is the substrate from which the v3 canonical-law trio is being authored per ADR-003
 - **Repository status**: AMAS v3.0 trio is in active production in this repository (canonical-law trio: `core.md`, `github-reference.md`, `usage-guide.md` — all materialized; full v3.0 package per ADR-003 D2 thirteen-substantive-PR sequence in progress). UPCDS reference project will adopt v3.0.0 in a separate PR sequence after v3.0.0 ships.
 
