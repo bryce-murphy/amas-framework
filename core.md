@@ -455,11 +455,11 @@ Between PR-open and squash-merge, post-PR-window content accumulates that is rel
 3. `80f5a4a` (PR-10 squash, same commit) — instance of class (d) self-referential pattern-promotion entry: explicit "M-A7 promotion trigger met (second instance of the merge-commit-body data integration pattern this cycle)" — strongest possible empirical confirmation by pattern self-naming at the cycle that promotes it.
 4. `817c12f` (PR-11 squash, 2026-05-02) — instance of class (a) Reviewer-engagement absorption summary: 5-finding Codex post-PR review absorption (4 path-(a) + 1 path-(β); cycle close at 3 review passes within spec §5 step 15's 4-pass cap), bounded-continuation rule applications recorded.
 
-**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.27 canonicalization at PR-41 / TASK-0030):
+**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.28 canonicalization at PR-43 / TASK-0031):
 
-The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 = 16` empirical instances spanning v2.16 through v2.26 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
+The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 = 17` empirical instances spanning v2.16 through v2.27 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
 
-The pattern has stabilized into operational steady-state across 16 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
+The pattern has stabilized into operational steady-state across 17 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
 
 Four-instance evidence (PMN-005 §6/§7 candidate framing → PMN-006 §6.2 operationally canonical → PMN-006 §6.2 explicit canonical-text deferral to Part B → this PR canonical §-section text) promotes M-A7 from operationally canonical to canonical §-section text.
 
