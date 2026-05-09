@@ -19,7 +19,7 @@ status: active
 
 - Task ID: TASK-0033 (matches PR-48 anticipated; closes 9-template Batch P1 per ADR-006 D2 + ADR-007 D3 schedule — sub-batch (B.3) tool-inventory + surfaces-manifest content fill).
 - Linked Issue: none
-- Linked PR: PR-48 — URL TBD at PR-open (substituted at step-13 per PMN-001 (k) deferred-substitution discipline).
+- Linked PR: [PR-48](https://github.com/bryce-murphy/amas-framework/pull/48) (opened at step-13 2026-05-09; commit `b36fb9b`).
 - Linked ADR(s): ADR-006 (D2 batch sequence Batch P1 close + D3 evidence-bar + D4 distributed-update); ADR-007 (D3 schedule continuance); ADR-005 (branch convention regex); ADR-003 (D1 + D3 PMN insertion budget — PMN-011 consumes contingency slot); ADR-001 D9/D11/D15.
 - Linked Feature Brief: none (substantive-content cycle; no FEAT).
 - Linked review-context file: docs/reviews/PR-48-codex-pre-commit.md

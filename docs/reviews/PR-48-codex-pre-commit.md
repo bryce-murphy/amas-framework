@@ -6,7 +6,7 @@ status: drafted
 
 ## Metadata
 
-- PR: PR-48 (URL TBD at PR-open per PMN-001 (k) deferred-substitution)
+- PR: [PR-48](https://github.com/bryce-murphy/amas-framework/pull/48) (opened at step-13 2026-05-09; commit `b36fb9b`)
 - Branch: feat/task-0033-batch-p1-templates-system-docs-pmn-011 (Option B per ADR-005; feat-type)
 - Cycle: TASK-0033
 - Linked handoff: docs/handoffs/TASK-0033-batch-p1-templates-system-docs-pmn-011.md
