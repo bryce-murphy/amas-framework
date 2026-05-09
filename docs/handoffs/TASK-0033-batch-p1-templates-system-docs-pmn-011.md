@@ -5,12 +5,12 @@ pr: PR-48
 branch: feat/task-0033-batch-p1-templates-system-docs-pmn-011
 linked_predecessor: TASK-0032 (PR-45 substantive squash 3eb7751; PR-46 auto-fired chore-fix-up status transitions only; PR-47 manual chore-fix-up squash for orphaned step-15 absorption recovery + L8 squash-SHA substitution per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-48 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-48 (squash SHA eb606f1)
 framework_version_dogfooded: AMAS v2.29 → v2.30
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0033-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-09
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0033
