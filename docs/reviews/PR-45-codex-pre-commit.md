@@ -163,4 +163,66 @@ None.
 
 ## Post-PR Codex review state
 
-(Populated at step-15 post-PR Codex three-endpoint poll per `core.md` §8.1.1.1 + verbatim absorption per PMN-002 (a); pre-PR-open placeholder.)
+### Codex post-PR pass 1 — 2026-05-09T12:36:30Z
+
+**Three-endpoint poll** (per `core.md` §8.1.1.1; verbatim per PMN-002 (a) + §8.1.1.2 phantom-action verification):
+
+**Endpoint A — `pulls/45/reviews`** (formal review):
+
+- review_id: 4257783836
+- state: `COMMENTED`
+- submitted_at: 2026-05-09T12:36:30Z
+- commit_id: `ce90d1e63ccdd43e0e8ffb304a2f3acdcf2bc63e`
+- reviewer: `chatgpt-codex-connector[bot]`
+- body (verbatim):
+
+> ### 💡 Codex Review
+>
+> Here are some automated review suggestions for this pull request.
+>
+> **Reviewed commit:** `ce90d1e63c`
+>
+> [Sentinel header — substantive findings on endpoint C line-comments]
+
+**Endpoint B — `issues/45/comments`** (issue-comment summary):
+
+- 0 comments. PMN-008 §5.8 (h.4) outcome-shape empirical record at this cycle: **9th cycle confirmation candidacy** — substantive findings landed at endpoint C only; endpoints A+B sentinel/empty per established cross-cycle pattern.
+
+**Endpoint C — `pulls/45/comments`** (line-level review-comments): 1 substantive finding
+
+#### Finding 1 (P2 / Major) — `docs/handoffs/TASK-0032-batch-p1-templates-process-docs.md` line 8
+
+**Title (verbatim)**: Use the linked-pr fix-up placeholder form
+
+**Body (verbatim)**:
+
+> For this new handoff, the `linked_pr` value will not be rewritten after merge: `.github/scripts/linked-pr-fix-up.py` only matches the exact frontmatter pattern `linked_pr: PR-<digits> (Builder fills with squash SHA post-merge per PMN-001 (k))`, while this line uses `squash SHA TBD`. In PR-45's post-merge fix-up context the script silently skips nonmatching placeholders, leaving the durable TASK-0032 handoff with a stale TBD instead of the squash SHA.
+
+**Comment ID**: 3213150899
+**Diff anchor**: handoff line 8 (frontmatter linked_pr field; commit_id `123500a` = step-13 placeholder substitution commit)
+
+### §24 verify-before-assert side-check at receiving surface (§24.3 receiving-discipline)
+
+- Empirically verified Codex Finding 1 by reading [.github/scripts/linked-pr-fix-up.py:34-37](../../.github/scripts/linked-pr-fix-up.py) canonical regex `r'^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)[ \t]*$'`. My handoff frontmatter L8 carried `linked_pr: PR-45 (squash SHA TBD)` — does NOT match canonical placeholder. Action would silently skip per script's intentional silent-miss safety property at L31-L33 ("Strict match — anything other than this exact form ... won't substitute. That's the intended safety property: silent miss, not silent corruption.").
+- **Builder-side §24 verify-before-assert violation acknowledgment** (openly): I authored handoff frontmatter `(squash SHA TBD)` against my mental model of "TBD as placeholder convention" without verifying against the canonical regex pattern in linked-pr-fix-up.py. Predecessor handoff TASK-0031 frontmatter pre-merge state carried the exact canonical pattern `(Builder fills with squash SHA post-merge per PMN-001 (k))`; post-Action substitution shows `(squash SHA <SHA>)`. I observed only the post-Action state and authored against the post-state form. **1st cross-cycle Builder-side instance** of the authoring-without-canonical-source-verification meta-class (vs Architect-side at TASK-0031 (XV) + TASK-0032 (XXII)+(XXIII) = 3 cross-surface cross-cycle instances).
+- **Cross-cycle observation**: same underlying authoring-time (i.5) sub-shape A narrowness class as Architect-side instances. (XXIV) meta-class extends to Builder-side authoring at handoff frontmatter — 3 distinct authoring-surface manifestations now enumerated (Architect spec / Builder handoff frontmatter / Builder review-context claims).
+
+### Adjudication (per Architect ratification post-Codex-post-PR-pass-1)
+
+- **Finding 1 (handoff L8 linked_pr placeholder mismatch)**: **path-(α'') RATIFIED**. Pure-token-swap class. Apply canonical placeholder substitution `(squash SHA TBD)` → `(Builder fills with squash SHA post-merge per PMN-001 (k))`; cycle-close ledger entry (XXV) NEW Builder-side §24 violation; (XXIV) cross-surface accumulation framing extension to Builder-side authoring-surface manifestation. (β) record-and-proceed not viable (defeats PMN-001 (k) discipline + §17.5 lifecycle handoff `active → resolved` propagation); (δ) Action-side fix not viable (script regex is canonical silent-miss safety property by design).
+- **Architect-side §24 acknowledgment (subsidiary)**: spec §8 step 4.7 referenced PMN-007 §3.3 12-field frontmatter form but did NOT explicitly enumerate canonical placeholder text for linked_pr field per linked-pr-fix-up.py regex. Belt-and-suspenders discipline would have included canonical-placeholder-reference reminder at spec authoring time. Architect-side subsidiary narrowness — does not displace Builder-side primary violation; folds into (XXIV) meta-class as co-instance.
+- **§24 verify-before-assert side-check at receiving surface (§24.3 receiving-discipline)**: empirically confirmed Finding 1 against actual repository state (linked-pr-fix-up.py canonical regex at L34-L37 + script silent-miss safety property at L31-L33 design comment).
+- **Codex pass-2 re-invocation NOT REQUIRED** per `core.md` §8.1.1.3 pure-token-swap cost-class one-iteration convergence. **8th cross-cycle empirical positive** (TASK-0030 ×4 + TASK-0031 step-10.2 + step-13.1 + TASK-0032 step-12 + step-15). Canonical promotion candidacy continuance.
+- **PMN-008 §5.8 (h.4) outcome-shape**: 9th cycle confirmation candidacy reach — substantive findings at endpoint C only; A sentinel + B empty per established cross-cycle pattern. Well past ADR-006 D3 3+ promotion threshold; strong canonicalization candidacy continues.
+- **(XVI) MC-A envelope refinement candidacy**: anticipated post-(α'')/(Item-14) delta ~+100-160 ins; if upper anticipation breaches 641 ceiling, **3rd cross-cycle reach** of post-PR-absorption envelope tier breach pattern (TASK-0030 step-13.1 + TASK-0031 step-13.1 + TASK-0032 step-15). Reaches ADR-006 D3 3+ evidence-bar threshold; strong promotion candidacy at §23.6.3 sub-shape A consolidation cycle (TASK-0033+).
+
+### Resolution applied (path-(α''))
+
+- **Edit 1.1**: handoff frontmatter L8 — `linked_pr: PR-45 (squash SHA TBD)` → `linked_pr: PR-45 (Builder fills with squash SHA post-merge per PMN-001 (k))`. Verifiable at next-iteration: `grep -nE "^linked_pr: PR-45 \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)$" docs/handoffs/TASK-0032-batch-p1-templates-process-docs.md` returns 1 line at L8; canonical placeholder regex match per linked-pr-fix-up.py L34-L37.
+- **Edit 1.2**: handoff state-snapshot fields swept per Item 14 absorption-time extension scope ((XIV) discipline) — handoff §3 step-15 entry NEW + §5 iteration 4 entry NEW + §8 Post-PR Codex review state population + §10 ledger entry (XXV) NEW + (XXIV) cross-surface accumulation framing extension + §11 step-15 session entry NEW + Last completed step rewrite.
+- **Edit 1.3**: review-context "## Post-PR Codex review state" section verbatim absorption (this section above) + Adjudication + Resolution + Absorption status sub-sections appended per templates/review-template.md convention + TASK-0030 PR-41 / TASK-0031 PR-43 review-context precedent (single-file pattern at 22 of 22 cross-cycle instances now per (α.f) precedent).
+- **Edit 1.4**: re-staged + re-derived (e.1) cumulative-diff-stats post-(α'')/(Item-14)-sweep with bidirectional sum-stability check at all 3 axes per Adj 10 (= 4th in-cycle application).
+
+### Absorption status
+
+Pass-1 path-(α'') absorption complete. Pure-token-swap class one-iteration fixed-point convergence per `core.md` §8.1.1.3 (8th cross-cycle empirical positive). Codex pass-2 re-invocation NOT required per Architect ratification + cost-class one-iteration convergence cross-cycle pattern. Pending step-15.X (e.1) re-derivation surfacing + Architect §24.3.1 five-point post-handback check at step-16 + step-17 owner merge via §10.5 single-contributor bypass.
