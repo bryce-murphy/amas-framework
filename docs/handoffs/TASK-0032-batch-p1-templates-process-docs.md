@@ -10,7 +10,7 @@ framework_version_dogfooded: AMAS v2.28 → v2.29
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0032-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-09
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0032
