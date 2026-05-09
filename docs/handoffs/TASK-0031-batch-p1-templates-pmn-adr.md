@@ -5,12 +5,12 @@ pr: PR-43
 branch: feat/task-0031-batch-p1-templates-pmn-adr
 linked_predecessor: TASK-0030 (PR-41 squash 46d6467 substantive: Part C.1 materialization core.md §14 cluster + §17.5 + §17.7; PR-42 squash 0a2bed5 chore-fix-up per PMN-001 (k))
 linked_successor: TBD
-linked_pr: PR-43 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-43 (squash SHA 8b26afd)
 framework_version_dogfooded: AMAS v2.27 → v2.28
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0031-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-08
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0031
