@@ -5,12 +5,12 @@ pr: PR-50
 branch: feat/task-0034-employee-churn-adoption-pilot-documentation
 linked_predecessor: TASK-0033 (PR-48 squash eb606f1 Batch P1 close — system documentation templates content fill + PMN-011 co-ship)
 linked_successor: TASK-0035 (template-amendment candidate per PMN-012 recommendations)
-linked_pr: PR-50 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-50 (squash SHA 7331aaf)
 framework_version_dogfooded: AMAS v2.30
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0034-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-11
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0034 — Adoption-pilot retroactive documentation cycle (employee-churn first AMAS adoption pilot)
