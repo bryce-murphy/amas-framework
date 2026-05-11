@@ -17,6 +17,7 @@ status: active
 
 ## Metadata
 
+- Linked PR: [PR-50](https://github.com/bryce-murphy/amas-framework/pull/50)
 - Authored by: Architect (Claude Opus 4.7, Claude.ai Project) at `2026-05-11T09:59:27-04:00`
 - Cycle class: **adoption-pilot-retroactive-documentation** (NEW class at AMAS framework per spec §0.1; first instance)
 - Downstream repo cycle: [`bryce-murphy/employee-churn`](https://github.com/bryce-murphy/employee-churn) TASK-0001 (Issue #6, PR #7)

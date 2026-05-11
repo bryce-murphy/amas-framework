@@ -6,7 +6,7 @@ status: drafted
 
 ## Metadata
 
-- Review target: PR-50 substantive squash at TASK-0034 adoption-pilot retroactive-documentation cycle (URL substituted at step-13 placeholder substitution post-PR-open)
+- Review target: [PR-50](https://github.com/bryce-murphy/amas-framework/pull/50) substantive squash at TASK-0034 adoption-pilot retroactive-documentation cycle
 - Branch: `feat/task-0034-employee-churn-adoption-pilot-documentation` (Option B per ADR-005; feat-type per substantive-content authoring at amas-framework even though cycle class is adoption-pilot retroactive-documentation)
 - Cycle: TASK-0034 (adoption-pilot retroactive-documentation cycle; NEW class at AMAS framework per spec §0.1)
 - Reviewer: Codex desktop (auto-fire-or-owner-`@codex review` per (h.4) §5.3)
