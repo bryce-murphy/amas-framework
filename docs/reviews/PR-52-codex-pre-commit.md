@@ -13,7 +13,7 @@ status: drafted
 - Review scope: canonical-text amendment verification at 7 amendment surfaces + §18.3 M-A7 20th-instance enumeration correctness + Class A v-bump completeness + co-shipped artifact frontmatter conformance
 - Linked handoff: `docs/handoffs/TASK-0035-canonical-text-amendment-bundle.md`
 - Linked predecessor handoff: `docs/handoffs/TASK-0034-employee-churn-adoption-pilot.md` (PR-50)
-- Codex desktop session timestamp (UTC): TBD at owner invocation
+- Codex desktop session timestamp (UTC): 2026-05-11 (Codex desktop pre-commit pass-1 owner-invoked at step-11)
 
 ## Reviewer focus
 

@@ -17,7 +17,7 @@ status: active
 
 ## Metadata
 
-- Linked PR: [PR-52](https://github.com/bryce-murphy/amas-framework/pull/52) — URL TBD at PR-open (substituted at step-13 per PMN-001 (k))
+- Linked PR: [PR-52](https://github.com/bryce-murphy/amas-framework/pull/52)
 - Authored by: Architect (Claude Opus 4.7, Claude.ai Project) at spec authoring; Builder (Claude Code on Windows / Git Bash) at handoff authoring `2026-05-11T17:53:45Z`
 - Cycle class: **canonical-text amendment cycle** (continuing established class from TASK-0021 / TASK-0023 / TASK-0030 precedents per spec §0.1)
 - Recursive-self-instantiation salience: MEDIUM-HIGH per spec §1.3 Adj 8 (cycle ships (XXIV) four-surface paired-discipline canonicalization while exhibiting (XXIV)-class defects at its own spec authoring; positive self-instantiation expected at all 4 surfaces)
