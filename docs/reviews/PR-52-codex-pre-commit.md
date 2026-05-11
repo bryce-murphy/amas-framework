@@ -204,10 +204,56 @@ Empirical verification of Codex citation per `core.md` §8.1.1.2 + four-category
 - **Line references** (179 / 183) empirically verified at HEAD `978d2c1`:
   - L179 = `**§7.1. Rule (a) — Trigger after every push.**` body — content matches Codex citation semantic ✓
   - L183 = `**§7.3. Rule (c) — Resolve only after a clean re-review.**` body — content matches Codex citation semantic ✓
-- **Substantive conflict empirically real**: §4.6 amendment at `core.md` L157 (this cycle) claims "Codex pass-2 re-invocation is therefore NOT REQUIRED at pure-token-swap class absorption" + cites scope "every cycle's Codex pre-commit + post-PR absorption iterations" (explicitly including post-PR); `usage-guide.md` §7.1 requires "re-review" "on every push that addresses findings"; `usage-guide.md` §7.3 requires "clean re-review" before thread resolution. The two surfaces are in direct operational conflict at post-PR re-review surface for pure-token-swap class absorption fix-up pushes.
+- **Pre-fix state (documented for cycle-close ledger)**: §4.6 amendment at `core.md` L157 originally claimed "Codex pass-2 re-invocation is therefore NOT REQUIRED at pure-token-swap class absorption" + cited scope "every cycle's Codex pre-commit + post-PR absorption iterations" (explicitly including post-PR); `usage-guide.md` §7.1 requires "re-review" "on every push that addresses findings"; `usage-guide.md` §7.3 requires "clean re-review" before thread resolution. The two surfaces were in direct operational conflict at post-PR re-review surface for pure-token-swap class absorption fix-up pushes. Surface 4 Codex post-PR pass-1 surfaced this conflict at PR-52 line-comment `3221804673`.
+- **Post-step-15.X fix state (current at `a3ed3fa` onward)**: Path-(a.1) absorption narrowed §4.6 scope to pre-commit Codex desktop pass-2 only; explicitly preserved post-PR Reviewer re-review per `usage-guide.md` §7.1+§7.3 as binding. Conflict resolved at `core.md` surface. Cross-canonical-surface coherence at `usage-guide.md` §9.11 (L285) + quick-reference (L382) further extended at step-15.Y per Path-(γ.a) ratification (surgical scope-narrowing at both surfaces; no operational-discipline change).
 
 Codex citation correct; no phantom-action.
 
 ### Cross-surface (XXIV) self-instantiation positive #9 at surface 4 post-PR
 
 This Codex post-PR pass-1 finding catches Architect spec-authoring narrowness at §4.6 amendment scope (conflated pre-commit pass-2 NOT REQUIRED with post-PR re-review NOT REQUIRED). **9th (XXIV)-class instance at TASK-0035** (8 pre-step-15 per handoff §10 (XV)/(XVI) + 1 here at surface 4 post-PR). **Surface 4 post-PR functional at LANDING-CYCLE of (XXIV) four-surface paired-discipline composition canonicalization being shipped at §4.4 amendment** — empirical reinforcement of the canonicalization itself at its own ratification cycle.
+
+### Codex post-PR pass-2 re-review (step-15.Y) — 2026-05-11
+
+Three-endpoint poll #2 post step-15.X fix-up commit `a3ed3fa`:
+
+- **Endpoint 1**: 2 new Codex re-reviews at `a3ed3fa` (20:17:38Z + 20:23:37Z; both `COMMENTED`, banner-only).
+- **Endpoint 2**: re-review trigger at 20:15:07Z (Builder per Rule (a)) + additional `@codex review` at 20:20:52Z.
+- **Endpoint 3**: 2 NEW substantive findings at `a3ed3fa`.
+
+**Re-review verdict per `usage-guide.md` §7.3 Rule (c)**: NOT CLEAN — 2 net-new P2 findings. Original thread `3221804673` stays open until clean re-review.
+
+#### Codex re-review Finding A (verbatim per PMN-002 (a))
+
+**[P2] Update usage-guide pure-token-swap carve-outs** — line-comment `3221873409` at `core.md:157`:
+
+> This narrows the exemption to pre-commit pass-2 and says post-PR re-review remains binding, but the public usage guide still gives the unqualified advice that "Codex re-invocation is discouraged for pure-token-swap fix-ups" in §9.11 and repeats it in the quick reference (`usage-guide.md` lines 285 and 382), while §7.1/§7.3 require re-review after every pushed fix. In the common post-PR pure-token-swap case, readers following the guide rather than this new core paragraph can still skip the required re-review/thread-resolution gate, so the cross-file fix-up is incomplete.
+
+#### Codex re-review Finding B (verbatim per PMN-002 (a))
+
+**[P2] Update the conflict verification after the fix lands** — line-comment `3221909669` at `docs/reviews/PR-52-codex-pre-commit.md:207`:
+
+> This verification block still says the §4.6 conflict is "empirically real" and quotes the pre-fix wording that included post-PR absorption, but the `core.md` line 157 in this same commit has already been narrowed to the pre-commit Codex desktop pass and explicitly says post-PR re-review remains binding. Leaving the stale verification text in the durable review context creates a phantom current-state claim and can mislead the cycle-close ledger or a successor session into treating an already-resolved canonical conflict as still present.
+
+#### §8.1.1.2 phantom-action verification
+
+Empirically verified at HEAD `a3ed3fa`:
+- **usage-guide.md §9.11 L285** ✓: contains "Codex re-invocation is discouraged for pure-token-swap fix-ups" unqualified.
+- **usage-guide.md quick-reference L382** ✓: contains "Codex re-invocation discouraged for pure-token-swap" unqualified.
+- **Review-context L207** ✓: contained the pre-fix conflict-verification framing per step-15 phantom-action section authoring (now updated at step-15.Y per Finding B path-(a) routing to pre-fix-state + post-fix-state documentation form).
+
+Both Codex citations correct; no phantom-action.
+
+#### Adjudication (Architect step-15.Y) + Resolution applied
+
+- **Finding A routing**: **Path-(γ.a)** — extend fix-up to usage-guide.md §9.11 + quick-reference. Adj 1 cycle-scope EXPLICITLY EXPANDED (7 → 9 amendment surfaces; 7 → 8 files). Distinct from step-15 Path-(a.3) rejection: Path-(γ.a) is scope-NARROWING surgical token-swap (consistent with already-binding §7.1+§7.3), NOT substantive operational-discipline change.
+- **Finding B routing**: **Path-(a)** — review-context L207 region updated to pre-fix-state + post-fix-state documentation form per F2 fix-pattern (PMN-012 §3.3) being canonicalized at §4.7 amendment landing this cycle.
+- **Resolution applied at step-15.Y**:
+  - `usage-guide.md` §9.11 L285 → scope to "pre-commit Codex desktop pass-2 re-invocation is discouraged" + cross-reference to §7.1+§7.3 post-PR binding.
+  - `usage-guide.md` quick-reference L382 → scope to "Pre-commit Codex desktop pass-2 re-invocation discouraged" + post-PR cross-reference.
+  - `docs/reviews/PR-52-codex-pre-commit.md` L207 region → pre-fix-state documented for cycle-close ledger + current post-step-15.X fix state acknowledged.
+- **Item 14 sweep**: handoff §10 ledger entries (XXIII)-(XXVII) per ratification §5.
+
+#### Cross-surface (XXIV) self-instantiation positives #10 + #11 at surface 4 post-PR pass-2
+
+(XXIV.k) sub-shape catalog: 2 in-cycle instances at distinct canonical surfaces (pass-1: core.md §4.6 ↔ usage-guide.md §7.1+§7.3; pass-2: usage-guide.md §9.11 + quick-reference ↔ corrected §4.6). PMN-level canonicalization candidacy strengthens at TASK-0035; carry-forward to TASK-0036+ PMN candidacy. Surface 4 iterative-catch structure: each Codex pass surfaces new (XXIV.k) instances at DIFFERENT canonical-text surfaces; implicit sub-canonicalization candidate for §24.4 amendment extension at TASK-0036+ PMN cycle-close.
