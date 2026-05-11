@@ -47,7 +47,7 @@ Specifically verify:
 
 7. **§4.4 (XXIV) four-surface paired-discipline amendment + new §24.4 at `core.md`**: `grep -nE "^### §24\.4\." core.md` returns 1 line; `grep -nE "Four-surface paired-discipline composition" core.md` returns 1 line. Class: spec §4.4 new sub-section authoring.
 
-8. **§4.5 (XXVI) two-gate Gate A + Gate B amendment at `core.md` §24.3.1**: `grep -nE "Two-gate Gate A \+ Gate B discipline" core.md` returns 1 line within §24.3.1 span; `grep -nE "Gate A — staged-tree pre-commit state" core.md` returns 1 line; `grep -nE "Gate B — origin/feat empirical attestation" core.md` returns 1 line. Class: spec §4.5 byte-exact amendment.
+8. **§4.5 (XXVI) two-gate Gate A + Gate B amendment at `core.md` §24.3.1**: `grep -nE "Two-gate Gate A \+ Gate B discipline" core.md` returns 1 line within §24.3.1 span; `grep -nE "Gate A — staged-tree pre-commit state" core.md` returns 1 line; `grep -nE "Gate B — origin/<branch> empirical attestation" core.md` returns 1 line (post step-15.Z2 path-(a) E generic-form correction per ADR-005 branch type variability). Class: spec §4.5 byte-exact amendment + step-15.Z2 Finding E generic-form correction.
 
 9. **§4.6 cost-class empirical-grounding strengthening at `core.md` §8.1.1.3**: `grep -nE "Empirical grounding \(cross-cycle accumulation\)" core.md` returns 1 line within §8.1.1.3 span. Class: spec §4.6 byte-exact amendment.
 
@@ -298,3 +298,50 @@ Three-endpoint poll #3 post step-15.Y fix-up commit `05f3912`:
 #### Cross-surface (XXIV) self-instantiation positive #12 + #13 at surface 4 post-PR pass-3/pass-4
 
 Surface 4 iterative-catch structure empirically confirmed at 4 sub-iterations within single cycle (pass-1 + pass-2 + pass-3 + pass-4). (XXIV) cycle-cumulative running total at TASK-0035 step-15.Z = **13 instances**. Cross-cycle trajectory TASK-0033 (5) + TASK-0034 (6) + TASK-0035 (13). Pattern strengthening continues; cycle is empirically maximally exercising §4.4 four-surface paired-discipline canonicalization being shipped.
+
+### Codex post-PR pass-5 + pass-6 re-review (step-15.Z2) — 2026-05-11
+
+Three-endpoint poll #4 post step-15.Z fix-up commit `c7bf22b`:
+- **Endpoint 1**: 2 new Codex re-reviews at `c7bf22b` (21:09:43Z + 21:13:19Z; both `COMMENTED`, banner-only).
+- **Endpoint 2**: Builder re-invocation at 21:06:06Z + additional `@codex review` at 21:10:25Z.
+- **Endpoint 3**: 3 NEW substantive P2 findings at `c7bf22b`.
+
+**Re-review verdict per `usage-guide.md` §7.3 Rule (c)**: NOT CLEAN at pass-5 + pass-6. 3 new P2 findings at NEW non-F2 defect classes. F2 handoff-currency class NOT re-raised (step-15.Z path-(β) for Finding D holds).
+
+#### Codex pass-5 Finding E (verbatim per PMN-002 (a))
+
+**[P2] Use the actual branch ref for Gate B** — line-comment `3222165419` at `core.md:606`:
+
+> For any task branch whose type is not `feat` (allowed by `github-reference.md` §2.2: `fix`, `chore`, `adr`, `shadow`, `spike`), this new Gate B procedure tells successors to compare against `origin/feat` instead of the PR's actual head ref, so the required SHA concordance check will either fail on a missing ref or verify the wrong branch. The same hard-code is copied into the handoff template's resume command, so please phrase this as `origin/<branch>` / the PR `headRefName` rather than `origin/feat`.
+
+#### Codex pass-6 Finding F (verbatim per PMN-002 (a))
+
+**[P2] Use the full branch ref instead of hard-coding feat** — line-comment `3222181753` at `templates/handoff-template.md:148`:
+
+> For successor sessions on any non-`feat` task, this template points at a remote ref that cannot exist: `github-reference.md` §2.2 allows `fix`, `chore`, `adr`, `shadow`, and `spike` branch prefixes as well as `feat`, so a handoff with `branch: chore/task-...` would tell the Builder to run `git log -1 origin/feat/chore/task-...` instead of `origin/chore/task-...`. That breaks the verification-first guidance exactly when resuming those cycles; the command should use the complete branch value after `origin/`.
+
+#### Codex pass-6 Finding G (verbatim per PMN-002 (a))
+
+**[P2] Split the gh api poll into valid endpoint calls** — line-comment `3222181759` at `docs/handoffs/TASK-0035-canonical-text-amendment-bundle.md:158`:
+
+> When a successor follows this Step-11+ check in Bash/Git Bash, `{reviews,comments}` is brace-expanded into two separate positional arguments, but the [gh manual](https://cli.github.com/manual/gh_api) defines `gh api <endpoint> [flags]` with a single endpoint argument. Because `reviews` and `comments` are separate PR endpoints, this should be documented as two `gh api` calls (or another explicit polling sequence); otherwise the live-state verification command can fail before the user sees the Codex review state.
+
+#### Adjudication (Architect step-15.Z2) — Option (c) RATIFIED
+
+All 3 findings path-(a) per §8.1.1.3 first-finding-in-class + load-bearing substantive correctness at canonical-text + handoff durable-record surfaces. **NEW Architect explicit Stop-Iteration authority canonicalization candidate** introduced (mitigates (XXIV.k.cycle-termination) sub-canonicalization gap): if pass-7 surfaces NEW load-bearing substantive class findings beyond MC-A envelope + session-budget feasibility, Architect invokes Stop-Iteration based on (a) session-budget, (b) defect-class severity vs cycle-scope expansion, (c) TASK-0036+ carry-forward viability. TASK-0035 = 1st-instance empirical anchor.
+
+#### Resolution applied (step-15.Z2)
+
+- **Finding E path-(a)**: core.md §4.5 Gate B amendment (4 instances at L603/L606/L606/L608) updated from hard-coded `origin/feat` to generic `origin/<branch>` form + explicit reference to ADR-005 branch type variability (`feat|fix|chore|adr|shadow|spike`).
+- **Finding F path-(a)**: templates/handoff-template.md §4.7 amendment (L148) updated from `git log -1 origin/feat/<branch>` to `git log -1 origin/<branch>` + explicit reference to ADR-005 valid prefixes.
+- **Finding G path-(a)**: docs/handoffs/TASK-0035-...md §6 In-flight gates (L158) updated from shell-brace-expanded form to 3 separate `gh api` calls per `core.md` §8.1.1.1 three-endpoint poll canonical.
+- **(j)-sweep extension at step-15.Z2 application**: 3 additional `origin/feat` instances at core.md L603/L608 caught + review-context claim 8 verification command updated to match new canonical text (4 total surfaces touched for Finding E class; 1 surface for Finding F; 1 surface for Finding G). Other `origin/feat` references at handoff L177/L203 + review-context L186 retained as **concrete-this-cycle references** (THIS cycle's branch IS `feat/...`); NOT hard-coded-generic-example defects.
+- **Item 14 sweep**: handoff §10 ledger entries (XXXIII)-(XXXV) per ratification §6.
+
+#### Cross-surface (XXIV) self-instantiation positives #14 + #15 + #16 at surface 4 post-PR pass-5/pass-6
+
+3 new findings at 2 NEW (XXIV) sub-shapes:
+- (XXIV.l) example-narrowness-vs-canonical-generality (Findings E + F)
+- (XXIV.m) shell-command-form correctness (Finding G)
+
+(XXIV) cycle-cumulative running total at TASK-0035 step-15.Z2 = **16 instances** across all 4 surfaces. Cross-cycle trajectory TASK-0033 (5) + TASK-0034 (6) + TASK-0035 (16). Pattern strengthening at maximum exercise of §4.4 four-surface paired-discipline canonicalization. Implicit sub-canonicalization candidate for §24.4 + §4.7 amendment extension at TASK-0036+ — extending (XXIV) sub-shape catalog with (XXIV.l) + (XXIV.m) + (XXIV.k.cycle-termination).
