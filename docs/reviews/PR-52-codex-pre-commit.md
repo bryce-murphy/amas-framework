@@ -53,7 +53,7 @@ Specifically verify:
 
 10. **§4.7 F2 verification-first guidance at `templates/handoff-template.md`**: `grep -nE "Verification-first current-state guidance" templates/handoff-template.md` returns 1 line within Usage notes section; `grep -nE "PMN-012 §3\.3 F2 fix-pattern" templates/handoff-template.md` returns 1 line within same context. Class: spec §4.7 byte-exact amendment.
 
-11. **§4.8 §18.3 M-A7 amendment per Path C (4 sub-substitutions)**: `grep -nE "as of v2\.31 canonicalization at PR-48 / TASK-0033 \+ canonical-text amendment at PR-52 / TASK-0035" core.md` returns 1 line at L458 (preamble per Sub-1); `grep -nE "\+ PR-45 \+ PR-48 = 20" core.md` returns 1 line at L460 (enumeration per Sub-2 Path C); `grep -nE "spanning v2\.16 through v2\.30 canonicalization" core.md` returns 1 line at L460 (span per Sub-3); `grep -nE "20 consecutive substantive cycles" core.md` returns 1 line at L462 (count per Sub-4). Class: spec §4.8 byte-exact amendment per Adj 6 REVISED at step-1 ratification (Path C; PR-48 = 20th; PR-50 excluded per adoption-pilot cycle-class).
+11. **§4.8 §18.3 M-A7 amendment per Path C (4 sub-substitutions)**: `grep -nE "as of v2\.31 canonicalization at PR-52 / TASK-0035" core.md` returns 1 line at L460 (preamble per Sub-1, single-attribution canonical form post step-12 absorption Finding F1 correction per TASK-0032 precedent); `grep -nE "\+ PR-45 \+ PR-48 = 20" core.md` returns 1 line at L462 (enumeration per Sub-2 Path C); `grep -nE "spanning v2\.16 through v2\.30 canonicalization" core.md` returns 1 line at L462 (span per Sub-3); `grep -nE "20 consecutive substantive cycles" core.md` returns 1 line at L464 (count per Sub-4). Line anchors L460/L462/L464 reflect +2 shift from §4.6 paragraph addition before §14 per BD-5 step-10 informational. Class: spec §4.8 byte-exact amendment per Adj 6 REVISED at step-1 ratification (Path C; PR-48 = 20th; PR-50 excluded per adoption-pilot cycle-class) + step-12 Finding F1 single-attribution canonical-form correction.
 
 12. **§4.9 Class A v-bump v2.30 → v2.31 (4 sites)**: `grep -oE "v2\.31" README.md AGENTS.md CLAUDE.md | wc -l` returns 4 (occurrence count; README L9 contains 2 occurrences on a single line, AGENTS L9 + CLAUDE L9 each 1 occurrence — total 4 sites). NOTE: spec §5.4 form `grep -cE "v2\.31" README.md AGENTS.md CLAUDE.md` returns 3 (line-count semantic; `-c` returns matching-LINES-per-file count, not occurrence count) — Builder path-(a) revised the verification command form at step-9 self-review per (XXIV.b)-class authoring narrowness sub-finding (spec §5.4 verification command per-occurrence vs per-line semantic mismatch). Empirical residual sweep: `grep -nE "v2\.30" README.md AGENTS.md CLAUDE.md core.md | grep -vE "spanning v2\.16 through v2\.30 canonicalization"` returns 0 lines (no Class A residuals; legitimate historical-record span endpoint at core.md L462 preserved per §23.6.3 sub-shape A canonical-impact-surface-completeness check). Class: spec §4.9 + §18.4 substantive-reading minor criterion.
 
@@ -257,3 +257,44 @@ Both Codex citations correct; no phantom-action.
 #### Cross-surface (XXIV) self-instantiation positives #10 + #11 at surface 4 post-PR pass-2
 
 (XXIV.k) sub-shape catalog: 2 in-cycle instances at distinct canonical surfaces (pass-1: core.md §4.6 ↔ usage-guide.md §7.1+§7.3; pass-2: usage-guide.md §9.11 + quick-reference ↔ corrected §4.6). PMN-level canonicalization candidacy strengthens at TASK-0035; carry-forward to TASK-0036+ PMN candidacy. Surface 4 iterative-catch structure: each Codex pass surfaces new (XXIV.k) instances at DIFFERENT canonical-text surfaces; implicit sub-canonicalization candidate for §24.4 amendment extension at TASK-0036+ PMN cycle-close.
+
+### Codex post-PR pass-3 + pass-4 re-review (step-15.Z) — 2026-05-11
+
+Three-endpoint poll #3 post step-15.Y fix-up commit `05f3912`:
+
+- **Endpoint 1**: 2 new Codex re-reviews at `05f3912` (20:49:40Z + 20:57:51Z; both `COMMENTED`, banner-only).
+- **Endpoint 2**: Builder re-invocation at 20:47:18Z + additional `@codex review` at 20:55:09Z.
+- **Endpoint 3**: 2 NEW substantive P2 findings at `05f3912`.
+
+**Re-review verdict per `usage-guide.md` §7.3 Rule (c)**: NOT CLEAN at pass-3 + pass-4. 2 new P2 findings; all prior threads stay open.
+
+#### Codex pass-3 Finding C (verbatim per PMN-002 (a))
+
+**[P2] Fix the stale §18.3 verification command** — line-comment `3222055135` at `docs/reviews/PR-52-codex-pre-commit.md:56`:
+
+> This verification claim no longer matches the canonical text after the F1 absorption: running the quoted `grep -nE "as of v2\.31 canonicalization at PR-48 / TASK-0033 \+ canonical-text amendment at PR-52 / TASK-0035" core.md` returns no lines, because `core.md` now says `as of v2.31 canonicalization at PR-52 / TASK-0035` at line 460. Any successor session or reviewer following this durable claim will see a false failure while verifying the §18.3 M-A7 amendment, so the review context should be updated to the landed string and current line references.
+
+#### Codex pass-4 Finding D (verbatim per PMN-002 (a))
+
+**[P2] Update the handoff's current gate before shipping** — line-comment `3222096823` at `docs/handoffs/TASK-0035-canonical-text-amendment-bundle.md:47`:
+
+> This active handoff still tells the next session that the last completed step is Step-12 and that Step-12.X/Step-13 are pending, but the same artifact now contains post-PR step-15.Y absorption records and the actual diff already includes the later `usage-guide.md` fix-up. Since AGENTS.md requires the active handoff to be read before acting, a successor following this top-level state block would resume from the wrong gate and verify the wrong file set instead of continuing from the post-PR re-review/finalization state.
+
+#### Adjudication (Architect step-15.Z) — MIXED ROUTING
+
+- **Finding C routing**: **path-(a)** — load-bearing successor-verification anchor; review-context Builder claim 11 at L56 updated to landed §18.3 single-attribution form per step-12 Finding F1 correction. Item-14-sweep miss at step-12.X absorption is upstream root cause (claim 11 not updated when Sub-1 target form corrected at step-12 ratification).
+- **Finding D routing**: **path-(β) record-and-proceed** per `core.md` §8.1.1.3 bounded-continuation rule:
+  - 3rd same-class F2-handoff-currency instance at TASK-0035 cycle (F3 step-12 path-(a) + Finding B step-15.Y path-(a) + Finding D step-15.Z path-(β)).
+  - Default routing for same-class subsequent finding per §8.1.1.3.
+  - Load-bearing override does NOT apply: §4.7 amendment landing this cycle codifies handoff body fields as F2 historical record by design (not live tracker); §9 verification-first anchor + 4-step verify-before-act procedure handles successor verification; PR-52 is canonical live-state surface.
+  - Handoff body block fields (Last completed step, Exact next step, §3 step-by-step, §11 session log) are F2 intrinsic recurrence per §4.7 amendment text framing.
+- **Sub-canonicalization gap surfaced**: `core.md` §4.7 amendment + `usage-guide.md` §7.3 Rule (c) clean-re-review gate collision at path-(β) F2 acknowledged instances. Canonical mitigation at this cycle: owner admin-bypass per ADR-001 D9 + `core.md` §10.5 single-contributor bypass at step-17 merge. **(XXIV.k.cycle-termination) NEW sub-canonicalization candidate carry-forward to TASK-0036+**.
+
+#### Resolution applied (step-15.Z)
+
+- **Finding C path-(a)** applied: review-context L56 claim 11 verification command updated to single-attribution form (`as of v2\.31 canonicalization at PR-52 / TASK-0035`) + landed L460/L462/L464 anchors per BD-5 step-10 informational + step-12 Finding F1 correction provenance noted.
+- **Finding D path-(β)** recorded: this Adjudication section captures the routing decision verbatim per PMN-002 (a); handoff §10 ledger entries (XXX)-(XXXII) at next Item 14 sweep; Builder reply at finding thread cites §8.1.1.3 + §4.7 + ledger entry.
+
+#### Cross-surface (XXIV) self-instantiation positive #12 + #13 at surface 4 post-PR pass-3/pass-4
+
+Surface 4 iterative-catch structure empirically confirmed at 4 sub-iterations within single cycle (pass-1 + pass-2 + pass-3 + pass-4). (XXIV) cycle-cumulative running total at TASK-0035 step-15.Z = **13 instances**. Cross-cycle trajectory TASK-0033 (5) + TASK-0034 (6) + TASK-0035 (13). Pattern strengthening continues; cycle is empirically maximally exercising §4.4 four-surface paired-discipline canonicalization being shipped.
