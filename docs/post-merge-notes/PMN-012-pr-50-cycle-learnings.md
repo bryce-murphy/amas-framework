@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-012
 title: First AMAS adoption pilot — upstream packaging ambiguity + handoff-currency recursion findings + cross-laptop coordination patterns
-linked_pr: PR-50 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-50 (squash SHA 7331aaf)
 framework_version_dogfooded: AMAS v2.30 (adoption-pilot retroactive-documentation cycle class; no v-bump per spec §0.1)
-status: drafted
+status: recorded
 ---
 
 # PMN-012 — First AMAS adoption pilot — upstream packaging ambiguity + handoff-currency recursion findings + cross-laptop coordination patterns
