@@ -124,4 +124,80 @@ Path-(α') applied at step-12.X iteration for all 5 findings. Item 14 sweep exte
 
 ## Post-PR Codex review state
 
-(Populated post-PR per same convention; three-endpoint poll per `core.md` §8.1.1.1 + verbatim absorption per §8.1.1.2.)
+### Three-endpoint poll per `core.md` §8.1.1.1 (poll captured 2026-05-11 post-Codex-emissions)
+
+- **Endpoint A** (`pulls/50/reviews` verdict sentinel): **EMPTY** — no formal PR review submitted at the reviews endpoint. (n) cycle-trailing-clean Approve at Endpoint A NOT REACHED at this cycle (consistent with prior cycles where Codex emits via issue comments rather than formal reviews).
+- **Endpoint B** (`issues/50/comments`): 3 comments:
+  1. Codex auto-fire (`chatgpt-codex-connector[bot]` at `2026-05-11T14:56:29Z`) — comprehensive review summary (verbatim absorbed below).
+  2. Owner invocation (`bryce-murphy` at `2026-05-11T15:08:07Z`) — `@codex review`.
+  3. Codex response to owner invocation (`chatgpt-codex-connector[bot]` at `2026-05-11T15:11:28Z`) — `Codex Review: Didn't find any major issues. Bravo.` (standard "no issues" form; confirms auto-fire verdict).
+- **Endpoint C** (`pulls/50/comments` substantive findings inline): **EMPTY** — no line-level review-comments.
+
+**(h.4) §5.3 auto-fire-or-owner-invoke disjunction empirical observation**: Codex auto-fired on PR-open at 14:56:29Z (BEFORE owner `@codex review` at 15:08:07Z, ~12 min delta). Owner subsequent invocation produced duplicate confirmation response at 15:11:28Z. **Auto-fire-first sub-shape confirmed at TASK-0034**; continues (h.4) cross-cycle accumulation.
+
+### Codex pass 1 (post-PR auto-fire) — 2026-05-11T14:56:29Z (verbatim absorption per PMN-002 (a))
+
+```
+## Review Summary
+
+**Recommendation: Comment / no repo-local substantive findings.** I did not make code changes, so I did not create a commit or a follow-up PR.
+
+### Findings
+
+#### Blocking
+
+* None.
+
+#### Major
+
+* None.
+
+#### Minor
+
+* None.
+
+### Validation notes
+
+* The TASK-0034 handoff uses the canonical 12-field frontmatter shape expected by the handoff template, including the canonical pre-merge `linked_pr` placeholder and `status: active`.
+* The handoff's `linked_pr` placeholder matches the strict linked-pr-fix-up regex discipline, and its `status: active` is one of the script's supported frontmatter transitions.
+* The review-context file uses the canonical one-field `status: drafted` frontmatter required by the review template.
+* PMN-012 uses the canonical five-field PMN frontmatter form, keeps the pre-merge linked-PR placeholder, and aligns the H1 with the frontmatter title after the `PMN-012 — ` prefix.
+* README roadmap text reflects the adoption-pilot completion and PMN-012 placement without changing the canonical v3.0 ship-scope framing.
+* The cycle boundary claims are internally consistent: the handoff explicitly states no Class A v-bump / no §18.3 M-A7 enumeration, and PMN-012 repeats that §18.3 and §18.4 were not amended for this cycle.
+
+### External verification limitation
+
+* I could not independently revalidate the downstream `bryce-murphy/employee-churn` GitHub Issue/PR claims from this container: `gh` is not installed, and direct GitHub API access via Python failed with a tunnel `403 Forbidden`. I therefore treated those as externally unverified in this review rather than asserting they are revalidated here.
+
+**Testing / checks**
+
+* ✅ `git status --short && git diff --stat 98d7324...HEAD && git diff --name-only 98d7324...HEAD`
+* ✅ `git diff --check 98d7324...HEAD`
+* ✅ Python frontmatter shape verification (handoff 12-field / review-context 1-field / PMN-012 5-field per canonical schemas)
+* ✅ Python linked_pr regex form verification (handoff + PMN-012 match `linked-pr-fix-up.py:35` canonical regex)
+* ✅ rg sweep for placeholders/stale tokens
+* ⚠️ `gh` + Python API for downstream employee-churn verification — warnings due to missing `gh` binary + API tunnel `403 Forbidden` in Codex container environment.
+```
+
+### Codex pass 1 (post-PR owner-invocation echo) — 2026-05-11T15:11:28Z (verbatim absorption per PMN-002 (a))
+
+```
+Codex Review: Didn't find any major issues. Bravo.
+```
+
+### Adjudication
+
+**Verdict**: CLEAN — zero Blocking / Major / Minor findings. All Builder claims at "## Builder claims to verify" empirically validated by Codex's Python frontmatter shape + linked_pr regex verification commands.
+
+**§8.1.1.2 phantom-action verification**: Codex review claims "I did not make code changes, so I did not create a commit or a follow-up PR" — empirically consistent with PR-50 commit log (no Codex-authored commits; HEAD remains `132149b` from Builder's step-13 placeholder substitution commit).
+
+**External verification limitation acknowledgment**: Codex honestly disclosed inability to revalidate employee-churn cross-references due to environment constraints (no `gh` binary; API tunnel 403). This is consistent with Builder pre-flight empirical verification at step-1 (where `gh api` against employee-churn was the canonical verification surface). External verification at Builder pre-flight remains the canonical anchor for cross-reference claims — Codex's limitation is environment-specific, not a verification gap at the cycle artifact level.
+
+**§8.1.1.3 cost-class adjudication**: zero findings → zero absorption iterations required. No path-(a)/(β)/(b) routing. **12th cross-cycle empirical positive for §8.1.1.3 cost-class refinement** (zero-iteration convergence at post-PR Codex review for adoption-pilot retroactive-documentation cycle class).
+
+### Absorption status
+
+- No content changes required (clean verdict; zero findings).
+- Verbatim absorption applied at this section per PMN-002 (a).
+- (n) cycle-trailing-clean Approve at Endpoint A NOT REACHED (per cadence convention; consistent with prior cycles' Codex emission pattern via issue comments rather than formal reviews; not a defect).
+- Cycle proceeds directly to step-16 Architect §24.3.1 five-point post-handback check (Gate A staged-tree state) + step-16.X Builder origin/feat empirical attestation (Gate B remote-state) per (XXVI) two-gate discipline 3rd-instance test.
