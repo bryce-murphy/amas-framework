@@ -179,4 +179,35 @@ Builder applied 3 path-(a) fixes at staged-tree state:
 
 ## Post-PR Codex review state
 
-(Populated at step-15 post-`@codex review`.)
+### Three-endpoint poll (step-15) — 2026-05-11
+
+Per `core.md` §8.1.1.1 three-endpoint poll discipline + `usage-guide.md` §7.4 canonical:
+
+- **Endpoint 1 — formal review** (`gh pr view 52 --json reviews`): 1 formal review at `PRR_kwDOSRIPSM7-VaJA`, state `COMMENTED` (not `CHANGES_REQUESTED`); standard Codex banner body only; submittedAt `2026-05-11T20:06:35Z`; reviewed commit `978d2c1b72` (matches origin/feat HEAD post-step-13b).
+- **Endpoint 2 — issue-comments** (`gh api repos/.../issues/52/comments`): 1 comment — owner `bryce-murphy` posted `@codex review` at `2026-05-11T20:04:06Z`. **Owner-invoked** per ADR-001 D11 standard convention (NOT auto-fire — counter-evidence for TASK-0034 (XVIII) "auto-fire-first" 1st-instance NEW sub-shape pattern repeating at TASK-0035; sub-shape is NOT 2/2 cross-cycle data points).
+- **Endpoint 3 — line-comments** (`gh api repos/.../pulls/52/comments`): 1 line-level comment at `core.md:157` by `chatgpt-codex-connector[bot]`; substantive finding captured below.
+
+### Codex post-PR pass-1 substantive finding (verbatim per PMN-002 (a))
+
+**[P2] Preserve clean re-review after finding fixes** — line-comment at `core.md:157`
+
+> This new exemption lets Builders skip Codex pass-2 after any "pure-token-swap" path-(a) absorption, but the live workflow still requires a re-review on every push that addresses findings and only allows thread resolution after that clean re-review (`usage-guide.md` §7.1/§7.3, lines 179 and 183 in this commit). In the common case where a pre-commit or post-PR finding is fixed by a token swap, following this text would leave the fix unverified by the Reviewer and any review thread unresolved under the framework's own rules; narrow the exemption to non-pushed local bookkeeping or update the thread-resolution/re-review rules consistently.
+
+Comment URL: https://github.com/bryce-murphy/amas-framework/pull/52#discussion_r3221804673
+
+### §8.1.1.2 phantom-action verification of Codex citation
+
+Empirical verification of Codex citation per `core.md` §8.1.1.2 + four-category claim verification per `usage-guide.md` §7.5:
+
+- **(i) file existence**: `usage-guide.md` exists at repo root ✓
+- **(iv) identifier-pattern compliance**: §7.1 + §7.3 §-numbers exist at `usage-guide.md` ✓
+- **Line references** (179 / 183) empirically verified at HEAD `978d2c1`:
+  - L179 = `**§7.1. Rule (a) — Trigger after every push.**` body — content matches Codex citation semantic ✓
+  - L183 = `**§7.3. Rule (c) — Resolve only after a clean re-review.**` body — content matches Codex citation semantic ✓
+- **Substantive conflict empirically real**: §4.6 amendment at `core.md` L157 (this cycle) claims "Codex pass-2 re-invocation is therefore NOT REQUIRED at pure-token-swap class absorption" + cites scope "every cycle's Codex pre-commit + post-PR absorption iterations" (explicitly including post-PR); `usage-guide.md` §7.1 requires "re-review" "on every push that addresses findings"; `usage-guide.md` §7.3 requires "clean re-review" before thread resolution. The two surfaces are in direct operational conflict at post-PR re-review surface for pure-token-swap class absorption fix-up pushes.
+
+Codex citation correct; no phantom-action.
+
+### Cross-surface (XXIV) self-instantiation positive #9 at surface 4 post-PR
+
+This Codex post-PR pass-1 finding catches Architect spec-authoring narrowness at §4.6 amendment scope (conflated pre-commit pass-2 NOT REQUIRED with post-PR re-review NOT REQUIRED). **9th (XXIV)-class instance at TASK-0035** (8 pre-step-15 per handoff §10 (XV)/(XVI) + 1 here at surface 4 post-PR). **Surface 4 post-PR functional at LANDING-CYCLE of (XXIV) four-surface paired-discipline composition canonicalization being shipped at §4.4 amendment** — empirical reinforcement of the canonicalization itself at its own ratification cycle.
