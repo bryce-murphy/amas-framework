@@ -5,12 +5,12 @@ pr: PR-54
 branch: feat/task-0036-finding-i-pmn-013-substantive-absorption
 linked_predecessor: TASK-0035 (PR-52 squash 18f3b21 canonical-text amendment bundle; PR-53 squash 4c0887a chore-fix-up Finding I routing)
 linked_successor: TBD
-linked_pr: PR-54 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-54 (squash SHA faa6a37)
 framework_version_dogfooded: AMAS v2.31 → v2.32
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0036-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-12
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0036 — Finding I path-(a) + (XXIV.l) sweep + PMN-013 substantive absorption
