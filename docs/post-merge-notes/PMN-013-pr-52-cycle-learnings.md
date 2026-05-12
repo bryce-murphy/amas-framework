@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-013
 title: TASK-0035 (XXIV) sub-shape catalog (a-n) + recursive-self-instantiation positives/negatives + Stop-Iteration authority empirical positive
-linked_pr: PR-54 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-54 (squash SHA faa6a37)
 framework_version_dogfooded: AMAS v2.31 → v2.32
-status: drafted
+status: recorded
 ---
 
 # PMN-013 — TASK-0035 (XXIV) sub-shape catalog (a-n) + recursive-self-instantiation positives/negatives + Stop-Iteration authority empirical positive
