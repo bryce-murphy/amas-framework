@@ -5,12 +5,12 @@ pr: PR-52
 branch: feat/task-0035-canonical-text-amendment-bundle
 linked_predecessor: TASK-0034 (PR-50 squash 7331aaf adoption-pilot retroactive documentation cycle — employee-churn first AMAS adoption pilot + PMN-012 co-ship)
 linked_successor: TBD
-linked_pr: PR-52 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-52 (squash SHA 18f3b21)
 framework_version_dogfooded: AMAS v2.30
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0035-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-11
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0035 — Canonical-text amendment cycle (7-cluster bundle)
