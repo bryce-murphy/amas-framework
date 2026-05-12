@@ -5,12 +5,12 @@ pr: PR-56
 branch: feat/task-0037-xvii-xxvi-canonicalization-promotion
 linked_predecessor: TASK-0036 (PR-54 substantive squash faa6a37 + PR-55 auto-fire squash 9654587)
 linked_successor: TBD
-linked_pr: PR-56 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-56 (squash SHA 122d039)
 framework_version_dogfooded: AMAS v2.32 → v2.33
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0037-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-12
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0037 — (XVII) bidirectional sum-stability + (XXVI) two-gate Gate A + Gate B canonicalization promotion cycle
