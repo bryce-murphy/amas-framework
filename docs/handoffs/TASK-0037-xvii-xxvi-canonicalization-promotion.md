@@ -140,7 +140,7 @@ Per spec §2:
 | 4.7 | This handoff body (TASK-0037 handoff) | COMPLETED at this commit's act |
 | 4.8 | PR-56 review-context | COMPLETED |
 | 9 | Self-review iterations to fixed-point | COMPLETED (iteration 1 fixed-point convergence; §7 18 numbered + parallel sub-claims PASS) |
-| 10 | Pre-commit stop-and-show + (e.1) re-derivation + (XVII) self-instantiation check | COMPLETED (532/8/7 within MC-A envelope; (XVII) CONCORDANT bidirectionally at all 3 axes — self-instantiation #1 POSITIVE) |
+| 10 | Pre-commit stop-and-show + (e.1) re-derivation + (XVII) self-instantiation check | COMPLETED (step-10 measurement 532/8/7 within MC-A envelope; (XVII) CONCORDANT bidirectionally at all 3 axes — self-instantiation #1 POSITIVE; current post step-15.X envelope 543/8/7 per §3 numstat block) |
 | 10.X | Path-(α') status transition `drafted → active` | COMPLETED (applied post step-12 absorption per TASK-0036 step-10.X precedent; 2nd cross-cycle empirical positive for deferral pattern at low-cost-class cycles per Adj 4) |
 | 11 | Codex desktop pre-commit pass-1 (owner-invokes per ADR-001 D11) | COMPLETED (2 Major findings: F1 actual Gate A stats placeholder + F2 §10.5 unresolved citation; both path-(a)) |
 | 12 | Codex absorption per §8.1.1.3 | COMPLETED (F1 + F2 path-(a) absorbed in single iteration; pure-prose-rewrite + pure-token-swap class one-iteration fixed-point convergence per cost-class refinement) |
