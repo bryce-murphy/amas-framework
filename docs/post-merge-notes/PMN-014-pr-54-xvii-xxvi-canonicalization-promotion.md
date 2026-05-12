@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-014
 title: (XVII) bidirectional sum-stability + (XXVI) two-gate Gate A + Gate B canonicalization promotion empirical record
-linked_pr: PR-56 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-56 (squash SHA 122d039)
 framework_version_dogfooded: AMAS v2.32 → v2.33
-status: drafted
+status: recorded
 ---
 
 # PMN-014 — (XVII) bidirectional sum-stability + (XXVI) two-gate Gate A + Gate B canonicalization promotion empirical record
