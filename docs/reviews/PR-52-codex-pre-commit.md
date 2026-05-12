@@ -47,7 +47,7 @@ Specifically verify:
 
 7. **§4.4 (XXIV) four-surface paired-discipline amendment + new §24.4 at `core.md`**: `grep -nE "^### §24\.4\." core.md` returns 1 line; `grep -nE "Four-surface paired-discipline composition" core.md` returns 1 line. Class: spec §4.4 new sub-section authoring.
 
-8. **§4.5 (XXVI) two-gate Gate A + Gate B amendment at `core.md` §24.3.1**: `grep -nE "Two-gate Gate A \+ Gate B discipline" core.md` returns 1 line within §24.3.1 span; `grep -nE "Gate A — staged-tree pre-commit state" core.md` returns 1 line; `grep -nE "Gate B — origin/<branch> empirical attestation" core.md` returns 1 line (post step-15.Z2 path-(a) E generic-form correction per ADR-005 branch type variability). Class: spec §4.5 byte-exact amendment + step-15.Z2 Finding E generic-form correction.
+8. **§4.5 (XXVI) two-gate application surface clause amendment at `core.md` §24.3.1**: `grep -nE "^\*\*\(XXVI\) Two-gate application surface clause\.\*\*" core.md` returns 1 line within §24.3.1 span; `grep -nE "^\*\*Gate A surface-adapted Point 2" core.md` returns 1 line; `grep -nE "^\*\*Gate B Point 2 — base-form branch tip-SHA verification\.\*\*" core.md` returns 1 line (post step-15.Z3 path-(a) Finding H absorption — Gate A Point-2 surface-adapted to staged-tree-content parity verification; Gate B Point-2 retains base-form HEAD-SHA + clean-tree mechanism). Class: spec §4.5 byte-exact amendment + step-15.Z2 Finding E generic-form correction + step-15.Z3 Finding H surface-applicability refinement.
 
 9. **§4.6 cost-class empirical-grounding strengthening at `core.md` §8.1.1.3**: `grep -nE "Empirical grounding \(cross-cycle accumulation\)" core.md` returns 1 line within §8.1.1.3 span. Class: spec §4.6 byte-exact amendment.
 

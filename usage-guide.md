@@ -280,6 +280,8 @@ In practice on reference projects, prompts tend to carry three to six stop condi
 4. Phantom-action audit — verify no claimed action lacks corresponding repository state.
 5. Comment-content claim verification (per §8.1.1.2) — for any Reviewer comment Builder reports as adjudicated, verify the comment's substantive content claims against actual repository state.
 
+Per `core.md` §24.3.1 (XXVI) two-gate application surface clause, Point 2 is surface-adapted at Gate A pre-commit state (staged-tree-content parity verification via `git diff --staged --shortstat origin/main` parity) and base-form at Gate B post-push state (HEAD-SHA + clean-tree as enumerated above).
+
 A project may codify a project-specific check pattern in repo-local Architect reference. The five-point pattern is the default.
 
 **§9.11. §8.1.1.3 bounded-continuation rule and cost-class refinement.** Iterative fix-up cycles on the same defect class within a single cycle have a bounded-continuation discipline. Per PMN-007 §2.4 cost-class refinement: pure-token-swap defect class (mechanical substitution; example: §-citation correction, line-number off-by-one fix) converges at one-iteration fixed-point; **pre-commit Codex desktop pass-2 re-invocation is discouraged for pure-token-swap fix-ups**. Post-PR Reviewer re-review per §7.1+§7.3 remains binding for every fix-up push, including pure-token-swap class. Genuinely-asymptotic defect class (requires structural decisions, multi-document reconciliation, ADR-class durable decision) warrants additional iteration cycles. Distinguishing the two at adjudication time is the discipline.
