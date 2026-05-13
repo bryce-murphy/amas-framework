@@ -5,12 +5,12 @@ pr: PR-58
 branch: feat/task-0038-multi-surface-review-pipeline-promotion
 linked_predecessor: TASK-0037 (PR-56 substantive squash 122d039 + PR-57 auto-fire squash 4b2c46b)
 linked_successor: TBD
-linked_pr: PR-58 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-58 (squash SHA 369586f)
 framework_version_dogfooded: AMAS v2.33 → v2.34
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0038-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-12
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0038 — Multi-surface review pipeline canonicalization promotion cycle (PMN-013 §6.6)

@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-015
 title: Multi-surface review pipeline canonicalization promotion empirical record (PMN-013 §6.6)
-linked_pr: PR-58 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-58 (squash SHA 369586f)
 framework_version_dogfooded: AMAS v2.33 → v2.34
-status: drafted
+status: recorded
 ---
 
 # PMN-015 — Multi-surface review pipeline canonicalization promotion empirical record (PMN-013 §6.6)
