@@ -208,17 +208,28 @@ In-cycle observations to date at TASK-0038 step-12 absorption surface:
 
 ## §8. Deferred work register
 
-(Populated at cycle close per PMN-013 §7 + PMN-014 §8 precedent — out-of-scope items carried forward to TASK-0039+ per spec §1.3 register. Anticipated entries:)
+(Pre-populated at TASK-0038 step-15.Z' surgical-fix surface per Architect refined Stop-Iteration condition (B) operational-hazard mitigation routing; final entries populated at cycle close per PMN-013 §7 + PMN-014 §8 precedent.)
 
-- PMN-013 §6.1 catalog-application-at-authoring-surface canonical-text amendment (TASK-0037 = 1st in-cycle empirical test; TASK-0038 = 2nd in-cycle test; pending strict 3+ cross-cycle empirical positives).
-- PMN-013 §6.3 cost-class boundary refinement at (XIV) sweep narrowness class (TASK-0036 + TASK-0037 = 2 cross-cycle; TASK-0038 outcome pending; if 3+ accumulates, canonicalization candidacy reaches threshold).
-- Architect Stop-Iteration authority canonicalization (TASK-0035 + TASK-0037 = 2 cross-cycle empirical positives + TASK-0036 pre-commitment held in reserve; TASK-0038 outcome pending; if 3rd cross-cycle positive surfaces, canonicalization candidacy reaches threshold).
-- §8.1.1.1 settling-period duration refinement (cross-cycle accumulation pending strict 3+ threshold).
+**Canonicalization-promotion candidates with ADR-006 D3 strict 3+ threshold REACHED at TASK-0038 close** — ready for TASK-0039+ dedicated cycle (Architect bundle-scope adjudication; may consolidate into single cycle or split per scope):
+
+- **Stop-Iteration discipline canonicalization-promotion** — 3 cross-cycle empirical positives (TASK-0035 reach 8 + TASK-0037 reach 4 + TASK-0038 reach 4); ADR-006 D3 threshold REACHED; canonicalization candidate ready at TASK-0039+.
+- **Stop-Iteration condition (B) refinement** — TASK-0037 documentary residual (review-ctx L91 stale stat; accept-at-merge operationally appropriate) vs TASK-0038 operationally-hazardous residuals (handoff §1 Current state Summary durable resume artifact + PMN-015 §8 deferred-work register TASK-0039+ planning input; targeted surgical fix required). Condition (B) text-level pre-commitment incomplete at residual-handling distinction. 1 cross-cycle observation at TASK-0038; canonicalization candidate empirically grounded for bundling with Stop-Iteration discipline promotion at TASK-0039+.
+- **PMN-013 §6.3 cost-class boundary refinement at (XIV) sweep narrowness class** — 3 cross-cycle empirical positives (TASK-0036 reach 3 + TASK-0037 reach 4 + TASK-0038 reach 3 absorbed + reach 4 Stop-Iteration); ADR-006 D3 threshold REACHED; canonicalization candidate ready at TASK-0039+ (or bundled with Stop-Iteration promotion).
+- **Architect adjudication-surface defect class** — TASK-0037 ×1 (§A prescription enumeration narrowness) + TASK-0038 ×4 (step-12.X routing-instruction template-lifecycle narrowness + step-15 over-cautious-polling-gate framing + stale-wakeup-prompt scheduling + Stop-Iteration pre-commitment text-level incompleteness at residual-handling distinction) = 5 total observations across 2 cycles; cross-cycle reach 2 of refinement-candidate framing; canonicalization candidacy approaches threshold per accumulating empirical reinforcement at TASK-0039+ PMN authoring.
+
+**Canonicalization-promotion candidates with cross-cycle accumulation pending strict 3+ threshold** — carry-forward to TASK-0039+ cycles for additional empirical evidence:
+
+- PMN-013 §6.1 catalog-application-at-authoring-surface canonical-text amendment (TASK-0037 = 1st in-cycle empirical test; TASK-0038 = 2nd in-cycle test at step-12.X routing-instruction surface; pending strict 3+ cross-cycle empirical positives).
+- §8.1.1.1 settling-period duration refinement (TASK-0037 in-cycle refinement + TASK-0038 Adj 13 in-cycle refinement; cross-cycle accumulation pending strict 3+ threshold).
+- **(XIV) sweep surface-rotation pattern at iterative depth** — empirically observed at TASK-0038 (handoff §10 ledger (XVIII)); canonical remedy candidate = comprehensive enumeration with explicit checklist of ALL durable-state assertion surfaces at every (XIV) sweep iteration. 1 cross-cycle observation; pending cross-cycle accumulation; adjacent candidate to PMN-013 §6.3 cost-class boundary refinement.
+- Handoff-template canonical-citation discipline at §10.5 forthcoming-qualifier (2 cross-cycle TASK-0036 + TASK-0037; TASK-0038 outcome at cycle close populated; pending 3rd cross-cycle positive if applicable).
+
+**Other deferred work items per cycle-external scope** (not at canonicalization-promotion candidacy framing):
+
 - Full (XXIV.a-n) catalog sweep across TASK-0035 + TASK-0036 + TASK-0037 + TASK-0038 unmoved surfaces (dedicated (XXIV) consolidation cycle candidate).
 - (XXIV.o) candidate canonicalization (surface-based-vs-role-based discipline framing reconciliation).
 - (XXIV.k.cycle-termination) sub-canonicalization gap reconciliation at `usage-guide.md` §7.3 Rule (c).
-- Handoff-template canonical-citation discipline at §10.5 forthcoming-qualifier (2 cross-cycle TASK-0036 + TASK-0037; TASK-0038 outcome pending; pending 3rd).
-- Self-referential closure pattern at handoff-template canonicalization (per TASK-0036 cycle-close ledger (XXV)).
-- MC-A envelope methodology refinement (cycle-class-specific empirical baselines candidate).
+- Self-referential closure pattern at handoff-template canonicalization (per TASK-0036 cycle-close ledger (XXV); 5 cross-cycle applications observed; canonicalization-threshold candidate pending Architect bundle-scope adjudication at TASK-0039+).
+- MC-A envelope methodology refinement (cycle-class-specific empirical baselines candidate; (XXVI) over-anticipation pattern 4th cross-cycle confirmation at TASK-0038; attenuation by (XIV) sweep absorption iterations observed empirically).
 - Batch P2 GitHub-artifact templates per ADR-006 D2 + ADR-007 D3.
 - AGENTS.md substrate URL maintenance (cycle-external monitoring).
