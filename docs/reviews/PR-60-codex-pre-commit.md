@@ -211,4 +211,54 @@ Post-absorption: re-stage; (e.1) cumulative-diff-stats re-derivation; (XVII) bid
 
 ## Codex post-PR review state
 
-(Populated at step-15+ post-PR Codex pass-1 through pass-N absorption surfaces per §24.5 surface 5 + §24.6 Stop-Iteration framework reach 4+ canonical boundary application per Adj 12. Three-endpoint poll record per `core.md` §8.1.1.1 captured at each pass-N surface. Stop-Iteration framework fire conditions if reach 4+ triggers + condition (B-3) refined application empirical test if invoked + cycle-close ledger override-signal disclosure record if invoked all recorded here.)
+## Codex post-PR pass-1 output absorption (step-15)
+
+**Pass-1 metadata**:
+- PR-60 squash anchor: `c080258`
+- Codex pass-1 fired at: 2026-05-15T18:32:02Z
+- Review verdict: COMMENTED (banner-only summary); 2 inline findings at PR-60 inline-comment surface
+- Three-endpoint poll per §8.1.1.1: pulls/60/reviews + issues/60/comments + pulls/60/comments (inline) — all polled per cross-cycle precedent
+
+**Verbatim Codex pass-1 output per §8.1.1.2 absorption convention**:
+
+### Finding 1 [P2] at `core.md:657` (inline comment id 3250200323)
+
+> **P2 Badge — Clarify post-fix pass handling at reach 4+**
+>
+> In the B.ii route for an operationally hazardous residual, this clause anticipates a Codex pass immediately after the surgical fix and defines how to handle new residuals from it, but Condition (A) just above says reach 4+ means "No additional Codex pass invocation." In the scenario where a reach-4 finding gets a targeted surgical fix, the canonical instructions now conflict on whether Builder/Owner should stop or run/consume pass N+1, which undercuts the Stop-Iteration boundary this section is trying to make load-bearing.
+
+### Finding 2 [P2] at `PMN-016:209` (inline comment id 3250200330)
+
+> **P2 Badge — Remove unsupported TASK-0038 pass-5 grounding**
+>
+> This deferred-work item still grounds the (XIV) sweep surface-rotation pattern in a TASK-0038 "pass-4 → pass-5" sequence, even though the same PMN's §3.2 now describes the evidence as the documented pass-1 through pass-4 iterations and the absorbed pre-commit finding records that pass-5 evidence was not supported by authoritative committed sources. Because §8 is the planning register for TASK-0040+ work, leaving the unsupported pass-5 basis here can mislead the next Architect about the empirical record for that candidate.
+
+## Adjudication routing (Architect step-15)
+
+Both findings routed **path-(a) in-cycle absorption** per `core.md` §8.1.1.3 cost-class refinement at reach 1 (well below Stop-Iteration condition (A) reach 4+ canonical boundary per §24.6 Application protocol clause being shipped at this cycle):
+
+- **Finding 1 [P2]** (XXIV.k) cross-canonical-surface coherence narrowness internal to §24.6 between condition (A) and condition (B.ii). Routing: path-(a) minimal-invasive clarification at condition (A) clause — add "by owner per ADR-001 D11" invocation-qualifier + NEW sentence explicitly anticipating spontaneous re-review mechanism + cross-reference to condition (B) routing. Resolves internal-coherence narrowness at canonical text shipping surface. Architect scope-discipline consideration: at reach 1 well below reach 4+ canonical boundary, path-(a) absorption per §8.1.1.3 cost-class refinement is the cross-cycle norm at canonical-text amendment cycles (precedent: TASK-0035 path-(γ.a) at pass-2 reach 2; TASK-0037 pass-1 reach 1; TASK-0038 pass-1 through pass-3 reach 1-3). Stop-Iteration condition (A) anti-bargaining-mechanism specifically gated on reach 4+ saturation, NOT canonical-text amendment scope at promotion cycles broadly.
+
+- **Finding 2 [P2]** (XIV) sweep surface-rotation pattern at PMN-016 §3.2 → §8 internal-cross-reference rotation. Routing: path-(a) pure-token-swap at PMN-016 §8 register entry consistent with §3.2 already-applied wording per step-11.X Edit 3. Recursive-self-instantiation NEGATIVE recorded at PMN-016 §4.5 NEW sub-section per Edit C; cross-cycle reach 2 REACHED at TASK-0039 close per PMN-016 §8 register update per Edit B; cycle-close ledger entries XIX-XX pre-populated at handoff §10 per Edit D.
+
+## Resolution applied (step-15.X)
+
+Builder applied path-(a) Edits A-F at staged-tree state per Architect adjudication:
+
+- Edit A: `core.md` §24.6 condition (A) clause clarification (invocation-qualifier + spontaneous-re-review-mechanism NEW sentence + condition (B) cross-reference)
+- Edit B: PMN-016 §8 (XIV) sweep surface-rotation register entry update (consistent with §3.2 step-11.X wording + cross-cycle reach 2 framing + cross-reference to §4.5 NEW)
+- Edit C: PMN-016 §4.5 NEW recursive-self-instantiation NEGATIVE record at (XIV) sweep surface-rotation pattern (Codex post-PR pass-1)
+- Edit D: TASK-0039 handoff §10 cycle-close ledger entries XIX + XX pre-populated
+- Edit E: PR-60 review-context body post-PR pass-1 absorption section (this surface)
+- Edit F: Rule (b) thread replies × 2 to inline comments 3250200323 + 3250200330 per `usage-guide.md` §7.2 (posted post-step-15.X push)
+
+Post-absorption: re-stage; (e.1) cumulative-diff-stats re-derivation per now-load-bearing §23.6.1.1 (XVII); (XVII) bidirectional sum-stability check at all 3 axes — self-instantiation #4 POSITIVE anticipated at TASK-0039 step-15.X (e.1) re-derivation surface; step-15.X commit + push; three-surface SHA concordance refresh; settling-period poll on step-15.X commit per Adj 13 (≥15 min from latest Codex activity per cross-cycle refinement).
+
+## Absorption status (step-15.X)
+
+- Codex pass-1 output: captured verbatim per PMN-002 (a) at this section above.
+- Adjudication: both findings path-(a) per §8.1.1.3 pure-prose-rewrite + pure-token-swap class at reach 1.
+- Resolution: 6 path-(a) Edits A-F applied at staged-tree state.
+- (j) all-instances sweep post-Edits: see verification batch at step-15.X stop-and-show.
+- Reach 1 at TASK-0039 post-PR pipeline; Stop-Iteration framework reach 4+ canonical boundary 3 passes away per §24.6 Application protocol clause.
+- Codex pass-2 spontaneous re-review cadence anticipated ~7-15 min post-step-15.X push per cross-cycle empirical pattern.
