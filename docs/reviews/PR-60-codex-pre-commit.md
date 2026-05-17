@@ -262,3 +262,48 @@ Post-absorption: re-stage; (e.1) cumulative-diff-stats re-derivation per now-loa
 - (j) all-instances sweep post-Edits: see verification batch at step-15.X stop-and-show.
 - Reach 1 at TASK-0039 post-PR pipeline; Stop-Iteration framework reach 4+ canonical boundary 3 passes away per §24.6 Application protocol clause.
 - Codex pass-2 spontaneous re-review cadence anticipated ~7-15 min post-step-15.X push per cross-cycle empirical pattern.
+
+## Codex post-PR pass-2 output absorption (step-15.Y)
+
+**Pass-2 metadata**:
+- PR-60 squash anchor at pass-2 fire: `0362d86`
+- Codex pass-2 fired at: 2026-05-16T17:56:54Z
+- Review verdict: COMMENTED (banner-only summary); 1 inline finding at PR-60 inline-comment surface
+- Three-endpoint poll per §8.1.1.1: pulls/60/reviews + issues/60/comments + pulls/60/comments (inline) — all polled per cross-cycle precedent
+
+**Verbatim Codex pass-2 output per §8.1.1.2 absorption convention**:
+
+### Finding (Pass-2) [P2] at `docs/handoffs/TASK-0039-stop-iteration-canonicalization-promotion.md:49` (inline comment id 3253240980)
+
+> **P2 Badge — Refresh the handoff current-state resume anchor**
+>
+> When a future Architect or Builder resumes from this handoff, this `Current state` line still says PR-60 is not open and that step 13 is pending, but the same handoff later records step-15 post-PR Codex pass-1 on PR-60 squash `c080258`. Because the handoff template treats `Current state`/`Exact next step` as the resume anchor, leaving this stale will direct the next session toward already-completed PR-open/review steps instead of the actual post-review/merge state.
+
+## Adjudication routing (Architect step-15.Y)
+
+Path-(a) absorption per §8.1.1.3 cost-class refinement at reach 2 (2 passes from Stop-Iteration boundary at reach 4+ per §24.6 Application protocol clause). Finding classified as (XXIV.d) state-currency narrowness at handoff body durable-state at cycle-progress-state sub-shape — operationally-hazardous per condition (B-3) doctrine (handoff §Current state Summary + Exact next step is durable resume artifact for next-cycle Architect bootstrap; stale framing directs next session toward already-completed steps). Same class as pass-1 Finding 2 routing (handoff §Last completed step) at different sub-shape.
+
+Concomitant Architect adjudication-surface observation: Edit B'''.5 iter-5 sweep prescription was form-pattern-focused but did not enumerate content-class scope distinguishing stale-form patterns from stale-state patterns; iter-5 missed handoff §Current state Summary which pass-2 caught. 7th TASK-0039 in-cycle observation at Architect adjudication-surface verification-command/edit-prescription enumeration narrowness sub-shape; 4th narrowness dimension empirically observed at (XIV) sweep surface-rotation pattern at iterative depth.
+
+## Resolution applied (step-15.Y)
+
+Builder applied path-(a) Edits pass-2.1 through pass-2.7 at staged-tree state per Architect adjudication:
+
+- Edit pass-2.1: handoff §Current state Summary + Exact next step refresh per Codex finding
+- Edit pass-2.2: count migration 12 → 13 at 5+ current-state surfaces (PMN-016 §4.4 + §4.5 + §5.2 + handoff §10 entry XVI + any additional surfaces from iter-6 sweep)
+- Edit pass-2.3: PMN-016 §4.5 5-iteration narrative + 4th narrowness dimension extension
+- Edit pass-2.4: handoff §10 cycle-close ledger entry XXII pre-population
+- Edit pass-2.5: PR-60 review-context body pass-2 absorption section (this surface)
+- Edit pass-2.6: Rule (b) thread reply × 1 to inline comment 3253240980 (posted post-step-15.Y push)
+- Edit pass-2.7: comprehensive iter-6 verification sweep at 4-dimensional scope
+
+Post-absorption: re-stage; (e.1) cumulative-diff-stats re-derivation per now-load-bearing §23.6.1.1 (XVII); (XVII) bidirectional sum-stability check at all 3 axes — self-instantiation #5 POSITIVE anticipated at TASK-0039 step-15.Y (e.1) re-derivation surface (13th cross-cycle (XVII) empirical positive post-promotion); step-15.Y commit + push; three-surface SHA concordance refresh; settling-period poll on step-15.Y commit per Adj 13 (≥15 min from latest Codex activity at pass-2 fire 2026-05-16T17:56:54Z + post-step-15.Y push cadence window ~7-15 min).
+
+## Absorption status (step-15.Y)
+
+- Codex pass-2 output: captured verbatim per PMN-002 (a) at this section above.
+- Adjudication: finding path-(a) per §8.1.1.3 pure-prose-rewrite class at reach 2.
+- Resolution: 7 path-(a) Edits pass-2.1-pass-2.7 applied at staged-tree state.
+- (j) all-instances sweep post-Edits: see verification batch at step-15.Y stop-and-show.
+- Reach 2 at TASK-0039 post-PR pipeline; Stop-Iteration framework reach 4+ canonical boundary 2 passes away per §24.6 Application protocol clause.
+- Codex pass-3 spontaneous re-review cadence anticipated ~7-15 min post-step-15.Y push per cross-cycle empirical pattern.
