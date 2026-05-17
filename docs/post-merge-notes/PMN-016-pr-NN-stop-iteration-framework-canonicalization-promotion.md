@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-016
 title: Stop-Iteration framework canonicalization promotion empirical record (PMN-013 §5)
-linked_pr: PR-60 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-60 (squash SHA 48b5a49)
 framework_version_dogfooded: AMAS v2.34 → v2.35
-status: drafted
+status: recorded
 ---
 
 # PMN-016 — Stop-Iteration framework canonicalization promotion empirical record (PMN-013 §5)

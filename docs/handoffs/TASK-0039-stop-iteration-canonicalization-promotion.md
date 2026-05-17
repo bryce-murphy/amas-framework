@@ -5,12 +5,12 @@ pr: PR-60
 branch: feat/task-0039-stop-iteration-canonicalization-promotion
 linked_predecessor: TASK-0038 (PR-58 substantive squash 369586f + PR-59 auto-fire squash d970eb6)
 linked_successor: TBD
-linked_pr: PR-60 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-60 (squash SHA 48b5a49)
 framework_version_dogfooded: AMAS v2.34 → v2.35
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0039-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-13
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0039 — Stop-Iteration framework + condition (B-3) refined canonicalization promotion cycle (PMN-013 §5)
