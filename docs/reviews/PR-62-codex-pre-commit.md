@@ -45,7 +45,7 @@ Specifically verify:
 
 6. **README Templates table 2-cell `filled_by` substitution** at AGENTS row (L58) + CLAUDE row (L59) → `PR-62 (TASK-0040)`. Other Batch P2 rows (PR_TEMPLATE + 4 ISSUE_TEMPLATEs) preserved at baseline `Batch P2 (ADR-006); pending content-fill cycle` per spec §8 out-of-scope.
 
-7. **§-citation resolvability** across template body §3 operational expectations bullet list (~20 `core.md` §-citations) + TASK-0040 handoff (§1-§11 sections + decisions/risks/cycle-close references) + PR-62 review-context (this file) — all canonical §-references resolve to current canonical state post-§4.3 M-A7 amendment. Note: §8.2 + §8.3 are v2.14.1 substrate noted as `(forthcoming at Part C+)` in v3 `core.md`; templates flag substrate origin per CLAUDE.md project context.
+7. **§-citation resolvability** across template body §3 operational expectations bullet list (~20 `core.md` §-citations) + TASK-0040 handoff (§1-§11 sections + decisions/risks/cycle-close references) + PR-62 review-context (this file) — all canonical §-references resolve to current canonical state post-§4.3 M-A7 amendment. Note: §8.2 + §8.3 + §10.5 are v2.14.1 substrate noted as `(forthcoming at Part C+)` in v3 `core.md`; templates flag substrate origin per CLAUDE.md project context.
 
 8. **(XXIV.k) cross-canonical-surface coherence** at AGENTS + CLAUDE tightly-symmetric body fill per Adj 2 — canonical 9-section heading structure symmetric byte-for-byte; canonical-source enumeration symmetric byte-for-byte at §3 bullet list; permitted differences confined to receiving-surface identity + sibling refs + adapter-pack path + optional §6 sentence per spec §4.2.
 
@@ -137,3 +137,29 @@ Builder claim 15 arithmetic narrowness (5 → 4): Builder hand-back at chat surf
 ### Stop-Iteration framework status
 
 Reach 1 of post-PR Codex pipeline NOT engaged at this pre-commit absorption surface. `core.md` §24.6 condition (A) NOT triggered. Pre-commit pass-1 cost-class: pure-token-swap + pure-prose-rewrite; one-iteration path-(a) absorption envelope per `core.md` §8.1.1.3 bounded-continuation rule. Reach 4+ Stop-Iteration canonical boundary NOT anticipated at this substantive-content cycle class per spec §0.2 LOW recursive-self-instantiation salience framing.
+
+## Codex post-PR pass-1 findings (verbatim absorption per §8.1.1.2)
+
+Codex post-PR pass-1 fired at commit `c2c099d46de6834ca65ba6f315828a3fa3313b44` (PR-62 HEAD) at 2026-05-18T15:59:25Z, owner-invoked per ADR-001 D11 via `@codex review` issue-comment at 2026-05-18T15:56:10Z. Three-endpoint poll per `core.md` §8.1.1.1: 1 formal review (umbrella state=COMMENTED, no substantive findings in review body) + 1 issue comment (owner invocation) + 1 inline review-comment (P2-badge severity; substantive finding).
+
+**[P2 — Major-equivalent] Correct the unresolved §10.5 resolvability claim** (inline at `docs/reviews/PR-62-codex-pre-commit.md` L48; comment id 3260306982; URL https://github.com/bryce-murphy/amas-framework/pull/62#discussion_r3260306982):
+
+> This verification note says all canonical `core.md` §-references resolve and only carves out §8.2/§8.3 as v2.14.1 substrate, but the newly filled templates also cite `core.md` §10.5 and `core.md` has no `## §10.5` heading. In review/absorption contexts that rely on this checklist, that is a phantom verification of cross-reference accuracy; either add §10.5 to the substrate/forthcoming exception here or retarget the reference to a materialized section.
+
+## Adjudication routing
+
+**Routing**: path-(a) per `core.md` §8.1.1.3 cost-class refinement (pure-token-swap / pure-prose-rewrite class). One-iteration absorption envelope per bounded-continuation rule. Reach 1 of post-PR Codex pipeline; §24.6 condition (A) reach 4+ canonical boundary NOT engaged (well below trigger; 3 reaches of headroom).
+
+**Architect step-15.X bounded-delegation routing applied** per TASK-0039 step-15.X precedent: clearly-classified surface (same-class (XXIV.a) recurrence; not NEW sub-class) + 1 surface (not >10 cumulative) + iter-1 (not convergence-failure threshold) + pure-token-swap class → Builder authorized to apply path-(a) absorption inline without per-surface stop-and-show.
+
+## Resolution applied
+
+`docs/reviews/PR-62-codex-pre-commit.md` L48 (XXIV.a) phantom-verification narrowness corrected: `+ §10.5 ` inserted after `§8.3 ` in claim 7 substrate/forthcoming exception note. Aligns with step-11.X Edit 2 §10.5 Path B `(forthcoming at Part C+)` qualifier application at template bodies (AGENTS+CLAUDE L39 + L85). Pure-token-swap; net +0/-0 git-line delta (in-line substitution).
+
+## Rule (b) thread reply
+
+Reply posted at Codex inline comment id 3260306982 at PR-62 per cross-cycle precedent: "Absorbed at step-15.X path-(a) per `core.md` §8.1.1.3. (XXIV.a) phantom-verification narrowness at review-context L48 claim 7 corrected: `+ §10.5` added to substrate/forthcoming exception list aligning with step-11.X Edit 2 §10.5 Path B qualifier application at template bodies. Resolution applied at commit <SHA> on branch `feat/task-0040-batch-p2-agents-claude-templates`."
+
+## Absorption status
+
+Pass-1 absorbed at step-15.X. Pass-N settling-period polling per Adj 12 (≥15 min from latest Codex activity); settling-period resumes from latest Codex activity timestamp (pass-1 fire 2026-05-18T15:59:25Z + post-step-15.X push cadence window ~7-15 min per ADR-001 D11 spontaneous-re-review pattern). At ≥15-min clean settling-period: stop-and-show at step-15.Y for Architect step-16 Gate B routing per `core.md` §24.3.1.
