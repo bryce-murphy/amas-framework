@@ -158,8 +158,46 @@ Codex post-PR pass-1 fired at commit `c2c099d46de6834ca65ba6f315828a3fa3313b44` 
 
 ## Rule (b) thread reply
 
-Reply posted at Codex inline comment id 3260306982 at PR-62 per cross-cycle precedent: "Absorbed at step-15.X path-(a) per `core.md` §8.1.1.3. (XXIV.a) phantom-verification narrowness at review-context L48 claim 7 corrected: `+ §10.5` added to substrate/forthcoming exception list aligning with step-11.X Edit 2 §10.5 Path B qualifier application at template bodies. Resolution applied at commit <SHA> on branch `feat/task-0040-batch-p2-agents-claude-templates`."
+Reply posted at Codex inline comment id 3260306982 at PR-62 per cross-cycle precedent: "Absorbed at step-15.X path-(a) per `core.md` §8.1.1.3. (XXIV.a) phantom-verification narrowness at review-context L48 claim 7 corrected: `+ §10.5` added to substrate/forthcoming exception list aligning with step-11.X Edit 2 §10.5 Path B qualifier application at template bodies. Resolution applied at commit a7f02ea on branch `feat/task-0040-batch-p2-agents-claude-templates`."
 
 ## Absorption status
 
 Pass-1 absorbed at step-15.X. Pass-N settling-period polling per Adj 12 (≥15 min from latest Codex activity); settling-period resumes from latest Codex activity timestamp (pass-1 fire 2026-05-18T15:59:25Z + post-step-15.X push cadence window ~7-15 min per ADR-001 D11 spontaneous-re-review pattern). At ≥15-min clean settling-period: stop-and-show at step-15.Y for Architect step-16 Gate B routing per `core.md` §24.3.1.
+
+## Codex post-PR pass-2 findings (verbatim absorption per §8.1.1.2)
+
+Codex post-PR pass-2 fired at commit `a7f02eac558260115819cb18ca5e04f24b2181f6` (PR-62 HEAD post step-15.X push) at 2026-05-18T16:13:13Z, owner-triggered per 2nd `@codex review` issue-comment at 2026-05-18T16:10:49Z (~1 min after step-15.X push). Three-endpoint poll per `core.md` §8.1.1.1: 1 formal review (umbrella state=COMMENTED; review-id PRR_kwDOSRIPSM8AAAABAQGvwQ; no substantive findings in review body) + 1 issue comment (owner pass-2 trigger) + 2 inline review-comments (P2-badge severity; substantive findings at NEW sub-shapes).
+
+**[P2 — Major-equivalent] Update the handoff's resume point** (inline at `docs/handoffs/TASK-0040-batch-p2-agents-claude-templates.md` L48; comment id 3260390404; URL https://github.com/bryce-murphy/amas-framework/pull/62#discussion_r3260390404):
+
+> The handoff later records step-15.X post-PR absorption and Pass-N settling guidance, but this top-level "Exact next step" still routes the next operator back to pre-commit step-11.X/step-12. In a continuation session that follows the mandatory handoff resume fields, this stale pointer can cause already-completed gates to be repeated and the actual next action (step-15.Y settling/Gate B) to be missed, so the active handoff no longer preserves cycle state accurately.
+
+**[P2 — Major-equivalent] Record the actual reply commit SHA** (inline at `docs/reviews/PR-62-codex-pre-commit.md` L161; comment id 3260390410; URL https://github.com/bryce-murphy/amas-framework/pull/62#discussion_r3260390410):
+
+> This audit entry claims the Rule (b) reply was posted, but the quoted reply still contains `commit <SHA>` instead of the actual resolution commit. When the review-context file is used for claimed-action verification, that placeholder cannot be checked against git/GitHub and obscures which push resolved the Codex thread; either substitute the real SHA or avoid claiming the reply was posted until the SHA is known.
+
+## Adjudication routing (pass-2)
+
+**Routing**: path-(a) per `core.md` §8.1.1.3 cost-class refinement. Finding 1 = pure-prose-rewrite (single-sentence "Exact next step" refresh); Finding 2 = pure-token-swap (`<SHA>` → `a7f02ea`). Both fit one-iteration bounded-continuation envelope.
+
+**Architect step-15.Y Option B explicit per-finding routing applied** per Architect adjudication at chat: Builder's conservative interpretation of NEW sub-shape criterion at bounded-delegation Option A was correct discipline (stop-and-show on NEW sub-shape per TASK-0039 step-15.X precedent); Architect adjudicated Option B explicit per-finding routing for pass-2.
+
+**Reach state**: reach 2 of post-PR Codex pipeline; `core.md` §24.6 condition (A) reach 4+ canonical boundary NOT engaged (2 reaches of headroom).
+
+## Resolution applied (pass-2)
+
+- **Finding 1**: `docs/handoffs/TASK-0040-batch-p2-agents-claude-templates.md` §Last completed step + §Exact next step pointer + §Current state Summary refreshed via (XIV) sweep at handoff durable-state surfaces per TASK-0039 step-11.X Edit 6.x precedent. (XIV) sweep at 4-dimension scope per Adj 15 verified at handoff durable-state surfaces.
+- **Finding 2**: `docs/reviews/PR-62-codex-pre-commit.md` L161 audit-trail entry `commit <SHA>` → `commit a7f02ea` (pure-token-swap; +0/-0 git-line delta at swap site).
+
+## Rule (b) thread replies (pass-2)
+
+- Reply at comment id 3260390404 (handoff (XXIV.d)): per Architect Option B routing verbatim with substituted step-15.Y SHA at post-push surface.
+- Reply at comment id 3260390410 (review-context (XXIV.b)): per Architect Option B routing verbatim with substituted step-15.Y SHA at post-push surface.
+
+(XXIV.b) self-instantiation note: at this absorption surface, this very Rule (b) replies sub-section documents the absorption form per Architect routing instructions. Per Architect routing observation: "If review-context audit-trail Rule (b) reply documentation still contains `<SHA>` placeholder (because authored pre-commit), apply (XXIV.b) self-instantiation correction in follow-up commit or accept-at-step-15.Z as documentary residual per condition (B-3)." Authoring discipline applied: actual posted replies via gh api at post-push surface carry concrete step-15.Y SHA; review-context audit-trail documentation form uses narrative reference ("with substituted step-15.Y SHA at post-push surface") avoiding literal placeholder retention to prevent (XXIV.b) self-instantiation recurrence. Documentary-vs-canonical-claim distinction per `core.md` §24.6 + PMN-013 §1.1 preserved.
+
+## Absorption status (pass-2)
+
+Pass-2 absorbed at step-15.Y. Pass-N settling-period polling per Adj 12 (≥15 min from latest Codex activity); settling-period resumes from latest Codex activity timestamp (pass-2 fire 2026-05-18T16:13:14Z + post-step-15.Y push cadence window ~7-15 min per ADR-001 D11 spontaneous-re-review pattern). At ≥15-min clean settling-period: stop-and-show at step-15.Z for Architect step-16 Gate B routing per `core.md` §24.3.1.
+
+If pass-3 fires (reach 3): standard absorption discipline still applies per §8.1.1.3 (1 reach of headroom from §24.6 condition (A) reach 4+ canonical boundary). If pass-4 fires (reach 4): §24.6 condition (A) anti-bargaining-mechanism engaged — halt expanded (XIV) sweep at receiving direction; route residuals per condition (B-3) to accept-at-merge or targeted surgical fix at exact named operationally-hazardous surfaces only.
