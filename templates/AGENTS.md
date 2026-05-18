@@ -1,6 +1,6 @@
 ---
 template_version: 3.0.0
-status: drafted
+status: recorded
 filled_by: PR-62 (TASK-0040)
 ---
 

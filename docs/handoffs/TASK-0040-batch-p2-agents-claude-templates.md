@@ -5,12 +5,12 @@ pr: PR-62
 branch: feat/task-0040-batch-p2-agents-claude-templates
 linked_predecessor: TASK-0039 (PR-60 substantive squash 48b5a49 + PR-61 auto-fire squash c35aa9d)
 linked_successor: TBD
-linked_pr: PR-62 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-62 (squash SHA 8ca67e2)
 framework_version_dogfooded: AMAS v2.35 → v2.36
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0040-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-18
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0040 — Batch P2 first cycle — templates/AGENTS.md + templates/CLAUDE.md content fill
