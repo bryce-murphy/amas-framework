@@ -201,3 +201,44 @@ Codex post-PR pass-2 fired at commit `a7f02eac558260115819cb18ca5e04f24b2181f6` 
 Pass-2 absorbed at step-15.Y. Pass-N settling-period polling per Adj 12 (≥15 min from latest Codex activity); settling-period resumes from latest Codex activity timestamp (pass-2 fire 2026-05-18T16:13:14Z + post-step-15.Y push cadence window ~7-15 min per ADR-001 D11 spontaneous-re-review pattern). At ≥15-min clean settling-period: stop-and-show at step-15.Z for Architect step-16 Gate B routing per `core.md` §24.3.1.
 
 If pass-3 fires (reach 3): standard absorption discipline still applies per §8.1.1.3 (1 reach of headroom from §24.6 condition (A) reach 4+ canonical boundary). If pass-4 fires (reach 4): §24.6 condition (A) anti-bargaining-mechanism engaged — halt expanded (XIV) sweep at receiving direction; route residuals per condition (B-3) to accept-at-merge or targeted surgical fix at exact named operationally-hazardous surfaces only.
+
+## Codex post-PR pass-3 findings (verbatim absorption per §8.1.1.2)
+
+Codex post-PR pass-3 fired at commit `15699afbb6d661125845948f9cb316ddf6c87361` (PR-62 HEAD post step-15.Y push) at 2026-05-18T18:30:41Z, owner-triggered per 3rd `@codex review` issue-comment at 2026-05-18T18:27:09Z (~3 min after step-15.Y push). Three-endpoint poll per `core.md` §8.1.1.1: 1 formal review (umbrella state=COMMENTED; review-id 4312722022; no substantive findings in review body) + 1 issue comment (owner pass-3 trigger) + 1 inline review-comment (P2-badge severity; recursive (XXIV.d) finding at same surface as pass-2 Finding 1).
+
+**[P2 — Major-equivalent (XXIV.d) recursive] Advance the handoff past completed Step-15.Y** (inline at `docs/handoffs/TASK-0040-batch-p2-agents-claude-templates.md` L44; comment id 3261151824; URL https://github.com/bryce-murphy/amas-framework/pull/62#discussion_r3261151824):
+
+> When a continuation session resumes from this active handoff after this commit, `Last completed step` already says Step-15.Y pass-2 absorption is complete, but this `Exact next step` still instructs the operator to re-stage, commit, and push Step-15.Y again before polling. That stale resume pointer can cause duplicate absorption work and delay the actual next state transition, which should begin after the Step-15.Y push rather than redoing it.
+
+## Adjudication routing (pass-3)
+
+**Routing**: path-(a) targeted surgical fix per `core.md` §24.6 condition (B-3) (B.ii) framing per Architect step-15.Z Option C refined routing. Pure-prose-rewrite per `core.md` §8.1.1.3 cost-class. One-iteration absorption envelope.
+
+**Architect step-15.Z Option C refined routing applied** per Architect adjudication at chat. Root cause analysis: recursive (XXIV.d) state-currency narrowness traces to commit-specific operational instructions at §Exact next step going stale at each new commit. Pattern is structurally inherent to multi-commit absorption cycle protocol — each absorption commit creates new state-snapshot that the previous pointer refresh fails to anticipate. Resolution form (Architect-prescribed): anti-recursive cycle-protocol-stable phrasing at §Exact next step pointer references standing cycle-protocol gate (≥15-min settling-period poll → route per pass outcome) rather than commit-specific operations. Pattern closure verified at canonical-text-surface level.
+
+**Builder pre-routing stop-and-show discipline** at pass-3: same-class (XXIV.d) recurrence met bounded-delegation Option A criteria; Builder surfaced classification + bounded-delegation criteria satisfaction but flagged §24.6 condition (A) reach 4+ proximity (reach 3 + recursive pattern likely producing pass-4 fire on next commit). Architect ratified Builder's conservative interpretation and routed Option C refined (third path between pure Option A bounded delegation + pure Option B early Stop-Iteration application).
+
+**Reach state**: reach 3 of post-PR Codex pipeline; `core.md` §24.6 condition (A) reach 4+ canonical boundary NOT engaged (1 reach of headroom).
+
+## Resolution applied (pass-3)
+
+- **Edit 1 anti-recursive refresh at handoff §Exact next step + §Last completed step + §Current state Summary**: cycle-protocol-stable phrasing applied at handoff durable-state surfaces. §Exact next step pointer now reads: "≥15-min settling-period poll from latest Codex activity per `core.md` §8.1.1.1 three-endpoint convention. Route per pass outcome: clean settling-period → step-16 Architect Gate B re-application per `core.md` §24.3.1; Codex pass-N fires → surface findings at chat for Architect step-15.(N+1) routing per cycle-protocol baseline." Anti-recursive: references standing cycle-protocol gate rather than commit-specific operations; structurally stable across new commits.
+- **Edit 2 handoff §10 entry (XVII) NEW**: recursive (XXIV.d) state-currency narrowness root cause + anti-recursive resolution form + cross-cycle handoff template refinement candidacy.
+- **Edit 3 handoff §3 + §8 pass-3 records** (this surface).
+- **Edit 4 review-context pass-3 absorption sub-section** (this surface).
+
+## Rule (b) thread reply (pass-3)
+
+Reply pending post-commit at comment id 3261151824 per Architect routing form with concrete step-15.Z SHA substituted at post-push surface. Anti-recursive discipline applied at audit-trail documentation: reply form references concrete-SHA substitution as post-push action (avoiding literal `<SHA>` placeholder retention per (XXIV.b) self-instantiation discipline from pass-2 Finding 2 absorption).
+
+## Absorption status (pass-3)
+
+Pass-3 absorbed at step-15.Z via Option C refined anti-recursive form per §24.6 condition (B-3) (B.ii) targeted surgical fix. Pass-N settling-period polling per Adj 12 (≥15 min from latest Codex activity); settling-period resumes from latest Codex activity timestamp (pass-3 fire 2026-05-18T18:30:41Z + post-step-15.Z push cadence window ~7-15 min per ADR-001 D11 spontaneous-re-review pattern). At ≥15-min clean settling-period: stop-and-show at step-15.Z' for Architect step-16 Gate B routing per `core.md` §24.3.1.
+
+## §24.6 framework engagement status (post pass-3)
+
+Reach 3 of post-PR Codex pipeline; condition (A) reach 4+ canonical boundary NOT engaged (1 reach of headroom). Condition (B-3) (B.ii) targeted surgical fix applied via anti-recursive refresh form. Pass-4 outcome scenarios:
+
+- **Pass-4 same-surface recursive (XXIV.d) at §Exact next step**: anti-recursive form did NOT close pattern → escalate to condition (B-3) (B.i) documentary residual route + §24.6 condition (A) at reach 4+ canonical boundary engagement; halt expanded (XIV) sweep at receiving direction; accept-at-merge per condition (B-3) (B.i) with cycle-close ledger override-signal disclosure at handoff §10 entry (XVII) per `core.md` §24.6 cycle-close ledger override-signal canonical clause.
+- **Pass-4 different surface or different sub-shape**: standard absorption discipline per `core.md` §8.1.1.3 + Architect routing per cycle-protocol baseline.
+- **No pass-4 fires (clean settling-period at ≥15 min from pass-3 fire 2026-05-18T18:30:41Z + step-15.Z push cadence window)**: cycle converges at reach 3 CLEAN with empirical evidence that anti-recursive refresh discipline closes the recursive (XXIV.d) pattern at canonical-text-surface level. Strong empirical signal for cross-cycle handoff template refinement candidacy at TASK-0041+ + sub-shape canonicalization at PMN-013 §6.x.
