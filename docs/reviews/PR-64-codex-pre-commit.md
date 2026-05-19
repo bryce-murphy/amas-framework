@@ -76,7 +76,7 @@ Specifically verify:
 
 6. **PR-64 review-context frontmatter 1-field canonical form**: `head -3 docs/reviews/PR-64-codex-pre-commit.md | grep -cE "^(status):"` returns 1. Class: review-template canonical 1-field form per `core.md` §17.7.
 
-7. **PMN-017 frontmatter 5-field canonical form**: `head -7 docs/post-merge-notes/PMN-017-pr-64-task-0040-cycle-close-pass-4-clean-documentary.md | grep -cE "^(pmn_id|pr|title|framework_version|date_authored):"` returns 5. Class: PMN-007 canonical 5-field form.
+7. **PMN-017 frontmatter 5-field canonical form**: `head -7 docs/post-merge-notes/PMN-017-pr-64-task-0040-cycle-close-pass-4-clean-documentary.md | grep -cE "^(post_merge_note_id|title|linked_pr|framework_version_dogfooded|status):"` returns 5. Class: PMN-007 canonical 5-field form.
 
 8. **`linked_pr` field canonical regex form at TASK-0041 handoff**: `python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)[ \t]*$', 'linked_pr: PR-64 (Builder fills with squash SHA post-merge per PMN-001 (k))'))"` returns Match object. Class: PMN-001 (k) Action substitution contract.
 
@@ -116,4 +116,50 @@ Verbatim-output convention: capture review verbatim into the review-context file
 
 ## Codex desktop pre-commit output absorption
 
-<populated at step-11.X absorption surface post Codex desktop pre-commit pass-N>
+### Codex pass-1 absorption status
+
+Codex desktop pre-commit pass-1 (owner-invoked at staged-tree per ADR-001 D11) surfaced 5 findings (2 Blocking + 2 Major + 1 Minor). All adjudicated path-(a) per `core.md` §8.1.1.3 cost-class refinement (pure-token-swap class envelope; reach 1 well below Stop-Iteration §24.6 reach 4+ canonical boundary). 5 path-(a) edits applied at step-11.X absorption surface per Architect Option B explicit per-finding routing.
+
+| Finding | Severity | Routing | Resolution applied |
+|---------|----------|---------|---------------------|
+| Blocking #1 (review-context lifecycle state at L2) | Blocking | path-(a) | Edit 1 — `docs/reviews/PR-64-codex-pre-commit.md` L2: `status: recorded` → `status: drafted` per `core.md` §17.7 + §17.5 template-lifecycle convention. Builder-side discipline observation: TASK-0040 PR-62 review-context at project knowledge state is `status: recorded` (post-merge captured state) → Builder mental-model carried post-merge form to pre-commit authoring. Cross-cycle pattern. |
+| Blocking #2 (PMN-017 frontmatter non-canonical form) | Blocking | path-(a) | Edit 2 — frontmatter refactored to canonical 5-field form per `templates/post-merge-note-template.md` (`post_merge_note_id: PMN-017` + `title: ...` + `linked_pr: PR-64 (Builder fills with squash SHA post-merge per PMN-001 (k))` + `framework_version_dogfooded: AMAS v2.36 → v2.37` + `status: drafted`); H1 aligned to title per (i.5) discipline. Body content preserved verbatim per Artifact 1 §1-§6. Architect adjudication-surface defect catch — empirical positive #2 within TASK-0041 for "primary Architect reasoning gaps caught by multi-surface pipeline" pattern. |
+| Major #1 (handoff body durable-state stale) | Major | path-(a) | Edit 3 — handoff multi-surface durable-state refresh: §Status frontmatter (`drafted → active`); §Last completed step + §Current state Summary + §3 step-9/10/10.X/12/11/11.X entries + §Step-10 pre-commit measurement (8/453/11 + (XVII) POSITIVE) + §5 self-review + §6 pre-commit absorption + §10 cycle-close ledger entries (I)-(X). §Exact next step preserves cycle-protocol-stable phrasing per Adj 16. |
+| Major #2 (PR_TEMPLATE §8.2 + §8.3 unqualified Path B refs) | Major | path-(a) | Edit 4 — substrate qualifier note added at Ready-for-review section header: `> Note: §8.2 + §8.3 references below reflect AMAS v2.14.1 substrate; corresponding sections forthcoming at canonical-law Part C.2 materialization per ADR-007 D3`. Intentional substrate-divergence at canonical-source-vs-operational mirror per spec §9 out-of-scope on operational template; first cross-cycle occurrence at canonical-source-vs-operational divergence class. |
+| Minor #1 (review-context audit-trail state-currency L110) | Minor | path-(a) | Edit 5 — `docs/reviews/PR-64-codex-pre-commit.md` L110: `1 (XXIV.a) observation surfaced + RR1 path-(a) cosmetic refinement absorbed` → `2 (XXIV.a)-class observations surfaced + RR1 + RR2 path-(a) cosmetic refinements absorbed at step-1 + step-9 hand-back surfaces respectively`. |
+
+### Rule (b) thread replies (pre-commit)
+
+None at this pre-commit absorption surface. Codex pre-commit was owner-invoked Codex desktop session per ADR-001 D11; no pull-request-level review comments to reply to at pre-commit surface. Rule (b) thread replies apply at step-15.X post-PR Codex pass-N absorption surface (see §Codex post-PR pass-1 findings below).
+
+### Stop-Iteration framework status (pre-commit)
+
+Reach 1 of pre-commit absorption NOT engaged at this surface. `core.md` §24.6 condition (A) NOT triggered.
+
+## Codex post-PR pass-1 findings (verbatim absorption per §8.1.1.2)
+
+Codex post-PR pass-1 fired at commit `6f53ef60aae86f25183a101674b543eca31f063b` (PR-64 HEAD) at 2026-05-19T18:04:59Z, owner-invoked per ADR-001 D11 via `@codex review` issue-comment at 2026-05-19T18:01:27Z (comment id 4490588519). Three-endpoint poll per `core.md` §8.1.1.1: 1 formal review (review-id 4321718590; umbrella state=COMMENTED; no substantive findings in body) + 1 issue comment (owner invocation) + 1 inline review-comment (P2-badge severity; substantive (XXIV.b) finding at review-context L79 Builder claim 7). Three-endpoint coverage clean.
+
+**[P2 — Major-equivalent] Use canonical PMN keys in frontmatter verification** (inline at `docs/reviews/PR-64-codex-pre-commit.md` L79; comment id 3268492918; URL https://github.com/bryce-murphy/amas-framework/pull/64#discussion_r3268492918):
+
+> The verification command here still checks for deprecated PMN frontmatter fields (`pmn_id`, `pr`, `framework_version`, `date_authored`), but this same commit refactors PMN-017 to canonical keys (`post_merge_note_id`, `linked_pr`, `framework_version_dogfooded`, `status`). As a result, this check can never validate the intended 5-field shape (it currently matches only `title`), which makes the review evidence misleading and can mask real frontmatter regressions in future cycles.
+
+## Adjudication routing (post-PR pass-1)
+
+**Routing**: path-(a) per `core.md` §8.1.1.3 cost-class refinement (pure-token-swap class — field-name list swap at single line). One-iteration absorption envelope per bounded-continuation rule. Reach 1 of post-PR Codex pipeline; §24.6 condition (A) reach 4+ canonical boundary NOT engaged (3 reaches of headroom).
+
+**Sub-pattern classification**: (XXIV.b) verification-claim authoring narrowness × **NEW propagation-narrowness at multi-edit absorption** sub-pattern. Structurally distinct from TASK-0040 ledger entry (XV) placeholder-retention narrowness: prior (XV) was about unfilled placeholders surviving authoring; this one is about verification commands going stale post-frontmatter-refactor in same commit (Edit 2 PMN-017 refactor at step-11.X did not propagate to review-context Builder claim 7 verification command at L79). Cross-cycle reach 1 for this specific NEW sub-pattern.
+
+**Architect step-15.X Option B explicit per-finding routing applied** per Architect adjudication at chat. Builder's conservative interpretation of NEW sub-pattern criterion at bounded-delegation Option A criteria assessment was correct discipline per TASK-0040 step-15.Y precedent.
+
+## Resolution applied (post-PR pass-1)
+
+`docs/reviews/PR-64-codex-pre-commit.md` L79 (XXIV.b) propagation-narrowness corrected: field-name list `(pmn_id|pr|title|framework_version|date_authored)` → `(post_merge_note_id|title|linked_pr|framework_version_dogfooded|status)` per canonical 5-field form at `templates/post-merge-note-template.md`. Pure-token-swap; expected return value `5` preserved; verified actual return value `5` against staged tree post-edit per (XIV) sweep Form dimension. Documentation expansion: review-context Codex post-PR pass-1 absorption section authored (this surface); handoff §3 step-14 + step-15.X entries + §6 post-PR pass-1 absorption sub-section + §10 cycle-close ledger entries (XI) + (XII) appended.
+
+## Rule (b) thread reply (post-PR pass-1)
+
+Reply pending post-commit at comment id 3268492918 per Architect routing form with concrete step-15.X SHA substituted at post-push surface (avoiding literal `<SHA>` placeholder retention per (XXIV.b) self-instantiation discipline from TASK-0040 pass-2 Finding 2 absorption).
+
+## Absorption status (post-PR pass-1)
+
+Pass-1 absorbed at step-15.X via Option B explicit per-finding routing. Pass-N settling-period polling per Adj 13 (≥15 min from latest Codex activity); settling-period resumes from latest Codex activity timestamp (pass-1 fire 2026-05-19T18:04:59Z + post-step-15.X push cadence window). At ≥15-min clean settling-period: stop-and-show at step-15.X' for Architect step-16 Gate B routing per `core.md` §24.3.1. If pass-2 fires: standard absorption discipline per `core.md` §8.1.1.3 + Architect routing per cycle-protocol baseline.
