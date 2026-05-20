@@ -1,7 +1,8 @@
 ---
 template_version: 3.0.0
 status: stub
-filled_by: per ADR-003
+roadmap_status: v3.2-planned
+filled_by: Batch P6 (ADR-008); v3.2 release
 ---
 
 # Documents-only project type appendix

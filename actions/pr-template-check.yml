@@ -1,6 +1,7 @@
 # template_version: 3.0.0
 # status: stub
-# filled_by: per ADR-003
+# roadmap_status: v3.1-planned
+# filled_by: Batch P4 (ADR-008); v3.1 release
 
 name: pr-template-check (stub)
 
