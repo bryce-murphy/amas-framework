@@ -5,12 +5,12 @@ pr: PR-64
 branch: feat/task-0041-batch-p2-pull-request-template
 linked_predecessor: TASK-0040 (PR-62 substantive squash 8ca67e2 + PR-63 auto-fire squash da787ed)
 linked_successor: TBD
-linked_pr: PR-64 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-64 (squash SHA 387ebec)
 framework_version_dogfooded: AMAS v2.36 → v2.37
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0041-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-18
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0041 — Batch P2 second cycle — templates/PULL_REQUEST_TEMPLATE.md content fill
