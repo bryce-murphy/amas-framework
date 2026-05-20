@@ -67,7 +67,7 @@ Update to PMN-016 §1 + §3 cross-cycle empirical record at `core.md` §24.6 Sto
 | TASK-0039 | 3 | CLEAN within boundary | convergence at canonicalization-promotion event | committed canonical at PMN-016 + handoff §10 |
 | **TASK-0040** | **4** | **empirical positive #4 — FIRST reach-4 CLEAN at boundary via (B-3) (B.ii)** | **(B-3) (B.ii) anti-recursive targeted surgical fix** | **committed canonical via this PMN-017** |
 
-5th cross-cycle empirical positive at §24.6 framework. FIRST documented reach-4 CLEAN convergence via (B-3) (B.ii) closure mechanism. Empirical-record load-bearing for §24.6 condition (B-3) sub-route empirical validation.
+4th cross-cycle empirical positive at §24.6 framework. FIRST documented reach-4 CLEAN convergence via (B-3) (B.ii) closure mechanism. Empirical-record load-bearing for §24.6 condition (B-3) sub-route empirical validation.
 
 ## §5. Adjacent empirical signal (informational; not load-bearing for this PMN)
 
