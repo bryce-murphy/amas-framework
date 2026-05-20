@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-017
 title: TASK-0040 cycle-close pass-4 CLEAN empirical documentary record + (XXIV.d) cycle-close completeness narrowness observation
-linked_pr: PR-64 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-64 (squash SHA 387ebec)
 framework_version_dogfooded: AMAS v2.36 → v2.37
-status: drafted
+status: recorded
 ---
 
 # PMN-017 — TASK-0040 cycle-close pass-4 CLEAN empirical documentary record + (XXIV.d) cycle-close completeness narrowness observation
