@@ -54,7 +54,7 @@ Specifically verify:
 
 10. **(XVII) bidirectional sum-stability** at all 3 axes (insertions / deletions / file-count) per now-load-bearing canonical (XVII) discipline (post TASK-0037 promotion). Per-file insertion sum = shortstat insertions exactly + per-file deletion sum = shortstat deletions exactly + numstat row count = shortstat file count exactly; bidirectionally verified.
 
-11. **Frontmatter shape conformance** at all 3 cycle artifacts: PR_TEMPLATE canonical 3-field (template_version + status + filled_by); TASK-0041 handoff PMN-007 HEAD canonical 12-field; PR-64 review-context (this file) §17.7 canonical 1-field; PMN-017 PMN-007 canonical 5-field (pmn_id + pr + title + framework_version + date_authored). Canonical placeholder forms per PMN-001 (k) regex match at TASK-0041 handoff `linked_pr` field.
+11. **Frontmatter shape conformance** at all 3 cycle artifacts: PR_TEMPLATE canonical 3-field (template_version + status + filled_by); TASK-0041 handoff PMN-007 HEAD canonical 12-field; PR-64 review-context (this file) §17.7 canonical 1-field; PMN-017 PMN-007 canonical 5-field (post_merge_note_id + title + linked_pr + framework_version_dogfooded + status). Canonical placeholder forms per PMN-001 (k) regex match at TASK-0041 handoff `linked_pr` field.
 
 12. **(XXIV.k) parallel-form coherence** at refined short-form substitution — `3/7 filled` form matches adjacent L30 `9/9 filled` P1 entry parallel structure.
 
