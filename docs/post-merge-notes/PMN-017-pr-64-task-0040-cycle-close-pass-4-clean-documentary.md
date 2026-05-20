@@ -8,11 +8,22 @@ status: drafted
 
 # PMN-017 — TASK-0040 cycle-close pass-4 CLEAN empirical documentary record + (XXIV.d) cycle-close completeness narrowness observation
 
-## Purpose
+## Status
 
-Lightweight documentary PMN authored at TASK-0041+ session per TASK-0041 spec §4.7 sub-task. Addresses canonical evidence gap at TASK-0040 cycle-close — pass-4 CLEAN outcome of Codex post-PR review pipeline was confirmed at chat surface and PR-62 squash commit body (Architect-drafted at session-close) but was NOT documented in the committed TASK-0040 handoff body at `docs/handoffs/TASK-0040-batch-p2-agents-claude-templates.md` (PR-62 squash `8ca67e2`). This PMN authors the empirical record retroactively from chat-surface + squash commit body evidence + ChatGPT cross-Architect critique verification at TASK-0041 scoping session.
+Drafted at TASK-0041.
 
-## §1. Pass-4 CLEAN empirical record at TASK-0040
+Lightweight documentary PMN authored at TASK-0041+ session per spec §4.7 sub-task. Addresses canonical evidence gap at TASK-0040 cycle-close — pass-4 CLEAN outcome of Codex post-PR review pipeline was confirmed at chat surface and PR-62 squash commit body (Architect-drafted at session-close) but was NOT documented in the committed TASK-0040 handoff body at `docs/handoffs/TASK-0040-batch-p2-agents-claude-templates.md` (PR-62 squash `8ca67e2`). This PMN authors the empirical record retroactively from chat-surface + squash commit body evidence + ChatGPT cross-Architect critique verification at TASK-0041 scoping session.
+
+**Canonicalization scope**: documentary record only — does NOT promote canonical-text amendments. Cross-cycle empirical record contributions:
+- `core.md` §24.6 Stop-Iteration framework: 5th cross-cycle empirical positive at framework + FIRST documented reach-4 CLEAN convergence via (B-3) (B.ii) closure mechanism
+- (XXIV.d) cycle-close completeness narrowness sub-pattern within authoring-surface defect class umbrella: reach 1 of strict 3+ threshold per ADR-006 D3
+- Cross-Architect strategic critique pattern catching primary-Architect reasoning gaps: reach 1 of strict 3+ threshold per ADR-006 D3
+
+**Cross-cycle deferral**: handoff/review-context template canonical refinement candidacy (cycle-close completeness discipline + post-PR-open state-currency refresh) + `core.md` §24.5 multi-surface review pipeline Surface 0 extension for cross-Architect critique + PMN-013 §6.x decomposed canonicalization candidates — all deferred to post-v3.0.0 per TASK-0041 scoping session refined-recommendation ratification.
+
+## §1. Cycle context
+
+This PMN documents TASK-0040 cycle-close Codex post-PR review pipeline empirical record at PR-62 (substantive squash `8ca67e2`). Cumulative cycle context: pipeline reach 4 with pass-1/2/3 absorption commits + pass-4 CLEAN convergence at §24.6 condition (A) reach 4+ canonical boundary via (B-3) (B.ii) anti-recursive targeted surgical fix mechanism applied at pass-3 resolution. Sourcing material: chat-surface session record + PR-62 squash commit body (Architect-drafted at session-close) + ChatGPT cross-Architect critique verification at TASK-0041 scoping session (GitHub connector verification access).
 
 TASK-0040 Codex post-PR review pipeline at PR-62 (substantive squash `8ca67e2`):
 
@@ -58,7 +69,11 @@ Update to PMN-016 §1 + §3 cross-cycle empirical record at `core.md` §24.6 Sto
 
 5th cross-cycle empirical positive at §24.6 framework. FIRST documented reach-4 CLEAN convergence via (B-3) (B.ii) closure mechanism. Empirical-record load-bearing for §24.6 condition (B-3) sub-route empirical validation.
 
-## §5. Cross-references
+## §5. Adjacent empirical signal (informational; not load-bearing for this PMN)
+
+Cross-Architect strategic critique at TASK-0041 Phase 1 scoping (2026-05-18) caught the cycle-close handoff completeness narrowness documented at §3 + 4 additional primary-Architect reasoning gaps (sub-option sizing weakness; Option 2 bundling overreach; canonical evidence claim without source; operational-vs-canonical distinction not maintained). This is cross-cycle reach 1 of "primary Architect reasoning gaps caught by cross-Architect critique" pattern. Operational adoption at TASK-0041+ Phase 1 scoping as experimental practice per TASK-0041 spec Adj 18; canonical-text promotion candidacy at §24.5 multi-surface review pipeline Surface 0 extension pending strict 3+ cross-cycle threshold accumulation at TASK-0042+.
+
+## §6. Cross-references
 
 - **TASK-0040 handoff** at `docs/handoffs/TASK-0040-batch-p2-agents-claude-templates.md` (PR-62 squash `8ca67e2`) — predecessor cycle handoff with §10 cycle-close ledger
 - **PR-62 review-context** at `docs/reviews/PR-62-codex-pre-commit.md` — Codex pass-1 absorption + pass-1-3 post-PR absorption records (pass-4 outcome not recorded)
@@ -68,7 +83,4 @@ Update to PMN-016 §1 + §3 cross-cycle empirical record at `core.md` §24.6 Sto
 - **`core.md`** §24.6 Stop-Iteration framework + condition (B-3) refined application
 - **`core.md`** §24.3.1 (XXVI) two-gate Gate A + Gate B canonical clause (load-bearing canonical post-TASK-0037)
 - **ADR-006** D3 evidence-bar discipline (3+ cross-cycle empirical positives for canonicalization promotion)
-
-## §6. Adjacent empirical signal (informational; not load-bearing for this PMN)
-
-Cross-Architect strategic critique at TASK-0041 Phase 1 scoping (2026-05-18) caught the cycle-close handoff completeness narrowness documented at §3 + 4 additional primary-Architect reasoning gaps (sub-option sizing weakness; Option 2 bundling overreach; canonical evidence claim without source; operational-vs-canonical distinction not maintained). This is cross-cycle reach 1 of "primary Architect reasoning gaps caught by cross-Architect critique" pattern. Operational adoption at TASK-0041+ Phase 1 scoping as experimental practice per TASK-0041 spec Adj 18; canonical-text promotion candidacy at §24.5 multi-surface review pipeline Surface 0 extension pending strict 3+ cross-cycle threshold accumulation at TASK-0042+.
+- **`templates/post-merge-note-template.md`** — canonical PMN body structure form (`## Status` + `## §1. Cycle context` + `## §N. Cross-references` final §)
