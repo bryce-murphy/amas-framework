@@ -1,12 +1,12 @@
 # AMAS Framework
 
-GitHub-native framework for AI-assisted projects: role separation (Architect / Builder / Reviewer), universal handoff schema, surface-file synchronization, claimed-action verification, and deterministic enforcement via Actions.
+GitHub-native framework for AI-assisted projects: role separation (Architect / Builder / Reviewer), universal handoff schema, surface-file synchronization, and claimed-action verification. v3.0 ships canonical disciplines + materialized templates + project-kickoff prompts as the minimum-viable framework; deterministic-enforcement automation lands at v3.1 + comprehensive reference + adapter packs at v3.2 per [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md).
 
 ## Status
 
-This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence locked in [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md). See [docs/adr/ADR-001-initial-repo-setup.md](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision and [docs/adr/ADR-003-full-package-pr-plan.md](docs/adr/ADR-003-full-package-pr-plan.md) for the current PR plan.
+This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence canonicalized at the [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) + [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md) chain. ADR-008 amends v3.0 ship scope to minimum-viable canonical framework (canonical-law trio + Part C.1 + Part C.2 + Batches P1-P3 + release polish); v3.1 ships Batch P4 Actions (deterministic-enforcement automation); v3.2 ships Batches P5-P7 (flat appendices + project-type appendices + receiving-surface adapter packs). See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
-The current canonical AMAS framework version is **v2.37**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.37.
+The current canonical AMAS framework version is **v2.38**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.38.
 
 ## What is AMAS?
 
@@ -15,7 +15,7 @@ AMAS (AI Multi-Agent System) is an operating-system framework for projects that 
 - **Roles**: Architect, Builder, Reviewer (required) plus optional Researcher, Release Manager, Tooling/Automation Agent, and Adjudicator
 - **Universal handoff schema** with seven direction-specific variants (Architect→Builder, Builder→Reviewer, Reviewer→Builder, Reviewer→Architect, Builder→Architect, Human→AI, AI→Human)
 - **GitHub-as-canonical-memory** discipline: durable artifacts (ADRs, handoffs, post-merge notes) live in version control, not in chat history
-- **Deterministic enforcement** via GitHub Actions for branch naming, PR templates, linked records, surface-file synchronization, and claimed-action verification
+- **Deterministic enforcement** via GitHub Actions for branch naming, PR templates, linked records, surface-file synchronization, and claimed-action verification (v3.1 roadmap per [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md))
 - **Surface-file synchronization** to keep AGENTS.md, CLAUDE.md, PR templates, and workflows aligned with the framework version
 - **Phantom-action verification**: catching AI claims about actions that did not actually occur
 
@@ -27,7 +27,7 @@ AMAS (AI Multi-Agent System) is an operating-system framework for projects that 
 
 ## Roadmap
 
-The current canonical PR plan reference is the combined [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) sequence: ADR-003 establishes v3.0.0 ship scope (50 stubs); ADR-006 amends the canonical framework-package batch sequence (Batch P1-P8); ADR-007 inserts Part C.1 + Part C.2 as canonical-law-Part-C materialization batches internal to `core.md`. Part C.1 (cycle-execution canonical surfaces: §14 universal handoff schema + §14.1-§14.7 direction variants + §17.5 template lifecycle + §17.7 review template) shipped at PR-41 (TASK-0030); Part C.2 (operating-discipline canonical surfaces: §8.2 + §8.3 + §13 + §10.5 + §23.6.5) anticipated at subsequent substantive cycle before Batch P4 Actions. Batch P1 process templates 9 of 9 filled (CLOSED at PR-48); first AMAS adoption pilot completed at bryce-murphy/employee-churn (TASK-0001 → PR-7 squash merge `8d4eb0d`); empirical findings canonicalized at PMN-012 (PR-50); canonical-text amendment bundle landed at PR-52 (TASK-0035; bidirectional sum-stability + sweep-scope completeness role-invariance + path-(α') discipline + four-surface paired-discipline + two-gate hand-back + cost-class one-iteration convergence + verification-first handoff form). Effective batch sequence: P1 (process templates; 9/9 filled) → C.1 (shipped at PR-41) → P1[CLOSED] → Adoption-pilot[employee-churn complete] → Canonical-text-amendment[7-cluster bundle landed] → P2 (GitHub-artifact templates; 3/7 filled) → P3 (prompts) → C.2 → P4 (Actions) → P5 (flat appendices) → P6 (project-type appendices) → P7 (receiving-surface adapter packs) → P8 (release tag + final README polish). Per-batch progress tracked via the Package layout tables. ADR-003 Decision 1 (v3.0 ship scope = 50 stubs filled) and Decision 3 (TASK reservation + PMN insertion budget pattern) remain in force. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
+The current canonical scope-and-sequence reference is the combined [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) + [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md) chain: ADR-003 established the original 50-scaffold-stub ship-scope framing (Decision 1 partially superseded by ADR-008); ADR-006 amends the canonical framework-package batch sequence (Batch P1-P8; Decisions 1 + 2 partially superseded by ADR-008); ADR-007 inserts Part C.1 + Part C.2 as canonical-law-Part-C materialization batches internal to `core.md` (preserved unchanged); ADR-008 revises v3.0 ship scope to minimum-viable canonical framework + defines v3.1 + v3.2 phased roadmap for deferred batches. Part C.1 (cycle-execution canonical surfaces: §14 universal handoff schema + §14.1-§14.7 direction variants + §17.5 template lifecycle + §17.7 review template) shipped at PR-41 (TASK-0030); Part C.2 (operating-discipline canonical surfaces: §8.2 + §8.3 + §13 + §10.5 + §23.6.5) anticipated at TASK-0046 before v3.0.0 release per ADR-007 D3 schedule + ADR-008 D2 amended scope. Batch P1 process templates 9 of 9 filled (CLOSED at PR-48); first AMAS adoption pilot completed at bryce-murphy/employee-churn (TASK-0001 → PR-7 squash merge `8d4eb0d`); empirical findings canonicalized at PMN-012 (PR-50); canonical-text amendment bundle landed at PR-52 (TASK-0035; bidirectional sum-stability + sweep-scope completeness role-invariance + path-(α') discipline + four-surface paired-discipline + two-gate hand-back + cost-class one-iteration convergence + verification-first handoff form). Effective post-ADR-008 batch sequence to v3.0.0 ship: Batch P2 (GitHub-artifact templates; 3/7 filled) ISSUE_TEMPLATEs split (TASK-0043 + TASK-0044) → Batch P3 (prompts; TASK-0045) → Part C.2 (operating-discipline; TASK-0046) → release polish + v3.0.0 tag (TASK-0047 or per actual cycle-count). v3.1 roadmap: Batch P4 (Actions; 9 canonical scaffold workflows; deterministic-enforcement automation layer). v3.2 roadmap: Batches P5-P7 (7 flat appendices + 5 project-type appendices + 7 receiving-surface adapter packs; documentation/reference/adapter layer). Per-batch progress tracked via the Package layout tables; deferred-stub rows annotated `[v3.1-planned]` / `[v3.2-planned]` per ADR-008 Decision 3. ADR-003 Decision 3 (TASK reservation + PMN insertion budget pattern) preserved. The UPCDS reference project will adopt v3.0.0 in a separate PR sequence in the UPCDS repo after v3.0.0 ships. See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
 ## Package layout
 
@@ -76,37 +76,37 @@ The v3 framework package is organized into seven layers. Each stub or template d
 
 | Path | Description | Filled by |
 |---|---|---|
-| `actions/branch-name-check.yml` | Enforce `github-reference.md` §2.2 branch regex per ADR-005 | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/pr-template-check.yml` | Enforce §17.6 PR template sections | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/linked-records-check.yml` | Verify TASK/ADR/FEAT references resolve | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/ai-session-log-check.yml` | Verify AI Session Log section present | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/review-freshness-check.yml` | Detect stale review approvals | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/surface-version-sync-check.yml` | Verify `.amas/surfaces.yml` matches surface frontmatter | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/artifact-path-check.yml` | Enforce ADR/handoff/PMN/review/Feature filename patterns | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/claimed-action-verification.yml` | Phantom-action verification (advisory; expanded scope) | Batch P4 (ADR-006); pending content-fill cycle |
-| `actions/mcp-config-validation.yml` | Validate `.mcp.json` against transport-security defaults | Batch P4 (ADR-006); pending content-fill cycle |
+| `actions/branch-name-check.yml` | Enforce `github-reference.md` §2.2 branch regex per ADR-005 | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/pr-template-check.yml` | Enforce §17.6 PR template sections | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/linked-records-check.yml` | Verify TASK/ADR/FEAT references resolve | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/ai-session-log-check.yml` | Verify AI Session Log section present | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/review-freshness-check.yml` | Detect stale review approvals | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/surface-version-sync-check.yml` | Verify `.amas/surfaces.yml` matches surface frontmatter | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/artifact-path-check.yml` | Enforce ADR/handoff/PMN/review/Feature filename patterns | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/claimed-action-verification.yml` | Phantom-action verification (advisory; expanded scope) | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
+| `actions/mcp-config-validation.yml` | Validate `.mcp.json` against transport-security defaults | Batch P4 (ADR-008); v3.1 release [v3.1-planned] |
 
 ### Appendices — flat (7 files)
 
 | Path | Description | Filled by |
 |---|---|---|
-| `appendices/mcp-integration.md` | Tool Inventory schema, OAuth 2.1, STDIO advisory, transport security | Batch P5 (ADR-006); pending content-fill cycle |
-| `appendices/documentation-mcp-options.md` | Context7 + alternatives + selection criteria | Batch P5 (ADR-006); pending content-fill cycle |
-| `appendices/tool-capability-model.md` | Capability-class taxonomy + industry-taxonomy alignment | Batch P5 (ADR-006); pending content-fill cycle |
-| `appendices/vendor-surface-guidance.md` | Generic per-surface guidance (not adapters) | Batch P5 (ADR-006); pending content-fill cycle |
-| `appendices/github-review-automation.md` | GitHub-specific review patterns | Batch P5 (ADR-006); pending content-fill cycle |
-| `appendices/amas-vs-other-frameworks.md` | Distinctive contributions claim | Batch P5 (ADR-006); pending content-fill cycle |
-| `appendices/regulated-tier-extension.md` | Additive layer for regulated projects | Batch P5 (ADR-006); pending content-fill cycle |
+| `appendices/mcp-integration.md` | Tool Inventory schema, OAuth 2.1, STDIO advisory, transport security | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/documentation-mcp-options.md` | Context7 + alternatives + selection criteria | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/tool-capability-model.md` | Capability-class taxonomy + industry-taxonomy alignment | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/vendor-surface-guidance.md` | Generic per-surface guidance (not adapters) | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/github-review-automation.md` | GitHub-specific review patterns | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/amas-vs-other-frameworks.md` | Distinctive contributions claim | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/regulated-tier-extension.md` | Additive layer for regulated projects | Batch P5 (ADR-008); v3.2 release [v3.2-planned] |
 
 ### Appendices — project types (5 files)
 
 | Path | Description | Filled by |
 |---|---|---|
-| `appendices/project-types/api-app.md` | API/app project type | Batch P6 (ADR-006); pending content-fill cycle |
-| `appendices/project-types/research-methodology.md` | Research methodology project type | Batch P6 (ADR-006); pending content-fill cycle |
-| `appendices/project-types/code-reports-data-analysis.md` | Code/reports/data analysis project type | Batch P6 (ADR-006); pending content-fill cycle |
-| `appendices/project-types/documents-only.md` | Documents-only project type | Batch P6 (ADR-006); pending content-fill cycle |
-| `appendices/project-types/mixed.md` | Mixed project type | Batch P6 (ADR-006); pending content-fill cycle |
+| `appendices/project-types/api-app.md` | API/app project type | Batch P6 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/project-types/research-methodology.md` | Research methodology project type | Batch P6 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/project-types/code-reports-data-analysis.md` | Code/reports/data analysis project type | Batch P6 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/project-types/documents-only.md` | Documents-only project type | Batch P6 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/project-types/mixed.md` | Mixed project type | Batch P6 (ADR-008); v3.2 release [v3.2-planned] |
 
 ### Appendices — receiving-surface adapters (7 files)
 
@@ -114,13 +114,13 @@ Each adapter pack carries an extended frontmatter with `last_validated_on`, `ven
 
 | Path | Description | Filled by |
 |---|---|---|
-| `appendices/receiving-surface-adapters/claude-code.md` | Claude Code adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
-| `appendices/receiving-surface-adapters/codex.md` | Codex (cloud) adapter pack — phantom-action surface | Batch P7 (ADR-006); pending content-fill cycle |
-| `appendices/receiving-surface-adapters/chatgpt.md` | ChatGPT adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
-| `appendices/receiving-surface-adapters/cursor.md` | Cursor adapter pack — phantom-action surface | Batch P7 (ADR-006); pending content-fill cycle |
-| `appendices/receiving-surface-adapters/gemini.md` | Gemini adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
-| `appendices/receiving-surface-adapters/copilot.md` | GitHub Copilot adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
-| `appendices/receiving-surface-adapters/human-maintainer.md` | Human Maintainer adapter pack | Batch P7 (ADR-006); pending content-fill cycle |
+| `appendices/receiving-surface-adapters/claude-code.md` | Claude Code adapter pack | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/receiving-surface-adapters/codex.md` | Codex (cloud) adapter pack — phantom-action surface | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/receiving-surface-adapters/chatgpt.md` | ChatGPT adapter pack | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/receiving-surface-adapters/cursor.md` | Cursor adapter pack — phantom-action surface | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/receiving-surface-adapters/gemini.md` | Gemini adapter pack | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/receiving-surface-adapters/copilot.md` | GitHub Copilot adapter pack | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
+| `appendices/receiving-surface-adapters/human-maintainer.md` | Human Maintainer adapter pack | Batch P7 (ADR-008); v3.2 release [v3.2-planned] |
 
 ## License
 
