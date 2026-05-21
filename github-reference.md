@@ -196,12 +196,12 @@ The concrete template ships at the GitHub-artifact templates batch per ADR-003 D
 
 ### §4.3. Issue templates
 
-Issue templates ship at `templates/ISSUE_TEMPLATE/` and instantiate at `.github/ISSUE_TEMPLATE/`. Canonical issue types per ADR-003 Decision 2 anticipated batch:
+Issue templates ship at `templates/ISSUE_TEMPLATE/` and instantiate at `.github/ISSUE_TEMPLATE/`. Canonical issue types:
 
-- `project-initiation.md` (Issue 0; project-bootstrap shape)
-- `feature.md` (standard feature task)
-- `chore.md` (maintenance / chore task)
-- `retrospective.md` (PMN companion issue; optional)
+- `project-initiation.md` (Issue 0; project-bootstrap shape) — shipped at PR-68 (TASK-0043)
+- `feature.md` (standard feature task) — shipped at PR-68 (TASK-0043)
+- `chore.md` (maintenance / chore task) — Batch P2 (ADR-008); pending content-fill cycle TASK-0044
+- `retrospective.md` (PMN companion issue; optional) — Batch P2 (ADR-008); pending content-fill cycle TASK-0044
 
 ### §4.4. AI agent instruction files
 
