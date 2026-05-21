@@ -10,7 +10,7 @@ framework_version_dogfooded: AMAS v2.38 → v2.39
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0043-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-21
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0043 — Batch P2 ISSUE_TEMPLATE first half (project-initiation + feature)
