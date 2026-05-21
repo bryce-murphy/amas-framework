@@ -67,6 +67,28 @@ Per Architect routing adjudication at chat surface (2026-05-21 step-13 path-(a)/
 
 Step-14 commit + push + thread-reply to Codex line-comment id 3283505865 per `core.md` §8.1.1 Rule (b) thread-reply discipline executing immediately downstream at Builder hand-back at chat surface.
 
-### Pass-2 anticipation
+### Pass-2 absorption (UTC `2026-05-21T19:07:46Z`)
 
-Codex post-PR pass-2 NOT auto-invoked per ADR-001 D11 owner-invokes convention. Per Adj 17 settling-period ≥15 min from latest Codex activity (response at 2026-05-21T18:34:15Z): earliest pass-2 invocation eligibility = 2026-05-21T18:49:15Z. Owner discretion at chat surface whether to invoke pass-2 after settling-period or accept reach-1-absorbed CLEAN-by-default per `core.md` §8.1.1.3 bounded-continuation rule (path-(a) revise applied; multi-surface pipeline canonical-designed function satisfied at surface 4 → no further pass solicitation required at this cycle per cycle-protocol baseline default).
+Owner-invoked pass-2 at PR-68 issue-comment surface via `@codex review` (comment id 4511884284 at 2026-05-21T19:04:32Z) post step-14 commit `11226b7eee55be6c0fbd1265719efbdf1d1dec49` push and post pass-1 path-(a) absorption record at thread-reply id 3283663542.
+
+**Verdict**: CLEAN (no findings; no path-(a)/(β)/Blocking routing required)
+
+**Codex pass-2 emission** (verbatim from issue-comment id 4511912468 at 2026-05-21T19:07:46Z):
+
+> Codex Review: Didn't find any major issues. Keep it up!
+
+**Codex response delta at pass-2**: 19:04:32Z invocation → 19:07:46Z response = ~3 min 14 sec (slightly faster than pass-1's ~4 min response delta; consistent with typical Codex response window).
+
+**Three-endpoint poll coverage at pass-2** per `core.md` §8.1.1.1: `pulls/68/reviews` no new formal review from Codex at pass-2 + `issues/68/comments` 1 new (Codex pass-2 response) + `pulls/68/comments` no new line-level review-comments. Pass-2 emission shape = issue-comment only (no formal review object; no line-level comments); matches TASK-0042 PR-66 pass-1 CLEAN cross-cycle precedent (`Codex Review: Didn't find any major issues. Nice work!`) — consistent Codex CLEAN-verdict surface convention.
+
+**Phantom-action verification per `core.md` §8.1.1.2**: Codex's pass-2 emission is a CLEAN verdict with no substantive claims to verify; emission shape consistent with cross-cycle precedent; no phantom-action surface at pass-2.
+
+**(w) Codex post-PR autonomous-action emission monitoring** per `core.md` §8.1.1.1: owner-triggered emission at pass-2; NO autonomous emission pre-trigger. Pattern consistent with cross-cycle precedent (TASK-0042 PR-66 pass-1 + TASK-0043 PR-68 pass-1 + pass-2 all owner-triggered).
+
+**Reach-engagement at post-PR pipeline**: **2** (pass-1 Major → path-(a) absorbed → pass-2 CLEAN-verifies-absorption); `core.md` §24.6 Stop-Iteration framework NOT engaged at reach 2; reach 4+ canonical boundary NOT engaged; HYBRID closure mechanism per condition (B-3) NOT engaged. Bounded-continuation rule per `core.md` §8.1.1.3 = standard cycle-close path at reach-2-absorbed CLEAN convergence.
+
+**Adjudication routing**: no path-(a) revise / path-(β) record-and-proceed / Blocking handback required at CLEAN reach-2 verification of pass-1 path-(a) absorption. `core.md` §24.5 multi-surface review pipeline working as canonical-designed: pass-1 path-(a) absorbed at step-14 commit `11226b7eee55be6c0fbd1265719efbdf1d1dec49` (L77 cross-template-internal-coherence restored + adopter-copy-shape (XXIV.a) carrier × cross-repo canonical reference fix) → pass-2 verifies absorption + sweeps for residual findings → CLEAN. Surface 4 pipeline empirical positive at reach-2 convergence.
+
+**Thread-reply discipline at pass-2 issue-comment surface**: per `core.md` §8.1.1 Rule (b) thread-reply discipline + owner procedural ask at chat surface 2026-05-21 step-13.Y ("respond to the conversations so I can resolve them later"). Pass-2 emission landed at issue-comment surface (no native GitHub Resolvable-Conversation threading at issue-comment surface; only line-level review-comments support Resolve-button UI per GitHub canonical). Reply at PR-68 issue-comment surface quote-referencing Codex pass-2 emission id 4511912468 + citing absorbing commit SHA per cross-cycle phantom-action discipline executing at step-15 hand-back surface.
+
+**No further `@codex review` solicitation at this cycle** per cycle-protocol baseline default at reach-2-absorbed CLEAN convergence + `core.md` §8.1.1.3 bounded-continuation rule. Cycle-close convergence pending step-16 Gate B re-application + step-17 owner-side squash-merge + step-18 PR-69 auto-fire per ADR-004 + PMN-001 (k) substitution chain.
