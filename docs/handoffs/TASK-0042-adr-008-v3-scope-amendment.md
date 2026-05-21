@@ -5,12 +5,12 @@ pr: PR-66
 branch: feat/task-0042-adr-008-v3-scope-amendment
 linked_predecessor: TASK-0041 (PR-64 substantive squash 387ebec + PR-65 auto-fire squash 6a8b1e2)
 linked_successor: TBD
-linked_pr: PR-66 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-66 (squash SHA b0be276)
 framework_version_dogfooded: AMAS v2.37 → v2.38
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0042-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-20
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0042 — ADR-008 v3.0 scope amendment

@@ -1,5 +1,5 @@
 ---
-status: drafted
+status: recorded
 ---
 
 # PR-66 Codex post-PR review
