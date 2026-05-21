@@ -74,7 +74,7 @@ Issue 0 closure conditions (project transitions from bootstrap to active operati
 - [ ] Project Brief authored + ratified by owner
 - [ ] Canonical-law trio files referenced at project root (or mirrored per project policy)
 - [ ] `AGENTS.md` / `CLAUDE.md` / receiving-surface adapter pack(s) instantiated at project root
-- [ ] Branch protection configured per ADR-001 D9 substrate or project equivalent
+- [ ] Branch protection configured per `github-reference.md` §3 (or project-policy equivalent)
 - [ ] PR-0 bootstrap cycle complete and merged
 - [ ] First feature-cycle Issue opened (transitions project from bootstrap to active operation)
 
