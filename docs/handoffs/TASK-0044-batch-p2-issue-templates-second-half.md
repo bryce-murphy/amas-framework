@@ -5,12 +5,12 @@ pr: PR-71
 branch: feat/task-0044-batch-p2-issue-templates-second-half
 linked_predecessor: TASK-0043 (PR-68 substantive squash 3ed5a38 + PR-70 chore-fix-up squash b09c2bb)
 linked_successor: TBD
-linked_pr: PR-71 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-71 (squash SHA 8c091cc)
 framework_version_dogfooded: AMAS v2.39 → v2.40
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/task-0044-spec.md (gitignored per ADR-001 D15)
 date_authored: 2026-05-27
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0044 — Batch P2 ISSUE_TEMPLATE second half (chore + retrospective)
