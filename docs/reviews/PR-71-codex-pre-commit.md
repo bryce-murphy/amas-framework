@@ -1,5 +1,5 @@
 ---
-status: drafted
+status: recorded
 ---
 
 # PR-71 Codex desktop pre-commit review
