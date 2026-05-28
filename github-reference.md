@@ -200,8 +200,8 @@ Issue templates ship at `templates/ISSUE_TEMPLATE/` and instantiate at `.github/
 
 - `project-initiation.md` (Issue 0; project-bootstrap shape) — shipped at PR-68 (TASK-0043)
 - `feature.md` (standard feature task) — shipped at PR-68 (TASK-0043)
-- `chore.md` (maintenance / chore task) — Batch P2 (ADR-008); pending content-fill cycle TASK-0044
-- `retrospective.md` (PMN companion issue; optional) — Batch P2 (ADR-008); pending content-fill cycle TASK-0044
+- `chore.md` (maintenance / chore task) — shipped at PR-71 (TASK-0044)
+- `retrospective.md` (PMN companion issue; optional) — shipped at PR-71 (TASK-0044)
 
 ### §4.4. AI agent instruction files
 
