@@ -75,6 +75,8 @@ v3.0 ship scope at ADR-008:
 
 Total ~5 substantive cycles to v3.0.0 ship post-ADR-008. Cycle-count expectation is not pre-committed (anti-fragile to PMN/discipline insertion drift per ADR-006 Decision 3 framework + ADR-007 D4 sub-shape A discipline).
 
+**Amended at v2.41 per TASK-0045**: pre-Batch-P3 canonical-stabilization mini-cycle insertions at position 0 of the remaining-work batch sequence are authorized when cross-cycle empirical evidence at ADR-006 D3 3+ threshold supports targeted canonical-discipline-prevention-text canonicalization. Such mini-cycles must have strict scope (single canonical-law amendment class), explicit anti-scope (no substantive batch work; no full PMN-triage), and bounded envelope per `core.md` §23.6.1.1 (e.1) anticipation. Cumulative ADR-008 D2 batch sequence integrity preserved post-mini-cycle.
+
 ### Decision 3 — Release-surface semantics for deferred stubs
 
 Stub files at canonical-package locations remain at v3.0.0 release (not excluded from distribution). Semantic distinction at canonical level introduced via stub YAML frontmatter:

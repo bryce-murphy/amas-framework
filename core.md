@@ -382,6 +382,24 @@ Review iterations bounded per `core.md` §8.1.1.3 cost-class refinement (pure-to
 
 **Cross-references**: §8.1.1.1 (three-endpoint poll); §8.1.1.2 (phantom-action verification); §8.1.1.3 (bounded-continuation rule + cost-class refinement); §17 (parent frame); §17.5 (template lifecycle); §23.6.1.1 (e.1 cumulative-diff-stats re-derivation); ADR-001 D11; PMN-001 (k); PMN-002 (a) + (d); PMN-008 §5.8 (h.4); `templates/review-template.md` (canonical surface).
 
+### §17.8. Adopter-copy-shape reference-class scope
+
+Canonical-source templates authored for AMAS-adopted repositories materialize at adopter operational instantiations. References within template body content (acceptance criteria + Cross-references + body guidance + section examples + authoring guidance text) MUST use cross-repo canonical references that travel with AMAS adoption; MUST NOT use amas-framework-local reference classes that adopters cannot resolve.
+
+**Cross-repo canonical references (allowed in template body)**:
+- canonical-law-trio sections: `core.md §X` + `github-reference.md §X` + canonical template references (`templates/post-merge-note-template.md §X` etc.)
+- universal patterns documented at canonical-source surface
+
+**Amas-framework-local reference classes (NOT allowed in template body)**:
+- ADR-N (amas-framework-specific architectural decisions; not present at adopter repos)
+- Adj-N spec-local references (spec-local adjudication numbers; unresolvable outside originating cycle)
+- PMN-N spec-local body references (PMN-internal numbering; not canonical-law)
+- TASK-#### internal references (cycle-specific; not adopter-canonical)
+
+When authoring template body content, verify each reference resolves at the adopter side. If a reference is amas-framework-local, substitute to the canonical-law-trio equivalent OR drop the reference and preserve the descriptive content alone.
+
+Cross-cycle empirical reach 3 within a single cycle: pre-commit pass-1 Major #3 (Cross-references + body guidance scope at chore + retrospective) + step-11.X path-(a) absorption canonical-law-trio extension (at retrospective body guidance) + post-PR pass-1 Finding B (spec-local Adj-N references at retrospective). Canonicalization at v2.41 closes the structural adopter-copy-shape scope-narrowness defect class.
+
 ## §18. Post-merge note discipline
 
 Post-merge notes (PMNs) are durable artifacts capturing learnings from merged PRs that warrant cross-cycle preservation. The PMN convention separates from in-cycle artifacts (handoff at §14, review-context at §8.1.1, AI Session Log at §13) by spanning across cycles: a PMN authored at cycle N captures observations from cycle N's merged PR(s) that future cycles N+1 through cycle close apply as standing discipline.
@@ -457,11 +475,11 @@ Between PR-open and squash-merge, post-PR-window content accumulates that is rel
 3. `80f5a4a` (PR-10 squash, same commit) — instance of class (d) self-referential pattern-promotion entry: explicit "M-A7 promotion trigger met (second instance of the merge-commit-body data integration pattern this cycle)" — strongest possible empirical confirmation by pattern self-naming at the cycle that promotes it.
 4. `817c12f` (PR-11 squash, 2026-05-02) — instance of class (a) Reviewer-engagement absorption summary: 5-finding Codex post-PR review absorption (4 path-(a) + 1 path-(β); cycle close at 3 review passes within spec §5 step 15's 4-pass cap), bounded-continuation rule applications recorded.
 
-**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.40 canonicalization at PR-71 / TASK-0044):
+**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.41 canonicalization at PR-73 / TASK-0045):
 
-The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 + PR-43 + PR-45 + PR-48 + PR-52 + PR-54 + PR-56 + PR-58 + PR-60 + PR-62 + PR-64 + PR-66 + PR-68 + PR-71 = 30` empirical instances spanning v2.16 through v2.40 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
+The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 + PR-43 + PR-45 + PR-48 + PR-52 + PR-54 + PR-56 + PR-58 + PR-60 + PR-62 + PR-64 + PR-66 + PR-68 + PR-71 + PR-73 = 31` empirical instances spanning v2.16 through v2.41 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
 
-The pattern has stabilized into operational steady-state across 30 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
+The pattern has stabilized into operational steady-state across 31 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
 
 Four-instance evidence (PMN-005 §6/§7 candidate framing → PMN-006 §6.2 operationally canonical → PMN-006 §6.2 explicit canonical-text deferral to Part B → this PR canonical §-section text) promotes M-A7 from operationally canonical to canonical §-section text.
 
@@ -563,6 +581,18 @@ Line-number references and structural-element counts (sub-shapes B and C per PMN
 Empirical grounding: 3+ cross-cycle confirmations through TASK-0032 + TASK-0033 + TASK-0034 of role-invariance pattern (each cycle's Codex pre-commit catches Architect-side authoring defects missed at Architect self-review; Builder pre-flight similarly catches authoring-side narrowness). Role-invariance framing is jointly canonicalized at this cycle with (XXIV) four-surface paired-discipline reframing per §24.4 four-surface paired-discipline composition below.
 
 **Discipline-side fix application at status transition gates.** Builder applies path-(α') discipline-side fix at pre-merge stop-and-show staged-tree gate: handoff frontmatter `status: drafted → active` token-swap restores PMN-001 (k) Action substitution contract (Action expects `active` at merge time for `active → resolved` transition; `drafted` state would skip substitution silently). Application is mandatory at pre-merge gate independent of any other path-(a)/(α)/(α')/(β) routing decisions in the absorption iteration. Empirical grounding: 5 cross-cycle positives at TASK-0030 / 0031 / 0032 / 0033 / 0034; first-cross-cycle reach without owner prompting at TASK-0031; canonical promotion at this cycle per ADR-006 D3 evidence-bar.
+
+#### §23.6.4. Refresh-prescription state-discipline
+
+Refresh content prescribed at Architect direction-block authoring MUST describe the state AS COMPLETE at the resulting commit, NOT the state before the absorption began. The refresh content goes INTO the file that IS the absorption commit; the description must match the state of that file post-absorption.
+
+This discipline applies to all state-current refresh prescriptions across the canonical handoff surfaces (§Current state Summary + §Last completed step + Cumulative-diff-stats sentence + step-by-step + post-PR section + ledger + Pre-commit absorption section).
+
+Authoring failure mode: prescribing refresh content describing the pre-absorption state creates phantom-action mismatch — the committed file describes a state that is NOT current at commit time, and downstream actors re-routing per the stale description back-route to a gate already passed.
+
+Mitigation at direction-block authoring: explicitly verify that the prescribed refresh content describes (a) what the absorption being applied is, AS COMPLETE, and (b) the next step that follows post-this-absorption. Apply at all state-current refresh surfaces within the absorption scope; do NOT scope refresh prescription narrowly to a subset of surfaces (narrow-scope prescription leaves accumulating staleness elsewhere — empirical at TASK-0044 step-13 Codex post-PR pass-2 Finding C+D+E).
+
+Cross-cycle empirical reach 2 at canonical-text canonicalization: pass-1 Finding A class (step-11.X → step-12.X' gap) + pass-2 Finding C class (step-13.X → step-13.X self-gap) within a single cycle. Canonicalization at v2.41 closes the structural Adj 20 direction-prescription scope defect class.
 
 ## §24. Cross-surface verify-before-assert meta-pattern
 
