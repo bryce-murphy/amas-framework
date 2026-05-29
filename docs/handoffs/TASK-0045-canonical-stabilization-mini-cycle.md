@@ -5,12 +5,12 @@ pr: PR-73
 branch: feat/task-0045-canonical-stabilization-mini-cycle
 linked_predecessor: TASK-0044 (PR-71 substantive squash 8c091cc + PR-72 chore-fix-up squash b193c8d)
 linked_successor: TASK-0046 (anticipated; Batch P3 prompts — greenfield + retrofit + upgrade)
-linked_pr: PR-73 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-73 (squash SHA 583e12e)
 framework_version_dogfooded: v2.41
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/task-0045-spec.md
 date_authored: 2026-05-28
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0045 — Canonical stabilization mini-cycle before Batch P3
