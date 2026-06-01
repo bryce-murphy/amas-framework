@@ -5,12 +5,12 @@ pr: PR-75
 branch: feat/task-0046-batch-p3-greenfield-prompt
 linked_predecessor: TASK-0045 (PR-73 substantive squash 583e12e + PR-74 chore-fix-up squash a030554)
 linked_successor: TASK-0047 (anticipated; Batch P3 retrofit + upgrade prompts — split cycle 2 of 2)
-linked_pr: PR-75 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-75 (squash SHA 32c4afa)
 framework_version_dogfooded: v2.42
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/task-0046-spec.md
 date_authored: 2026-05-30
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0046 — Batch P3 greenfield kickoff prompt (split cycle 1 of 2)
