@@ -19,7 +19,7 @@ This guide is **not** a replacement for the canonical-law trio. The trio is the 
 
 If you are looking for:
 - the rules themselves → `core.md` + `github-reference.md`
-- the kickoff prompt to paste into an AI → `prompts/greenfield.md`, `prompts/retrofit.md`, or `prompts/upgrade.md` (forthcoming at TASK-0025+)
+- the kickoff prompt to paste into an AI → `prompts/greenfield.md` (`prompts/retrofit.md` + `prompts/upgrade.md` forthcoming at TASK-0047)
 - worked examples of what good artifacts look like → this guide, §10 onward
 - project-type-specific guidance → `appendices/project-types/*.md` (forthcoming at TASK-0025+)
 - documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming at TASK-0026+)
@@ -367,7 +367,7 @@ Four things this framework deliberately does not do, so you do not have to litig
 ## §13. One-page reference
 
 - **Canonical-law trio:** `core.md` (rules) + `github-reference.md` (GitHub-specific implementation) + `usage-guide.md` (this guide). Trio wins on rule conflicts.
-- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade). Forthcoming at TASK-0025+.
+- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade). `retrofit.md` + `upgrade.md` forthcoming at TASK-0047.
 - **Bootstrap file list:** README, CODEOWNERS, CLAUDE.md, AGENTS.md, canonical-law trio reference, project-brief, tool-inventory, role-assignment-scorecard, ADR-000, GitHub Issue templates, GitHub PR template.
 - **TASK ID reservation:** TASK-0000 = bootstrap. TASK-0001 = first real task.
 - **Handoff path:** `docs/handoffs/TASK-####-<slug>.md` per universal handoff schema.
