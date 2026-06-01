@@ -1,7 +1,7 @@
 ---
 post_merge_note_id: PMN-018
 title: PMN-001 (k) linked-pr-fix-up Action over-reach — path-scope the status transitions
-linked_pr: PR-77 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-77 (squash SHA 5125138)
 framework_version_dogfooded: AMAS v2.42 (no bump — manual chore-fix-up)
 status: recorded
 ---
