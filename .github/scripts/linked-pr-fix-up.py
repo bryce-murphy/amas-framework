@@ -5,12 +5,17 @@ Reads CHANGED_FILES, SQUASH_SHA, PR_NUMBER from environment.
 Scans each changed file's frontmatter for canonical placeholder patterns
 and applies substitutions in place.
 
-Substitutions (YAML frontmatter only — between leading ``---`` markers):
+Substitutions (YAML frontmatter only — between leading ``---`` markers).
+Status transitions are path-scoped per PMN-018:
 
 - ``linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))``
-  -> ``linked_pr: PR-N (squash SHA <short-sha>)``
-- ``status: drafted`` -> ``status: recorded``
-- ``status: active``  -> ``status: resolved``
+  -> ``linked_pr: PR-N (squash SHA <short-sha>)``   (path-agnostic; strict-matched)
+- ``status: active``  -> ``status: resolved``   (docs/handoffs/ only)
+- ``status: drafted`` -> ``status: recorded``   (docs/reviews/ + docs/post-merge-notes/ only)
+
+Files outside those path prefixes (e.g. prompts/, templates/) are NOT
+status-flipped — their status values are artifact-lifecycle states, not
+cycle-close markers.
 
 Outputs ``changes-applied=true|false`` to GITHUB_OUTPUT.
 
@@ -43,6 +48,19 @@ STATUS_TRANSITIONS: dict[str, str] = {
     'active': 'resolved',
 }
 
+# Path-scoping (PMN-018). Each status transition applies ONLY to changed files
+# whose repo-relative path begins with one of these prefixes — the artifact
+# classes that legitimately undergo that lifecycle transition. Files outside the
+# allowlist (e.g. prompts/, templates/) carry status values that are
+# artifact-lifecycle states, NOT cycle-close markers, and are excluded. This
+# closes the over-reach where PR #76 flipped prompts/greenfield.md
+# ``active -> resolved`` (the workflow header documented this scoping; the code
+# did not enforce it).
+STATUS_TRANSITION_PATH_PREFIXES: dict[str, tuple[str, ...]] = {
+    'drafted': ('docs/reviews/', 'docs/post-merge-notes/'),
+    'active': ('docs/handoffs/',),
+}
+
 FRONTMATTER_DELIM = re.compile(r'^---\s*$', re.MULTILINE)
 
 ELIGIBLE_SUFFIXES = {'.md', '.yml', '.yaml'}
@@ -62,8 +80,14 @@ def parse_frontmatter_bounds(content: str) -> tuple[int, int] | None:
     return matches[0].end(), matches[1].start()
 
 
-def apply_substitutions(content: str, short_sha: str) -> tuple[str, bool]:
+def apply_substitutions(content: str, short_sha: str, rel_path: str) -> tuple[str, bool]:
     """Apply canonical PMN-001 (k) substitutions to the YAML frontmatter.
+
+    ``rel_path`` is the repo-relative path of the file. It path-scopes the
+    status transitions per PMN-018 (each transition applies only to the artifact
+    class that legitimately undergoes it). The ``linked_pr`` placeholder
+    substitution is path-agnostic by design — it is strict-matched and only the
+    cycle handoff carries that exact placeholder.
 
     Returns ``(new_content, changed)``. Returns ``(content, False)`` if no
     frontmatter is present or no patterns matched.
@@ -80,7 +104,7 @@ def apply_substitutions(content: str, short_sha: str) -> tuple[str, bool]:
     new_fm = fm_body
     changed = False
 
-    # 1. linked_pr placeholder substitution
+    # 1. linked_pr placeholder substitution (path-agnostic; strict-matched)
     if PLACEHOLDER_PATTERN.search(new_fm):
         new_fm = PLACEHOLDER_PATTERN.sub(
             lambda m: f'linked_pr: PR-{m.group(1)} (squash SHA {short_sha})',
@@ -88,8 +112,14 @@ def apply_substitutions(content: str, short_sha: str) -> tuple[str, bool]:
         )
         changed = True
 
-    # 2. status flips
+    # 2. status flips (path-scoped per PMN-018 — applied only to the artifact
+    #    classes that legitimately undergo each transition; prompts/, templates/,
+    #    and any other paths are excluded)
+    norm_path = rel_path.replace('\\', '/')
     for old, new in STATUS_TRANSITIONS.items():
+        allowed_prefixes = STATUS_TRANSITION_PATH_PREFIXES.get(old, ())
+        if not any(norm_path.startswith(prefix) for prefix in allowed_prefixes):
+            continue
         pattern = re.compile(rf'^status: {re.escape(old)}[ \t]*$', re.MULTILINE)
         if pattern.search(new_fm):
             new_fm = pattern.sub(f'status: {new}', new_fm)
@@ -133,7 +163,7 @@ def main() -> int:
             print(f'::warning::Skipping {fp} ({exc.__class__.__name__}: {exc})')
             continue
 
-        new_content, changed = apply_substitutions(content, short_sha)
+        new_content, changed = apply_substitutions(content, short_sha, fp)
         if changed:
             try:
                 path.write_text(new_content, encoding='utf-8')

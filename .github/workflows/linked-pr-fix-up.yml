@@ -4,11 +4,17 @@ name: PMN-001 (k) Linked PR Fix-Up
 # squash-merged PR, then opens a chore-fix-up PR with the substitutions.
 # Replaces the manual PMN-001 (k) chore-fix-up cycle.
 #
-# Substitutions applied (frontmatter only):
+# Substitutions applied (YAML frontmatter only), path-scoped per PMN-018:
 #   linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))
-#     -> linked_pr: PR-N (squash SHA <7-char-sha>)
-#   status: drafted -> status: recorded
-#   status: active  -> status: resolved
+#     -> linked_pr: PR-N (squash SHA <7-char-sha>)   (path-agnostic; strict-matched —
+#        only the cycle handoff carries this exact placeholder)
+#   status: active  -> status: resolved   (docs/handoffs/ only)
+#   status: drafted -> status: recorded   (docs/reviews/ + docs/post-merge-notes/ only)
+# Files outside those path prefixes (e.g. prompts/, templates/) are NOT
+# status-flipped — their status values are artifact-lifecycle states, not
+# cycle-close markers. The substitution application lives in
+# .github/scripts/linked-pr-fix-up.py (changed-file harvesting is unchanged;
+# only the STATUS_TRANSITIONS application is path-scoped).
 #
 # Failure modes degrade to "manual fallback works as today" — the Action is
 # additive, not load-bearing. If it fails to fire or no-ops unexpectedly,
@@ -114,11 +120,13 @@ jobs:
 
           ## Substitutions applied
 
-          Files changed by parent PR #${PR_NUMBER} (squash SHA \`${SHORT_SHA}\`) were scanned for canonical placeholder patterns. Substitutions in YAML frontmatter only:
+          Files changed by parent PR #${PR_NUMBER} (squash SHA \`${SHORT_SHA}\`) were scanned for canonical placeholder patterns. Substitutions in YAML frontmatter only, path-scoped per PMN-018:
 
-          - \`linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))\` → \`linked_pr: PR-N (squash SHA <sha>)\`
-          - \`status: drafted\` → \`status: recorded\` (PMN + canonical-content artifacts)
-          - \`status: active\` → \`status: resolved\` (TASK handoffs)
+          - \`linked_pr: PR-N (Builder fills with squash SHA post-merge per PMN-001 (k))\` → \`linked_pr: PR-N (squash SHA <sha>)\` (path-agnostic; strict-matched)
+          - \`status: active\` → \`status: resolved\` (\`docs/handoffs/\` only)
+          - \`status: drafted\` → \`status: recorded\` (\`docs/reviews/\` + \`docs/post-merge-notes/\` only)
+
+          Files outside those path prefixes (e.g. \`prompts/\`, \`templates/\`) are not status-flipped.
 
           ## Owner action
 
