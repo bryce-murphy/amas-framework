@@ -96,8 +96,12 @@ Builder engages that Reviewer's findings starting on the very first PR.
 
 ## Step 4 — Produce the bootstrap artifact set
 
-With environment, tier, and roles settled, produce the project's **bootstrap artifact set**
-per `core.md` §3.1 (forthcoming at Part C+). A full kickoff produces:
+With environment, tier, and roles settled, **first capture the project's profile**. Ask the
+operator for the project name, a one-line statement of what the project does, and its problem
+space / domain, and wait for their answers — these ground the bootstrap artifacts in the
+actual project. Then produce the project's **bootstrap artifact set** per
+`core.md` §3.1 (forthcoming at Part C+), so the README, project-brief, and ADR-000 reflect
+this specific project rather than generic placeholders. A full kickoff produces:
 
 - `README` — project orientation
 - `CODEOWNERS` — repo-level governance file
