@@ -13,7 +13,7 @@ filled_by: PR-75 (TASK-0046)
 > named in Step 0 — is in that surface's context (see `usage-guide.md` §2.1). This is the
 > greenfield path — a brand-new project with no code, no documents, and no prior decisions. If
 > your project already has durable state, stop and use `prompts/retrofit.md`; if you are moving
-> an existing AMAS project between versions, use `prompts/upgrade.md` (forthcoming — ships at PR-B).
+> an existing AMAS project between versions, use `prompts/upgrade.md`.
 
 ---
 
@@ -234,8 +234,7 @@ during ordinary task work:
 - Tool Inventory canonical form: `templates/tool-inventory-template.md`
 - Sibling kickoff prompts: `prompts/retrofit.md` (existing project adopting AMAS over a prior
   workflow) and `prompts/upgrade.md` (moving an existing AMAS project between framework
-  versions; forthcoming — ships at PR-B) — use this greenfield prompt only for a brand-new
-  project with no prior state.
+  versions) — use this greenfield prompt only for a brand-new project with no prior state.
 
 Close the session by confirming the bootstrap packet is committable and TASK-0001 is the
 operator's next action.

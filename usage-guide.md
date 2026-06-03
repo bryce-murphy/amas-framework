@@ -19,7 +19,7 @@ This guide is **not** a replacement for the canonical-law trio. The trio is the 
 
 If you are looking for:
 - the rules themselves → `core.md` + `github-reference.md`
-- the kickoff prompt to paste into an AI → `prompts/greenfield.md` or `prompts/retrofit.md` (`prompts/upgrade.md` forthcoming — ships at PR-B)
+- the kickoff prompt to paste into an AI → `prompts/greenfield.md`, `prompts/retrofit.md`, or `prompts/upgrade.md`
 - worked examples of what good artifacts look like → this guide, §10 onward
 - project-type-specific guidance → `appendices/project-types/*.md` (forthcoming; v3.2-planned per ADR-008 D4)
 - documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming; v3.2-planned per ADR-008 D4)
@@ -55,7 +55,7 @@ There are two ways the pack reaches the surface:
 - **Repo-integrated** — the surface has file access to the AMAS package (including `templates/`), so both tiers are already available and no attachment step is needed.
 - **Paste / attachment** — the surface has no repo access, so you attach (or paste) the trio plus the Tier-1 templates the prompt names, and keep the Tier-2 templates on hand to instantiate the GitHub artifacts. If your chosen surface supports attachments or project knowledge files, attach the canonical-law trio first. If it only supports pasted context, paste the trio first as separate messages, then paste the prompt.
 
-**§2.2. Use the standalone prompts.** Use the standalone greenfield or retrofit prompt at `prompts/` (both live; `prompts/upgrade.md` is forthcoming — ships at PR-B). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
+**§2.2. Use the standalone prompts.** Use the standalone greenfield, retrofit, or upgrade prompt at `prompts/` (all three live). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
 
 **§2.3. What the kickoff produces.** Full kickoff produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
 
@@ -359,7 +359,7 @@ A project may codify a project-specific check pattern in repo-local Architect re
 
 **§11.2. The upgrade itself.** The current Architect owns it. It's a single bounded session: create the missing artifacts, open the deferred folders (`docs/questions/`, `docs/decisions/`, `docs/handoffs/`, etc.), and backfill the handoff file from the most recent PR. It is not a rewrite — pre-upgrade work stays as it was.
 
-**§11.3. v3 inter-version upgrades.** Future v3.x → v3.y transitions are covered by `prompts/upgrade.md` (forthcoming at TASK-0047, shipping in PR-B after the retrofit prompt). v3.0 → v3.1+ deprecation is deferred per transition plan v0.2 Decision A — v3.0 is restructure-only; substantive deprecation lands at v3.1+.
+**§11.3. v3 inter-version upgrades.** Future v3.x → v3.y transitions are covered by `prompts/upgrade.md`. v3.0 → v3.1+ deprecation is deferred per transition plan v0.2 Decision A — v3.0 is restructure-only; substantive deprecation lands at v3.1+.
 
 ---
 
@@ -380,7 +380,7 @@ Four things this framework deliberately does not do, so you do not have to litig
 ## §13. One-page reference
 
 - **Canonical-law trio:** `core.md` (rules) + `github-reference.md` (GitHub-specific implementation) + `usage-guide.md` (this guide). Trio wins on rule conflicts.
-- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade). `upgrade.md` forthcoming — ships at PR-B.
+- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade).
 - **Bootstrap file list:** README, CODEOWNERS, CLAUDE.md, AGENTS.md, canonical-law trio reference, project-brief, tool-inventory, role-assignment-scorecard, ADR-000, GitHub Issue templates, GitHub PR template.
 - **TASK ID reservation:** TASK-0000 = bootstrap. TASK-0001 = first real task.
 - **Handoff path:** `docs/handoffs/TASK-####-<slug>.md` per universal handoff schema.

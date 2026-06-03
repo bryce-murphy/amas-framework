@@ -6,7 +6,7 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 This repository is under active development. **AMAS v3.0 is in production** via a multi-phase PR sequence canonicalized at the [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) + [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md) chain. ADR-008 amends v3.0 ship scope to minimum-viable canonical framework (canonical-law trio + Part C.1 + Part C.2 + Batches P1-P3 + release polish); v3.1 ships Batch P4 Actions (deterministic-enforcement automation); v3.2 ships Batches P5-P7 (flat appendices + project-type appendices + receiving-surface adapter packs). See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
-The current canonical AMAS framework version is **v2.43**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.43.
+The current canonical AMAS framework version is **v2.44**, materialized in the UPCDS reference project. Until v3 publishes from this repository, adopters should reference v2.44.
 
 ## What is AMAS?
 
@@ -47,7 +47,7 @@ The v3 framework package is organized into seven layers. Each stub or template d
 |---|---|---|
 | `prompts/greenfield.md` | Project kickoff (project-type-aware) | PR-75 (TASK-0046) |
 | `prompts/retrofit.md` | Existing-project adoption | PR-80 (TASK-0047) |
-| `prompts/upgrade.md` | Inter-version upgrade | Batch P3 (ADR-006); pending content-fill cycle |
+| `prompts/upgrade.md` | Inter-version upgrade | PR-83 (TASK-0047) |
 | `prompts/deep-research-design-brief.md` | Original Design Brief, archived | PR-2 (this PR) |
 | `prompts/research-deliverable.md` | Research Deliverable, archived | PR-2 (this PR) |
 
