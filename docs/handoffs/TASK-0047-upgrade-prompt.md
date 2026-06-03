@@ -49,7 +49,7 @@ PR-B Codex absorption (path-a). Substantive content committed at `95913fb` + pus
 5. MODIFIED `AGENTS.md` + `CLAUDE.md` — dogfood v-bump v2.43 → v2.44 (L9).
 6. NEW `docs/handoffs/TASK-0047-upgrade-prompt.md` — this file.
 
-**Cumulative-diff-stats** *(gate-current; staged-tree vs `origin/main` per `core.md` §23.6.1.1 (e.1))*: **8 files changed, +379 insertions / −19 deletions**. (XVII) PASS — per-file numstat sums files=8 / ins=379 / del=19, matching the shortstat. `core.md` NOT in the set (M-A7 34th deferred to close-reconciliation).
+**Cumulative-diff-stats** *(gate-current; staged-tree vs `origin/main` per `core.md` §23.6.1.1 (e.1))*: **8 files changed, +380 insertions / −20 deletions**. (XVII) PASS — per-file numstat sums files=8 / ins=380 / del=20, matching the shortstat. `core.md` NOT in the set (M-A7 34th deferred to close-reconciliation).
 
 ## Decisions made
 
