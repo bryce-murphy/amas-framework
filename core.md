@@ -156,11 +156,116 @@ Family members compose: bounded-continuation governs path-(a) vs path-(β) routi
 
 **Empirical grounding (cross-cycle accumulation).** Cost-class one-iteration convergence at pure-token-swap class has accumulated 12 cross-cycle empirical positives across TASK-0019 through TASK-0034 cycles at the **pre-commit Codex desktop pass surface**: every cycle's pre-commit Codex pass-1 absorption applying path-(α')/path-(α)/path-(a) class fixes has converged at one iteration; zero cross-cycle empirical negatives surface. **Pre-commit Codex desktop pass-2** re-invocation is therefore NOT REQUIRED at pure-token-swap class absorption per §8.1.1.3 cost-class refinement; owner-ratification gate at re-derived (e.1) post-fix surface sufficient for pre-commit pass-2 exemption. Pattern is strongly canonicalized beyond ADR-006 D3 evidence-bar (3+ confirmations) by factor 4×. **Post-PR Reviewer re-review per `usage-guide.md` §7.1 + §7.3 remains binding** for every push addressing findings, including pure-token-swap class fix-up pushes; cost-class refinement at this section governs pre-commit pass-2 invocation only and does not extend to post-PR re-review discipline.
 
+### §8.2. Builder pre-flight discipline
+
+The Builder verifies state before any remote-visible or destructive action. Two assertion sources are treated as §24.2(a) external-system-behavior assertions requiring receiving-side verification: the Architect's handoff/prompt claims about repository state, and the Builder's own assumptions about actual repository state. Pre-flight is the §24.3 receiving-side caveat-discipline applied at the Builder receiving surface — symmetric to §8.1 (Builder receiving Reviewer findings) and §8.3 (owner receiving Builder stop-and-show), each a distinct surface in the cycle's communication topology per the §8 intro. It is the catch point before damage propagates: a wrong assertion caught at pre-flight costs a re-check; the same assertion caught after a push costs a force-push rename or a revert.
+
+**Required pre-flight evidence set.** Before the first remote-visible or destructive action of a working session, the Builder produces a pre-flight report enumerating at minimum:
+
+1. **Working-tree state vs expected** — `git status` confirms the tree matches the expected baseline (clean, or carrying only the expected work).
+2. **HEAD anchor matches handoff-claimed anchor** — `git rev-parse HEAD` equals the anchor the handoff/spec asserts; divergence is surfaced, never silently absorbed.
+3. **Origin parity** — the local branch and its remote tracking ref are in the expected relationship (`git status -sb`); no unexpected drift ahead of or behind origin.
+4. **Branch-name conformance** — the working branch matches the `github-reference.md` §2.2 `<type>/task-####-<kebab-slug>` regex (canonical at v3 per ADR-005).
+5. **Architect-asserted repo claims independently verified** — every claim the handoff/prompt makes about repository state is checked against actual state: file existence, §-citation resolution against the canonical heading set, and count/enumeration claims.
+6. **Spec-referenced path resolution** — every path the spec references resolves to an actual file or directory.
+7. **Anti-scope confirmed** — the work about to be performed is within the ratified scope; out-of-scope or unanticipated conditions route back to the owner per §8.3.
+
+**Output form.** The evidence set is surfaced as an enumerated PASS/FAIL report — "N/N PASS" — at the pre-branch (or pre-action) stop-and-show per §8.3. A FAIL on any item halts and is reported; the Builder does not proceed past a FAIL without owner adjudication.
+
+**Reconciliation with substrate.** AMAS v2.14.1 §8.2 is the lineage source for the pre-flight discipline. The v3 dogfooded practice — an enumerated, independently-verified, PASS/FAIL evidence set surfaced at a named stop-and-show — governs where the two diverge; the substrate is cited as lineage, not as the operative form.
+
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action itself is deferred to v3.1 per ADR-008): a pre-flight report exists, enumerates at least the required evidence set above, and every enumerated item is PASS before the first remote-visible action of the session. A claimed pre-flight that asserts items without independent verification, or that proceeds past a FAIL without owner adjudication, is a §8.2 violation.
+
+**Cross-references.** §8.1; §8.3; §13.1; §24.2(a); §24.3; §24.3.1; §23.6.
+
+### §8.3. Stop-and-show discipline
+
+Stop-and-show is the Builder pausing for explicit owner ratification before any trigger-listed action, and simultaneously the owner's receiving-side caveat-discipline (§24.3 application at the owner surface) against Builder-asserted state. It is the §24.3 paired counterpart to §8.2: pre-flight verifies state before acting; stop-and-show surfaces the verified state and the proposed action for ratification before the action executes. No trigger-listed action is silent.
+
+**Trigger list.** The Builder stops and shows before any of the following:
+
+- `git push`
+- `gh pr create`
+- branch deletion
+- force push
+- any other destructive or irreversible operation (history rewrite, file deletion outside the ratified change set, remote-ref mutation)
+- any scope-drift or blocking question — a condition the handoff did not anticipate
+- the named cycle stop-and-show points: the pre-flight hand-back (§8.2), Gate A (§24.3.1), and Gate B (§24.3.1)
+
+**Approval payload.** Each stop-and-show surfaces: (1) the proposed action; (2) the exact command(s) to be run; (3) a diff/impact summary, including cumulative-diff-stats per §23.6.1.1 where the staged tree changed; (4) the verification evidence backing the action — the §8.2 pre-flight report where applicable; (5) an explicit ratification request.
+
+**Rule.** No trigger-listed action executes before owner ratification. The Builder never proceeds on assumed approval; silence is not ratification.
+
+**Reconciliation with substrate.** AMAS v2.14.1 §8.3 is the lineage source. The v3 dogfooded practice — a structured approval payload (proposed action + exact commands + impact summary + verification evidence + explicit request) gated on owner ratification at each trigger — governs where the two diverge; the substrate is cited as lineage only.
+
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; deferred to v3.1 per ADR-008): each trigger-listed action in the cycle record is immediately preceded by a stop-and-show payload and an owner ratification. A trigger-listed action with no preceding payload-plus-ratification is a §8.3 violation.
+
+**Cross-references.** §8.1; §8.2; §13.1; §10.5; §24.3; ADR-001 D9.
+
+## §10. Merge and branch-protection posture
+
+This section governs the cycle's merge and branch-protection posture per ADR-001 D9. §10.1 through §10.4 (general merge-gating, branch-protection ruleset, required-approval, and CI-gating posture) remain AMAS v2.14.1 substrate and are forthcoming — they are out of v3.0 scope. The materialized member at v3.0 is §10.5, the single-contributor bypass posture.
+
+### §10.5. Single-contributor bypass posture
+
+In a single-contributor repository, the second-reviewer merge-gating that branch protection presumes cannot be satisfied — there is no second human reviewer. The owner therefore exercises admin-bypass scoped to the PR-merge action only, per ADR-001 D9. This is a ratified posture, not a workflow violation: the bypass substitutes owner accountability for the unsatisfiable second-reviewer gate, while every other gate (automated checks, the §24.5 multi-surface review pipeline) still applies.
+
+**Bypass predicates.** A legitimate single-contributor bypass satisfies all of the following checkable conditions:
+
+1. **Single-contributor repo** — there is no second human reviewer available to satisfy the merge-gate.
+2. **Merge-action scope only** — the bypass is scoped to the PR-merge action; it does not bypass `git push`, CI checks, or any other gate.
+3. **Gates cleared first** — the PR cleared all automated gates and the §24.5 multi-surface review pipeline before merge.
+4. **Squash-only merge** — the merge uses squash, producing a single squash-merge commit.
+5. **Acknowledged in the cycle record** — the bypass is recorded as owner action.
+
+**Acknowledgment surface.** The handoff / PR records the admin-bypass merge as owner action per ADR-001 D9; the durable record lives in the §13 AI Session Log surface — the in-cycle session record per §13.1, finalized into the cycle-close content per §13.2.
+
+**Reconciliation with substrate.** AMAS v2.14.1 §10.5 is the lineage source. The v3 dogfooded practice — the five checkable bypass predicates plus the §13 acknowledgment surface — governs where the two diverge; the substrate is cited as lineage only. The GitHub-specific operational grounding for this posture (ruleset configuration, the bypass mechanics, the recording-the-bypass discipline) lives at `github-reference.md` §3.2.
+
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action is deferred to v3.1 per ADR-008): a merged PR in a single-contributor repo carries the bypass acknowledgment, the squash-merge, and all-gates-passed evidence. A merge missing any of these is a §10.5 violation.
+
+**Cross-references.** §8.3; §13; §24.5; ADR-001 D9; `github-reference.md` §3.2.
+
+## §13. AI Session Log discipline
+
+Every AI session within a cycle produces a durable session-log record. The canonical home of these records is twofold: the TASK handoff body session surfaces (per §14) and the "AI Session Log" section of the PR description. In-chat context is ephemeral and cannot serve this function; the session log is the durable, git-tracked record of what each role did in each session, in service of cross-session and cross-role continuity and the cycle-close audit trail.
+
+**Migration rule (v2.14.1 → v3).** The current PR-state log set is authored per §13.2; prior superseded sets are migrated per §13.1. This matches the live operational heading at `.github/PULL_REQUEST_TEMPLATE.md`: "current PR-state log set per §13.2; prior superseded sets migrated per §13.1". AMAS v2.14.1 §13 is the lineage source; the v3 dogfooded practice — the handoff body session surfaces plus the PR-description AI Session Log, split into the current-set (§13.2) and migrated-set (§13.1) structure — governs where the two diverge, with the substrate cited as lineage only.
+
+### §13.1. In-cycle session records
+
+In-cycle session records are the per-session entries that accumulate across a cycle. They are **append-only**: a new session appends a new record; prior records are never back-refreshed against later state. Volatile state (cumulative-diff-stats, current step, next step) is referenced by pointer, not pinned by value, so append-only records do not go stale against post-absorption state (couples with §23.6.5).
+
+**Per-session entry grammar.** Each in-cycle session record carries at minimum:
+
+1. **Session date + surface** — `YYYY-MM-DD` and the role surface (Architect / Builder / Reviewer).
+2. **Steps executed** — the substantive steps performed in the session.
+3. **Stop-and-show points reached** — the §8.3 stop-and-show points surfaced in the session.
+4. **Hand-back point** — where the session handed back: the §23.6.5 hand-back point, or cycle-close.
+
+**Enforcement-coupling (the §8.2 / §8.3 durable home).** §13.1 is the canonical durable home of the §8.2 pre-flight report and the §8.3 approval-payload + owner-ratification records. A session's §13.1 record carries the §8.2 "N/N PASS" pre-flight report produced that session and the §8.3 stop-and-show payloads with their owner ratifications. This gives the §8.2 and §8.3 checkable predicates a machine-locatable surface: a verification (a v3.1 Batch P4 Action, deferred per ADR-008) locates the pre-flight report and the ratification records in the §13.1 session record rather than inferring them from prose.
+
+**Storage rule.** The current PR-state log set sits in the PR body; as later sessions supersede earlier ones, the prior superseded sets migrate to the handoff `## Session log archive`. The migrated set is governed here (§13.1); the current set is governed by §13.2.
+
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action is deferred to v3.1 per ADR-008): each in-cycle session has a §13.1 record carrying the required fields above — including the §8.2 pre-flight report and the §8.3 ratification records where the session performed pre-flight or trigger-listed actions. A pre-flight or trigger-listed action whose record is absent from the §13.1 session record is a §13.1 violation (and, reciprocally, a §8.2 / §8.3 violation).
+
+**Cross-references.** §8.2; §8.3; §13; §13.2; §14; §23.6.5.
+
+### §13.2. Post-handoff cycle-close content
+
+§13.2 governs the current PR-state log set and the post-handoff cycle-close content: the cycle-close ledger and close-reconciliation content authored at cycle close. It is distinct from §18.3, which governs the Architect-perspective merge-commit-body data integration at the cycle-grain; §13.2 is the session-log / handoff cycle-close surface, §18.3 the merge-commit-body surface. Both preserve durable cycle-close content at different abstraction layers.
+
+**Sole canonical cycle-close marker.** Cycle close is asserted **only** via action-filled frontmatter — the handoff `linked_pr` carrying the squash-merge SHA, the handoff `status: resolved`, and the review-context `status: recorded`. **No body surface is a cycle-close marker**: no prose sentence, ledger line, or session-log entry asserts close. This prevents a body surface from claiming a close the frontmatter has not recorded.
+
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; deferred to v3.1 per ADR-008): the AI Session Log section carries the §13.2 current-set / §13.1 migrated-set structure, and cycle-close is asserted only via action-filled frontmatter — never via a body surface.
+
+**Cross-references.** §8.3; §13; §13.1; §14.1–§14.7; §17.7; §18.3; §23.6.5; PMN-001 (k); PMN-002 (a).
+
 ## §14. Universal handoff schema
 
 A handoff is a cross-role or cross-session work-transition artifact that records the current state of a cycle for the receiving role or session. Handoffs are the durable-context bridge between roles (Architect → Builder, Builder → Architect, Builder → Reviewer) and across sessions of the same role; in-chat context is ephemeral and cannot serve this function. The artifact is git-tracked at `docs/handoffs/TASK-####-<kebab-slug>.md`, where `<kebab-slug>` matches the branch-name slug per `github-reference.md` §2.2 (Option B per ADR-005).
 
-The schema serves three functions: (a) durable cycle-state preservation across role and session boundaries; (b) verification anchor for receiving-role pre-flight per §8.2 (forthcoming at Part C+); (c) audit-trail anchor for cycle-close ledger authoring at hand-back and post-merge-note authoring at cycle close.
+The schema serves three functions: (a) durable cycle-state preservation across role and session boundaries; (b) verification anchor for receiving-role pre-flight per §8.2; (c) audit-trail anchor for cycle-close ledger authoring at hand-back and post-merge-note authoring at cycle close.
 
 **Frontmatter form**: PMN-007 HEAD canonical 12-field form. The 12-field enumeration and `linked_pr` MC-C canonical-regex form are canonicalized at `templates/handoff-template.md` filled content; that template is the canonical surface. Per the mechanism-not-policy framing of §17, this section names the discipline and cites the template; the template carries the substantive form-detail.
 
@@ -187,7 +292,7 @@ The canonical primary handoff direction. Architect authors a TASK-#### spec at s
 - §23.6.3 sub-shape A canonical-impact-surface-completeness check + template-content authoring meta-pattern applied at spec authoring
 
 **Builder-side responsibilities**:
-- Pre-flight verification batch per §8.2 substrate (Part C.2; v2.14.1 §8.2 substrate) — branch-name regex compliance, base-branch freshness, working-tree state, (i.5) sub-shape sweeps
+- Pre-flight verification batch per §8.2 — branch-name regex compliance, base-branch freshness, working-tree state, (i.5) sub-shape sweeps
 - Step-1 stop-and-show surfacing all Phase 1 adjudications + pre-flight findings before Step-2 branch creation
 - Substantive content authoring per spec §4 prescriptions
 - Step-10 pre-commit stop-and-show with cumulative-diff-stats per (e.1) + verification claims
@@ -265,14 +370,14 @@ The Builder hands back to the Architect at stop-and-show points and at cycle-clo
 - Update `## Last completed step` to the resume-anchor for the next session
 - Re-derive `## Current state` cumulative-diff-stats per §23.6.1.1 (e.1) at each hand-back
 - Author cycle-close ledger items per ADR-006 D3 evidence-bar discipline (observation-recording, not canonicalization-pre-commitment)
-- Surface stop-and-show prompt per §8.3 (forthcoming at Part C+) at each hand-back
+- Surface stop-and-show prompt per §8.3 at each hand-back
 
 **Architect-side responsibilities**:
 - Run the §24.3.1 five-point post-handback check at cycle-close hand-back (three-endpoint poll, branch tip-SHA verification, file-content audit, phantom-action audit, comment-content claim verification)
 - Author squash-merge body content at owner squash-merge instant
 - Adjudicate cycle-close ledger items for next-cycle scope or PMN candidacy
 
-**Cross-references**: §8.3 (forthcoming at Part C+); §10.5 (forthcoming at Part C+); §23.6.1.1; §24.3.1; ADR-006 D3.
+**Cross-references**: §8.3; §10.5; §23.6.1.1; §24.3.1; ADR-006 D3.
 
 ### §14.6. Human → AI
 
@@ -286,9 +391,9 @@ Owner kickoff messages, Phase 1 adjudication ratifications, scoping ratification
 - Hold squash-merge authority per ADR-001 D9 admin-bypass posture (the owner is the only role authorized to merge)
 - Set strategic direction across cycles, including ADR-class decisions and out-of-band scope adjustments
 
-**AI-side note**: AI roles act within owner-ratified scope; out-of-scope or ambiguous conditions route back to the owner per §8.3 (forthcoming at Part C+) stop-and-show discipline.
+**AI-side note**: AI roles act within owner-ratified scope; out-of-scope or ambiguous conditions route back to the owner per §8.3 stop-and-show discipline.
 
-**Cross-references**: ADR-001 D9; ADR-001 D11; §8.3 (forthcoming at Part C+); spec §0 standing-scope ratifications convention.
+**Cross-references**: ADR-001 D9; ADR-001 D11; §8.3; spec §0 standing-scope ratifications convention.
 
 ### §14.7. AI → Human
 
@@ -299,7 +404,7 @@ The AI surfaces options, recommendations, decision tables, and stop-and-show fin
 **AI-side responsibilities**:
 - Surface options with explicit benefits, trade-offs, and Architect or Builder recommendations
 - Apply Item 13 anti-binary-routing at outcome adjudications — surface multi-option framings rather than binary "do or don't" routings when judgment is involved
-- Retain analytical and authoring judgment within owner-ratified scope; escalate out-of-scope or ambiguous conditions per §8.3 (forthcoming at Part C+)
+- Retain analytical and authoring judgment within owner-ratified scope; escalate out-of-scope or ambiguous conditions per §8.3
 - Apply §24 verify-before-assert at all claim-making contexts in the surfacing
 
 **Architect-side surfacing pattern**: Phase 1 adjudication recommendations at spec authoring; cycle-close ledger surfacing at cycle close.
@@ -462,7 +567,7 @@ Between PR-open and squash-merge, post-PR-window content accumulates that is rel
 
 **Discipline.** The Architect authors the merge-commit-body update post-handoff, before owner squash-merges. Content classes (a) through (d) are integrated as a cycle-close addendum; the body's structure is at Architect discretion (no template is canonical at this surface — the content varies cycle-to-cycle by what actually accumulated). Owner reviews the body content as part of the squash-merge action; if owner disagrees with content, owner edits before squash.
 
-**Cross-reference: §13.1 / §13.2 distinction.** The merge-commit-body data integration pattern is structurally distinct from the AI Session Log storage rule at §13.1 (most recent log in PR body, prior logs migrate to handoff `## Session log archive`). §13.1 governs in-cycle Builder-perspective session records; §18.3 governs post-handoff Architect-perspective cycle-close content. Both surfaces preserve durable content but at different abstraction layers — §13.1 captures session-grain reasoning, §18.3 captures cycle-grain observations.
+**Cross-reference: §13.1 / §13.2 distinction.** The merge-commit-body data integration pattern is structurally distinct from the AI Session Log storage rule: the current / most-recent PR-state log set sits in the PR body per §13.2, and prior superseded sets migrate to the handoff `## Session log archive` per §13.1. §13.1 governs in-cycle Builder-perspective session records (session-grain); §13.2 governs the current-set plus post-handoff cycle-close content on the session-log surface; §18.3 governs the Architect-perspective merge-commit-body data integration (cycle-grain). The surfaces preserve durable content at different abstraction layers — §13.1 / §13.2 capture session-grain reasoning, §18.3 captures cycle-grain observations.
 
 **Cross-reference: §18.2 PMN form spec.** Content class (a) Reviewer-engagement absorption summary may be substantively rich enough to warrant PMN content rather than merge-commit-body content. The threshold is the §18.1 trigger criteria: if absorption surfaces a recurrent defect class, novel sub-shape, or workflow change, the absorption belongs in a PMN with cross-reference to the merge-commit-body summary. If absorption is descriptive cycle history without learning content, the merge-commit-body is sufficient.
 
@@ -475,11 +580,11 @@ Between PR-open and squash-merge, post-PR-window content accumulates that is rel
 3. `80f5a4a` (PR-10 squash, same commit) — instance of class (d) self-referential pattern-promotion entry: explicit "M-A7 promotion trigger met (second instance of the merge-commit-body data integration pattern this cycle)" — strongest possible empirical confirmation by pattern self-naming at the cycle that promotes it.
 4. `817c12f` (PR-11 squash, 2026-05-02) — instance of class (a) Reviewer-engagement absorption summary: 5-finding Codex post-PR review absorption (4 path-(a) + 1 path-(β); cycle close at 3 review passes within spec §5 step 15's 4-pass cap), bounded-continuation rule applications recorded.
 
-**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.44 canonicalization at PR-83 / TASK-0047):
+**Cumulative empirical instances post-v2.16 canonicalization** (as of v2.45 canonicalization at PR-NN / TASK-0048):
 
-The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 + PR-43 + PR-45 + PR-48 + PR-52 + PR-54 + PR-56 + PR-58 + PR-60 + PR-62 + PR-64 + PR-66 + PR-68 + PR-71 + PR-73 + PR-75 + PR-80 + PR-83 = 34` empirical instances spanning v2.16 through v2.44 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
+The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 + PR-43 + PR-45 + PR-48 + PR-52 + PR-54 + PR-56 + PR-58 + PR-60 + PR-62 + PR-64 + PR-66 + PR-68 + PR-71 + PR-73 + PR-75 + PR-80 + PR-83 + PR-NN = 35` empirical instances spanning v2.16 through v2.45 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion). The PR-NN term is this cycle's TASK-0048 substantive PR; its verified squash PR number is substituted at the post-merge M-A7 reconciliation per established M-A7 cadence.
 
-The pattern has stabilized into operational steady-state across 34 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
+The pattern has stabilized into operational steady-state across 35 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
 
 Four-instance evidence (PMN-005 §6/§7 candidate framing → PMN-006 §6.2 operationally canonical → PMN-006 §6.2 explicit canonical-text deferral to Part B → this PR canonical §-section text) promotes M-A7 from operationally canonical to canonical §-section text.
 
@@ -594,6 +699,29 @@ Mitigation at direction-block authoring: explicitly verify that the prescribed r
 
 Cross-cycle empirical reach 2 at canonical-text canonicalization: pass-1 Finding A class (step-11.X → step-12.X' gap) + pass-2 Finding C class (step-13.X → step-13.X self-gap) within a single cycle. Canonicalization at v2.41 closes the structural Adj 20 direction-prescription scope defect class.
 
+#### §23.6.5. Session-budget hand-back discipline
+
+When a §23.6 self-review sweep — or any cycle work — cannot complete within the session budget, the discipline is to hand back at a named hand-back point rather than hand partial or unverified work to the next surface. A hand-back is a deliberate, complete transfer of cycle state, not an apology for incompleteness. Handing forward unverified work (a half-run sweep, an unconfirmed assertion) propagates the §24 verify-before-assert failure the framework exists to prevent.
+
+**Hand-back minimum payload.** A session-budget hand-back surfaces at minimum: the §Last completed step; the exact next step; the §Current state Summary; the §Cumulative-diff-stats; any blocking questions; and a cycle-position anchor (which cluster / gate the cycle is at). The hand-back populates these §14 handoff-schema body surfaces to the current gate state.
+
+**Gate-current vs append-only surface taxonomy.** The §14 handoff body carries two surface classes with different staleness rules:
+
+- **Gate-current surfaces** — the handoff's §Last completed step, §Current state Summary, and §Cumulative-diff-stats. These refresh **only at gates**: the initial Gate A, each Gate A re-application after an absorption, Gate B, and each Gate B re-application. Between gates these surfaces may lag the working state; **inter-gate staleness is by-design, not a defect**.
+- **Append-only historical surfaces** — the handoff's §3 step-by-step execution record, the pre-commit absorption section, the post-PR review section, and the handoff's §10 cycle-close ledger. These are **never back-refreshed**: a session appends, it does not rewrite prior entries. They reference volatile state by pointer (e.g. "see §Cumulative-diff-stats"), not by pinned value.
+
+**Disambiguation (handoff-body surfaces, not core.md §-numbers).** The surface names above — including "the handoff's §10 cycle-close ledger" and "the handoff's §3 step-by-step" — are sections of the §14 universal handoff schema's own body numbering. They do **not** refer to core.md §3 or to core.md §10 (Merge and branch-protection posture). The §14 handoff schema is the anchor for these handoff-body surface names.
+
+**Sole canonical cycle-close marker.** Cycle close is asserted only via action-filled frontmatter — the handoff `linked_pr` carrying the squash-merge SHA, the handoff `status: resolved`, and the review-context `status: recorded`. No handoff body surface is a cycle-close marker (consistent with §13.2).
+
+**Suppression clause.** Do **not** flag an append-only historical surface as stale against post-absorption state. A pinned value in an append-only surface is a correct-by-design historical record of what was true when it was written, not a defect to be "corrected" to current state.
+
+**Checkable predicate** (canonical text a v3.1 Batch P4 review-freshness Action reads to enforce; the Action is deferred to v3.1 per ADR-008): gate-current surfaces match the latest gate state, and append-only surfaces are not back-edited. A back-edited append-only surface, or a gate-current surface stale past its last gate, is a §23.6.5 violation.
+
+**Empirical grounding.** The gate-current / append-only taxonomy held as behavioral test #1 across TASK-0046 (PR-75) and TASK-0047 (PR-80 / PR-83): zero append-only false-staleness flags, with residual staleness isolated to gate-current next-step pinning. This reaches the ADR-006 D3 evidence bar (3+ confirmations across cycles) for canonicalizing the taxonomy as canonical text this cycle. AMAS v2.14.1 §23.6.5 is the lineage source; the dogfooded taxonomy governs where the two diverge, the substrate cited as lineage only.
+
+**Cross-references.** §8.1.1.3; §13.1; §13.2; §14; §23.6; §23.6.2; §23.6.3; §24.5; §24.6.
+
 ## §24. Cross-surface verify-before-assert meta-pattern
 
 This section names the cross-surface verify-before-assert meta-pattern that recurs across the framework's §-section disciplines. The pattern is: claims about external-system state (repository state, tool output, file content, collaborator output) are §24.2(a) assertions requiring verification against the asserted state at receiving time, regardless of who authored the claim or which surface the claim was authored on. Subsections enumerate the meta-pattern's sub-shapes (§24.2) and the receiving-side caveat-discipline that operationalizes the pattern at each receiving direction (§24.3).
@@ -645,7 +773,7 @@ A project may codify a project-specific check pattern in repo-local Architect re
 The receiving-side caveat-discipline at §24.3 enumerates five receiving directions independently. Empirical cross-cycle observation surfaces a compositional layer: paired-discipline operates across four sequential surfaces in a cycle's authoring → execution chain, with same defect class catchable at distinct surfaces per PMN-008 §3.2 distinct-surfaces-catch-distinct-defects principle. The four surfaces are:
 
 1. **Authoring (Architect-side)** — §23.6.3 reference-verification before spec authoring; canonical-source verification of all external references at spec-authoring time per role-invariance discipline at §23.6.3 above.
-2. **Receiving (Builder-side)** — Builder pre-flight verification batch + §8.2 (forthcoming at Part C+) caveat-discipline against Architect-asserted external-system state in prompts; canonical-source verification at receiving surface independent of authoring-side verification.
+2. **Receiving (Builder-side)** — Builder pre-flight verification batch + §8.2 caveat-discipline against Architect-asserted external-system state in prompts; canonical-source verification at receiving surface independent of authoring-side verification.
 3. **Ratification (Architect-side, successor or session-spanning)** — §24.3.1 Architect post-handback five-point check applied at hand-back surface; canonical-source verification of Builder-asserted external-system state in hand-back claims independent of receiving-side verification.
 4. **Post-PR review (Codex-side)** — Reviewer post-PR review per §8.1.1.1 three-endpoint poll + §8.1.1.2 phantom-action verification; canonical-source verification at independent Reviewer surface independent of authoring + receiving + ratification surfaces.
 

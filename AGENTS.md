@@ -6,7 +6,7 @@ Operating instructions for AI agents (Codex, GitHub Copilot, etc.) working on th
 
 This repository **is** the AMAS framework. Work in this repo follows AMAS itself ("dogfooding"): the framework operates under its own rules.
 
-- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.44 — see README)
+- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.45 — see README)
 - **Substrate canonical reference**: AMAS v2.14.1 lives at https://github.com/recruiting-tech/upcds/blob/main/docs/ai-operating-system.md and is the substrate from which the v3 canonical-law trio is being authored per ADR-003
 - **Repository status**: AMAS v3.0 trio is in active production in this repository (canonical-law trio: `core.md`, `github-reference.md`, `usage-guide.md` — all materialized; full v3.0 package per ADR-003 D2 thirteen-substantive-PR sequence in progress). UPCDS reference project will adopt v3.0.0 in a separate PR sequence after v3.0.0 ships.
 - **v3.0 scope framing**: per [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md) (2026-05-20), v3.0 ships canonical disciplines + materialized templates + project-kickoff prompts as the minimum-viable framework (canonical-law trio + Part C.1 + Part C.2 + Batches P1-P3 + release polish). Deterministic-enforcement automation (Batch P4 Actions) lands at v3.1 minor release; comprehensive reference + adapter packs (Batches P5-P7) at v3.2.
@@ -19,7 +19,7 @@ This repository **is** the AMAS framework. Work in this repo follows AMAS itself
    - `usage-guide.md` (practical operating guidance: kickoff, first-task pattern, handoff/log lifecycle, ID conventions, Reviewer-output absorption, Architect-side disciplines)
 2. **AMAS v2.14.1 canonical** at the URL above — substrate reference for sections not yet materialized in v3 trio (forthcoming v3 content noted in trio with `(forthcoming at Part C+)` qualifier per TASK-0019 cycle convention). Sections especially relevant as v3 substrate:
    - v2.14.1 §2 (role assignment + capability scoring; v3 substrate for forthcoming role-model content)
-   - v2.14.1 §13 / §14 (AI Session Log + handoff templates; v3 substrate for forthcoming workflow-phase content)
+   - v2.14.1 §13 / §14 (AI Session Log + handoff schema) — **now materialized** in v3 `core.md` §13 / §14 (see item 1)
    - v2.14.1 §17 (template canonical forms; v3 substrate for forthcoming template-set content)
 3. **The active task handoff** at `docs/handoffs/TASK-####-<slug>.md` for the work you are being asked to do
 4. **The PR description** if a PR already exists for the task
@@ -40,8 +40,8 @@ For PRs that touch repository content:
 - **Branch naming** per `github-reference.md` §2.2 (canonical at v3; deliberately diverges from v2.14.1 §6.1 substrate per ADR-005 to align with AMAS TASK-#### centrality + lived practice): `<type>/task-####-<kebab-slug>`. Allowed types: `feat`, `fix`, `chore`, `adr`, `shadow`, `spike` (per v3 canonical types; conventional-commit-extension types `docs`, `refactor`, `test`, `ci` retired this cycle per ADR-005 reconciliation)
 - **PR template**: every PR uses `.github/PULL_REQUEST_TEMPLATE.md`. Required sections: Linked records, Summary, Decisions in this PR, Validation, Reviewer focus, Ready for review, AI Session Log
 - **Conventional commit messages**: `<type>(<scope>): <subject>` — e.g., `feat(amas): TASK-0002 v3 package scaffold`
-- **Per AMAS v2.14.1 §8.2**: Pre-flight verification before any destructive or remote-visible action
-- **Per AMAS v2.14.1 §8.3**: Stop-and-show before `git push`, `gh pr create`, branch deletion, or force push
+- **Per `core.md` §8.2**: Pre-flight verification before any destructive or remote-visible action
+- **Per `core.md` §8.3**: Stop-and-show before `git push`, `gh pr create`, branch deletion, or force push
 
 ## Review guidelines
 
@@ -55,9 +55,9 @@ If verification surfaces a phantom claim, name it explicitly and separate substa
 
 ## Scope and escalation
 
-- **Stay within the task's named scope**. Adjacent in-scope edits (one corresponding test, one corresponding doc, one helper file) are acceptable per §8.3; broader edits require explicit approval.
+- **Stay within the task's named scope**. Adjacent in-scope edits (one corresponding test, one corresponding doc, one helper file) are acceptable per `core.md` §8.3; broader edits require explicit approval.
 - **Escalate to the project owner via stop-and-show** for: scope drift, blocking questions, ambiguous acceptance criteria, ADR-conflict candidates, or any condition the handoff did not anticipate.
-- **Do not merge**. The project owner runs all merges (currently solo-contributor bypass per AMAS v2.14.1 §10.5).
+- **Do not merge**. The project owner runs all merges (currently solo-contributor bypass per `core.md` §10.5).
 
 ## Repo-specific notes
 

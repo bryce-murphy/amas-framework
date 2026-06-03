@@ -103,11 +103,11 @@ Every real task after the kickoff bootstrap follows the same shape. Here's what 
 
 If a Feature Brief exists, it lives at `docs/features/FEAT-####-<slug>.md`. The FEAT-#### may be the same number as the TASK-#### for a single-task feature, or a separate number for a multi-task feature.
 
-**§3.3. Branch.** The Builder creates a branch matching `<type>/task-####-<kebab-slug>` per `github-reference.md` §2.2 branch convention (canonical at v3 per ADR-005). Examples: `feat/task-0001-session-export`, `fix/task-0023-cache-bug`. A GitHub Action validates branch names on PR open per `github-reference.md` §6.2 anticipated Actions. Before creating the branch, the Builder runs pre-flight per `core.md` §8.2 (forthcoming at Part C+) to verify branch-name regex compliance, base-branch freshness, and working-tree state. Pre-flight is the catch point for branch-name regex mistakes — it is much cheaper than force-pushing a rename.
+**§3.3. Branch.** The Builder creates a branch matching `<type>/task-####-<kebab-slug>` per `github-reference.md` §2.2 branch convention (canonical at v3 per ADR-005). Examples: `feat/task-0001-session-export`, `fix/task-0023-cache-bug`. A GitHub Action validates branch names on PR open per `github-reference.md` §6.2 anticipated Actions. Before creating the branch, the Builder runs pre-flight per `core.md` §8.2 to verify branch-name regex compliance, base-branch freshness, and working-tree state. Pre-flight is the catch point for branch-name regex mistakes — it is much cheaper than force-pushing a rename.
 
 **§3.4. Handoff file.** The Builder creates or updates `docs/handoffs/TASK-####-<slug>.md` at the start of work per the universal handoff schema. The handoff carries the current state of the task: current branch, last completed step, blockers, exact next action, validation evidence. If you return to the task after any meaningful pause, the handoff is where you pick up — not the chat history. The "Exact next step" block in particular is what subsequent Architect-to-Builder prompts will reference (see §9 below).
 
-**§3.5. PR.** When the Builder is ready for review, they open a PR against main with `.github/PULL_REQUEST_TEMPLATE.md` (the operational instantiation per `github-reference.md` §4.2; canonical source ships at `templates/PULL_REQUEST_TEMPLATE.md`) filled in. PR title starts with TASK-####. The PR body carries the most recent AI Session Log (or on multi-session PRs, the complete set of session subsections). Before `git push` and before `gh pr create`, the Builder runs stop-and-show per `core.md` §8.3 (forthcoming at Part C+): presents the exact branch name, commit title and body, PR body, and diff summary, then waits for explicit approval.
+**§3.5. PR.** When the Builder is ready for review, they open a PR against main with `.github/PULL_REQUEST_TEMPLATE.md` (the operational instantiation per `github-reference.md` §4.2; canonical source ships at `templates/PULL_REQUEST_TEMPLATE.md`) filled in. PR title starts with TASK-####. The PR body carries the most recent AI Session Log (or on multi-session PRs, the complete set of session subsections). Before `git push` and before `gh pr create`, the Builder runs stop-and-show per `core.md` §8.3: presents the exact branch name, commit title and body, PR body, and diff summary, then waits for explicit approval.
 
 **§3.6. Ready-for-review.** Before the Builder marks the PR ready for review, they run through the PR template's Ready-for-review checklist. This is the single most useful mechanical gate in the framework. It catches task-ID / feature-ID mismatches, missing Feature Briefs, stale handoffs, unsupported validation claims, and the redaction rules.
 
@@ -115,7 +115,7 @@ If a Feature Brief exists, it lives at `docs/features/FEAT-####-<slug>.md`. The 
 
 **§3.8. Builder engagement with findings.** Once the Reviewer's findings land, `core.md` §8.1.1 applies: the Builder re-invokes the Reviewer after every push addressing findings (rule a), replies to every line comment before bypass-merge naming the addressing commit SHA (rule b), and resolves threads only after a clean re-review (rule c). See §7 below for the walkthrough.
 
-**§3.9. Merge.** The human merges. If the repo is single-contributor, the merge uses GitHub's bypass mechanism with explicit acknowledgment in the squash-commit message or a pinned PR comment per `core.md` §10.5 (forthcoming at Part C+). This is supported, not a workflow violation. Each bypass invocation acknowledges full operator responsibility for the merge state; no additional artifact is required at single-cycle scope per `github-reference.md` §3.2. Sustained-multi-contributor projects should document the bypass posture in an ADR.
+**§3.9. Merge.** The human merges. If the repo is single-contributor, the merge uses GitHub's bypass mechanism with explicit acknowledgment in the squash-commit message or a pinned PR comment per `core.md` §10.5. This is supported, not a workflow violation. Each bypass invocation acknowledges full operator responsibility for the merge state; no additional artifact is required at single-cycle scope per `github-reference.md` §3.2. Sustained-multi-contributor projects should document the bypass posture in an ADR.
 
 **§3.10. Archive.** The human (or Builder in single-contributor mode) archives the final review-context into `docs/reviews/PR-####-codex-pre-commit.md` (Codex pre-commit) and the post-PR review state into the same review-context (or the PR body, depending on the project's adopted convention). The PR remains the working conversation; the archived copy is the durable record.
 
@@ -152,7 +152,7 @@ The framework's continuity promise depends on one rule: at every session boundar
 - Assigned at the point the task is first recorded — usually when the Issue is opened. The Architect makes the assignment.
 - TASK-0000 is reserved for the project bootstrap / retrofit-adoption task. The first real feature task is TASK-0001.
 - The ID does not change if the task is re-scoped, split, or merged with another task. Re-scoping produces new IDs for new tasks, not retroactive renumbering.
-- Counter authority: the repo's highest-numbered existing TASK-#### across any artifact is authoritative. The Architect increments from that number. The Builder re-verifies this in pre-flight per `core.md` §8.2 (forthcoming at Part C+) before assuming a TASK-#### for a new task.
+- Counter authority: the repo's highest-numbered existing TASK-#### across any artifact is authoritative. The Architect increments from that number. The Builder re-verifies this in pre-flight per `core.md` §8.2 before assuming a TASK-#### for a new task.
 
 **§5.3. Where TASK-#### appears.**
 - GitHub Issue title: `TASK-0042: Add session-export endpoint`
@@ -205,7 +205,7 @@ The three rules in plain operational terms:
 
 **§7.6. Multi-surface review pipeline — converging lines of evidence.** No single review surface catches all defect classes. The framework's empirical pipeline is five surfaces:
 1. **Architect §23.6 self-review** (iterative-to-fixed-point per §23.6.2 + §23.6.3 reference-verification before authoring) — catches prose-arithmetic, recapitulation-consistency, §-citation correctness, Architect-asserted-without-verification claims.
-2. **Builder pre-flight (§8.2 (forthcoming at Part C+))** — catches frontmatter convention divergence, structural-element count off-by-one, line-number off-by-one in code references, section-structure form divergence (per §23.6.3 sub-shapes A/B/C/D).
+2. **Builder pre-flight (§8.2)** — catches frontmatter convention divergence, structural-element count off-by-one, line-number off-by-one in code references, section-structure form divergence (per §23.6.3 sub-shapes A/B/C/D).
 3. **Builder step-6 self-review** — catches verification-command operational correctness, frontmatter-vs-body scope mixing, §-citation residuals that escape Architect sweep, claim-scope mismatches.
 4. **Codex desktop pre-commit** — catches verification-artifact internal consistency, cross-claim consistency, canonical-text correctness pre-commit.
 5. **Codex cloud post-PR** — catches substantive content findings, advisory/blocking contradictions, v2.14.1-vs-repo-convention divergences, boundary cases.
@@ -281,13 +281,13 @@ In practice on reference projects, prompts tend to carry three to six stop condi
 
 - **§23.6.3 — Reference-verification before spec authoring.** Every specific reference value in the spec text is either (i) verified against actual canonical source at authoring time (sub-shapes A/D — convention shapes and form structures), or (ii) explicitly marked as deferred for Builder pre-flight (i.5) batch verification (sub-shapes B/C — line numbers and structural-element counts). Plus standing pre-authoring data-currency precondition: data sources used for verification are themselves current.
 
-**§9.8. §24 cross-surface verify-before-assert meta-pattern.** `core.md` §24 names the meta-pattern that §8.1.1.1, §23.6, §8.2 (forthcoming at Part C+), and §8.3 (forthcoming at Part C+) have all been applying as specific instances. The failure shape: an actor (Architect, Builder, or Reviewer) asserts a fact about an external system, an artifact's content, or a receiving-side expectation without verifying it against actual state, and the assertion turns out to be wrong. The mitigation is at the receiving surface — receiving-side caveat-discipline catches the divergence before damage propagates.
+**§9.8. §24 cross-surface verify-before-assert meta-pattern.** `core.md` §24 names the meta-pattern that §8.1.1.1, §23.6, §8.2, and §8.3 have all been applying as specific instances. The failure shape: an actor (Architect, Builder, or Reviewer) asserts a fact about an external system, an artifact's content, or a receiving-side expectation without verifying it against actual state, and the assertion turns out to be wrong. The mitigation is at the receiving surface — receiving-side caveat-discipline catches the divergence before damage propagates.
 
 **§9.9. Five receiving directions of caveat-discipline (§24.3).** Five surfaces apply receiving-side caveat-discipline:
-1. Builder pre-flight against Architect-asserted external-system state in prompts (§8.2 (forthcoming at Part C+))
+1. Builder pre-flight against Architect-asserted external-system state in prompts (§8.2)
 2. Architect pre-handoff self-review against own-authored claims (§23.6, §23.6.1, §23.6.2, §23.6.3)
 3. Builder receiving Reviewer findings (§8.1.1, §8.1.1.1, §8.1.1.2)
-4. Owner receiving Builder stop-and-show (§8.3 (forthcoming at Part C+))
+4. Owner receiving Builder stop-and-show (§8.3)
 5. Architect ← Builder hand-back (§24.3.1)
 
 **§9.10. §24.3.1 default Architect-side post-handback five-point check.** When Builder hands back to Architect at cycle close, the Architect runs:
@@ -311,7 +311,7 @@ A project may codify a project-specific check pattern in repo-local Architect re
 
 ## §10. Friction patterns
 
-**§10.1. "The Architect's prompt asserted something about gh CLI behavior that turned out to be wrong, and I caught it during pre-flight."** External-system-behavior assertion failure per `core.md` §24 sub-shape (a). The Builder's pre-flight per §8.2 (forthcoming at Part C+) catches this when the assertion would gate a destructive or remote-visible action. Beyond §8.2 (forthcoming at Part C+)'s enumerated checks, surface "the prompt says X; my actual finding is Y; here is the divergence" rather than silently working around the discrepancy.
+**§10.1. "The Architect's prompt asserted something about gh CLI behavior that turned out to be wrong, and I caught it during pre-flight."** External-system-behavior assertion failure per `core.md` §24 sub-shape (a). The Builder's pre-flight per §8.2 catches this when the assertion would gate a destructive or remote-visible action. Beyond §8.2's enumerated checks, surface "the prompt says X; my actual finding is Y; here is the divergence" rather than silently working around the discrepancy.
 
 **§10.2. "The handoff's cross-reference points to a section that doesn't exist."** Artifact-content assertion failure per `core.md` §24 sub-shape (b). §23.6.2's internal-consistency check covers the artifact being handed off; cross-document references and time-stale validation evidence require analogous discipline at handoff-time.
 
@@ -329,11 +329,11 @@ A project may codify a project-specific check pattern in repo-local Architect re
 
 **§10.9. "Codex (or `@claude`) gave me two different reviews on the same commit."** §8.1.1.1 case. This is the abnormal case the section is scoped for, and it is most often correlated with a configuration-state change mid-cycle — Reviewer-environment configuration, GitHub App re-installation, auth/token rotation, permission grants. Steady-state Reviewer behavior is single-trigger single-output. When you see two outputs and they don't agree: substantive findings beat sentinels by default, the Architect-supplied inline reply names the sentinel and identifies the substantive finding as authoritative (with link to the sentinel for audit), and resolution still requires a clean re-review per §8.1.1 rule (c).
 
-**§10.10. "An ADR I wrote three weeks ago turned out wrong. Should I edit it?"** No. Per `core.md` §17.5 (forthcoming at Part C+) (or canonical equivalent): accepted ADRs are not edited in place. Write a new ADR that supersedes the old one. Update the old ADR's Status field to `superseded by ADR-###` and leave its Context / Decision / Alternatives sections unchanged. The narrow exception is typographical corrections — broken links, misspelled names, formatting — anything that doesn't change the decision.
+**§10.10. "An ADR I wrote three weeks ago turned out wrong. Should I edit it?"** No. Per `core.md` §17.5 (or canonical equivalent): accepted ADRs are not edited in place. Write a new ADR that supersedes the old one. Update the old ADR's Status field to `superseded by ADR-###` and leave its Context / Decision / Alternatives sections unchanged. The narrow exception is typographical corrections — broken links, misspelled names, formatting — anything that doesn't change the decision.
 
 **§10.11. "A new ADR only supersedes part of an older one."** Permitted optional qualifier on the Status line: `Status: accepted; partially superseded by ADR-### (<scope>)`. Use it when the new ADR invalidates one section of the old ADR while leaving the rest in effect.
 
-**§10.12. "The Builder proceeded silently and hit a CI failure."** That is a §8.2 (forthcoming at Part C+) pre-flight gap. The Builder should have stopped and reported before the action that failed. Feed this back: name the preconditions that were not checked, and ask the Builder to confirm them explicitly before the next destructive step. If the pattern repeats across multiple PRs, escalate.
+**§10.12. "The Builder proceeded silently and hit a CI failure."** That is a §8.2 pre-flight gap. The Builder should have stopped and reported before the action that failed. Feed this back: name the preconditions that were not checked, and ask the Builder to confirm them explicitly before the next destructive step. If the pattern repeats across multiple PRs, escalate.
 
 **§10.13. "The Reviewer's review threads are piling up unresolved."** On substantive-only Reviewer PRs, the Reviewer doesn't re-engage with individual threads after its initial review. Under §8.1.1 rule (c), the Builder resolves threads — but only after replying (rule b), re-invoking the Reviewer (rule a), and confirming the re-review didn't re-raise the finding.
 
@@ -392,7 +392,7 @@ Four things this framework deliberately does not do, so you do not have to litig
 - **PMN path:** `docs/post-merge-notes/PMN-####-<slug>.md` per `core.md` §18 form.
 - **ADR path:** `docs/adr/ADR-###-<slug>.md` per `core.md` ADR convention.
 - **Failover handoff path:** `docs/handoffs/FAILOVER-TASK-####-<date>.md` per §2.3.7 (forthcoming at Part C+).
-- **Five receiving directions of caveat-discipline:** Builder pre-flight (§8.2 (forthcoming at Part C+)), Architect pre-handoff self-review (§23.6), Builder receiving Reviewer findings (§8.1.1), Owner receiving Builder stop-and-show (§8.3 (forthcoming at Part C+)), Architect ← Builder hand-back (§24.3.1).
+- **Five receiving directions of caveat-discipline:** Builder pre-flight (§8.2), Architect pre-handoff self-review (§23.6), Builder receiving Reviewer findings (§8.1.1), Owner receiving Builder stop-and-show (§8.3), Architect ← Builder hand-back (§24.3.1).
 - **Five-surface review pipeline:** Architect §23.6 self-review → Builder pre-flight → Builder step-6 self-review → Codex desktop pre-commit → Codex cloud post-PR.
 - **Architect-side post-handback five-point check:** three-endpoint poll, branch tip-SHA verification, file content audit, phantom-action audit, comment-content claim verification.
 - **§23.6 self-review sub-sections:** §23.6.1 prose-arithmetic decomposition (with §23.6.1.1 (e.1) cumulative-diff-stats re-derivation) + §23.6.2 iterative-to-fixed-point + §23.6.3 reference-verification before spec authoring.
@@ -401,7 +401,7 @@ Four things this framework deliberately does not do, so you do not have to litig
 - **Cost-class refinement per §8.1.1.3:** pure-token-swap (one-iteration fixed-point) vs genuinely-asymptotic (requires structural decision). **Pre-commit Codex desktop pass-2 re-invocation discouraged for pure-token-swap; post-PR re-review per §7.1+§7.3 remains binding.**
 - **Bypass rule:** Single-contributor repos bypass with acknowledgment in the squash-commit message, PR comment, or PR template `Bypass used` field per `github-reference.md` §3.2; sustained-multi-contributor projects document bypass posture in an ADR.
 - **ADR edit discipline:** Accepted ADRs are not edited in place. Supersede with a new ADR; update the old one's Status to `superseded by ADR-###`. For partial supersession: `Status: accepted; partially superseded by ADR-### (<scope>)`.
-- **Executor pre-flight per §8.2 (forthcoming at Part C+):** Before any repo-writing action, verify base branch, working-tree state, file-existence assumptions, CI-format compliance, numerical identifier assumptions, base-branch freshness. Stop-and-report on failure.
-- **Stop-and-show per §8.3 (forthcoming at Part C+):** Before `git push`, `gh pr create`, `gh pr edit`, branch deletion, force push, out-of-scope file edits — present exact planned action and wait for explicit approval.
+- **Executor pre-flight per §8.2:** Before any repo-writing action, verify base branch, working-tree state, file-existence assumptions, CI-format compliance, numerical identifier assumptions, base-branch freshness. Stop-and-report on failure.
+- **Stop-and-show per §8.3:** Before `git push`, `gh pr create`, `gh pr edit`, branch deletion, force push, out-of-scope file edits — present exact planned action and wait for explicit approval.
 - **Architect-to-Builder prompt construction per §23:** Two shapes — handoff-driven or direct-instruction. Every prompt carries opening framing, concrete file locations, mechanical sequence, stop conditions, scope protection, hand-back point.
 - **Status field (5 options):** `proposed | active | blocked | resolved | stale`. ADRs use a different 4-option set: `proposed | accepted | superseded | deprecated`, with optional partial-supersession qualifier.

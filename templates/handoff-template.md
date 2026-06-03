@@ -140,14 +140,14 @@ python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with
 
 ## §11. Session log archive
 
-<Architect session record(s) + Builder session record(s); per cycle iteration. Most recent session in PR body per AMAS v2.14.1 §13.1 (forthcoming at Part C+); prior sessions migrated here.>
+<Architect session record(s) + Builder session record(s); per cycle iteration. Most recent session in PR body per `core.md` §13.2 (current PR-state set); prior superseded sessions migrated here per §13.1.>
 ```
 
 ## Usage notes
 
 - **Direction-specific variants**: this template is the universal Architect → Builder direction. Other directions (Builder → Reviewer, Reviewer → Builder, Builder → Architect, Reviewer → Architect, Human → AI, AI → Human) follow the same frontmatter form with direction-specific body adjustments per `core.md` §14.2-§14.7 (canonical at v3) and v2.14.1 §14.2-§14.7 substrate.
-- **Pre-flight discipline**: Builder runs `core.md` §8.2 (forthcoming at Part C+) pre-flight before authoring handoff body — verify branch-name regex compliance, base-branch freshness, working-tree state.
-- **Stop-and-show discipline**: Before commit/push, Builder presents handoff at step-2 stop-and-show (pre-flight findings) + step-10 stop-and-show (pre-commit) per `core.md` §8.3 (forthcoming at Part C+).
+- **Pre-flight discipline**: Builder runs `core.md` §8.2 pre-flight before authoring handoff body — verify branch-name regex compliance, base-branch freshness, working-tree state.
+- **Stop-and-show discipline**: Before commit/push, Builder presents handoff at step-2 stop-and-show (pre-flight findings) + step-10 stop-and-show (pre-commit) per `core.md` §8.3.
 - **Hand-back to Architect**: Architect receives handoff at step-17 + performs `core.md` §24.3.1 five-point post-handback check before authorizing merge per ADR-001 D9 admin-bypass posture.
 - **Status field lifecycle**: `drafted` (pre-stage) → `active` (post-stage / pre-merge) → `resolved` (post-merge per PMN-001 (k) Action). Drift breaks Action substitution.
 - **Path-(α') discipline at pre-merge gate**: Builder applies handoff frontmatter `status: drafted → active` token-swap at pre-merge stop-and-show staged-tree gate per `core.md` §23.6.3 path-(α') discipline-side fix. Status field MUST be `active` at merge time for PMN-001 (k) Action substitution to fire. `drafted` state at merge breaks Action transition silently.
@@ -156,7 +156,7 @@ python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with
 ## Cross-references
 
 - **core.md §14** (handoff schema; canonical at v3) — universal handoff structure.
-- **core.md §8.2 / §8.3** (forthcoming at Part C+) — pre-flight + stop-and-show disciplines.
+- **core.md §8.2 / §8.3** — pre-flight + stop-and-show disciplines.
 - **core.md §23.6 / §23.6.1 / §23.6.2 / §23.6.3** — Architect-side spec authoring + self-review disciplines applied at handoff-source-spec authoring.
 - **core.md §24.3.1** — Architect five-point post-handback check applied at handoff hand-back.
 - **github-reference.md §2.2** — branch convention per ADR-005 (Option B `<type>/task-####-<kebab-slug>`).
