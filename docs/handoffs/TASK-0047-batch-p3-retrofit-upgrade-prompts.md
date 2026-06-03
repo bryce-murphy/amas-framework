@@ -34,17 +34,17 @@ Fill `prompts/retrofit.md` (stub → active) with its canonical project-kickoff 
 
 *[GATE-CURRENT surface — refreshed at gates only.]*
 
-PR-80 red-team batch fix — committed + pushed; **PR-80 draft OPEN** (not merged). Branch history: `9fd363a` (content + co-shipped) → `2b5ec16` (Codex P2: handoff-template PR-0 sentinel) → `66831ca` (Codex P2 re-raise: prompts/ADR PR-0 convergence) → this batch commit (Codex desktop red-team, 3 P1 + 3 P2). Frontmatter is `pr: PR-80` / `status: active`. This batch resolved all six red-team findings: P1-a review-context artifact created (`docs/reviews/PR-80-codex-review.md`) + handoff references reconciled; P1-b these gate-current surfaces refreshed to committed reality; P1-c usage-guide §2.3 lite reconciled to the prompts; P2-a upgrade-forthcoming markers added at the routing points; P2-b README retrofit row → `PR-80 (TASK-0047)`; P2-c qualifier sweep completed (project-brief-template + project-initiation + usage-guide §0) + a repo-wide convergence completion-sweep. Cumulative state: see §Cumulative-diff-stats (gate-current). The only deferred item is the `core.md` §18.3 M-A7 33rd-instance increment (Architect-side post-merge maintenance, verified PR-80).
+PR-80 handoff reconciliation — committed + pushed; **PR-80 draft OPEN** (not merged). Branch history: `9fd363a` (content + co-shipped) → `2b5ec16` (Codex P2: handoff-template PR-0 sentinel) → `66831ca` (Codex P2 re-raise: prompts/ADR PR-0 convergence) → `0cf4930` (Codex desktop red-team, 3 P1 + 3 P2 resolved + repo-wide convergence sweep) → this handoff-reconciliation commit. Frontmatter is `pr: PR-80` / `status: active`. The targeted re-verification returned NOT CONVERGED with 2 P1s — **both stale self-description in this handoff** (the file-inventory count; the §1 sub-phase enumeration), not artifact defects (PR-A content is clean/converged). This pass reconciles the handoff only: the 2 flagged P1s + a whole-handoff class-sweep of every state-bearing claim against `git` ground truth. Cumulative state: see §Cumulative-diff-stats (gate-current). The only non-handoff deferred item is the `core.md` §18.3 M-A7 33rd-instance increment (Architect-side post-merge maintenance, verified PR-80).
 
 ## Current state
 
 *[GATE-CURRENT surface — refreshed at gates only.]*
 
-**Summary**: PR-A content complete at the assembly pre-commit pass. NOTE — the cycle evolved from the original 3-sub-phase single-PR plan (still described in §Objective/§Metadata, now superseded) into a 7-sub-phase remediation + **PR-A / PR-B split**: PR-A ships retrofit + substrate + remediation; `prompts/upgrade.md` ships PR-B. Arc from `main` tip `83916ca`: **SP1** VIII (project-brief-template "Kickoff follow-ups" bold-bullet) + X (usage-guide §2.1 trio) + born-drafted handoff → **SP2** `prompts/retrofit.md` authored (stub→active, mode-neutral greenfield scaffold + retrofit deltas) → **SP3/3b** class-wide smoke remediation (kickoff context pack two-tier + missing-template fallback; degraded operator-relay §2.6.1; SF-2/6 forthcoming-citation rewording; explicit Issue-0 open/close) → **SP4** role-assignment heuristic (usage-guide §2.6.2 + compact inline) + SF-3 @codex + SF-10/11 → **SP5** plan-vs-instantiate remediation (project-brief `doc_mcp_mechanism` v3.0 default; handoff-template TASK-0000 bootstrap-case; PR-template §8.2/§8.3 non-blocking) → **SP6** ADR-009 created + ADR-008 in-place addendum reverted; doc-MCP example alignment; version-of-record clarification; lite→full; Step-0 partial-trio/forthcoming clarifications; inline-heuristic trim → **SP7** cross-Architect changes (ADR-009 scope clause; project-type `mixed` picker; no-bot-Reviewer fallback mini-template; GitHub-legacy-frontmatter note; refined version-of-record wording; upgrade-as-PR-B cross-refs) → **assembly** v2.43 dogfood bump ×3 surfaces + qualifier sweep + README retrofit row + gate-current reconciliation → **commit/push** (`9fd363a`) + draft PR-80 opened → **Codex GitHub-App passes 1-2** absorbed (PR-0-sentinel finding-class, commits `2b5ec16` + `66831ca`) → **Codex desktop red-team** (3 P1 + 3 P2) resolved in this batch commit (review-context artifact + handoff gate-current refresh + lite/upgrade/qualifier-sweep completion + README filled-by + repo-wide convergence sweep). `prompts/upgrade.md` untouched (stub); `core.md` untouched (M-A7 deferred). Branch committed + pushed; **PR-80 draft open, NOT merged.** Awaiting targeted red-team re-verification → Gate A/B closure.
+**Summary**: PR-A content complete, committed, and pushed; **PR-80 draft open** (not merged). The cycle ran 7 sub-phases + an assembly pass, then split into **PR-A / PR-B**: PR-A ships retrofit + substrate + remediation; `prompts/upgrade.md` ships PR-B. §Metadata, §Objective, and §1 all reflect this split (the original 3-sub-phase single-PR enumeration is superseded). Arc from `main` tip `83916ca`: **SP1** VIII (project-brief-template "Kickoff follow-ups" bold-bullet) + X (usage-guide §2.1 trio) + born-drafted handoff → **SP2** `prompts/retrofit.md` authored (stub→active, mode-neutral greenfield scaffold + retrofit deltas) → **SP3/3b** class-wide smoke remediation (kickoff context pack two-tier + missing-template fallback; degraded operator-relay §2.6.1; SF-2/6 forthcoming-citation rewording; explicit Issue-0 open/close) → **SP4** role-assignment heuristic (usage-guide §2.6.2 + compact inline) + SF-3 @codex + SF-10/11 → **SP5** plan-vs-instantiate remediation (project-brief `doc_mcp_mechanism` v3.0 default; handoff-template TASK-0000 bootstrap-case; PR-template §8.2/§8.3 non-blocking) → **SP6** ADR-009 created + ADR-008 in-place addendum reverted; doc-MCP example alignment; version-of-record clarification; lite→full; Step-0 partial-trio/forthcoming clarifications; inline-heuristic trim → **SP7** cross-Architect changes (ADR-009 scope clause; project-type `mixed` picker; no-bot-Reviewer fallback mini-template; GitHub-legacy-frontmatter note; refined version-of-record wording; upgrade-as-PR-B cross-refs) → **assembly** v2.43 dogfood bump ×3 surfaces + qualifier sweep + README retrofit row + gate-current reconciliation → **commit/push** (`9fd363a`) + draft PR-80 opened → **Codex GitHub-App passes 1-2** absorbed (PR-0-sentinel finding-class, commits `2b5ec16` + `66831ca`) → **Codex desktop red-team** (3 P1 + 3 P2) resolved at `0cf4930` (review-context artifact + gate-current refresh + lite/upgrade/qualifier-sweep completion + README filled-by + repo-wide convergence sweep) → **targeted re-verification** returned 2 P1 handoff-drift items (content clean) → **this handoff-reconciliation pass** (the 2 P1s + a whole-handoff class-sweep). `prompts/upgrade.md` untouched (stub); `core.md` untouched (M-A7 deferred). Branch committed + pushed; **PR-80 draft open, NOT merged.** Awaiting handoff-focused re-verify → Gate A/B closure.
 
-**Files authored / modified by Builder** (PR-A; 12 files = 9 modified + 3 new):
-1. MODIFIED `prompts/retrofit.md` — stub→active; mode-neutral greenfield scaffold + retrofit deltas (Step-2 inventory, Step-5 map-vs-create, reframe-pending) + the full SP3–SP7 remediation. 282 lines.
-2. MODIFIED `prompts/greenfield.md` — SP3–SP7 remediation applied in parallel (context pack, role heuristic, SF-2/6/10/11, version-of-record, lite→full, Step-0 clarifications, picker/fallback/frontmatter reducers). 239 lines.
+**Files authored / modified by Builder** (PR-A; 13 files = 10 modified + 3 new):
+1. MODIFIED `prompts/retrofit.md` — stub→active; mode-neutral greenfield scaffold + retrofit deltas (Step-2 inventory, Step-5 map-vs-create, reframe-pending) + the full SP3–SP7 remediation. 283 lines.
+2. MODIFIED `prompts/greenfield.md` — SP3–SP7 remediation applied in parallel (context pack, role heuristic, SF-2/6/10/11, version-of-record, lite→full, Step-0 clarifications, picker/fallback/frontmatter reducers). 241 lines.
 3. MODIFIED `usage-guide.md` — X §2.1 trio + two-tier context pack; §2.6.1 degraded operator-relay; §2.6.2 v3.0 role-assignment heuristic; forthcoming-qualifier sweep (L22 + §11.3 + one-page ref: retrofit now live, upgrade→PR-B).
 4. MODIFIED `templates/project-brief-template.md` — VIII "Kickoff follow-ups" body-section bullet; `doc_mcp_mechanism` v3.0 default + example alignment.
 5. MODIFIED `templates/handoff-template.md` — TASK-0000 bootstrap-case frontmatter note (PR-0 sentinel / none / ADR-000).
@@ -52,19 +52,20 @@ PR-80 red-team batch fix — committed + pushed; **PR-80 draft OPEN** (not merge
 7. MODIFIED `README.md` — v2.43 dogfood bump (L9 ×2); retrofit Prompts-row → `PR-80 (TASK-0047)`.
 8. MODIFIED `AGENTS.md` — v2.43 dogfood bump (L9).
 9. MODIFIED `CLAUDE.md` — v2.43 dogfood bump (L9).
-10. NEW `docs/adr/ADR-009-kickoff-artifact-defaulting.md` — kickoff-artifact defaulting principle (amends ADR-008 D3) + scope clause. 73 lines.
-11. NEW `docs/handoffs/TASK-0047-batch-p3-retrofit-upgrade-prompts.md` — this file; PMN-007 HEAD 12-field frontmatter + §23.6.5 taxonomy + Adj-11 `linked_pr` placeholder.
-12. NEW `docs/reviews/PR-80-codex-review.md` — PR-80 review-context (§17.7 1-field `status: drafted`); records the two Codex GitHub-App branch passes + the Codex desktop red-team trail + resolutions. Born `drafted`; flips to `recorded` post-merge per the PMN-018 path-scoped Action on `docs/reviews/`.
+10. MODIFIED `templates/ISSUE_TEMPLATE/project-initiation.md` — qualifier-sweep: §Cross-references prompt-set entry (greenfield + retrofit live; `prompts/upgrade.md` forthcoming → PR-B).
+11. NEW `docs/adr/ADR-009-kickoff-artifact-defaulting.md` — kickoff-artifact defaulting principle (amends ADR-008 D3) + scope clause. 73 lines.
+12. NEW `docs/handoffs/TASK-0047-batch-p3-retrofit-upgrade-prompts.md` — this file; PMN-007 HEAD 12-field frontmatter + §23.6.5 taxonomy + Adj-11 `linked_pr` placeholder.
+13. NEW `docs/reviews/PR-80-codex-review.md` — PR-80 review-context (§17.7 1-field `status: drafted`); records the two Codex GitHub-App branch passes + the Codex desktop red-team trail + resolutions. Born `drafted`; flips to `recorded` post-merge per the PMN-018 path-scoped Action on `docs/reviews/`.
 
 *[NOT in PR-A — deferred to PR-B: `prompts/upgrade.md` (stays stub). Deferred to Architect-side post-merge maintenance: the `core.md` §18.3 M-A7 33rd-instance increment (verified PR-80).]*
 
-**Cumulative-diff-stats** *(gate-current; PR-80 red-team batch, staged-tree vs `origin/main` per `core.md` §23.6.1.1 (e.1))*: **13 files changed, +730 insertions / −64 deletions** (`git diff --staged --shortstat origin/main`). 10 modified + 3 new (`docs/adr/ADR-009-kickoff-artifact-defaulting.md`, this handoff, `docs/reviews/PR-80-codex-review.md`). (XVII) bidirectional sum-stability PASS — per-file numstat sums to files=13 / ins=730 / del=64, matching the shortstat on all three axes. `prompts/upgrade.md` (stub) and `core.md` (M-A7 deferred) are NOT in the set.
+**Cumulative-diff-stats** *(gate-current; PR-80 post-handoff-reconciliation, staged-tree vs `origin/main` per `core.md` §23.6.1.1 (e.1))*: **13 files changed, +743 insertions / −64 deletions** (`git diff --staged --shortstat origin/main`). 10 modified + 3 new (`docs/adr/ADR-009-kickoff-artifact-defaulting.md`, this handoff, `docs/reviews/PR-80-codex-review.md`). (XVII) bidirectional sum-stability PASS — per-file numstat sums to files=13 / ins=743 / del=64, matching the shortstat on all three axes. `prompts/upgrade.md` (stub) and `core.md` (M-A7 deferred) are NOT in the set.
 
 ## Decisions made
 
 Per spec adjudications + TASK-0046 cross-Architect ledger-(XIII) carry-forwards:
 
-1. **Cycle class**: Batch P3 substantive content-fill, split cycle 2 of 2 (retrofit + upgrade), executed as a sub-phased single PR. No new ADR — split within a batch is per-cycle defect-surface-narrowing discretion (parallel to TASK-0046 Decision 1 + Batch P2 TASK-0043/0044 split).
+1. **Cycle class**: Batch P3 substantive content-fill, split cycle 2 of 2 (retrofit + upgrade), planned at SP1 as a sub-phased single PR (later split into PR-A/PR-B — see Decision 9). No new ADR *for the split itself* — split within a batch is per-cycle defect-surface-narrowing discretion (parallel to TASK-0046 Decision 1 + Batch P2 TASK-0043/0044 split); ADR-009 was created separately for the kickoff-artifact defaulting principle (Decision 9).
 2. **VIII + X are prompt-correctness dependencies, not deferred carry-forwards**: per TASK-0046 ledger-(XIII)(b), the project-brief "Kickoff follow-ups" template gap (VIII) and usage-guide §2.1 trio under-spec (X) are pulled INTO this cycle as substrate that grounds correct retrofit/upgrade prompts (retrofit surfaces more follow-ups than greenfield). Landed first, at sub-phase 1, before any prompt authoring.
 3. **Sub-phase 1 scope discipline**: substrate + born-drafted handoff ONLY; no prompt authoring, no commit, no PR-open this sub-phase. Stop-and-show + hand-back to Architect at sub-phase boundary.
 4. **Scaffold inheritance**: retrofit + upgrade inherit the mode-neutral greenfield Steps 0-6 (TASK-0046 Decision 2 + ledger (I)) with mode-specific deltas; do NOT re-derive the scaffold.
@@ -72,8 +73,9 @@ Per spec adjudications + TASK-0046 cross-Architect ledger-(XIII) carry-forwards:
 6. **X scope bound**: only the §2.1 prompt enumeration + two-files→three-files trio change; §2.2 / §2.7 / §2.8 / §0 / one-page reference untouched.
 7. **M-A7 33rd-instance + Class A v2.43 v-bump**: anticipated at a later sub-phase per spec; NOT edited at sub-phase 1 (M-A7 confirmed at 32 / v2.42 at pre-flight; do-not-edit-this-sub-phase per kickoff).
 8. **§23.6.5 behavioral discipline (empirical test #2)**: applied BEHAVIORALLY (handoff gate-current/append-only taxonomy + by-pointer volatile-state references); NOT canonicalized as text (Part C.2 / TASK-0048 territory per anti-scope).
+9. **PR-A/PR-B split + ADR-009 (post-SP1 decisions)**: the original sub-phased single-PR plan (Decision 1) was superseded mid-cycle (SP6/assembly) when the adopter-runnability smoke gate surfaced a multi-sub-phase remediation — retrofit + substrate + remediation ship as **PR-A**; `prompts/upgrade.md` ships as **PR-B** on the merged baseline. The plan-vs-instantiate defaulting discipline was canonicalized at **ADR-009** (amends ADR-008 D3) during SP6, superseding (via revert) the SP5 in-place ADR-008 addendum per the ADR-edit discipline.
 
-*[Born-drafted scaffold: decisions reflect the settled spec at sub-phase 1; later-sub-phase scope decisions (envelope, co-shipped-surface specifics, PR-number verification) append at their gates.]*
+*[Born-drafted scaffold: Decisions 1-8 reflect the settled spec at sub-phase 1; later-sub-phase scope decisions (the PR-A/PR-B split, ADR-009) are appended (Decision 9) per this note's gate-append convention.]*
 
 ## Assumptions
 
@@ -114,20 +116,31 @@ PR-80 red-team batch fix committed + pushed (draft open). Next = targeted red-te
 
 ## §1. Cycle scope deliverables enumeration
 
-Parallel to spec §4 (final set settled by spec; sub-phased landing):
+Actual landed scope (the cycle ran 7 sub-phases + an assembly pass, then split into PR-A / PR-B; the original 3-sub-phase single-PR enumeration was superseded — see §Metadata cycle-class + §Decisions Decision 9):
 
-- Sub-phase 1 (LANDED): MODIFIED `templates/project-brief-template.md` (VIII) + MODIFIED `usage-guide.md` §2.1 (X) + NEW `docs/handoffs/TASK-0047-batch-p3-retrofit-upgrade-prompts.md` (this file).
-- Sub-phase 2 (anticipated): MODIFIED `prompts/retrofit.md` (stub → filled).
-- Sub-phase 3 (anticipated): MODIFIED `prompts/upgrade.md` (stub → filled) + co-shipped distributed surfaces (`core.md` §18.3 M-A7 33rd-instance; README/AGENTS/CLAUDE Class A v-bump v2.42 → v2.43; README Prompts retrofit/upgrade rows; `usage-guide.md` forthcoming-qualifier sweep) + NEW `docs/reviews/PR-80-codex-pre-commit.md` + commit/push/PR-open.
+**PR-A (this PR — LANDED; 13 files = 10 modified + 3 new):**
+- MODIFIED `prompts/retrofit.md` (stub → active; mode-neutral greenfield scaffold + retrofit deltas + the SP3–SP7 remediation).
+- MODIFIED `prompts/greenfield.md` (parallel SP3–SP7 remediation).
+- MODIFIED `usage-guide.md` (X §2.1 trio + §2.6.1 operator-relay + §2.6.2 role heuristic + lite/upgrade/appendix qualifier sweep).
+- MODIFIED `templates/project-brief-template.md` (VIII "Kickoff follow-ups" + `doc_mcp_mechanism` v3.0 default).
+- MODIFIED `templates/handoff-template.md` (TASK-0000 bootstrap-case frontmatter note).
+- MODIFIED `templates/PULL_REQUEST_TEMPLATE.md` (§8.2/§8.3 non-blocking markers).
+- MODIFIED `templates/ISSUE_TEMPLATE/project-initiation.md` (prompt-set qualifier sweep).
+- MODIFIED `README.md` + `AGENTS.md` + `CLAUDE.md` (Class A v-bump v2.42 → v2.43; README retrofit Prompts-row).
+- NEW `docs/adr/ADR-009-kickoff-artifact-defaulting.md` + `docs/handoffs/TASK-0047-batch-p3-retrofit-upgrade-prompts.md` (this file) + `docs/reviews/PR-80-codex-review.md`.
 
-*[Final file count + envelope per spec §6; not pinned at sub-phase 1.]*
+**NOT in PR-A:**
+- `prompts/upgrade.md` — stays a stub; ships as **PR-B** on the merged baseline.
+- `core.md` §18.3 M-A7 33rd-instance increment — deferred to Architect-side post-merge maintenance (verified PR-80).
+
+*[Authoritative file list with descriptions: §Current state Files-list (13). Cumulative-diff-stats: §Cumulative-diff-stats.]*
 
 ## §2. Cycle gates
 
 Per `core.md` §24.3.1 (XXVI) two-gate Gate A + Gate B:
 
-- **Sub-phase hand-backs** (this cycle's split discipline): stop-and-show at each sub-phase boundary (sub-phase 1 = substrate; sub-phase 2 = retrofit; sub-phase 3 = upgrade + co-ship + commit).
-- **Gate A** at the pre-commit stop-and-show (sub-phase 3): cumulative-diff-stats + (XVII) bidirectional sum-stability + spec verification baseline + (XIV) sweep + (XXIV.a-n) catalog at staged-tree state per `core.md` §23.6.1.1 (e.1). §23.6.5 behavioral: refresh gate-current body surfaces here.
+- **Sub-phase hand-backs** (this cycle's split discipline): stop-and-show at each sub-phase boundary. The cycle actually ran 7 sub-phases + an assembly pass (substrate → retrofit → SP3-SP7 remediation → assembly), then split `prompts/upgrade.md` to PR-B (not a sub-phase here).
+- **Gate A** at the assembly/commit pass: cumulative-diff-stats + (XVII) bidirectional sum-stability + spec verification baseline + (XIV) sweep + (XXIV.a-n) catalog at staged-tree state per `core.md` §23.6.1.1 (e.1). §23.6.5 behavioral: refresh gate-current body surfaces here.
 - **Gate B** at post-PR-open: cycle-close completeness; gate-current surfaces refreshed; append-only surfaces appended (never back-edited).
 - **§24.6 Stop-Iteration framework** at reach 4+ canonical boundary: HIGH §0 salience.
 
