@@ -15,7 +15,7 @@ filled_by: PR-80 (TASK-0047)
 > durable state (code, documents, accumulated rules and decisions) and is adopting AMAS over
 > a prior workflow. If your project is brand-new with no code, no documents, and no prior
 > decisions, stop and use `prompts/greenfield.md`; if you are moving an existing AMAS project
-> between framework versions, use `prompts/upgrade.md` (forthcoming — ships at PR-B).
+> between framework versions, use `prompts/upgrade.md`.
 
 ---
 
@@ -275,9 +275,8 @@ during ordinary task work:
 - Tool Inventory canonical form: `templates/tool-inventory-template.md`
 - Reframe-pending flagging discipline: `usage-guide.md` §2.8
 - Sibling kickoff prompts: `prompts/greenfield.md` (brand-new project with no prior state)
-  and `prompts/upgrade.md` (moving an existing AMAS project between framework versions;
-  forthcoming — ships at PR-B) — use this retrofit prompt only for an existing project adopting
-  AMAS over a prior workflow.
+  and `prompts/upgrade.md` (moving an existing AMAS project between framework versions) — use
+  this retrofit prompt only for an existing project adopting AMAS over a prior workflow.
 
 Close the session by confirming the bootstrap packet is committable and TASK-0001 is the
 operator's next action.

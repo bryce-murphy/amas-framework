@@ -19,7 +19,7 @@ This guide is **not** a replacement for the canonical-law trio. The trio is the 
 
 If you are looking for:
 - the rules themselves → `core.md` + `github-reference.md`
-- the kickoff prompt to paste into an AI → `prompts/greenfield.md` or `prompts/retrofit.md` (`prompts/upgrade.md` forthcoming — ships at PR-B)
+- the kickoff prompt to paste into an AI → `prompts/greenfield.md`, `prompts/retrofit.md`, or `prompts/upgrade.md`
 - worked examples of what good artifacts look like → this guide, §10 onward
 - project-type-specific guidance → `appendices/project-types/*.md` (forthcoming; v3.2-planned per ADR-008 D4)
 - documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming; v3.2-planned per ADR-008 D4)
@@ -50,21 +50,25 @@ The kickoff session is a single chat where you attach the canonical-law trio, pa
 - **Tier 1 — templates the kickoff authors against** (must be in the AI's context): `templates/role-scorecard-template.md` (role scoring), `templates/project-brief-template.md` (Project Brief), `templates/tool-inventory-template.md` (Tool Inventory), `templates/handoff-template.md` (the TASK-0000 bootstrap handoff; `core.md` §14 defers the handoff schema here), `templates/ADR-template.md` (ADR-000), and `templates/ISSUE_TEMPLATE/project-initiation.md` (Issue 0 and its §7 acceptance criteria).
 - **Tier 2 — GitHub artifact templates instantiated into the new repo** (the operator needs file access to copy/adapt these; the kickoff directs the copy): `templates/PULL_REQUEST_TEMPLATE.md`, the remaining `templates/ISSUE_TEMPLATE/*.md` (`chore.md`, `feature.md`, `retrospective.md`), and `templates/AGENTS.md` + `templates/CLAUDE.md`.
 
+The Tier-1 annotations above name the **bootstrap** (greenfield/retrofit) roles — the TASK-0000 handoff, ADR-000, Issue 0. On the **upgrade** path `ADR-template.md` serves the upgrade ADR (the upgrade records an ADR and resumes, amending existing artifacts — it does not author a TASK-0000 handoff or a fresh bootstrap set); `project-initiation.md` / Issue 0 is bootstrap-only (see §2.3 + `prompts/upgrade.md`).
+
 There are two ways the pack reaches the surface:
 
 - **Repo-integrated** — the surface has file access to the AMAS package (including `templates/`), so both tiers are already available and no attachment step is needed.
 - **Paste / attachment** — the surface has no repo access, so you attach (or paste) the trio plus the Tier-1 templates the prompt names, and keep the Tier-2 templates on hand to instantiate the GitHub artifacts. If your chosen surface supports attachments or project knowledge files, attach the canonical-law trio first. If it only supports pasted context, paste the trio first as separate messages, then paste the prompt.
 
-**§2.2. Use the standalone prompts.** Use the standalone greenfield or retrofit prompt at `prompts/` (both live; `prompts/upgrade.md` is forthcoming — ships at PR-B). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
+**§2.2. Use the standalone prompts.** Use the standalone greenfield, retrofit, or upgrade prompt at `prompts/` (all three live). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
 
-**§2.3. What the kickoff produces.** Full kickoff produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
+**§2.3. What the kickoff produces.** A **bootstrap** kickoff (greenfield or retrofit) produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
 
 - `docs/handoffs/TASK-0000-project-bootstrap.md` — the handoff for the bootstrap task itself. TASK-0000 is reserved for this. The first real feature task is TASK-0001.
 - `CODEOWNERS` — the repo-level governance file. It belongs in the bootstrap file list. If you don't know what to put in it yet, a single line with your GitHub username and the repo root is a valid starting point: `* @your-github-username`.
 
+An **upgrade** kickoff produces a different output, because an upgrade is a project-scope-shift **amendment**, not a fresh bootstrap (see `prompts/upgrade.md`). It produces an **upgrade ADR** (recording the version move + the delta) plus **amended existing artifacts** — the Project Brief's `framework_version` and any scope/role/tool sections the delta touches, the receiving surfaces, the canonical-doc reference, and any newly-adopted disciplines. It does **not** produce a fresh bootstrap set, Issue 0, ADR-000, or a TASK-0000 handoff (those are bootstrap-only).
+
 Lite kickoff is **forthcoming** — its canonical specification (the `core.md` lite-kickoff specification) is not yet materialized, so at v3.0 run the **full** kickoff (the prompts direct this). When lite ships, the trade-off will be: lite is faster, but upgrading lite → full is one-way and has triggers you should know in advance (see §11).
 
-**§2.4. Operating environment.** Both prompts ask about your operating environment before scoring the Tool Inventory. Answer honestly. If your project runs on a work laptop with an enterprise AI license and admin-managed GitHub access, that is a constrained-professional environment and the constrained-professional overlay applies. If it runs on your personal laptop with your personal accounts, it does not. A project running on the same machine can be personal for one repo and constrained-professional for another; the distinction is per-project, not per-machine.
+**§2.4. Operating environment.** All three prompts ask about your operating environment before scoring the Tool Inventory. Answer honestly. If your project runs on a work laptop with an enterprise AI license and admin-managed GitHub access, that is a constrained-professional environment and the constrained-professional overlay applies. If it runs on your personal laptop with your personal accounts, it does not. A project running on the same machine can be personal for one repo and constrained-professional for another; the distinction is per-project, not per-machine.
 
 **§2.5. Three-tier solo-operator framing.** AMAS calibrates to **production-tier** solo-operator governance by default (see §8 below). The kickoff prompt flags whether your project is light-tier (prototype / decision-logging-first), production-tier (real customers, the AMAS default), or regulated-tier (HIPAA / PCI-DSS / SOX / GDPR / FDA 21 CFR Part 11). The default works for most projects. Light-tier and regulated-tier are documented in §8 below + the regulated-tier-extension appendix.
 
@@ -359,7 +363,7 @@ A project may codify a project-specific check pattern in repo-local Architect re
 
 **§11.2. The upgrade itself.** The current Architect owns it. It's a single bounded session: create the missing artifacts, open the deferred folders (`docs/questions/`, `docs/decisions/`, `docs/handoffs/`, etc.), and backfill the handoff file from the most recent PR. It is not a rewrite — pre-upgrade work stays as it was.
 
-**§11.3. v3 inter-version upgrades.** Future v3.x → v3.y transitions are covered by `prompts/upgrade.md` (forthcoming at TASK-0047, shipping in PR-B after the retrofit prompt). v3.0 → v3.1+ deprecation is deferred per transition plan v0.2 Decision A — v3.0 is restructure-only; substantive deprecation lands at v3.1+.
+**§11.3. v3 inter-version upgrades.** Future v3.x → v3.y transitions are covered by `prompts/upgrade.md`. v3.0 → v3.1+ deprecation is deferred per transition plan v0.2 Decision A — v3.0 is restructure-only; substantive deprecation lands at v3.1+.
 
 ---
 
@@ -380,7 +384,7 @@ Four things this framework deliberately does not do, so you do not have to litig
 ## §13. One-page reference
 
 - **Canonical-law trio:** `core.md` (rules) + `github-reference.md` (GitHub-specific implementation) + `usage-guide.md` (this guide). Trio wins on rule conflicts.
-- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade). `upgrade.md` forthcoming — ships at PR-B.
+- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade).
 - **Bootstrap file list:** README, CODEOWNERS, CLAUDE.md, AGENTS.md, canonical-law trio reference, project-brief, tool-inventory, role-assignment-scorecard, ADR-000, GitHub Issue templates, GitHub PR template.
 - **TASK ID reservation:** TASK-0000 = bootstrap. TASK-0001 = first real task.
 - **Handoff path:** `docs/handoffs/TASK-####-<slug>.md` per universal handoff schema.
