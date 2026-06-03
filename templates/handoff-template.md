@@ -64,6 +64,12 @@ python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with
 - **date_authored** — handoff authoring date (Builder authoring or Architect substantive amendment).
 - **status** — lifecycle state per `.github/scripts/linked-pr-fix-up.py` transitions: `drafted` (pre-stage) → `active` (post-stage / pre-merge) → `resolved` (post-merge per PMN-001 (k) Action substitution).
 
+**Bootstrap (TASK-0000) case**: the project-bootstrap handoff (`docs/handoffs/TASK-0000-project-bootstrap.md`) is authored before any feature cycle, so several frontmatter fields take schema-valid bootstrap defaults rather than chained values:
+
+- `pr` / `linked_pr` — use the actual bootstrap PR number when known; otherwise `PR-0` is the schema-valid sentinel (satisfies the strict `PR-(\d+)` form above, so the `linked_pr` placeholder validates as `PR-0 (Builder fills with squash SHA post-merge per PMN-001 (k))`). The linked-pr-fix-up Action substitutes the squash SHA into the existing numeric token; it does not rewrite the PR number, so the placeholder works unchanged with `PR-0`.
+- `linked_predecessor: none` — the bootstrap handoff has no predecessor task.
+- `spec_source: ADR-000` — the bootstrap ADR is the bootstrap handoff's authoring spec.
+
 ## Body sections (canonical lived-practice form per TASK-0023+ adjudication)
 
 ```markdown
