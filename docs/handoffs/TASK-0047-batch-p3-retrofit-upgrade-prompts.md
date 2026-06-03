@@ -5,12 +5,12 @@ pr: PR-80
 branch: feat/task-0047-batch-p3-retrofit-upgrade-prompts
 linked_predecessor: TASK-0046 (PR #75 squash 32c4afa; fix-chore #77/#78; reconciliation #79 squash 83916ca)
 linked_successor: TASK-0048 (anticipated; Part C.2 operating-discipline canonical surfaces)
-linked_pr: PR-80 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-80 (squash SHA a166d1a)
 framework_version_dogfooded: v2.43
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/task-0047-spec.md
 date_authored: 2026-06-02
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0047 — Batch P3 retrofit + upgrade kickoff prompts (split cycle 2 of 2)
