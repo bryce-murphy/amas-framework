@@ -188,8 +188,9 @@ Two artifacts trip operators up — call both out explicitly:
 
 - `docs/handoffs/TASK-0000-project-bootstrap.md` — the handoff for the bootstrap task
   itself. **TASK-0000 is reserved for this.** The first real feature task is **TASK-0001**.
-  Author it per `templates/handoff-template.md` using the bootstrap-case frontmatter: the actual
-  bootstrap PR number if known, else the `PR-0` sentinel; `linked_predecessor: none`;
+  Author it per `templates/handoff-template.md` using the bootstrap-case frontmatter: the `PR-0`
+  sentinel pre-PR-open — replace it with the actual bootstrap PR number once the PR is opened,
+  before merge (the fix-up Action does not rewrite the sentinel); `linked_predecessor: none`;
   `spec_source: ADR-000`.
 - `CODEOWNERS` — it belongs in the bootstrap list even if the operator is unsure what to put
   in it. A single line — `* @your-github-username` — is a valid starting point.
