@@ -5,12 +5,12 @@ pr: PR-83
 branch: feat/task-0047-upgrade-prompt
 linked_predecessor: TASK-0047 PR-A (PR #80 squash a166d1a; chore-fix-up #81 squash 8c7317e; close-reconciliation #82 squash 5506c92)
 linked_successor: TASK-0048 (anticipated; Part C.2 operating-discipline canonical surfaces)
-linked_pr: PR-83 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-83 (squash SHA 3606278)
 framework_version_dogfooded: v2.44
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/task-0047-spec.md
 date_authored: 2026-06-03
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0047 PR-B — Batch P3 upgrade kickoff prompt
