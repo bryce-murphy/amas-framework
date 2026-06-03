@@ -33,13 +33,13 @@ Fill `prompts/upgrade.md` (stub → active) with its canonical project-kickoff p
 
 *[GATE-CURRENT surface — refreshed at gates only.]*
 
-Author + smoke + refinements applied; assembly underway (this born-drafted handoff). `prompts/upgrade.md` authored (stub→active, 230+ lines) modeled on retrofit; Mode-1 push-through smoke run (no hard walls; 2 surfaced stall points adjudicated → R1 + R2); upgrade-now-live sweep + v2.44 dogfood bump applied. Awaiting commit + push + draft PR-83 open. Cumulative state: see §Cumulative-diff-stats (gate-current).
+PR-B Codex absorption (path-a). Substantive content committed at `95913fb` + pushed to `origin/feat/task-0047-upgrade-prompt`; **draft PR-83 open** (not merged). Codex's proportionate post-push review returned **2 P2** (no P1; `prompts/upgrade.md` itself clean): **F1** usage-guide §2 bootstrap-vs-upgrade leak (class-swept §2.1 + §2.3) + **F2** this gate-current staleness — both absorbed in a **trailing remediation commit** that sits on top of `95913fb` (do not treat `95913fb` as the branch tip). `status: drafted` holds until ready-for-review; `linked_pr` stays the canonical PMN-001(k) placeholder (Action substitutes the squash SHA at merge). Cumulative state: see §Cumulative-diff-stats (gate-current).
 
 ## Current state
 
 *[GATE-CURRENT surface — refreshed at gates only.]*
 
-**Summary**: PR-B content complete pre-commit. `prompts/upgrade.md` filled on the proven baseline (PR-A merged: scaffold + ADR-009 + §2.6.2 + defaults all live on `main`). Adjudicated refinements applied: **R1** (Step 0/2 target-vs-current-trio clarity note), **R2** (Step 5 delta-source — no phantom changelog; v3.0 proxies [README positioning + ADR/PMN history + §18.4 severity] + canonical changelog/migration-notes marked forthcoming); **R3** already satisfied (Step 4 reads re-validate); **R4** already clean (retrofit cross-ref). Co-shipped: upgrade-now-live sweep (all surfaces) + dogfood v-bump v2.43 → v2.44. `core.md` untouched (M-A7 34th deferred to close-reconciliation). No commit; no PR yet.
+**Summary**: PR-B content complete, committed (`95913fb`), and pushed; **draft PR-83 open** (not merged). `prompts/upgrade.md` filled on the proven baseline (PR-A merged: scaffold + ADR-009 + §2.6.2 + defaults all live on `main`). Adjudicated refinements applied: **R1** (Step 0/2 target-vs-current-trio clarity note), **R2** (Step 5 delta-source — no phantom changelog; v3.0 proxies [README positioning + ADR/PMN history + §18.4 severity] + canonical changelog/migration-notes marked forthcoming); **R3** already satisfied (Step 4 reads re-validate); **R4** already clean (retrofit cross-ref). Co-shipped: upgrade-now-live sweep (all surfaces) + dogfood v-bump v2.43 → v2.44. `core.md` untouched (M-A7 34th deferred to close-reconciliation). Codex post-push review (2 P2, path-a) absorbed in a trailing remediation commit: **F1** usage-guide §2 bootstrap-vs-upgrade class-sweep (§2.1 + §2.3) + **F2** this gate-current refresh.
 
 **Files modified/authored by Builder** (PR-B):
 1. MODIFIED `prompts/upgrade.md` — stub → active; proven scaffold + current-version-proof (Step 2) + version-delta migration (Step 5, ADR-009 forthcoming markers) + upgrade-vs-bootstrap reframe (Steps 5/6).
@@ -49,7 +49,7 @@ Author + smoke + refinements applied; assembly underway (this born-drafted hando
 5. MODIFIED `AGENTS.md` + `CLAUDE.md` — dogfood v-bump v2.43 → v2.44 (L9).
 6. NEW `docs/handoffs/TASK-0047-upgrade-prompt.md` — this file.
 
-**Cumulative-diff-stats** *(gate-current; staged-tree vs `origin/main` per `core.md` §23.6.1.1 (e.1))*: **8 files changed, +374 insertions / −18 deletions**. (XVII) PASS — per-file numstat sums files=8 / ins=374 / del=18, matching the shortstat. `core.md` NOT in the set (M-A7 34th deferred to close-reconciliation).
+**Cumulative-diff-stats** *(gate-current; staged-tree vs `origin/main` per `core.md` §23.6.1.1 (e.1))*: **8 files changed, +379 insertions / −19 deletions**. (XVII) PASS — per-file numstat sums files=8 / ins=379 / del=19, matching the shortstat. `core.md` NOT in the set (M-A7 34th deferred to close-reconciliation).
 
 ## Decisions made
 
@@ -73,7 +73,7 @@ Author + smoke + refinements applied; assembly underway (this born-drafted hando
 
 ## Exact next step
 
-Commit + push + open **draft PR-83** → Codex GitHub-App proportionate post-push review (PR-B is below the comprehensive-red-team trigger) + Gate A (review-context) in parallel → absorb (path-a) / defer (path-β) → Gate A + Gate B closure → owner squash-merge → chore-fix-up watch → PR-B close-reconciliation (M-A7 34th-instance + PR-83 + **final TASK-0047 cycle-close** + formally register the monitoring candidates at TASK-0048). Completes Batch P3 + TASK-0047 → Part C.2 (TASK-0048) → v3.0.0 (TASK-0049).
+Targeted Codex re-pass on the two fixed surfaces only (usage-guide §2 reframe completeness + handoff gate-current currency — a focused confirm, not a full re-review), with Gate A in parallel. On clean: Gate A + Gate B closure → resolve any Codex threads → owner squash-merge → chore-fix-up watch → PR-B close-reconciliation (M-A7 34th-instance + PR-83 + **final TASK-0047 cycle-close** + formally register the monitoring candidates at TASK-0048). Completes Batch P3 + TASK-0047 → Part C.2 (TASK-0048) → v3.0.0 (TASK-0049).
 
 ## §1. Cycle scope deliverables enumeration
 
@@ -107,7 +107,7 @@ Gate A (review-context, at draft-PR Codex review) + Gate B (post-PR-open complet
 
 ## §7. Commit + push + PR-open record
 
-*[Populated at commit/PR-open. Squash SHA filled post-merge per PMN-001 (k) Action; status `drafted → active` token-swap at the pre-merge gate. PR-83 verified vs anticipated at open.]*
+Substantive content committed at `95913fb`; pushed to `origin/feat/task-0047-upgrade-prompt`; **draft PR-83 opened** against `main` (number verified = anticipated PR-83; no reconciliation needed). The F1 §2 sweep + F2 this gate-current refresh are a trailing path-a remediation commit on top of `95913fb` — the branch tip advances past it, so no transient HEAD SHA is pinned here. Squash SHA filled post-merge per PMN-001 (k) Action; `status: drafted → active` token-swap at the pre-merge ready gate.
 
 ## §8. Post-PR Codex review state
 

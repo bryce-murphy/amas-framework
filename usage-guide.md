@@ -50,6 +50,8 @@ The kickoff session is a single chat where you attach the canonical-law trio, pa
 - **Tier 1 — templates the kickoff authors against** (must be in the AI's context): `templates/role-scorecard-template.md` (role scoring), `templates/project-brief-template.md` (Project Brief), `templates/tool-inventory-template.md` (Tool Inventory), `templates/handoff-template.md` (the TASK-0000 bootstrap handoff; `core.md` §14 defers the handoff schema here), `templates/ADR-template.md` (ADR-000), and `templates/ISSUE_TEMPLATE/project-initiation.md` (Issue 0 and its §7 acceptance criteria).
 - **Tier 2 — GitHub artifact templates instantiated into the new repo** (the operator needs file access to copy/adapt these; the kickoff directs the copy): `templates/PULL_REQUEST_TEMPLATE.md`, the remaining `templates/ISSUE_TEMPLATE/*.md` (`chore.md`, `feature.md`, `retrospective.md`), and `templates/AGENTS.md` + `templates/CLAUDE.md`.
 
+The Tier-1 annotations above name the **bootstrap** (greenfield/retrofit) roles — the TASK-0000 handoff, ADR-000, Issue 0. On the **upgrade** path the same templates serve the upgrade handoff and the upgrade ADR; `project-initiation.md` / Issue 0 is bootstrap-only (see §2.3 + `prompts/upgrade.md`).
+
 There are two ways the pack reaches the surface:
 
 - **Repo-integrated** — the surface has file access to the AMAS package (including `templates/`), so both tiers are already available and no attachment step is needed.
@@ -57,10 +59,12 @@ There are two ways the pack reaches the surface:
 
 **§2.2. Use the standalone prompts.** Use the standalone greenfield, retrofit, or upgrade prompt at `prompts/` (all three live). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
 
-**§2.3. What the kickoff produces.** Full kickoff produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
+**§2.3. What the kickoff produces.** A **bootstrap** kickoff (greenfield or retrofit) produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
 
 - `docs/handoffs/TASK-0000-project-bootstrap.md` — the handoff for the bootstrap task itself. TASK-0000 is reserved for this. The first real feature task is TASK-0001.
 - `CODEOWNERS` — the repo-level governance file. It belongs in the bootstrap file list. If you don't know what to put in it yet, a single line with your GitHub username and the repo root is a valid starting point: `* @your-github-username`.
+
+An **upgrade** kickoff produces a different output, because an upgrade is a project-scope-shift **amendment**, not a fresh bootstrap (see `prompts/upgrade.md`). It produces an **upgrade ADR** (recording the version move + the delta) plus **amended existing artifacts** — the Project Brief's `framework_version` and any scope/role/tool sections the delta touches, the receiving surfaces, the canonical-doc reference, and any newly-adopted disciplines. It does **not** produce a fresh bootstrap set, Issue 0, ADR-000, or a TASK-0000 handoff (those are bootstrap-only).
 
 Lite kickoff is **forthcoming** — its canonical specification (the `core.md` lite-kickoff specification) is not yet materialized, so at v3.0 run the **full** kickoff (the prompts direct this). When lite ships, the trade-off will be: lite is faster, but upgrading lite → full is one-way and has triggers you should know in advance (see §11).
 
