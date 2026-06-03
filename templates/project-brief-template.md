@@ -18,19 +18,20 @@ Filled Project Briefs carry 7-field YAML frontmatter:
 - `author`: authoring role + surface
 - `date`: authoring date (ISO `YYYY-MM-DD`)
 - `framework_version`: AMAS canonical version at project initiation or last amendment
-- `doc_mcp_mechanism`: declared documentation-MCP mechanism in short form (e.g., `web-search via native Claude/Codex tools + explicit owner verification`; or `Context7 + <library configurations>`); body §"Project documentation-MCP mechanism" carries full declaration
+- `doc_mcp_mechanism`: declared documentation-MCP mechanism in short form; body §"Project documentation-MCP mechanism" carries full declaration. **v3.0 schema-valid default**: `manual canonical-doc reference + owner-verified retrieval` — satisfies the required field at kickoff when no richer mechanism is configured (richer doc-MCP options, e.g. `Context7 + <library configurations>`, are forthcoming at v3.2 per `appendices/documentation-mcp-options.md`).
 
 ## Body section structure
 
 Filled Project Briefs document the following canonical body sequence as actual H2 headings:
 
 - **Metadata**: re-list frontmatter fields for human-readable narrative.
-- **Project documentation-MCP mechanism** (REQUIRED): full declaration per FEAT-0001 §"Project documentation-MCP mechanism" precedent. Include: chosen mechanism + rationale + citation pattern for retrieved docs (`Source: <library>@<version> — retrieved <YYYY-MM-DD> via <tool-name>`).
+- **Project documentation-MCP mechanism** (REQUIRED): full declaration per FEAT-0001 §"Project documentation-MCP mechanism" precedent. Include: chosen mechanism + rationale + citation pattern for retrieved docs (`Source: <library>@<version> — retrieved <YYYY-MM-DD> via <tool-name>`). At v3.0 kickoff, an adopter with no richer mechanism configured satisfies this required section with the default `manual canonical-doc reference + owner-verified retrieval` (the operator consults the canonical-doc reference and verifies retrieved docs by hand); richer doc-MCP options are forthcoming at v3.2 per `appendices/documentation-mcp-options.md`.
 - **Project type**: AMAS project-type appendix declaration + project-type-specific scope notes (forthcoming Batch P6 project-type appendices provide per-type guidance).
 - **Roles**: enumerate assigned roles with surface affinity (Architect / Builder / Reviewer pairings to specific tools/surfaces). Reference per-role role scorecards at `docs/role-scorecards/<role_id>.md`.
 - **Tools**: high-level tool inventory pointer to `docs/tool-inventory.md` (filled per Batch P1 tool-inventory template schema; forthcoming at TASK-0033+).
 - **Receiving surfaces**: per-surface posture declaration (`AGENTS.md` / `CLAUDE.md` / `.cursorrules` / etc.) + receiving-surface adapter pack reference (forthcoming Batch P7).
 - **Initial scope**: 1-3 paragraphs framing project-initiation scope; subsequent feature scoping happens via Feature Briefs.
+- **Kickoff follow-ups**: records governance corrections, deferred-file additions, branch-protection corrections, reframe-pending resolutions, or other kickoff-discovered work that must land before the first feature stage but is out of scope for the bootstrap PR.
 - **Cross-references**: pointers to related canonical surfaces.
 
 ## Path conventions
@@ -39,7 +40,7 @@ Filled Project Briefs live at `docs/project-brief.md` (single canonical file per
 
 ## Authoring surface
 
-Project Briefs are authored at project initiation by the Architect, ratified by the owner. Project Briefs amend at project-scope-shift cycles. Project Brief authoring may pair with project-kickoff prompts (forthcoming Batch P3: `prompts/greenfield.md` / `prompts/retrofit.md` / `prompts/upgrade.md`).
+Project Briefs are authored at project initiation by the Architect, ratified by the owner. Project Briefs amend at project-scope-shift cycles. Project Brief authoring may pair with project-kickoff prompts: `prompts/greenfield.md` + `prompts/retrofit.md` (live) / `prompts/upgrade.md` (forthcoming — ships at PR-B).
 
 ## Cross-references
 

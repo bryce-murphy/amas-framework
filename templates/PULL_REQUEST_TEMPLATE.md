@@ -35,10 +35,10 @@ Canonical-source pull-request template for AMAS-adopted repositories. At an adop
 
 ## Ready for review (Builder confirms before marking PR ready)
 
-> Note: §8.2 + §8.3 references below reflect AMAS v2.14.1 substrate; corresponding sections forthcoming at canonical-law Part C.2 materialization per ADR-007 D3.
+> Note: the §8.2 + §8.3 items below are **non-blocking at v3.0** — the corresponding canonical sections materialize at Part C.2 (TASK-0048) per ADR-007 D3 + ADR-008 D2. Until then they reflect AMAS v2.14.1 substrate. Do not treat them as blocking, and do not check them as a false attestation; TASK-0048 will replace this marker with the real attestation.
 
-- [ ] §8.2 pre-flight completed and reported
-- [ ] §8.3 stop-and-show approved by owner
+- [ ] §8.2 pre-flight completed and reported — *N/A until Part C.2 (§8.2/§8.3) materializes (TASK-0048); non-blocking at v3.0*
+- [ ] §8.3 stop-and-show approved by owner — *N/A until Part C.2 (§8.2/§8.3) materializes (TASK-0048); non-blocking at v3.0*
 - [ ] All claimed actions in this PR are true
 - [ ] Branch name matches `github-reference.md` §2.2 per ADR-005
 - [ ] All template sections populated

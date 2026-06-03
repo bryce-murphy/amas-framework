@@ -85,5 +85,5 @@ Issue 0 closure conditions (project transitions from bootstrap to active operati
 - Branch convention: `github-reference.md` §2.2 + ADR-005
 - Project Brief canonical form: `templates/project-brief-template.md`
 - Tool Inventory canonical form: `templates/tool-inventory-template.md`
-- Project-kickoff prompt set: `prompts/greenfield.md` + `prompts/retrofit.md` + `prompts/upgrade.md` (Batch P3; ship-pending per ADR-008 D2)
+- Project-kickoff prompt set: `prompts/greenfield.md` + `prompts/retrofit.md` (live) + `prompts/upgrade.md` (forthcoming — ships at PR-B per ADR-008 D2)
 - Sibling canonical-source templates: `templates/ISSUE_TEMPLATE/feature.md` + `templates/ISSUE_TEMPLATE/chore.md` + `templates/ISSUE_TEMPLATE/retrospective.md`

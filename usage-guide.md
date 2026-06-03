@@ -19,12 +19,12 @@ This guide is **not** a replacement for the canonical-law trio. The trio is the 
 
 If you are looking for:
 - the rules themselves → `core.md` + `github-reference.md`
-- the kickoff prompt to paste into an AI → `prompts/greenfield.md` (`prompts/retrofit.md` + `prompts/upgrade.md` forthcoming at TASK-0047)
+- the kickoff prompt to paste into an AI → `prompts/greenfield.md` or `prompts/retrofit.md` (`prompts/upgrade.md` forthcoming — ships at PR-B)
 - worked examples of what good artifacts look like → this guide, §10 onward
-- project-type-specific guidance → `appendices/project-types/*.md` (forthcoming at TASK-0025+)
-- documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming at TASK-0026+)
-- positioning relative to other frameworks → `appendices/amas-vs-other-frameworks.md` (forthcoming at TASK-0026+)
-- regulated-tier extension (HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11) → `appendices/regulated-tier-extension.md` (forthcoming at TASK-0026+)
+- project-type-specific guidance → `appendices/project-types/*.md` (forthcoming; v3.2-planned per ADR-008 D4)
+- documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming; v3.2-planned per ADR-008 D4)
+- positioning relative to other frameworks → `appendices/amas-vs-other-frameworks.md` (forthcoming; v3.2-planned per ADR-008 D4)
+- regulated-tier extension (HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11) → `appendices/regulated-tier-extension.md` (forthcoming; v3.2-planned per ADR-008 D4)
 
 ---
 
@@ -44,16 +44,25 @@ Three things to get right before you open a chat with an AI:
 
 The kickoff session is a single chat where you attach the canonical-law trio, paste the appropriate prompt, and answer the AI's questions until the kickoff packet is ready to commit.
 
-**§2.1. Attach, then paste.** Both `prompts/greenfield.md` and `prompts/retrofit.md` assume `core.md` + `github-reference.md` are already in the AI's context when the prompt is pasted. If your chosen surface supports attachments or project knowledge files, attach the canonical-law trio first. If it only supports pasted context, paste the trio first as separate messages, then paste the prompt.
+**§2.1. Attach, then paste.** The standalone greenfield, retrofit, and upgrade prompts at `prompts/` assume a **kickoff context pack** is available to the AI surface when the prompt is pasted. The pack is two tiers on top of the trio:
 
-**§2.2. Use the standalone prompts.** Use the standalone greenfield, retrofit, or upgrade prompt at `prompts/`. The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
+- **Canonical-law trio:** `core.md` + `github-reference.md` + `usage-guide.md`.
+- **Tier 1 — templates the kickoff authors against** (must be in the AI's context): `templates/role-scorecard-template.md` (role scoring), `templates/project-brief-template.md` (Project Brief), `templates/tool-inventory-template.md` (Tool Inventory), `templates/handoff-template.md` (the TASK-0000 bootstrap handoff; `core.md` §14 defers the handoff schema here), `templates/ADR-template.md` (ADR-000), and `templates/ISSUE_TEMPLATE/project-initiation.md` (Issue 0 and its §7 acceptance criteria).
+- **Tier 2 — GitHub artifact templates instantiated into the new repo** (the operator needs file access to copy/adapt these; the kickoff directs the copy): `templates/PULL_REQUEST_TEMPLATE.md`, the remaining `templates/ISSUE_TEMPLATE/*.md` (`chore.md`, `feature.md`, `retrospective.md`), and `templates/AGENTS.md` + `templates/CLAUDE.md`.
+
+There are two ways the pack reaches the surface:
+
+- **Repo-integrated** — the surface has file access to the AMAS package (including `templates/`), so both tiers are already available and no attachment step is needed.
+- **Paste / attachment** — the surface has no repo access, so you attach (or paste) the trio plus the Tier-1 templates the prompt names, and keep the Tier-2 templates on hand to instantiate the GitHub artifacts. If your chosen surface supports attachments or project knowledge files, attach the canonical-law trio first. If it only supports pasted context, paste the trio first as separate messages, then paste the prompt.
+
+**§2.2. Use the standalone prompts.** Use the standalone greenfield or retrofit prompt at `prompts/` (both live; `prompts/upgrade.md` is forthcoming — ships at PR-B). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
 
 **§2.3. What the kickoff produces.** Full kickoff produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
 
 - `docs/handoffs/TASK-0000-project-bootstrap.md` — the handoff for the bootstrap task itself. TASK-0000 is reserved for this. The first real feature task is TASK-0001.
 - `CODEOWNERS` — the repo-level governance file. It belongs in the bootstrap file list. If you don't know what to put in it yet, a single line with your GitHub username and the repo root is a valid starting point: `* @your-github-username`.
 
-Lite kickoff produces a smaller set per `core.md` lite-kickoff specification. The trade-off: lite is faster but upgrades to full are one-way and have triggers you should know in advance.
+Lite kickoff is **forthcoming** — its canonical specification (the `core.md` lite-kickoff specification) is not yet materialized, so at v3.0 run the **full** kickoff (the prompts direct this). When lite ships, the trade-off will be: lite is faster, but upgrading lite → full is one-way and has triggers you should know in advance (see §11).
 
 **§2.4. Operating environment.** Both prompts ask about your operating environment before scoring the Tool Inventory. Answer honestly. If your project runs on a work laptop with an enterprise AI license and admin-managed GitHub access, that is a constrained-professional environment and the constrained-professional overlay applies. If it runs on your personal laptop with your personal accounts, it does not. A project running on the same machine can be personal for one repo and constrained-professional for another; the distinction is per-project, not per-machine.
 
@@ -65,6 +74,10 @@ Lite kickoff produces a smaller set per `core.md` lite-kickoff specification. Th
 - A TMP decision recording that the project is in the fallback with an explicit exit trigger — usually "when the other ecosystem becomes available."
 
 The prompts call this out explicitly. If the AI produces a scorecard that puts Builder and Reviewer on the same ecosystem without invoking the fallback, push back.
+
+**§2.6.1. Degraded operator-relay mode.** AMAS works best with a repo-integrated Builder (a surface that can write to the repo and open PRs) and an independent Reviewer. If your available AI surfaces cannot write to the repo or open PRs (e.g., browser-only chat surfaces), you are in **degraded operator-relay mode**: the AI drafts artifacts and commands, and you, the operator, perform the repo writes, commits, PR creation, and merges. Record this explicitly in the role-assignment scorecard and the Project Brief, and pair it with the §2.6 Reviewer fallback if you also lack an independent bot or human Reviewer. This mode is fully workable for a solo operator; it trades automation for manual relay.
+
+**§2.6.2. v3.0 bootstrap role-assignment heuristic.** Use this lightweight capability check to assign the three AMAS roles at kickoff. It is the v3.0 bootstrap heuristic — a small yes/no capability check sufficient to make initial role assignments — and is intentionally a subset of the fuller capability-class model planned for the v3.2 reference layer; a later v3.2 re-score may refine assignments but will not invalidate a sound initial assignment unless project capability or tool access changes. For each available AI (or human+AI) surface, ask: (1) Can it reason well about architecture and sequencing? (2) Can it read the repo/files, or only chat context? (3) Can it write files directly, or must the operator relay changes? (4) Can it run terminal commands/tests? (5) Can it create branches/commits/PRs? (6) Can it review independently of the Builder's ecosystem? (7) Can it retrieve current project/reference docs reliably? Assign: **Architect** → the strongest planning/reasoning surface (Q1); **Builder** → the strongest repo-write + terminal + PR surface (Q3–Q5), and if none qualifies, degraded operator-relay mode per §2.6.1; **Reviewer** → an independent review-capable surface (Q6), preferably a different ecosystem than the Builder, and if unavailable, the §2.6 fallback (stronger documentation, stricter human approval, recorded exit trigger). Re-score roles when a new AI surface, repo-integrated agent, GitHub App reviewer, terminal-capable tool, or work-account constraint appears or disappears. Record the resulting assignment in the role scorecards (role identity / tool-surface affinity) and the Project Brief Roles section. The role-scorecard template is the recording form, not the scoring rubric.
 
 **§2.7. Kickoff follow-ups.** Kickoff sessions — especially retrofit — often surface governance corrections that are out of scope for the kickoff PR but must land before the first feature stage. Common cases: a superseding ADR, a deferred-file addition, a branch-protection correction, a reframe-pending resolution. Record these in the Project Brief's "Kickoff follow-ups" section so the transition from kickoff to first feature stage is sequenced cleanly.
 
@@ -227,7 +240,7 @@ The three produce the same observable behavior ("no autonomous agents running") 
 
 - **Light tier.** Prototype-class projects, weekend hacks, decision-logging-first solo dev. Minimal Actions; documentation-only AMAS adoption optional; the bypass mechanism may be over-elaborate. Adopters can simplify in their own ADR.
 - **Production tier (AMAS default).** Solo developer, real customers, production traffic. The bypass mechanism's structural separations (Architect identity, claim verification, CODEOWNERS exclusion) match what real solo-operator production projects need. AMAS calibrates to this tier as default.
-- **Regulated tier.** Solo developer in regulated domains — HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11. May want more than AMAS provides — full AI-decision audit trails, model-version pinning enforced, blocked egress for AI inference. AMAS provides the discipline structure; regulated-tier specifics live at `appendices/regulated-tier-extension.md` (forthcoming at TASK-0026+).
+- **Regulated tier.** Solo developer in regulated domains — HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11. May want more than AMAS provides — full AI-decision audit trails, model-version pinning enforced, blocked egress for AI inference. AMAS provides the discipline structure; regulated-tier specifics live at `appendices/regulated-tier-extension.md` (forthcoming; v3.2-planned per ADR-008 D4).
 
 The kickoff prompt asks which tier applies. Most solo developers are at production tier. If you're at light tier, you can simplify in your kickoff ADR. If you're at regulated tier, the regulated-tier-extension appendix is required reading.
 
@@ -346,7 +359,7 @@ A project may codify a project-specific check pattern in repo-local Architect re
 
 **§11.2. The upgrade itself.** The current Architect owns it. It's a single bounded session: create the missing artifacts, open the deferred folders (`docs/questions/`, `docs/decisions/`, `docs/handoffs/`, etc.), and backfill the handoff file from the most recent PR. It is not a rewrite — pre-upgrade work stays as it was.
 
-**§11.3. v3 inter-version upgrades.** Future v3.x → v3.y transitions are covered by `prompts/upgrade.md` (forthcoming at TASK-0025+). v3.0 → v3.1+ deprecation is deferred per transition plan v0.2 Decision A — v3.0 is restructure-only; substantive deprecation lands at v3.1+.
+**§11.3. v3 inter-version upgrades.** Future v3.x → v3.y transitions are covered by `prompts/upgrade.md` (forthcoming at TASK-0047, shipping in PR-B after the retrofit prompt). v3.0 → v3.1+ deprecation is deferred per transition plan v0.2 Decision A — v3.0 is restructure-only; substantive deprecation lands at v3.1+.
 
 ---
 
@@ -367,7 +380,7 @@ Four things this framework deliberately does not do, so you do not have to litig
 ## §13. One-page reference
 
 - **Canonical-law trio:** `core.md` (rules) + `github-reference.md` (GitHub-specific implementation) + `usage-guide.md` (this guide). Trio wins on rule conflicts.
-- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade). `retrofit.md` + `upgrade.md` forthcoming at TASK-0047.
+- **Kickoff prompts:** `prompts/greenfield.md` (new project) / `prompts/retrofit.md` (existing project) / `prompts/upgrade.md` (inter-version upgrade). `upgrade.md` forthcoming — ships at PR-B.
 - **Bootstrap file list:** README, CODEOWNERS, CLAUDE.md, AGENTS.md, canonical-law trio reference, project-brief, tool-inventory, role-assignment-scorecard, ADR-000, GitHub Issue templates, GitHub PR template.
 - **TASK ID reservation:** TASK-0000 = bootstrap. TASK-0001 = first real task.
 - **Handoff path:** `docs/handoffs/TASK-####-<slug>.md` per universal handoff schema.
