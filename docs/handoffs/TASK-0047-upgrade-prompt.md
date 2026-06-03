@@ -10,7 +10,7 @@ framework_version_dogfooded: v2.44
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/task-0047-spec.md
 date_authored: 2026-06-03
-status: drafted
+status: active
 ---
 
 # HANDOFF: TASK-0047 PR-B — Batch P3 upgrade kickoff prompt
@@ -33,7 +33,7 @@ Fill `prompts/upgrade.md` (stub → active) with its canonical project-kickoff p
 
 *[GATE-CURRENT surface — refreshed at gates only.]*
 
-PR-B Codex absorption (path-a). Substantive content committed at `95913fb` + pushed to `origin/feat/task-0047-upgrade-prompt`; **draft PR-83 open** (not merged). Codex's proportionate post-push review returned **2 P2** (no P1; `prompts/upgrade.md` itself clean): **F1** usage-guide §2 bootstrap-vs-upgrade leak (class-swept §2.1 + §2.3) + **F2** this gate-current staleness — both absorbed in a **trailing remediation commit** that sits on top of `95913fb` (do not treat `95913fb` as the branch tip). `status: drafted` holds until ready-for-review; `linked_pr` stays the canonical PMN-001(k) placeholder (Action substitutes the squash SHA at merge). Cumulative state: see §Cumulative-diff-stats (gate-current).
+Pre-merge path-(α′) status flip. **Gate A + Gate B cleared** by the Architect. Codex review fully absorbed across two post-push passes (`c0d55f2` — 2 P2: usage-guide §2 bootstrap-vs-upgrade class-sweep + gate-current refresh; `7cb9a2d` — terminal 1 P2 + 1 P3: §2.1 upgrade-output parity + §2.4 three-prompt wording); no further Codex pass. Handoff `status: drafted → active` flipped per `core.md` §23.6.3 path-(α′) + the handoff-template status lifecycle, so the linked-pr-fix-up Action resolves the handoff at squash-merge (`active → resolved` + `linked_pr` → squash SHA; `prompts/` + `templates/` excluded per PMN-018). **PR-83 pending owner mark-ready (undraft) + squash-merge.** `linked_pr` remains the canonical PMN-001(k) placeholder. `core.md` untouched (M-A7 34th deferred to close-reconciliation). Cumulative state: see §Cumulative-diff-stats (gate-current).
 
 ## Current state
 
