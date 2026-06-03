@@ -15,7 +15,7 @@ filled_by: PR-80 (TASK-0047)
 > durable state (code, documents, accumulated rules and decisions) and is adopting AMAS over
 > a prior workflow. If your project is brand-new with no code, no documents, and no prior
 > decisions, stop and use `prompts/greenfield.md`; if you are moving an existing AMAS project
-> between framework versions, use `prompts/upgrade.md`.
+> between framework versions, use `prompts/upgrade.md` (forthcoming — ships at PR-B).
 
 ---
 

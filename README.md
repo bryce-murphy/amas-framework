@@ -46,7 +46,7 @@ The v3 framework package is organized into seven layers. Each stub or template d
 | Path | Description | Filled by |
 |---|---|---|
 | `prompts/greenfield.md` | Project kickoff (project-type-aware) | PR-75 (TASK-0046) |
-| `prompts/retrofit.md` | Existing-project adoption | TASK-0047 (content-fill cycle) |
+| `prompts/retrofit.md` | Existing-project adoption | PR-80 (TASK-0047) |
 | `prompts/upgrade.md` | Inter-version upgrade | Batch P3 (ADR-006); pending content-fill cycle |
 | `prompts/deep-research-design-brief.md` | Original Design Brief, archived | PR-2 (this PR) |
 | `prompts/research-deliverable.md` | Research Deliverable, archived | PR-2 (this PR) |

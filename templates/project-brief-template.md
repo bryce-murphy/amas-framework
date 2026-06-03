@@ -40,7 +40,7 @@ Filled Project Briefs live at `docs/project-brief.md` (single canonical file per
 
 ## Authoring surface
 
-Project Briefs are authored at project initiation by the Architect, ratified by the owner. Project Briefs amend at project-scope-shift cycles. Project Brief authoring may pair with project-kickoff prompts (forthcoming Batch P3: `prompts/greenfield.md` / `prompts/retrofit.md` / `prompts/upgrade.md`).
+Project Briefs are authored at project initiation by the Architect, ratified by the owner. Project Briefs amend at project-scope-shift cycles. Project Brief authoring may pair with project-kickoff prompts: `prompts/greenfield.md` + `prompts/retrofit.md` (live) / `prompts/upgrade.md` (forthcoming — ships at PR-B).
 
 ## Cross-references
 

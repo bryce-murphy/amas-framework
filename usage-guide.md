@@ -21,10 +21,10 @@ If you are looking for:
 - the rules themselves → `core.md` + `github-reference.md`
 - the kickoff prompt to paste into an AI → `prompts/greenfield.md` or `prompts/retrofit.md` (`prompts/upgrade.md` forthcoming — ships at PR-B)
 - worked examples of what good artifacts look like → this guide, §10 onward
-- project-type-specific guidance → `appendices/project-types/*.md` (forthcoming at TASK-0025+)
-- documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming at TASK-0026+)
-- positioning relative to other frameworks → `appendices/amas-vs-other-frameworks.md` (forthcoming at TASK-0026+)
-- regulated-tier extension (HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11) → `appendices/regulated-tier-extension.md` (forthcoming at TASK-0026+)
+- project-type-specific guidance → `appendices/project-types/*.md` (forthcoming; v3.2-planned per ADR-008 D4)
+- documentation-MCP server selection guidance → `appendices/documentation-mcp-options.md` (forthcoming; v3.2-planned per ADR-008 D4)
+- positioning relative to other frameworks → `appendices/amas-vs-other-frameworks.md` (forthcoming; v3.2-planned per ADR-008 D4)
+- regulated-tier extension (HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11) → `appendices/regulated-tier-extension.md` (forthcoming; v3.2-planned per ADR-008 D4)
 
 ---
 
@@ -55,14 +55,14 @@ There are two ways the pack reaches the surface:
 - **Repo-integrated** — the surface has file access to the AMAS package (including `templates/`), so both tiers are already available and no attachment step is needed.
 - **Paste / attachment** — the surface has no repo access, so you attach (or paste) the trio plus the Tier-1 templates the prompt names, and keep the Tier-2 templates on hand to instantiate the GitHub artifacts. If your chosen surface supports attachments or project knowledge files, attach the canonical-law trio first. If it only supports pasted context, paste the trio first as separate messages, then paste the prompt.
 
-**§2.2. Use the standalone prompts.** Use the standalone greenfield, retrofit, or upgrade prompt at `prompts/`. The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
+**§2.2. Use the standalone prompts.** Use the standalone greenfield or retrofit prompt at `prompts/` (both live; `prompts/upgrade.md` is forthcoming — ships at PR-B). The canonical-law trio defines the rules; the prompts wrap kickoff orchestration around the rules. The prompts may add operational scaffolding the canonical-law trio doesn't carry (operating-environment confirmation, three-tier framing surfacing, project-type appendix selection, multi-surface review pipeline opt-in). Use the prompts.
 
 **§2.3. What the kickoff produces.** Full kickoff produces the bootstrap artifact set per `core.md` §3.1 (forthcoming at Part C+) — the list includes README, CODEOWNERS, AGENTS.md, CLAUDE.md, the canonical-doc reference, project-brief, tool-inventory, role-assignment-scorecard, the bootstrap ADR (ADR-000), GitHub Issue templates, and the GitHub PR template. Two artifacts that trip people up:
 
 - `docs/handoffs/TASK-0000-project-bootstrap.md` — the handoff for the bootstrap task itself. TASK-0000 is reserved for this. The first real feature task is TASK-0001.
 - `CODEOWNERS` — the repo-level governance file. It belongs in the bootstrap file list. If you don't know what to put in it yet, a single line with your GitHub username and the repo root is a valid starting point: `* @your-github-username`.
 
-Lite kickoff produces a smaller set per `core.md` lite-kickoff specification. The trade-off: lite is faster but upgrades to full are one-way and have triggers you should know in advance.
+Lite kickoff is **forthcoming** — its canonical specification (the `core.md` lite-kickoff specification) is not yet materialized, so at v3.0 run the **full** kickoff (the prompts direct this). When lite ships, the trade-off will be: lite is faster, but upgrading lite → full is one-way and has triggers you should know in advance (see §11).
 
 **§2.4. Operating environment.** Both prompts ask about your operating environment before scoring the Tool Inventory. Answer honestly. If your project runs on a work laptop with an enterprise AI license and admin-managed GitHub access, that is a constrained-professional environment and the constrained-professional overlay applies. If it runs on your personal laptop with your personal accounts, it does not. A project running on the same machine can be personal for one repo and constrained-professional for another; the distinction is per-project, not per-machine.
 
@@ -240,7 +240,7 @@ The three produce the same observable behavior ("no autonomous agents running") 
 
 - **Light tier.** Prototype-class projects, weekend hacks, decision-logging-first solo dev. Minimal Actions; documentation-only AMAS adoption optional; the bypass mechanism may be over-elaborate. Adopters can simplify in their own ADR.
 - **Production tier (AMAS default).** Solo developer, real customers, production traffic. The bypass mechanism's structural separations (Architect identity, claim verification, CODEOWNERS exclusion) match what real solo-operator production projects need. AMAS calibrates to this tier as default.
-- **Regulated tier.** Solo developer in regulated domains — HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11. May want more than AMAS provides — full AI-decision audit trails, model-version pinning enforced, blocked egress for AI inference. AMAS provides the discipline structure; regulated-tier specifics live at `appendices/regulated-tier-extension.md` (forthcoming at TASK-0026+).
+- **Regulated tier.** Solo developer in regulated domains — HIPAA, PCI-DSS, SOX, GDPR, FDA 21 CFR Part 11. May want more than AMAS provides — full AI-decision audit trails, model-version pinning enforced, blocked egress for AI inference. AMAS provides the discipline structure; regulated-tier specifics live at `appendices/regulated-tier-extension.md` (forthcoming; v3.2-planned per ADR-008 D4).
 
 The kickoff prompt asks which tier applies. Most solo developers are at production tier. If you're at light tier, you can simplify in your kickoff ADR. If you're at regulated tier, the regulated-tier-extension appendix is required reading.
 
