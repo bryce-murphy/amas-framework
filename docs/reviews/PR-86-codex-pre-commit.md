@@ -143,6 +143,24 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 
 **Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
 
+### Codex post-PR pass 10 (UTC 2026-06-04T13:27) — re-review against `eb09645`
+
+**Verdict**: 1 P2 (line-level), path-(a). **Reverse-direction completion** of the pass-9 §10.5 reconciliation. Pass-10 confirmed the pass-9 core.md fixes landed; the residual was on the usage-guide side. **STAGED, not pushed** (canonical-trio change; standing stage-and-hand-back rule).
+
+**Finding** (verbatim):
+
+> **[P2] Align merge guidance with optional bypass acknowledgment** (`usage-guide.md:118`). For single-contributor merges, this sentence still tells operators to use bypass "with explicit acknowledgment in the squash-commit message or a pinned PR comment," but the newly materialized `core.md` §10.5 and `github-reference.md` §3.2 both say GitHub's automatic bypass log is the acknowledgment and no additional artifact is required at single-cycle scope… readers following §3.9 (and the one-page bypass reference later in this file) will still treat an optional artifact as mandatory…
+
+**Adjudication** (per `core.md` §8.1.1.3): **path-(a) revise**, P2 load-bearing. Same cross-surface-consistency class as pass-9, **opposite direction**: pass-9 aligned core.md §10.5 to usage-guide §3.9's "no additional artifact" clause, but §3.9 *also* carried mandatory-sounding "with explicit acknowledgment in…" phrasing (internally inconsistent) — and the one-page bypass reference (L402) repeated it. Codex correct. The pass-9 "usage-guide unchanged" claim was incomplete: usage-guide's own phrasing needed alignment to the canonical "optional" posture.
+
+**Resolution applied** (path-(a), usage-guide.md — 2 lines):
+- **§3.9 (L118):** "uses GitHub's bypass mechanism **per `core.md` §10.5**" + "each invocation is logged automatically + is itself the acknowledgment; **no additional artifact required at single-cycle scope** (squash-msg/pinned-comment **optional, not required**)."
+- **One-page bypass rule (L402):** "GitHub's automatic bypass log is the acknowledgment; no additional artifact required (squash-msg / pinned-comment / PR-template `Bypass used` field **optional**)."
+
+core.md byte-unchanged this fix-up; github-reference.md byte-unchanged (it already said "optional"). Canonical figure: usage-guide 14/14 → 15/15 (L402 was previously unchanged vs main); canonical+operational +188/−61 → **+189/−62**. **STAGED; awaiting Gate A + push ratification.**
+
+---
+
 ### Codex post-PR pass 9 (UTC 2026-06-04T13:09) — re-review against `173484e`
 
 **Verdict**: 3 findings (2 P1, 1 P2), all path-(a), all **new distinct classes** (cross-surface consistency between materialized canon and `usage-guide.md` / `github-reference.md`). Pass-9 confirmed pass-8 §8.2 timing fix landed. **STAGED, not pushed** (per the standing canonical-fix-up stage-and-hand-back instruction).
