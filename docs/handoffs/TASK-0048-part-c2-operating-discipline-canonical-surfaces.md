@@ -4,7 +4,7 @@ title: Part C.2 operating-discipline canonical surfaces materialization + class-
 pr: PR-86
 branch: feat/task-0048-part-c2-operating-discipline-canonical-surfaces
 linked_predecessor: TASK-0047 (PR-83 squash 3606278; Batch P3 upgrade prompt)
-linked_successor: TBD (TASK-0049 release polish + v3.0.0 tag; anticipated)
+linked_successor: TASK-0049 (release polish + v3.0.0 tag)
 linked_pr: PR-86 (squash SHA 0eb51f7)
 framework_version_dogfooded: v2.45
 production_target: v3.0.0
@@ -90,10 +90,11 @@ Owner re-invokes the binding Codex re-review (`usage-guide.md` §7.1/§7.3) agai
 
 ## §10. Cycle-close ledger  *(APPEND-ONLY HISTORICAL — populated at cycle close)*
 
-Deferred-to-post-merge items:
-- **(a)** `linked_pr` squash-SHA substitution (this handoff + PMN-019 + review-context) via PMN-001 (k) linked-pr-fix-up Action; review-context `status: drafted → recorded`; handoff `status: active → resolved`.
-- **(b)** **M-A7 35th `PR-NN` → verified-PR manual substitution at BOTH `core.md` L583 (snapshot header) + L585 (enumeration term).** **CONFIRMED SCOPE FINDING**: the linked-pr-fix-up Action operates on `docs/handoffs/` + `docs/reviews/` + PMN frontmatter `linked_pr` fields ONLY (per PMN-018 path-scoping); it does **NOT** touch `core.md` body text. Therefore the M-A7 `PR-NN` substitution is **Architect-side manual post-merge maintenance**, not Action-automated. Both L583 and L585 must be substituted with the verified squash PR number.
-- **(c)** TASK-0049 successor handoff (release polish + v3.0.0 tag).
+Post-merge close-out (2026-06-04):
+- **(a)** ✅ `linked_pr` squash-SHA substitution fired via PMN-001 (k) linked-pr-fix-up Action (PR-87 `32c6a07`): `linked_pr → PR-86 (squash SHA 0eb51f7)`; handoff `status: resolved`; PMN-019 `status: recorded`; review-context `status: recorded`.
+- **(b)** ✅ M-A7 35th `PR-NN` → `PR-86` manually substituted at core.md L584 (snapshot header: "PR-86 / TASK-0048") + L586 (enumeration tail: "PR-83 + PR-86 = 35"), confirmed Architect-side post-merge maintenance per PMN-018 path-scoping (Action does not touch core.md body text).
+- **(c)** ✅ 18 open Codex review conversations resolved.
+- **(d)** TASK-0049 successor handoff (release polish + v3.0.0 tag) — in progress this close-reconciliation commit.
 
 ## Session log archive  *(§13.1 in-cycle records; current set per §13.2 in PR body)*
 
