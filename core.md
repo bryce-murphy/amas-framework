@@ -234,7 +234,7 @@ Every AI session within a cycle produces a durable session-log record. The canon
 
 ### §13.1. In-cycle session records
 
-In-cycle session records are the per-session entries that accumulate across a cycle. They are **append-only**: a new session appends a new record; prior records are never back-refreshed against later state. Volatile state (cumulative-diff-stats, current step, next step) is referenced by pointer, not pinned by value, so append-only records do not go stale against post-absorption state (couples with §23.6.5).
+In-cycle session records are the per-session entries that accumulate across a cycle. They are **append-only**: a new session appends a new record; prior records are never back-refreshed against later state. **Current/live** volatile state (cumulative-diff-stats, current step, next step) is referenced by pointer rather than copied by value, so append-only records do not go stale against post-absorption state. A value recorded as a **historical snapshot** — what was true when the session entry was written, including §8.3 payload diff/impact summaries and verbatim Reviewer output — is correct-by-design, not a violation of this rule (parallel to the §23.6.5 suppression-clause logic). Couples with §23.6.5.
 
 **Per-session entry grammar.** Each in-cycle session record carries at minimum:
 

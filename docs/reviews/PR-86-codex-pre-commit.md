@@ -143,6 +143,20 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 
 **Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
 
+### Codex post-PR pass 7 (UTC 2026-06-04T10:31) — re-review against `a6aca94`
+
+**Verdict**: 1 P2 finding (line-level), routed path-(a). Pass-7 confirmed §23.6.5 internal contradiction resolved; surfaced the same live-vs-historical-snapshot ambiguity now in §13.1.
+
+**Finding** (verbatim):
+
+> **[P2] Narrow §13.1's by-pointer rule to live state** (`core.md:237`). When a §13.1 record is used as the durable home for §8.3 payloads, those payloads can include the historical diff/impact summary required by §8.3; this sentence still says cumulative-diff-stats must be referenced by pointer, not pinned by value. That leaves the same current/live-vs-historical-snapshot contradiction in §13.1 that §23.6.5 now fixes, so valid historical payload values can still read as §13.1 violations unless this rule is scoped to current/live volatile references or explicitly inherits the historical-snapshot carveout.
+
+**Adjudication** (per `core.md` §8.1.1.3): **path-(a) revise**, P2 load-bearing. **First finding in the §13.1-by-pointer-consistency class** — the pass-5 §23.6.5 fix exposed the parallel in §13.1 (the §23.6.5 fix cited §23.6.5 as the authority; §13.1 had its own identical unqualified form). Codex correct. Parallel-class resolution: narrow §13.1:237 to **current/live** volatile state, inheriting the §23.6.5 historical-snapshot carveout. In-place edit (net-zero line count → canonical figure +187/−61 unchanged).
+
+**Resolution applied** (path-(a)): `core.md:237` narrowed — "Volatile state (cumulative-diff-stats, current step, next step) is referenced by pointer, not pinned by value" → scoped to current/live state; historical snapshots (§8.3 payload diff/impact summaries, verbatim Reviewer output) carved out as correct-by-design per the §23.6.5 suppression-clause logic. §13.1 predicate + enforcement-coupling + cross-refs intact. Canonical figure +187/−61 unchanged (in-place).
+
+---
+
 ### Codex post-PR pass 6 (UTC 2026-06-04T10:06) — stale-head re-flag against `7daa361`
 
 **Verdict**: 1 P2 (line-level), routed **path-(β) record-and-proceed** — stale-head re-flag, not a new defect.
