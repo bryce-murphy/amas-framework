@@ -65,8 +65,8 @@ Per `github-reference.md` §2.2 + ADR-005:
 - Branch naming: `<type>/task-####-<kebab-slug>`; allowed types: `feat`, `fix`, `chore`, `adr`, `shadow`, `spike`
 - PR template at `.github/PULL_REQUEST_TEMPLATE.md`; populate every section per `github-reference.md` §4.2
 - Conventional commit messages: `<type>(<scope>): <subject>`
-- Pre-flight verification before destructive or remote-visible actions (`core.md` §8.2)
-- Stop-and-show before `git push`, `gh pr create`, branch deletion, or force push (`core.md` §8.3)
+- Pre-flight verification before branch creation and before any repo-writing, destructive, or remote-visible action (`core.md` §8.2)
+- Stop-and-show before `git push`, `gh pr create`, `gh pr edit`, branch deletion, or force push (`core.md` §8.3)
 
 ## §6. Review guidelines
 

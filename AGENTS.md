@@ -40,8 +40,8 @@ For PRs that touch repository content:
 - **Branch naming** per `github-reference.md` §2.2 (canonical at v3; deliberately diverges from v2.14.1 §6.1 substrate per ADR-005 to align with AMAS TASK-#### centrality + lived practice): `<type>/task-####-<kebab-slug>`. Allowed types: `feat`, `fix`, `chore`, `adr`, `shadow`, `spike` (per v3 canonical types; conventional-commit-extension types `docs`, `refactor`, `test`, `ci` retired this cycle per ADR-005 reconciliation)
 - **PR template**: every PR uses `.github/PULL_REQUEST_TEMPLATE.md`. Required sections: Linked records, Summary, Decisions in this PR, Validation, Reviewer focus, Ready for review, AI Session Log
 - **Conventional commit messages**: `<type>(<scope>): <subject>` — e.g., `feat(amas): TASK-0002 v3 package scaffold`
-- **Per `core.md` §8.2**: Pre-flight verification before any destructive or remote-visible action
-- **Per `core.md` §8.3**: Stop-and-show before `git push`, `gh pr create`, branch deletion, or force push
+- **Per `core.md` §8.2**: Pre-flight verification before branch creation and before any repo-writing, destructive, or remote-visible action
+- **Per `core.md` §8.3**: Stop-and-show before `git push`, `gh pr create`, `gh pr edit`, branch deletion, or force push
 
 ## Review guidelines
 

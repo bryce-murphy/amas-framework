@@ -35,8 +35,8 @@ This repository **is** the AMAS framework. Work in this repo follows AMAS itself
 - Branch naming per `github-reference.md` §2.2 (canonical at v3; deliberately diverges from v2.14.1 §6.1 substrate per ADR-005): `<type>/task-####-<kebab-slug>`
 - PR template at `.github/PULL_REQUEST_TEMPLATE.md` is required reading; populate every section
 - Conventional commit messages
-- `core.md` §8.2 pre-flight before remote-visible actions
-- `core.md` §8.3 stop-and-show with the owner before `git push`, `gh pr create`, or any destructive operation
+- `core.md` §8.2 pre-flight before branch creation and before the first repo-writing or remote-visible action
+- `core.md` §8.3 stop-and-show with the owner before `git push`, `gh pr create`, `gh pr edit`, or any destructive operation
 
 ## Scope and escalation rules
 

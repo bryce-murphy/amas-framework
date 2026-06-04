@@ -143,6 +143,28 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 
 **Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
 
+### Codex post-PR pass 11 (UTC 2026-06-04T13:55) — re-review against `0e77e00`
+
+**Verdict**: 3 P2 (line-level), all path-(a). Two are **propagation/class-sweep** of the pass-8/pass-9 canonical fixes to the receiving-surface summaries; one is a **self-inflicted residual** in the handoff. **STAGED, not pushed** (canonical/operational change; standing rule).
+
+**Findings** (verbatim, abridged):
+
+> **[P2] Gate pre-flight before branch and file writes** (`CLAUDE.md:38`). This narrowed summary lets a Builder delay §8.2 until only remote-visible actions, while materialized §8.2 (core.md L163/L177 + usage-guide §3.3) requires the report before branch creation and the first repo-writing action. The same shortened text appears in root/template instruction surfaces.
+>
+> **[P2] Include PR edits in stop-and-show summaries** (`CLAUDE.md:39`). This summary omits `gh pr edit`, though the canonical §8.3 trigger list (core.md:189 + usage-guide one-page L405) includes it. Same omission in the agent-template summaries.
+>
+> **[P2] Update the pinned canonical diff figure** (`docs/handoffs/…:44`). L42 now says +189/−62 but L44 still calls +187/−61 the "stable canonical figure above" — internally inconsistent; reintroduces the self-volatile/stale-total class.
+
+**Adjudication** (per `core.md` §8.1.1.3): all **path-(a)**. P2-a/P2-b = the §8.2-timing (pass-8) + §8.3-`gh pr edit` (pass-9) canonical fixes had not **propagated** to the receiving-surface summaries — class-swept across **all 4** surfaces (root AGENTS.md + CLAUDE.md, templates/AGENTS.md + CLAUDE.md), not instance-fixed at CLAUDE.md. P2-c = self-inflicted: updating L42 (+187→+188→+189) left L44's "+187/−61" reference stale — same self-volatile-pinned-total class, **de-pinned** (by-pointer, not re-pinned).
+
+**Resolution applied** (path-(a)):
+- **§8.2 summaries** (AGENTS.md:43, CLAUDE.md:38, templates/AGENTS.md:68, templates/CLAUDE.md:68): "before branch creation and before any repo-writing / destructive / remote-visible action."
+- **§8.3 summaries** (AGENTS.md:44, CLAUDE.md:39, templates/AGENTS.md:69, templates/CLAUDE.md:69): added `gh pr edit`.
+- **Five-topic receiving-surface sweep** (owner-directed expansion): §10.5/§13.x/§23.6.5 summaries across AGENTS/CLAUDE/README/templates/.github confirmed already-current (only §8.2/§8.3 lagged); no further fold-in.
+- **Structural close of the self-volatile-pinned-total class** (owner-directed expansion): de-pinned ALL current-claiming totals — handoff §Cumulative-diff-stats L42 (canonical+operational figure + per-file breakdown) and L34 → **by-pointer** (`git diff main --numstat`); L44 already by-pointer. Historical pass-snapshots (the +180/−61 §4.6-step figure, +128 authoring, and the per-pass figures recorded in *this* review-context) retained as correct-by-design per the §23.6.5 historical-snapshot carve-out. **No surface now pins a current total.** The 8 summary edits are in-place. **STAGED; awaiting Gate A + push ratification.**
+
+---
+
 ### Codex post-PR pass 10 (UTC 2026-06-04T13:27) — re-review against `eb09645`
 
 **Verdict**: 1 P2 (line-level), path-(a). **Reverse-direction completion** of the pass-9 §10.5 reconciliation. Pass-10 confirmed the pass-9 core.md fixes landed; the residual was on the usage-guide side. **STAGED, not pushed** (canonical-trio change; standing stage-and-hand-back rule).
