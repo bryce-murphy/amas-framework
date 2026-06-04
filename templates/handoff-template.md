@@ -146,7 +146,7 @@ python -c "import re; print(re.match(r'^linked_pr: PR-(\d+) \(Builder fills with
 ## Usage notes
 
 - **Direction-specific variants**: this template is the universal Architect → Builder direction. Other directions (Builder → Reviewer, Reviewer → Builder, Builder → Architect, Reviewer → Architect, Human → AI, AI → Human) follow the same frontmatter form with direction-specific body adjustments per `core.md` §14.2-§14.7 (canonical at v3) and v2.14.1 §14.2-§14.7 substrate.
-- **Pre-flight discipline**: Builder runs `core.md` §8.2 pre-flight before authoring handoff body — verify branch-name regex compliance, base-branch freshness, working-tree state.
+- **Pre-flight discipline**: Builder runs `core.md` §8.2 pre-flight **before branch creation** and before authoring the handoff body — verify proposed-branch-name regex compliance, base-branch freshness, working-tree state.
 - **Stop-and-show discipline**: Before commit/push, Builder presents handoff at step-2 stop-and-show (pre-flight findings) + step-10 stop-and-show (pre-commit) per `core.md` §8.3.
 - **Hand-back to Architect**: Architect receives handoff at step-17 + performs `core.md` §24.3.1 five-point post-handback check before authorizing merge per ADR-001 D9 admin-bypass posture.
 - **Status field lifecycle**: `drafted` (pre-stage) → `active` (post-stage / pre-merge) → `resolved` (post-merge per PMN-001 (k) Action). Drift breaks Action substitution.

@@ -143,6 +143,26 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 
 **Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
 
+### Codex post-PR pass 12 (UTC 2026-06-04T14:16) — re-review against `bbb466e`
+
+**Verdict**: 2 P2 (line-level), path-(a). **Further §8.2-timing propagation** to two surfaces the pass-11 sweep missed. Confirmed the de-pin (self-volatile class) landed cleanly — zero pinned-total findings. **STAGED, not pushed.**
+
+**Findings** (verbatim, abridged):
+
+> **[P2] Include branch creation in the handoff pre-flight note** (`templates/handoff-template.md:149`). Still says §8.2 pre-flight happens before authoring the handoff body, but the canonical predicate requires it before branch creation as well — authorizes the create-branch-then-preflight sequence the canon disallows.
+>
+> **[P2] Propagate branch-creation pre-flight to the quick reference** (`usage-guide.md:404`). The quick reference still narrows §8.2 to pre-flight before repo-writing, not before branch creation — permits the late/push-gated pattern §8.2 calls a violation; the §8.2 cross-surface sweep is not exhausted.
+
+**Adjudication** (per `core.md` §8.1.1.3): both **path-(a)**, same **§8.2-timing-propagation** class as pass-11 — a **recurrence from too-narrow a sweep scope** (pass-11 swept the 4 receiving-surface *instruction* files but missed the usage-guide *quick-reference* L404 and the *handoff-template* pre-flight note L149). Codex correct: the class wasn't exhausted. This is the class-sweep-not-instance-fix lesson recurring on scope-definition — logged to PMN-019.
+
+**Resolution applied** (path-(a), exhaustive this time): grep'd EVERY §8.2 pre-flight *timing* summary repo-wide.
+- **usage-guide.md:404** (quick ref): "before branch creation and before any repo-writing, remote-visible, or destructive action."
+- **templates/handoff-template.md:149** (pre-flight note): "before branch creation and before authoring the handoff body; verify proposed-branch-name regex."
+- Confirmed the remaining §8.2 mentions repo-wide are incidental (caveat-direction, attestation checkboxes, section-name lists — no competing timing claim); §8.3 quick-ref (usage-guide:405) already has `gh pr edit`.
+- **Fold-in (owner-ruled, Gate-A gather)**: the documented exhaustive sweep surfaced one last residual — **core.md:161**, the §8.2 *principle intro*, still read "before any remote-visible or destructive action" (omitting branch creation). Aligned to "before branch creation and before any repo-writing, remote-visible, or destructive action" — now consistent with the evidence-set (L163), item-4 (L168), and predicate (L177). **The §8.2-timing class is fully exhausted: principle + evidence-set + item-4 + predicate + all 6 mirror surfaces all carry "before branch creation."** All edits in-place on already-modified lines → no core.md line-count change → canonical figure (by-pointer) unaffected. **STAGED; awaiting Gate A + push.**
+
+---
+
 ### Codex post-PR pass 11 (UTC 2026-06-04T13:55) — re-review against `0e77e00`
 
 **Verdict**: 3 P2 (line-level), all path-(a). Two are **propagation/class-sweep** of the pass-8/pass-9 canonical fixes to the receiving-surface summaries; one is a **self-inflicted residual** in the handoff. **STAGED, not pushed** (canonical/operational change; standing rule).
