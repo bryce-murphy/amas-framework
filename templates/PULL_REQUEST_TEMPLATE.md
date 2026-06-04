@@ -6,7 +6,7 @@ filled_by: PR-64 (TASK-0041)
 
 # Pull request template
 
-Canonical-source pull-request template for AMAS-adopted repositories. At an adopter project, this template materializes as `.github/PULL_REQUEST_TEMPLATE.md` (the operational instantiation) — GitHub autopopulates PR descriptions from the operational form. The canonical-source-vs-operational distinction lives at `github-reference.md` §4.2: operators copy the body sections from this canonical-source form to the operational `.github/PULL_REQUEST_TEMPLATE.md` instantiation; canonical-source amendments propagate via the same mirror discipline. The 7-section canonical body below is the authoritative form; operational instantiation may strip frontmatter + opening framing + closing cross-references per GitHub-autopopulation hygiene; substrate-qualifier notes at canonical-source body (e.g., Ready-for-review §8.2 + §8.3 substrate qualifier per ADR-007 D3 / Part C.2 materialization) may also be operationally stripped per project policy on substrate-reference exposure to PR autopopulation form.
+Canonical-source pull-request template for AMAS-adopted repositories. At an adopter project, this template materializes as `.github/PULL_REQUEST_TEMPLATE.md` (the operational instantiation) — GitHub autopopulates PR descriptions from the operational form. The canonical-source-vs-operational distinction lives at `github-reference.md` §4.2: operators copy the body sections from this canonical-source form to the operational `.github/PULL_REQUEST_TEMPLATE.md` instantiation; canonical-source amendments propagate via the same mirror discipline. The 7-section canonical body below is the authoritative form; operational instantiation may strip frontmatter + opening framing + closing cross-references per GitHub-autopopulation hygiene.
 
 ## Linked records
 
@@ -35,10 +35,8 @@ Canonical-source pull-request template for AMAS-adopted repositories. At an adop
 
 ## Ready for review (Builder confirms before marking PR ready)
 
-> Note: the §8.2 + §8.3 items below are **non-blocking at v3.0** — the corresponding canonical sections materialize at Part C.2 (TASK-0048) per ADR-007 D3 + ADR-008 D2. Until then they reflect AMAS v2.14.1 substrate. Do not treat them as blocking, and do not check them as a false attestation; TASK-0048 will replace this marker with the real attestation.
-
-- [ ] §8.2 pre-flight completed and reported — *N/A until Part C.2 (§8.2/§8.3) materializes (TASK-0048); non-blocking at v3.0*
-- [ ] §8.3 stop-and-show approved by owner — *N/A until Part C.2 (§8.2/§8.3) materializes (TASK-0048); non-blocking at v3.0*
+- [ ] §8.2 pre-flight completed and reported
+- [ ] §8.3 stop-and-show approved by owner
 - [ ] All claimed actions in this PR are true
 - [ ] Branch name matches `github-reference.md` §2.2 per ADR-005
 - [ ] All template sections populated
@@ -53,5 +51,5 @@ Canonical-source pull-request template for AMAS-adopted repositories. At an adop
 - Canonical-source-vs-operational distinction: `github-reference.md` §4.2
 - Operational instantiation path: `.github/PULL_REQUEST_TEMPLATE.md`
 - Branch convention: `github-reference.md` §2.2 + ADR-005
-- AI Session Log canonical form: AMAS v2.14.1 §13.1 + §13.2 substrate (forthcoming at Part C+ in v3 `core.md`)
+- AI Session Log canonical form: `core.md` §13 / §13.1 / §13.2
 - Sibling canonical-source templates: `templates/ISSUE_TEMPLATE/` (Batch P2; ship-pending per ADR-006 D2)

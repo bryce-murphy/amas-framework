@@ -25,7 +25,7 @@ Filled role scorecards document the following canonical body sequence as actual 
 - **Authority boundary**: enumerate decisions within role authority (analytical adjudication / spec authoring / cycle-close ledger maintenance) and decisions reserved to owner (merge / strategic direction / scope ratification per ADR-001 D11).
 - **Standing responsibilities**: cross-cycle disciplines applied at every cycle position (e.g., §24 verify-before-assert; §23.6 self-review; §8.1.1.3 cost-class refinement).
 - **Cycle-phase responsibilities**: per-phase responsibilities mapped to cycle protocol phases (Phase 1 spec authoring / Phase 2 substantive authoring / Phase 3 review absorption / Phase 4 cycle close).
-- **Disciplines applied**: enumerated §-references to canonical disciplines the role exercises (e.g., Architect: §14.1, §14.4, §14.7, §23.6, §24; Builder: §14.2, §8.2 (forthcoming at Part C.2), §23.6.1, §23.6.2; Reviewer: §8.1.1, §8.1.1.2, §8.1.1.3).
+- **Disciplines applied**: enumerated §-references to canonical disciplines the role exercises (e.g., Architect: §14.1, §14.4, §14.7, §23.6, §24; Builder: §14.2, §8.2, §23.6.1, §23.6.2; Reviewer: §8.1.1, §8.1.1.2, §8.1.1.3).
 - **Cross-references**: pointers to related canonical surfaces (canonical-law sections / ADRs / paired role scorecards).
 
 ## Path conventions

@@ -36,13 +36,13 @@ Reading order is adjustable by project per §8 overlay.
 Canonical-law §-sections governing receiving-surface AI agent operations:
 
 - `core.md` §8.1 reviewer-output absorption + §8.1.1 channel handling + §8.1.1.3 cost-class refinement (bounded-continuation rule)
-- `core.md` §10.5 single-contributor bypass (forthcoming at Part C+)
+- `core.md` §10.5 single-contributor bypass
 - `core.md` §14 + §14.1-§14.7 universal handoff schema + direction-specific variants
 - `core.md` §17.5 template lifecycle + §17.7 review template
 - `core.md` §18.1-§18.4 PMN trigger + form + version-bump criteria
 - `core.md` §23.6 + §23.6.1.1 + §23.6.2 + §23.6.3 self-review disciplines (prose-arithmetic decomposition + iterative-to-fixed-point + reference-verification)
 - `core.md` §24 + §24.3 + §24.3.1 + §24.5 + §24.6 cross-surface verify-before-assert + receiving-side caveat-discipline + Architect ← Builder hand-back symmetric-application + multi-surface review pipeline + Stop-Iteration framework
-- AMAS v2.14.1 substrate sections noted as `(forthcoming at Part C+)` in v3 `core.md` — particularly v2.14.1 §8.2 pre-flight + §8.3 stop-and-show + §13 AI Session Log + §14 handoff templates — apply as substrate until materialized in v3
+- `core.md` §8.2 pre-flight + §8.3 stop-and-show + §13 / §13.1 / §13.2 AI Session Log discipline
 
 Receiving-surface-specific operational depth lives at `appendices/receiving-surface-adapters/claude-code.md` per Batch P7 (ship-pending).
 
@@ -65,8 +65,8 @@ Per `github-reference.md` §2.2 + ADR-005:
 - Branch naming: `<type>/task-####-<kebab-slug>`; allowed types: `feat`, `fix`, `chore`, `adr`, `shadow`, `spike`
 - PR template at `.github/PULL_REQUEST_TEMPLATE.md`; populate every section per `github-reference.md` §4.2
 - Conventional commit messages: `<type>(<scope>): <subject>`
-- Pre-flight verification before destructive or remote-visible actions (v2.14.1 §8.2 substrate; `(forthcoming at Part C+)` in v3 `core.md`)
-- Stop-and-show before `git push`, `gh pr create`, branch deletion, or force push (v2.14.1 §8.3 substrate; same)
+- Pre-flight verification before branch creation and before any repo-writing, destructive, or remote-visible action (`core.md` §8.2)
+- Stop-and-show before `git push`, `gh pr create`, `gh pr edit`, branch deletion, or force push (`core.md` §8.3)
 
 ## §6. Review guidelines
 
@@ -82,7 +82,7 @@ Claude products are most commonly engaged in Architect or Builder roles; Reviewe
 ## §7. Scope and escalation
 
 - Stay within the named scope of the active task; out-of-scope work belongs at the handoff §Out-of-scope register or a follow-up cycle
-- Escalate ambiguous conditions per `core.md` §10.5 (forthcoming at Part C+) + Architect-level adjudication
+- Escalate ambiguous conditions per `core.md` §10.5 + Architect-level adjudication
 - Apply `core.md` §24.5 multi-surface review pipeline at canonical-text amendment cycles
 - Honor `core.md` §24.6 Stop-Iteration framework at the reach 4+ canonical boundary
 
