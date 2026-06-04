@@ -5,12 +5,12 @@ pr: PR-86
 branch: feat/task-0048-part-c2-operating-discipline-canonical-surfaces
 linked_predecessor: TASK-0047 (PR-83 squash 3606278; Batch P3 upgrade prompt)
 linked_successor: TBD (TASK-0049 release polish + v3.0.0 tag; anticipated)
-linked_pr: PR-86 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-86 (squash SHA 0eb51f7)
 framework_version_dogfooded: v2.45
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/task-0048-spec.md
 date_authored: 2026-06-03
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0048 — Part C.2 operating-discipline canonical surfaces
