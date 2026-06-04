@@ -76,3 +76,33 @@ Verbatim-output convention: capture review verbatim into the review-context file
 - F2: handoff §13.1 session entry now carries, per stop-and-show, the §8.3 payload + owner ratification. Verify: handoff §13.1 "Stop-and-show points reached" lists payload+ratification pairs.
 - F3: handoff legend + surface headings now read "§3 step-by-step execution record" + "§10 cycle-close ledger." Verify: `grep -n "§3 step-by-step\|§10 cycle-close" handoff` resolves; canonical `core.md` §23.6.5 byte-unchanged.
 - PMN-019 §2 first-evidence updated: F1/F2/F3 recorded as red-team caught-here-but-missed-upstream monitoring evidence.
+
+## Codex post-PR review output absorption
+
+Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoint (a) formal review = COMMENTED boilerplate (points to line comments); endpoint (b) issue-comment = owner `@codex review` invocation; **endpoint (c) line-level = the substantive verdict (1 P1)**.
+
+### Codex post-PR pass 1 (UTC 2026-06-04T00:02)
+
+**Verdict**: 1 P1 finding (line-level), routed path-(a).
+
+**Finding** (verbatim):
+
+> **[P1] Record ratification for the final Gate A payloads** (`docs/handoffs/TASK-0048-…:113`). In the committed PR state these stop-and-show entries are no longer pending: the PR/commit record says Gate A was re-cleared and commit/push/PR-open were authorized, while the review-context claims F2 was fixed by pairing each §8.3 payload with owner ratification. Leaving these §13.1 entries as `awaiting ratification` / `awaiting Gate A re-application` means the handoff still lacks the owner-ratification half for the Gate A and absorption payloads, so the cycle's own durable record remains non-conformant with the new §13.1/§8.3 predicate.
+
+**Adjudication** (per `core.md` §8.1.1.3): **path-(a) revise**, P1 load-bearing. Subsequent finding in the §13.1-conformance class (same class as the pre-commit F2), but load-bearing — a real conformance defect in the committed durable artifact — so the cost-class refinement routes path-(a) regardless of repetition. NOT suppression-clause-protected: the §13.1 predicate requires the ratification half; "awaiting" for a now-completed ratification is a missing required field (§23.6.4 describe-state-as-complete-at-commit), not a protected pinned historical value. Codex correct.
+
+**Resolution applied** (path-(a)): handoff §13.1 final entries updated to record the completed ratifications — Pass C / Gate A → **owner ratified (Gate A cleared)**; Codex pre-commit absorption → **owner ratified (Gate A re-cleared)**; added commit/push/PR-open (step 9) → **owner authorized** (+ PR-open live re-verification: actual = anticipated PR-86); the only remaining `awaiting` entry is the in-progress post-PR fix-up (accurate as-of this commit). Hand-back point → Gate B. Canonical §13.1/§23.6.5 unchanged; canonical-law untouched (fix is handoff-artifact-only). Verify: `grep -c "awaiting" handoff §13.1` = 1 (the truthful in-progress entry only).
+
+### Codex post-PR pass 2 (UTC 2026-06-04T00:37) — re-review against the UN-PUSHED commit
+
+**Verdict**: 2 line-level findings (1 P1 re-stated, 1 P2 new), both against commit `9098bd2`.
+
+**Findings** (verbatim):
+
+> **[P1] Record ratifications for completed Gate A actions** (`…:113`). In the post-PR/Gate-B context being reviewed, these §13.1 entries are no longer genuinely pending: the pre-commit absorption was applied, and the commit/push/PR-open path was authorized per the PR-state log. Leaving the durable §13.1 archive with `awaiting` for these completed §8.3 payloads recreates the prior P1 and violates the new §13.1 enforcement-coupling…
+>
+> **[P2] Refresh gate-current handoff state for Gate B** (`…:34`). This gate-current surface still says the pre-commit review has not run and that the handoff is waiting for Gate A ratification, even though this re-review is explicitly post-PR… §23.6.5 suppression only protects append-only historical surfaces; the `GATE-CURRENT` sections are the handoff's receiving-state summary, so leaving them at Gate A misdirects the next reviewer/owner.
+
+**Adjudication** (per `core.md` §8.1.1.3): **both findings are ALREADY RESOLVED in the staged-but-un-pushed post-PR-pass-1 fix-up.** ROOT CAUSE = **stale-commit re-review**: the pass-1 fix-up was held at the §8.3 fix-up stop-and-show (never pushed), so Codex re-reviewed the unchanged PR head `9098bd2`, which predates the fix. P1 (re-stated) ← resolved by the §13.1 completed-ratification edit; **P2 (new) ← resolved by the gate-current §Last-completed-step / §Current-state / §Exact-next-step refresh I applied proactively in pass-1 absorption** (P2 independently validates that refresh — and correctly notes §23.6.5 suppression does NOT cover gate-current surfaces). **No new content change required.** Resolution = **push the existing fix-up** so the next Codex re-review sees the fixed state. (Codex agreement with the proactive gate-current refresh is recorded as monitoring evidence for PMN-019 (iii) gate-current-refresh-at-each-transition.)
+
+**Resolution applied**: none beyond pass-1 (findings pre-resolved). Action required = owner ratifies the fix-up push (§8.3); on push, the §13.1/gate-current entries are refreshed to the completed-ratification state per §23.6.4 so the pushed commit is conformant.

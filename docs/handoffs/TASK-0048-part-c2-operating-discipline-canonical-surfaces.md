@@ -29,15 +29,15 @@ status: active
 
 Materialize §8.2, §8.3, §13/§13.1/§13.2, §10.5, §23.6.5 to enforcement-grade (schema elements + checkable predicate + Cross-references each); execute the 68-occurrence class-bound DROP (41) / REWRITE (14) / STAY (13) sweep + D2 root-file migration + the L546 fix + the +1 bare-ref; standard surfaces (Class A v2.44→v2.45, M-A7 35th, README roadmap). Last substantive-content cycle of v3.0.0; Batch P4 Actions DEFERRED to v3.1 (ADR-008).
 
-## Last completed step  *(GATE-CURRENT — Gate A state)*
+## Last completed step  *(GATE-CURRENT — post-PR / Gate-B-approach state)*
 
-All authoring + sweep + standard surfaces + cycle artifacts (PMN-019, this handoff, review-context) authored and staged. §5 verification battery run to fixed-point (10/10 PASS). Handed back at Gate A for Architect §24.3.1 five-point + (XXVI) two-gate ratification. Pre-commit Codex desktop pass + comprehensive pre-merge red-team NOT yet run (await Gate A ratification → §6 step 8).
+Authoring + sweep + standard surfaces + artifacts done; §5 battery 10/10 PASS; Gate A cleared (twice — initial + post pre-commit-absorption). Codex pre-commit/red-team absorbed (3 path-(a): F1/F2/F3); committed `9098bd2`, pushed, PR #86 opened (PR-open re-verification: actual #86 = anticipated). Codex post-PR passes 1–2 absorbed (P1 §13.1 ratification records + P2 gate-current refresh — both pre-resolved; pass-2 was a stale-commit re-review against the un-pushed head). **Fix-up ratified by owner and pushed to PR #86.**
 
-## Current state Summary  *(GATE-CURRENT — Gate A state)*
+## Current state Summary  *(GATE-CURRENT — post-PR / Gate-B-approach state)*
 
-Five Part C.2 members materialized in `core.md` in document order (§8.2 → §8.3 → §10.5 → §13/§13.1/§13.2 → §23.6.5), each schema-grade. Class-bound sweep complete: in-scope qualifier residue = 0; STAY-13 byte-unchanged; D2 migration materialized-only (§2.3.6 retained as substrate); PR-template canonical converged to live attestation form with `.github` mirror byte-unchanged; §10.5 → `github-reference.md` §3.2 cross-ref present with provenance (:148/:379) untouched; L546 + the two ruled Item-14 migrations applied. Class A v2.45 across 4 sites (zero v2.44/v2.43 residual); §18.3 M-A7 35th internally consistent across 5 sub-claims; README roadmap rotated (Part C.2 shipped). Zero open same-cycle forward-refs. Not committed, not pushed.
+Five Part C.2 members materialized in `core.md` in document order (§8.2 → §8.3 → §10.5 → §13/§13.1/§13.2 → §23.6.5), each schema-grade. Class-bound sweep complete: in-scope qualifier residue = 0; STAY-13 byte-unchanged; D2 migration materialized-only (§2.3.6 retained as substrate); PR-template canonical converged to live attestation form with `.github` mirror byte-unchanged; §10.5 → `github-reference.md` §3.2 cross-ref present with provenance (:148/:379) untouched; L546 + the two ruled Item-14 migrations applied. Class A v2.45 across 4 sites (zero v2.44/v2.43 residual); §18.3 M-A7 35th internally consistent across 5 sub-claims; README roadmap rotated (Part C.2 shipped). Zero open same-cycle forward-refs. Committed `9098bd2`, pushed; PR #86 open; Codex pre-commit (3) + post-PR passes 1–2 findings absorbed path-(a); fix-up ratified + pushed to PR #86. Awaiting the binding Codex re-review against the fixed HEAD → Gate B.
 
-## Cumulative-diff-stats  *(GATE-CURRENT — Gate A state; re-derive (e.1) at each staged-tree mutation)*
+## Cumulative-diff-stats  *(GATE-CURRENT — post-PR / Gate-B-approach state; re-derive (e.1) at each staged-tree mutation)*
 
 - **Canonical + operational surfaces**: 10 files, **+187 / −61** (net +126). Authoring (C1–C4) = +128 pure-add; sweep/migration/standard = the remainder. Per-file: core.md 140/12; usage-guide 14/14; AGENTS 6/6; CLAUDE 6/6; README 2/2; templates/AGENTS 5/5; templates/CLAUDE 5/5; templates/handoff 4/4; templates/PULL_REQUEST_TEMPLATE 4/6; templates/role-scorecard 1/1.
 - **Cycle artifacts (this pass)**: + PMN-019, + this handoff, + review-context `PR-86-codex-pre-commit.md` (3 new files).
@@ -70,9 +70,9 @@ None open. Two Item-14 finds were ruled (option-(a)) and applied. The M-A7 Actio
 
 §5 battery (10/10 PASS) — see §Sub-phase execution record + the review-context Builder-claims block. Key greps: in-scope residue = 0; STAY-13 = 13; 5 headings document-ordered; Class A v2.45 ×4; M-A7 5-claim consistency; github-reference.md + `.github` byte-unchanged.
 
-## Exact next step  *(GATE-CURRENT — Gate A state)*
+## Exact next step  *(GATE-CURRENT — post-PR / Gate-B-approach state)*
 
-Architect clears Gate A (§24.3.1 five-point + (XXVI) two-gate). Then owner runs Codex desktop pre-commit + the comprehensive pre-merge red-team (§6 step 8); Builder absorbs per §8.1.1.3 (path-(a)/(β)); Gate A re-applies. Then commit + push + **PR open — at which point re-run `gh pr list --state all` against LIVE state (not this handoff): if the real PR number diverges from the anticipated PR-86, phantom-correct ALL anticipated-PR refs (handoff `pr`/`linked_pr`, PMN-019 `linked_pr`, review-context title/metadata/filename, the M-A7 `PR-NN` term) BEFORE the post-PR pass and merge.** This is §8.2 pre-flight applied to PR-number anticipation — verify live state, never a prior handoff (F1 hardening). Then → Codex post-PR → Gate B → owner squash-merge (ADR-001 D9) → PMN-001 (k) chore + **manual M-A7 35th `PR-NN` → verified-PR substitution at core.md L583 + L585** + cycle-close ledger + TASK-0049 successor handoff.
+Owner re-invokes the binding Codex post-PR re-review (`usage-guide.md` §7.1/§7.3) against the **fixed HEAD** — sequenced AFTER this fix-up push (re-invoking against an un-pushed fix re-flags the stale head, per the pass-2 desync) → on convergence, **Gate B** (§24.3.1 + (XXVI) two-gate; origin/<branch> post-push state). Then owner squash-merge (ADR-001 D9, step 10) → PMN-001 (k) chore (squash SHA + `status: active→resolved` / `drafted→recorded`) → **manual M-A7 35th `PR-NN` → PR-86 substitution at core.md L583 + L585** (out of Action scope) → cycle-close ledger + TASK-0049 successor handoff. *(F1 hardening, already exercised at PR-open: actual #86 = anticipated; no correction needed. Retain the live-`gh pr list` re-verify discipline for any future PR-number-bearing push.)*
 
 ## §3. Step-by-step execution record  *(APPEND-ONLY HISTORICAL — never back-refreshed; volatile state by pointer; the sub-phase/cluster records below ARE the §3 step-by-step content per §23.6.5)*
 
@@ -109,9 +109,12 @@ Deferred-to-post-merge items:
   - C4 (§23.6.5): payload = authored text + diff-stats (+23) → **approved**.
   - §4.6 sweep: payload = DROP/REWRITE/STAY ledger execution + diff-stats + 2 Item-14 finds → **approved** (finds ruled option-(a)).
   - Pass B (§4.6 Item-14 migrations + §4.7 standard surfaces): payload = Class A v2.45 + M-A7 35th + README rotation → **approved** (PR-NN approach approved).
-  - Pass C / Gate A: payload = PMN-019 + handoff + review-context + §5 battery (this hand-back) → **awaiting ratification**.
-  - Codex pre-commit absorption: payload = 3 path-(a) fixes (F1/F2/F3) re-staged → **awaiting Gate A re-application**.
+  - Pass C / Gate A: payload = PMN-019 + handoff + review-context + §5 battery → **owner ratified** (Gate A cleared).
+  - Codex pre-commit absorption: payload = 3 path-(a) fixes (F1/F2/F3) re-staged → **owner ratified** (Gate A re-cleared).
+  - Commit + push + PR-open (step 9): payload = commit `9098bd2` + branch push + PR #86 open + PR-open live re-verification (actual #86 = anticipated PR-86) → **owner authorized**.
+  - Codex post-PR absorption (passes 1–2): payload = post-PR P1 fix (§13.1 ratification records) + pass-2 stale-commit-desync absorption (P1 re-stated + P2 gate-current, both pre-resolved) → **owner ratified** (fix-up push granted).
+  - *Genuinely-pending (truthful `awaiting`, not a missing field)*: binding Codex post-PR re-review of the fixed HEAD → **Gate B** → owner squash-merge (step 10). These are the cycle's next steps, not completed §8.3 payloads.
 - **Pre-flight reports (§8.2)**: step-1 = 16/16 PASS; per-cluster (j)-sweeps + (e.1) diff-stat re-derivations at each staged-tree mutation. (Per §13.1 enforcement-coupling, these pre-flight reports + the ratifications above are the durable §8.2/§8.3 record for this cycle.)
-- **Hand-back point**: Gate A re-application (post Codex pre-commit absorption).
+- **Hand-back point**: Gate B (post-PR convergence; §24.3.1 + (XXVI) two-gate).
 
-*(Architect Phase-1 spec-authoring session + Reviewer pre-commit session are recorded in the PR-description current-set per §13.2 and the review-context once the Codex pass runs.)*
+*(Architect Phase-1 spec-authoring session is recorded in the PR-description current-set per §13.2; the Reviewer Codex pre-commit + post-PR passes are recorded verbatim in `docs/reviews/PR-86-codex-pre-commit.md` per §8.1.1.1/§8.1.1.2.)*
