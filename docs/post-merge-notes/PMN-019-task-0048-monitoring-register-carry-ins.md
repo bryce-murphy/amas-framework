@@ -1,9 +1,9 @@
 ---
 post_merge_note_id: PMN-019
 title: TASK-0048 monitoring register — four TASK-0047 carry-in observations + first-evidence
-linked_pr: PR-86 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-86 (squash SHA 0eb51f7)
 framework_version_dogfooded: AMAS v2.44 → v2.45
-status: drafted
+status: recorded
 ---
 
 # PMN-019 — TASK-0048 monitoring register — four TASK-0047 carry-in observations + first-evidence
