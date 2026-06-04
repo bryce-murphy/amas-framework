@@ -130,3 +130,25 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 **Adjudication** (per `core.md` §8.1.1.3): **path-(a) revise**, P2 load-bearing. **2nd recurrence of the self-volatile-pinned-total class** (pass-3 = legend/L44 pointers; pass-4 = this review-context resolution pinning "+478"). Codex correct. Root cause: a *narrative* record pinned a self-volatile total, which the terminal-fix (L44 478→493) then superseded. **Resolution = de-pin, not re-pin** — narrative records reference volatile state **by pointer** per §23.6.5 (NOT the deferred L44 gate-current refinement). Class-swept all pinned-total references: kept the *stable* canonical +187/−61 (§Cumulative-diff-stats L42), de-pinned the review-context resolution → by-pointer, re-derived L44 (gate-current full-total) to fixed-point.
 
 **Resolution applied** (path-(a), de-pin): review-context resolution (L120) "+478/−61" → by-pointer; pass-4 record (this section) references totals by pointer only; handoff §13.1 + gate-current refreshed (pass-4 push ratification recorded; next re-review framed pass-agnostically); L44 re-derived to fixed-point. PMN-019 (ii) updated: 2nd recurrence logged; the §23.6.5-refinement candidate (de-pin L44's self-volatile full-total, keep only the stable canonical figure as gate-current) strengthened to 2 data points — surfaced to owner for a ratification decision at the fix-up stop-and-show.
+
+### Codex post-PR pass 5 (UTC 2026-06-04T01:46) — re-review against `7daa361`
+
+**Verdict**: 1 P2 finding (line-level), routed path-(a). **First finding in canonical text** this arc (all prior post-PR findings were handoff/review-context artifacts) — the de-pin (pass-4) converged the self-volatile-pinned-total class; pass-5 surfaced a genuine internal contradiction in the §23.6.5 text authored this cycle.
+
+**Finding** (verbatim):
+
+> **[P2] Clarify the append-only pinned-value rule** (`core.md:711`). This blanket statement says append-only historical surfaces must reference volatile state by pointer, not by pinned value, but the same new §23.6.5 suppression clause below says a pinned value in an append-only surface is correct-by-design historical record. In contexts where an append-only record quotes prior diff totals or verbatim reviewer output, this internal contradiction can make valid historical values look like §23.6.5 violations; narrowing this sentence to current/gate-state references would keep the taxonomy consistent.
+
+**Adjudication** (per `core.md` §8.1.1.3): **path-(a) revise**, P2 load-bearing. First finding in the **§23.6.5-internal-consistency** class. Codex correct — the unqualified "not by pinned value" rule contradicts the suppression clause (which protects pinned *historical* values). Self-instantiation note: this very arc created the conflict's trigger (passes 3–4 produced append-only records quoting prior totals "+478/+493" + verbatim Codex output — exactly the historical pinned values the rule would wrongly flag). **This is a canonical-law change** (core.md §23.6.5), unlike the prior artifact-only post-PR fix-ups.
+
+**Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
+
+### Codex post-PR pass 6 (UTC 2026-06-04T10:06) — stale-head re-flag against `7daa361`
+
+**Verdict**: 1 P2 (line-level), routed **path-(β) record-and-proceed** — stale-head re-flag, not a new defect.
+
+**Finding** (verbatim):
+
+> **[P2] Narrow by-pointer rule to live references** (`core.md:711`). This still says all append-only historical surfaces must reference volatile state by pointer "not by pinned value." For historical snapshots that intentionally preserve the value that was true when written (e.g., prior diff totals or verbatim reviewer-output records), this conflicts with the §23.6.5 suppression clause… Please scope the by-pointer requirement to current/live references so historical snapshot pins are not simultaneously required and forbidden.
+
+**Adjudication** (per `core.md` §8.1.1.3): **path-(β) record-and-proceed**. Same finding, same class, same line as pass-5 P2. **ROOT CAUSE = relay-ordering desync (2nd instance)**: the pass-5 fix-up was staged but awaiting Architect Gate A re-clear on the canonical change; Codex re-reviewed the un-pushed `7daa361` and re-flagged the unchanged text. The staged fix-up pre-resolves this finding exactly. **No new content change.** PMN-019 (iii) relay-ordering observation strengthened to 2 instances (pass-2 + pass-6).
