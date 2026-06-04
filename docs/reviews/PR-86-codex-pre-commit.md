@@ -143,6 +143,20 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 
 **Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
 
+### Codex post-PR pass 8 (UTC 2026-06-04T12:52) — re-review against `d8f9d9b`
+
+**Verdict**: 1 P2 finding (line-level), routed path-(a). Pass-8 confirmed §13.1 by-pointer fix landed + the by-pointer class exhausted; surfaced a **new, distinct-class** logic defect in §8.2 (pre-branch timing).
+
+**Finding** (verbatim):
+
+> **[P2] Check the proposed branch before pre-branch pre-flight** (`core.md:168`). When §8.2 is run at the pre-branch stop-and-show (the section's own output form and `usage-guide.md` §3.3 both put this before branch creation), the current working branch is still typically `main`, so requiring the **working branch** to match the task-branch regex makes a conforming pre-branch pre-flight fail or encourages Builders to create the branch before the branch-name check. This should validate the proposed branch name at pre-branch time, or distinguish pre-branch from post-branch evidence.
+
+**Adjudication** (per `core.md` §8.1.1.3): **path-(a) revise**, P2 load-bearing. **First finding in the §8.2-pre-branch-timing class** (distinct from the by-pointer-consistency class; NOT a recurrence). Codex correct — and self-instantiating: this cycle's own step-1 pre-flight ran on `main` pre-branch and reported "16/16 PASS" only by silently validating the *proposed* branch name, not the working branch (which was `main`, non-conforming). The canonical item (4) text said "the working branch matches," contradicting the pre-branch output-form timing.
+
+**Resolution applied** (path-(a)): `core.md:168` item (4) now distinguishes **pre-branch** (validate the *proposed* task branch name) from **post-branch** (verify the actual working branch), with an explicit note that at pre-branch time the working branch is the base branch and must not be the regex target. §8.2 output form (pre-branch stop-and-show) + predicate + cross-refs unaffected. Canonical figure re-checked below.
+
+---
+
 ### Codex post-PR pass 7 (UTC 2026-06-04T10:31) — re-review against `a6aca94`
 
 **Verdict**: 1 P2 finding (line-level), routed path-(a). Pass-7 confirmed §23.6.5 internal contradiction resolved; surfaced the same live-vs-historical-snapshot ambiguity now in §13.1.
