@@ -160,7 +160,7 @@ Family members compose: bounded-continuation governs path-(a) vs path-(β) routi
 
 The Builder verifies state before any remote-visible or destructive action. Two assertion sources are treated as §24.2(a) external-system-behavior assertions requiring receiving-side verification: the Architect's handoff/prompt claims about repository state, and the Builder's own assumptions about actual repository state. Pre-flight is the §24.3 receiving-side caveat-discipline applied at the Builder receiving surface — symmetric to §8.1 (Builder receiving Reviewer findings) and §8.3 (owner receiving Builder stop-and-show), each a distinct surface in the cycle's communication topology per the §8 intro. It is the catch point before damage propagates: a wrong assertion caught at pre-flight costs a re-check; the same assertion caught after a push costs a force-push rename or a revert.
 
-**Required pre-flight evidence set.** Before the first remote-visible or destructive action of a working session, the Builder produces a pre-flight report enumerating at minimum:
+**Required pre-flight evidence set.** Before **branch creation** and before the first repo-writing, remote-visible, or destructive action of a working session — whichever comes first; per `usage-guide.md` §3.3 pre-flight precedes branch creation — the Builder produces a pre-flight report enumerating at minimum:
 
 1. **Working-tree state vs expected** — `git status` confirms the tree matches the expected baseline (clean, or carrying only the expected work).
 2. **HEAD anchor matches handoff-claimed anchor** — `git rev-parse HEAD` equals the anchor the handoff/spec asserts; divergence is surfaced, never silently absorbed.
@@ -174,7 +174,7 @@ The Builder verifies state before any remote-visible or destructive action. Two 
 
 **Reconciliation with substrate.** AMAS v2.14.1 §8.2 is the lineage source for the pre-flight discipline. The v3 dogfooded practice — an enumerated, independently-verified, PASS/FAIL evidence set surfaced at a named stop-and-show — governs where the two diverge; the substrate is cited as lineage, not as the operative form.
 
-**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action itself is deferred to v3.1 per ADR-008): a pre-flight report exists, enumerates at least the required evidence set above, and every enumerated item is PASS before the first remote-visible action of the session. A claimed pre-flight that asserts items without independent verification, or that proceeds past a FAIL without owner adjudication, is a §8.2 violation.
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action itself is deferred to v3.1 per ADR-008): a pre-flight report exists, enumerates at least the required evidence set above, and every enumerated item is PASS **before branch creation and before the first repo-writing or remote-visible action** of the session. A session that creates the task branch or authors files with no preceding pre-flight is a §8.2 violation **even if a report later appears before `git push`** (a push-gated check would miss the branch/base-state mistake class this discipline exists to catch). A claimed pre-flight that asserts items without independent verification, or that proceeds past a FAIL without owner adjudication, is likewise a §8.2 violation.
 
 **Cross-references.** §8.1; §8.3; §13.1; §24.2(a); §24.3; §24.3.1; §23.6.
 
@@ -186,6 +186,7 @@ Stop-and-show is the Builder pausing for explicit owner ratification before any 
 
 - `git push`
 - `gh pr create`
+- `gh pr edit` (and any other post-creation PR-body mutation — remote-visible, and can change the AI Session Log, bypass acknowledgment, or validation claims)
 - branch deletion
 - force push
 - any other destructive or irreversible operation (history rewrite, file deletion outside the ratified change set, remote-ref mutation)
@@ -216,13 +217,13 @@ In a single-contributor repository, the second-reviewer merge-gating that branch
 2. **Merge-action scope only** — the bypass is scoped to the PR-merge action; it does not bypass `git push`, CI checks, or any other gate.
 3. **Gates cleared first** — the PR cleared all automated gates and the §24.5 multi-surface review pipeline before merge.
 4. **Squash-only merge** — the merge uses squash, producing a single squash-merge commit.
-5. **Acknowledged in the cycle record** — the bypass is recorded as owner action.
+5. **Acknowledged** — each bypass invocation is logged automatically by GitHub and is itself the implicit acknowledgment of full owner responsibility for the merge state; **no additional artifact is required at single-cycle scope** (per `github-reference.md` §3.2). The acknowledgment may optionally be made explicit in the squash-commit message, a pinned PR comment, or the §13 AI Session Log.
 
-**Acknowledgment surface.** The handoff / PR records the admin-bypass merge as owner action per ADR-001 D9; the durable record lives in the §13 AI Session Log surface — the in-cycle session record per §13.1, finalized into the cycle-close content per §13.2.
+**Acknowledgment surface.** The bypass is acknowledged by GitHub's automatic bypass log per `github-reference.md` §3.2 — **no additional artifact is required at single-cycle scope**. Where a project keeps an explicit record, the acknowledgment may be noted in the squash-commit message or a pinned PR comment (per `usage-guide.md` §3.9), or in the §13 AI Session Log (the in-cycle record per §13.1, finalized per §13.2). Sustained-multi-contributor projects document the bypass posture in an ADR.
 
-**Reconciliation with substrate.** AMAS v2.14.1 §10.5 is the lineage source. The v3 dogfooded practice — the five checkable bypass predicates plus the §13 acknowledgment surface — governs where the two diverge; the substrate is cited as lineage only. The GitHub-specific operational grounding for this posture (ruleset configuration, the bypass mechanics, the recording-the-bypass discipline) lives at `github-reference.md` §3.2.
+**Reconciliation with substrate.** AMAS v2.14.1 §10.5 is the lineage source. The v3 dogfooded practice — the five checkable bypass predicates, acknowledged by GitHub's automatic bypass log (no additional artifact required at single-cycle scope; §13 / squash-message / pinned-comment optional) — governs where the two diverge; the substrate is cited as lineage only. The GitHub-specific operational grounding for this posture (ruleset configuration, the bypass mechanics, the recording-the-bypass discipline) lives at `github-reference.md` §3.2.
 
-**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action is deferred to v3.1 per ADR-008): a merged PR in a single-contributor repo carries the bypass acknowledgment, the squash-merge, and all-gates-passed evidence. A merge missing any of these is a §10.5 violation.
+**Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; the Action is deferred to v3.1 per ADR-008): a merged PR in a single-contributor repo has the bypass logged (GitHub-automatic), is squash-merged, and cleared all automated gates + the §24.5 pipeline before merge. A merge missing the squash-merge or all-gates-passed evidence is a §10.5 violation. **No additional acknowledgment artifact beyond the automatic bypass log is required at single-cycle scope** (consistent with `github-reference.md` §3.2 and `usage-guide.md` §3.9) — its absence is not a violation.
 
 **Cross-references.** §8.3; §13; §24.5; ADR-001 D9; `github-reference.md` §3.2.
 

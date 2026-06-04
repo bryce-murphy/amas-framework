@@ -143,6 +143,29 @@ Three-endpoint poll per `core.md` §8.1.1.1 (reviewed commit `9098bd2`): endpoin
 
 **Resolution applied** (path-(a)): `core.md:711` narrowed — the by-pointer rule now governs **current/live** volatile state; a value pinned as a **historical snapshot** (prior diff totals, verbatim reviewer output) is explicitly carved out as correct-by-design per the suppression clause. In-place edit (no core.md line-count change → canonical figure +187/−61 unchanged). Canonical §23.6.5 suppression clause + checkable predicate intact; the deferred core.md/handoff-template *structural* refinement (PMN-019 candidate) is unaffected. Gate A re-cleared on the canonical change; push ratified.
 
+### Codex post-PR pass 9 (UTC 2026-06-04T13:09) — re-review against `173484e`
+
+**Verdict**: 3 findings (2 P1, 1 P2), all path-(a), all **new distinct classes** (cross-surface consistency between materialized canon and `usage-guide.md` / `github-reference.md`). Pass-9 confirmed pass-8 §8.2 timing fix landed. **STAGED, not pushed** (per the standing canonical-fix-up stage-and-hand-back instruction).
+
+**Findings** (verbatim, abridged):
+
+> **[P1] Enforce pre-flight before branching or editing** (`core.md:177`). The §8.2 predicate only requires the report before the first remote-visible action, but the output form + `usage-guide.md` §3.3/§12 place pre-flight before branch creation / repo-writing — a Builder could branch + author files with no pre-flight and still pass, missing the branch/base-state mistake class.
+>
+> **[P1] Reconcile the bypass acknowledgment surface** (`core.md:221`). §10.5 requires the durable bypass record in the §13 AI Session Log, but `github-reference.md` §3.2 + `usage-guide.md` §3.9 say GitHub's automatic log suffices / no additional artifact required → §10.5's predicate can fail a merge the operational guides explicitly allow.
+>
+> **[P2] Add PR edits to the stop-and-show trigger list** (`core.md:193`). §8.3 omits `gh pr edit`, which `usage-guide.md` §12 gates; PR-body edits are remote-visible and mutate Session Log / bypass / validation claims.
+
+**Adjudication** (per `core.md` §8.1.1.3): all **path-(a) revise**, first-finding-in-class each; verified real against the cross-referenced surfaces (github-reference §3.2 + usage-guide §3.3/§3.9/§12 read directly). Cross-surface internal-consistency class — the materialized canon over-/under-specified relative to its sibling trio surfaces.
+
+**Resolution applied** (path-(a), 3 canonical edits to core.md):
+- **P1-a §8.2** (intro + predicate): pre-flight required **before branch creation and the first repo-writing/remote-visible action** (not merely before push); a session that branches/authors with no preceding pre-flight is a §8.2 violation even if a report later appears before push. Aligns with usage-guide §3.3 + the §8.2 output form.
+- **P1-b §10.5** (predicate (5) + acknowledgment surface + checkable predicate + reconciliation line): acknowledgment = GitHub's automatic bypass log; **no additional artifact required at single-cycle scope** (§13 / squash-message / pinned-comment optional). Aligns with github-reference §3.2 + usage-guide §3.9; github-reference.md + usage-guide.md unchanged (canon aligned to them).
+- **P2 §8.3** (trigger list): added `gh pr edit` (+ any post-creation PR-body mutation). Aligns with usage-guide §12.
+
+Canonical figure re-derived (the §8.3 `gh pr edit` bullet adds +1 line; see handoff §Cumulative-diff-stats). **STAGED; awaiting Architect Gate A + push ratification.**
+
+---
+
 ### Codex post-PR pass 8 (UTC 2026-06-04T12:52) — re-review against `d8f9d9b`
 
 **Verdict**: 1 P2 finding (line-level), routed path-(a). Pass-8 confirmed §13.1 by-pointer fix landed + the by-pointer class exhausted; surfaced a **new, distinct-class** logic defect in §8.2 (pre-branch timing).
