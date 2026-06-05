@@ -6,9 +6,9 @@ Operating instructions for Claude (Claude Code, Claude.ai Projects) working on t
 
 This repository **is** the AMAS framework. Work in this repo follows AMAS itself ("dogfooding"): the framework operates under its own rules.
 
-- **Active framework version**: AMAS v3.0 (in development; current canonical materialization at v2.45 — see README)
+- **Active framework version**: AMAS v3.0.0 (published from this repository; see README version-positioning note)
 - **Substrate canonical reference**: AMAS v2.14.1 lives at https://github.com/recruiting-tech/upcds/blob/main/docs/ai-operating-system.md and is the substrate from which the v3 canonical-law trio is being authored per ADR-003
-- **Repository status**: AMAS v3.0 trio is in active production in this repository (canonical-law trio: `core.md`, `github-reference.md`, `usage-guide.md` — all materialized; full v3.0 package per ADR-003 D2 thirteen-substantive-PR sequence in progress).
+- **Repository status**: AMAS v3.0.0 is published from this repository (canonical-law trio: `core.md`, `github-reference.md`, `usage-guide.md` — all materialized; the v3.0.0 minimum-viable canonical framework package complete per ADR-008 D2 amended scope).
 - **v3.0 scope framing**: per [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md) (2026-05-20), v3.0 ships canonical disciplines + materialized templates + project-kickoff prompts as the minimum-viable framework (canonical-law trio + Part C.1 + Part C.2 + Batches P1-P3 + release polish). Deterministic-enforcement automation (Batch P4 Actions) lands at v3.1 minor release; comprehensive reference + adapter packs (Batches P5-P7) at v3.2.
 
 ## Mandatory read order (before any meaningful work)
