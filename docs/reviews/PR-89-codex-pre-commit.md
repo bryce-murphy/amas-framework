@@ -2,18 +2,18 @@
 status: drafted
 ---
 
-# PR-NN Codex desktop pre-commit review
+# PR-89 Codex desktop pre-commit review
 
-> PR-NN literal per Gate-A R3 (phantom-correct to the actual PR number at PR-open, against live `gh pr list --state all`; highest merged = 88 at authoring → PR-89 anticipated). No linked-pr-fix-up Action constraint applies to this file, so the `PR-NN` placeholder is safe here (the handoff frontmatter `pr`/`linked_pr` carry numeric `PR-89` because the Action regex `PR-(\d+)` requires a numeric token).
+> PR-NN→PR-89 phantom-correct applied at PR-open (2026-06-05; live `gh pr list --state all` confirmed highest merged = 88 → PR-89). No linked-pr-fix-up Action constraint applies to this file (the handoff frontmatter `pr`/`linked_pr` carry numeric `PR-89` for Action-regex compliance; `core.md` §18.3 `PR-NN` stays literal until the post-merge PMN-001(k) chore).
 
 ## Metadata
 
-- PR: PR-NN (anticipated; PR-89 expected — phantom-correct at PR-open)
+- PR: PR-89 (https://github.com/bryce-murphy/amas-framework/pull/89)
 - Branch: feat/task-0049-release-polish-v3.0.0-tag
 - Cycle: TASK-0049 (final cycle of v3.0.0 per ADR-008 D2)
 - Linked handoff: docs/handoffs/TASK-0049-release-polish-v3.0.0-tag.md
 - Status: drafted
-- Codex desktop session timestamp (UTC): TBD at pre-commit pass
+- Codex desktop session timestamp (UTC): 2026-06-05
 
 ## Builder claims to verify
 

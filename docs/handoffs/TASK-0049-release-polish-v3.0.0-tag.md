@@ -19,10 +19,10 @@ status: drafted
 
 - Task ID: TASK-0049 (matches PR-89 anticipated)
 - Linked Issue: none
-- Linked PR: PR-89 — URL TBD at PR-open (substituted post-merge per PMN-001 (k); phantom-correct at PR-open vs live `gh pr list --state all`, highest merged = 88 at authoring)
+- Linked PR: PR-89 — https://github.com/bryce-murphy/amas-framework/pull/89 (squash SHA substituted post-merge per PMN-001 (k))
 - Linked ADR(s): ADR-003, ADR-006, ADR-007, ADR-008 (D2 final-slot reconciliation)
 - Linked Feature Brief: none (release-polish cycle, ADR-008 D2 tracked)
-- Linked review-context file: docs/reviews/PR-NN-codex-pre-commit.md (PR-NN literal per Gate-A R3; phantom-correct at PR-open)
+- Linked review-context file: docs/reviews/PR-89-codex-pre-commit.md (phantom-corrected PR-NN→PR-89 at PR-open)
 - Owner role: Builder (Claude Code, Windows / Git Bash)
 - Previous role: Architect (handoff direction Architect → Builder)
 - Timestamp (UTC): 2026-06-05T12:56:14Z
