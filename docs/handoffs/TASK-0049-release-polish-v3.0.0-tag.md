@@ -147,7 +147,7 @@ See §6 of the review-context (`docs/reviews/PR-NN-codex-pre-commit.md`) for the
 
 ## §10. Cycle-close ledger
 
-**Ship.** TASK-0049 — release polish + v3.0.0 tag — closes v3.0.0 per ADR-008 D2. Final cycle of the v3.0.0 line; no new canonical disciplines (Part C.2 frozen). Substantive PR-89 squash `0a11b84`; PMN-001(k) linked-pr fix-up PR-90; this close-reconciliation resolves the M-A7 36th-instance placeholder. v3.0.0 annotated tag applied by owner to this PR's merge SHA — the placeholder-free resolved state (owner post-merge action, not in this diff).
+**Ship.** TASK-0049 — release polish + v3.0.0 tag — closes v3.0.0 per ADR-008 D2. Final cycle of the v3.0.0 line; no new canonical disciplines (Part C.2 frozen). Substantive PR-89 squash `0a11b84`; PMN-001(k) linked-pr fix-up PR-90; this close-reconciliation resolves the M-A7 36th-instance placeholder. The owner will apply the v3.0.0 annotated tag to this PR's merge SHA as a post-merge action (not in this diff); that commit — where §18.3 reads PR-89 — is the placeholder-free resolved state the tag will mark.
 
 **M-A7 reconciliation.** 36th instance = PR-89 (substantive-cycle PR; not a defect-fix patch or chore-fix-up/reconciliation exclusion per §18.3). §18.3 amended to `+ PR-86 + PR-89 = 36`, "36 consecutive substantive cycles", span v2.16 → v3.0.0, preamble "as of v3.0.0 canonicalization at PR-89 / TASK-0049". `PR-NN` carried literal through the substantive squash (S1) and resolved here per PMN-001(k). PR-90 and this PR are excluded from M-A7.
 
@@ -162,10 +162,10 @@ See §6 of the review-context (`docs/reviews/PR-NN-codex-pre-commit.md`) for the
 2. *Finding-addressing push post-dating the binding review.* The path-(α') fix (`2991c81`) landed after the binding pass (@ `3460a32`); benign — the delta was a non-reviewable status-lifecycle field — absorbed at Gate B on diff-scope confirmation. Relay-ordering-adjacent (inverse of the PMN-019 desync mode).
 
 **Architect-side carry-observations (process, for PMN-019):**
-- *Instance-fix-not-class-sweep on the no-tag-claim principle.* Gate-A R1 enforced "no tag-existence claim" at core.md §18.4 only; README L9/L30 carried the same class, caught by Codex Finding 4. Class-sweep principles across all bump surfaces at ruling-time.
+- *Instance-fix-not-class-sweep on the no-tag-claim principle.* Gate-A R1 enforced "no tag-existence claim" at core.md §18.4 only; README L9/L30 carried the same class, caught by Codex Finding 4. The §10 ledger re-instantiated the same class (completed-claim tag framing) a third time; caught at the PR-91 review (Codex P2) and forward-framed here (this path-(a)). Class-sweep the principle across all bump surfaces + ledger prose at ruling-time.
 - *Self-volatile-pinned-total inside the verification battery.* The Codex pre-commit claim set itself pinned a moving v2.45 count (Finding 2); §23.6.5 reference-by-pointer binds the red-team scaffold too.
 
-**Tag-target refinement (supersedes Phase-1 Adj 7 / spec §8).** v3.0.0 tagged on the post-close-reconciliation SHA (this PR's merge SHA), not the substantive squash (S1) or the PR-90 linked-pr-fix-up SHA: only after this PR does core.md §18.3 read `PR-89` (resolved). Adopters clone the tag, so it must mark the resolved, placeholder-free canonical state.
+**Tag-target refinement (supersedes Phase-1 Adj 7 / spec §8).** The v3.0.0 tag targets the post-close-reconciliation SHA (this PR's merge SHA), not the substantive squash (S1) or the PR-90 linked-pr-fix-up SHA: only after this PR does core.md §18.3 read `PR-89` (resolved). Adopters clone the tag, so it must mark the resolved, placeholder-free canonical state.
 
 ## §11. Session log archive  *(§13.1 in-cycle records; current set per §13.2 in PR body)*
 
