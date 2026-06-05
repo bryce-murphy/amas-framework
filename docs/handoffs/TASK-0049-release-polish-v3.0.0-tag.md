@@ -5,12 +5,12 @@ pr: PR-89
 branch: feat/task-0049-release-polish-v3.0.0-tag
 linked_predecessor: TASK-0048 (PR-86 squash 0eb51f7; Part C.2 operating-discipline canonical surfaces)
 linked_successor: TBD
-linked_pr: PR-89 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-89 (squash SHA 0a11b84)
 framework_version_dogfooded: v3.0.0
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/TASK-0049-release-polish-v3.0.0-tag-spec.md
 date_authored: 2026-06-05
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0049 — Release polish + v3.0.0 tag
