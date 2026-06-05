@@ -10,7 +10,7 @@ framework_version_dogfooded: v3.0.0
 production_target: v3.0.0
 spec_source: .claude/session-handoffs/TASK-0049-release-polish-v3.0.0-tag-spec.md
 date_authored: 2026-06-05
-status: drafted
+status: active
 ---
 
 # HANDOFF: TASK-0049 — Release polish + v3.0.0 tag
@@ -28,7 +28,7 @@ status: drafted
 - Timestamp (UTC): 2026-06-05T12:56:14Z
 - Last synced commit SHA: 7e2ee62 (main HEAD at pre-flight)
 - Branch: feat/task-0049-release-polish-v3.0.0-tag
-- Status: drafted
+- Status: active
 - Direction: Architect → Builder (universal handoff schema, core.md §14.1)
 - Framework version: v3.0.0 (this cycle's bump target)
 - Recursive-self-instantiation salience: MEDIUM (per spec §0; version-bump propagation discipline = PMN-019 §2.(v) grep-enumerated bidirectional sweep, baked in as authoring-time input)
