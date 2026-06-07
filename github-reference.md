@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.1
+framework_version: 3.0.2
 status: recorded
 filled_by: PR-17 (TASK-0017)
 ---
@@ -334,7 +334,7 @@ surfaces:
     path: AGENTS.md
     template_version: 3.0.0      # Action reads this
     canonical_version: 3.0.1     # framework anchor (optional)
-    agents: [claude, codex]      # receiving surface
+    agents: [codex]              # receiving surface (Codex products read AGENTS.md)
     status: active
   - name: CLAUDE.md
     path: CLAUDE.md
