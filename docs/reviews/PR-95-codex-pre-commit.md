@@ -1,5 +1,5 @@
 ---
-status: drafted
+status: recorded
 ---
 
 # PR-95 Codex desktop pre-commit review — TASK-0051 surface-version-sync-check materialization
