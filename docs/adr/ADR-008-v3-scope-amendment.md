@@ -109,6 +109,14 @@ Distributed-update discipline per ADR-006 D4 + Item 14 retroactive-supersession-
 - **README package-layout tables**: row-level `[v3.1-planned]` / `[v3.2-planned]` annotation in existing `filled_by` column at 28 deferred-stub rows. Annotation form preserves table structural shape (no new column added) while making v3.0-vs-v3.1-vs-v3.2 distinction visible at adopter-readable scan.
 - **AGENTS.md + CLAUDE.md positioning addition**: brief positioning addition near top of file referencing v3.0 minimum-viable framework + v3.1+ enhancement roadmap. Preserves existing operational content per Adj 5 ratification — positioning is supplemental framing, not operational-content rewrite.
 
+### Decision 6 — Release-track bump posture (added v3.0.1 per TASK-0050)
+
+**Release-track bump posture.** When a roadmap-defined release (per Decision 4 — e.g., v3.1 = Batch P4's nine enforcement Actions; v3.2 = Batches P5–P7) develops across multiple cycles, the dogfood `framework_version` increments at **patch** tier on each intra-release-track cycle, regardless of that cycle's per-cycle `core.md` §18.4 content class. The minor (or major) bump that the release-track's aggregate new content warrants under the §18.4 substantive-reading interpretation fires **once**, at the release-completion cycle, sized to the release scope and carried by the release tag.
+
+This subordinates per-cycle §18.4 tiering to the release-track during multi-cycle release development, keeping the dogfood counter aligned with the release-track and preventing dogfood-counter / release-label divergence (the v2.42 conflation defect class). It generalizes to all roadmap-defined releases, not v3.1 only.
+
+`core.md` §18.4 carries a pointer-note to this Decision; the substantive-reading tiering at §18.4 remains canonical for standalone (non-release-track) cycles and for sizing the release-completion bump. Self-application: TASK-0050, the first intra-v3.1-release-track cycle post-v3.0.0, bumps at **patch** (v3.0.0 → v3.0.1) under this posture even though it canonicalizes a new discipline (which under bare §18.4 would read minor) — a recursive-self-instantiation positive (AMAS precedent: PR-13). The v3.1.0 minor bump fires once at v3.1 release completion (all nine Actions shipped).
+
 ## Alternatives considered
 
 ### (A) ADR-003 Decision 1 reaffirmation (no amendment)

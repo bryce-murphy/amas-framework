@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.0
+framework_version: 3.0.1
 status: partial
 filled_by: PR-10 (TASK-0010) Part A — verify-before-assert cluster (§8.1.1, §23.6, §24.3); Part B in TASK-0011+
 ---
@@ -581,11 +581,11 @@ Between PR-open and squash-merge, post-PR-window content accumulates that is rel
 3. `80f5a4a` (PR-10 squash, same commit) — instance of class (d) self-referential pattern-promotion entry: explicit "M-A7 promotion trigger met (second instance of the merge-commit-body data integration pattern this cycle)" — strongest possible empirical confirmation by pattern self-naming at the cycle that promotes it.
 4. `817c12f` (PR-11 squash, 2026-05-02) — instance of class (a) Reviewer-engagement absorption summary: 5-finding Codex post-PR review absorption (4 path-(a) + 1 path-(β); cycle close at 3 review passes within spec §5 step 15's 4-pass cap), bounded-continuation rule applications recorded.
 
-**Cumulative empirical instances post-v2.16 canonicalization** (as of v3.0.0 canonicalization at PR-89 / TASK-0049):
+**Cumulative empirical instances post-v2.16 canonicalization** (as of v3.0.1 canonicalization at PR-NN / TASK-0050):
 
-The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 + PR-43 + PR-45 + PR-48 + PR-52 + PR-54 + PR-56 + PR-58 + PR-60 + PR-62 + PR-64 + PR-66 + PR-68 + PR-71 + PR-73 + PR-75 + PR-80 + PR-83 + PR-86 + PR-89 = 36` empirical instances spanning v2.16 through v3.0.0 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
+The original four-instance empirical grounding above documented the M-A7 promotion event at PR-13 / v2.16. Subsequent substantive-cycle PRs have continued instantiating the M-A7 pattern at consistent cadence. Cumulative count per established enumeration `PR-9 + PR-10 + PR-11 + PR-13 + PR-15 + PR-17 + PR-19 + PR-21 + PR-25 + PR-27 + PR-29 + PR-31 + PR-33 + PR-35 + PR-37 + PR-39 + PR-41 + PR-43 + PR-45 + PR-48 + PR-52 + PR-54 + PR-56 + PR-58 + PR-60 + PR-62 + PR-64 + PR-66 + PR-68 + PR-71 + PR-73 + PR-75 + PR-80 + PR-83 + PR-86 + PR-89 + PR-NN = 37` empirical instances spanning v2.16 through v3.0.1 canonicalization (substantive-cycle PRs only; defect-fix patches and chore-fix-up substitution PRs excluded per established M-A7 inclusion criterion).
 
-The pattern has stabilized into operational steady-state across 36 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
+The pattern has stabilized into operational steady-state across 37 consecutive substantive cycles; further cumulative-count amendments occur as Architect-side post-merge maintenance per established M-A7 cadence.
 
 Four-instance evidence (PMN-005 §6/§7 candidate framing → PMN-006 §6.2 operationally canonical → PMN-006 §6.2 explicit canonical-text deferral to Part B → this PR canonical §-section text) promotes M-A7 from operationally canonical to canonical §-section text.
 
@@ -606,6 +606,8 @@ The strict-literal alternative — bump only when a new top-level §-section is 
 **Application discipline.** The cycle Architect adjudicates the bump-or-not-bump call at cycle close, after canonical content is authored and before owner squash-merges. Adjudication considers: (i) substantive-content scope (lines of new canonical text, number of new disciplines / monitoring items / mechanisms); (ii) feature-class cluster boundaries (single-cluster minor; multi-cluster substantive may warrant evaluation against major); (iii) backward-compatibility (any breaking change to artifact forms or canonical patterns); (iv) cross-section dependency (whether new content cascades into multiple sections that all need updating).
 
 If the Architect adjudication is ambiguous (e.g., the cycle's content sits at the patch/minor boundary), the default is to bump — under-bumping understates evolution, over-bumping is a noop for adopters who absorb incrementally.
+
+**Release-track bump posture.** During multi-cycle development of a roadmap-defined release (ADR-008 D4), per-cycle bump tiering is governed by the release-track posture canonicalized at ADR-008: intra-release-track cycles bump at patch tier; the release's aggregate minor/major bump fires once at release completion. This subordinates the per-cycle substantive-reading tiering above to the release-track during multi-cycle release development. See ADR-008 for the decision.
 
 **Cross-reference: §18.1.** Bump-trigger criteria and PMN-trigger criteria are independent. A cycle may trigger PMN authorship without triggering a version bump (e.g., a workflow-change PMN documenting a new pre-flight discipline that doesn't add canonical text). A cycle may trigger a version bump without PMN authorship (rare; typically a substantive-content cycle without unexpected friction).
 
