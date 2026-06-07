@@ -1,11 +1,11 @@
 ---
 task_id: TASK-0051
 title: surface-version-sync-check Action materialization (first v3.1 Batch-P4 Action)
-pr: PR-NN
+pr: PR-95
 branch: feat/task-0051-surface-version-sync-check
 linked_predecessor: TASK-0050 (PR-92 squash 265d2a8; surfaces.yml schema reconciliation + release-track posture)
 linked_successor: TBD
-linked_pr: PR-NN (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-95 (Builder fills with squash SHA post-merge per PMN-001 (k))
 framework_version_dogfooded: AMAS v3.0.2
 production_target: AMAS v3.1
 spec_source: .claude/session-handoffs/amas-cycle-kickoff-task0050-surface-version-sync-check.md + TASK-0051 re-kick directive (deltas + correction)
@@ -17,12 +17,12 @@ status: active
 
 ## Metadata
 
-- Task ID: TASK-0051 (matches PR-NN)
+- Task ID: TASK-0051 (matches PR-95)
 - Linked Issue: none
-- Linked PR: PR-NN (substituted at PR-open per FX-B; squash SHA substituted post-merge per PMN-001(k))
+- Linked PR: PR-95 (squash SHA substituted post-merge per PMN-001(k))
 - Linked ADR(s): ADR-008 (D4 v3.1 Batch-P4 roadmap; D6 release-track bump posture — this cycle bumps patch v3.0.1 -> v3.0.2 intra-v3.1-track)
 - Linked Feature Brief: none (materialization cycle per ADR-008 D4 v3.1 enablement track)
-- Linked review-context file: docs/reviews/PR-NN-codex-pre-commit.md
+- Linked review-context file: docs/reviews/PR-95-codex-pre-commit.md
 - Owner role: Builder (Claude Code, Windows)
 - Previous role: Architect (handoff direction Architect -> Builder)
 - Timestamp (UTC): 2026-06-07

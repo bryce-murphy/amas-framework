@@ -2,13 +2,11 @@
 status: drafted
 ---
 
-# PR-NN Codex desktop pre-commit review — TASK-0051 surface-version-sync-check materialization
-
-> PR-NN is the authoring-time placeholder. At PR-open, FX-B phantom-corrects PR-NN -> the live PR number in: the review-context filename + this body + the handoff `pr` field. The handoff `linked_pr` and core.md §18.3 `PR-NN` stay literal until the post-merge PMN-001(k) chore.
+# PR-95 Codex desktop pre-commit review — TASK-0051 surface-version-sync-check materialization
 
 ## Metadata
 
-- PR: PR-NN (live-bind at PR-open per FX-B / PMN-019 F1)
+- PR: PR-95
 - Branch: feat/task-0051-surface-version-sync-check
 - Cycle: TASK-0051 (surface-version-sync-check Action materialization — first v3.1 Batch-P4 Action)
 - Linked handoff: docs/handoffs/TASK-0051-surface-version-sync-check.md
@@ -67,7 +65,7 @@ All commands run from repo root at staged-tree state (`git add -A` applied). Rel
 
 8. **D8 — handoff 12-field (PMN-007 HEAD canonical); review-context 1-field.**
    - bash: `head -14 docs/handoffs/TASK-0051-surface-version-sync-check.md | grep -cE '^(task_id|title|pr|branch|linked_predecessor|linked_successor|linked_pr|framework_version_dogfooded|production_target|spec_source|date_authored|status):'` -> `12`.
-   - bash: `head -3 docs/reviews/PR-NN-codex-pre-commit.md | grep -cE '^status:'` -> `1`.
+   - bash: `head -3 docs/reviews/PR-95-codex-pre-commit.md | grep -cE '^status:'` -> `1`.
    - bash: `grep -cE '^linked_pr: PR-[A-Z0-9]+ \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)$' docs/handoffs/TASK-0051-surface-version-sync-check.md` -> `1` (placeholder form; FX-B substitutes PR-NN -> numeric at PR-open, satisfying the linked-pr-fix-up Action regex).
    - Class: D8 PMN-007 HEAD canonical 12-field; review-template 1-field.
 
@@ -93,7 +91,7 @@ All commands run from repo root at staged-tree state (`git add -A` applied). Rel
 ## Codex desktop pre-commit kickoff
 
 ```
-Please review the pending changes on the current branch (feat/task-0051-surface-version-sync-check) per the review-context at docs/reviews/PR-NN-codex-pre-commit.md. Working tree is at staged-tree state (git add -A applied); review the staged diff.
+Please review the pending changes on the current branch (feat/task-0051-surface-version-sync-check) per the review-context at docs/reviews/PR-95-codex-pre-commit.md. Working tree is at staged-tree state (git add -A applied); review the staged diff.
 
 Cycle scope: TASK-0051 — materialize the first v3.1 Batch-P4 Action. Deliverables: (D1) fill actions/surface-version-sync-check.yml from stub to a working surface-version currency check per github-reference.md §7.1/§7.2/§7.3 — its own # template_version STAYS 3.0.0 (stub->fill, not a material-content bump per §17.5); (D2) .amas/surfaces.yml dogfood manifest (5 entries; self-entry declares 3.0.0 to match the Action marker; surfaces_manifest 3.0.1; linked-pr-fix-up excluded — no template-of-record); (D3) .github/workflows/surface-version-sync-check.yml operational ADVISORY instantiation (not a required status check); (D4) github-reference.md §7.1 example agents: [claude, codex] -> [codex] (resolves the carried-forward Codex PR-92 [C2]); (D5) actions/fixtures/.../stale-manifest.yml negative fixture; (D6) currency v3.0.1 -> v3.0.2 across trio frontmatter (x3) + README/AGENTS/CLAUDE in-development markers (two-concept: v3.0.0 published preserved; no "published" attaches to v3.0.2); (D7) core.md §18.3 M-A7 37 -> 38 (PR-NN literal; span v3.0.2; preamble TASK-0051).
 
