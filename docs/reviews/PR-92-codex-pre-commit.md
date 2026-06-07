@@ -2,13 +2,13 @@
 status: drafted
 ---
 
-# PR-NN Codex desktop pre-commit review
+# PR-92 Codex desktop pre-commit review
 
 > PR-NN->PR-92 phantom-correct applied at PR-open (live `gh pr list --state all` confirmed highest merged = 91 -> PR-92; FX-B: only `pr` field + this filename + this body corrected; handoff `linked_pr` and core.md §18.3 `PR-NN` stay literal until post-merge PMN-001(k) chore).
 
 ## Metadata
 
-- PR: PR-NN (anticipated; phantom-correct to PR-92 at PR-open)
+- PR: PR-92 (https://github.com/bryce-murphy/amas-framework/pull/92)
 - Branch: feat/task-0050-v3.1-action-layer-enablement
 - Cycle: TASK-0050 (v3.1 action-layer enablement — surfaces.yml schema reconciliation + release-track bump posture)
 - Linked handoff: docs/handoffs/TASK-0050-v3.1-action-layer-enablement.md
@@ -93,8 +93,8 @@ All commands run from repo root at staged-tree state (`git add -A` applied). REL
 
 14. **Frontmatter shape conformance + linked_pr canonical regex match.** Verifiable at pre-commit:
     - bash: `head -14 docs/handoffs/TASK-0050-v3.1-action-layer-enablement.md | grep -cE '^(task_id|title|pr|branch|linked_predecessor|linked_successor|linked_pr|framework_version_dogfooded|production_target|spec_source|date_authored|status):'` returns `12` (PMN-007 HEAD canonical 12-field).
-    - bash: `head -3 docs/reviews/PR-NN-codex-pre-commit.md | grep -cE '^status:'` returns `1` (review-context 1-field).
-    - bash: `grep -cE '^linked_pr: PR-[0-9]+ \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)$' docs/handoffs/TASK-0050-v3.1-action-layer-enablement.md` returns `1` (numeric token satisfied for linked-pr-fix-up Action regex; note: `pr` field carries `PR-NN` placeholder — phantom-correct to PR-92 at PR-open).
+    - bash: `head -3 docs/reviews/PR-92-codex-pre-commit.md | grep -cE '^status:'` returns `1` (review-context 1-field).
+    - bash: `grep -cE '^linked_pr: PR-[0-9]+ \(Builder fills with squash SHA post-merge per PMN-001 \(k\)\)$' docs/handoffs/TASK-0050-v3.1-action-layer-enablement.md` returns `1` (numeric token satisfied for linked-pr-fix-up Action regex; `pr` field carries `PR-92` confirmed at PR-open; `linked_pr` carries `PR-92` from authoring per FX-B).
     - Class: PMN-007 HEAD canonical 12-field; MC-C linked_pr regex; review-template 1-field.
 
 ## Reviewer focus
@@ -111,7 +111,7 @@ All commands run from repo root at staged-tree state (`git add -A` applied). REL
 ## Codex desktop pre-commit kickoff
 
 ```
-Please review the pending changes on the current branch (feat/task-0050-v3.1-action-layer-enablement) per the review-context at docs/reviews/PR-NN-codex-pre-commit.md. Working tree is at staged-tree state (git add -A applied); review the staged diff.
+Please review the pending changes on the current branch (feat/task-0050-v3.1-action-layer-enablement) per the review-context at docs/reviews/PR-92-codex-pre-commit.md. Working tree is at staged-tree state (git add -A applied); review the staged diff.
 
 Cycle scope: TASK-0050 — v3.1 action-layer enablement. Two deliverable classes: (a) schema reconciliation — github-reference.md §7.1/§7.2/§7.3 and templates/surfaces-manifest-template.yml rewritten to the unified surfaces: list-form manifest (old templates: map-form removed; path is the adopter operational-surface path; template_version from manifest entry, not operational surface; honest proof obligation: currency not content parity; optional .yml-marker cross-check); (b) release-track bump posture — ADR-008 Decision 6 amendment + core.md §18.4 pointer-note (intra-release-track cycles bump patch; aggregate minor/major fires once at release completion). Currency: v3.0.0->v3.0.1 across canonical-law trio frontmatter + AGENTS.md + CLAUDE.md + README + surfaces-manifest template. M-A7 §18.3 36->37 (PR-NN literal). README Action-row description corrected. No Action materialized; surface-version-sync-check.yml stays stub.
 
