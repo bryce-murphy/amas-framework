@@ -1,0 +1,129 @@
+# Operational instantiation of the canonical AMAS Action
+# `actions/surface-version-sync-check.yml` (github-reference.md §6.2
+# canonical-source -> operational mirror; same copy-mirror discipline as
+# templates/PULL_REQUEST_TEMPLATE.md -> .github/PULL_REQUEST_TEMPLATE.md).
+#
+# ADVISORY this cycle (TASK-0051): this workflow runs on PRs and reports
+# surface-version drift, but is NOT wired as a required status check in branch
+# protection (anti-scope F3 — no required-status-check this PR). A non-passing
+# result is visible but non-blocking until promoted to a required check in a
+# later cycle.
+#
+# SELF mode: the AMAS templates/ + actions/ tree is this repository, so every
+# template-of-record resolves locally (AMAS_REFERENCE_ROOT defaults to repo
+# root). Logic is the faithful mirror of the canonical Action; keep the two in
+# sync at each surface-sync amendment.
+
+name: surface-version-sync-check (advisory)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  surface-version-sync-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Surface-version sync check
+        run: |
+          set -uo pipefail
+
+          MANIFEST="${AMAS_SURFACES_MANIFEST:-.amas/surfaces.yml}"
+          ROOT="${AMAS_REFERENCE_ROOT:-.}"
+
+          # --- Manifest presence guard -----------------------------------
+          if [ ! -f "$MANIFEST" ]; then
+            echo "::notice::No ${MANIFEST} present — AMAS surface-sync manifest not adopted. Neutral (nothing to check)."
+            exit 0
+          fi
+
+          # --- Mode detection (SELF/VENDORED vs ADOPTER) -----------------
+          if [ -d "${ROOT}/templates" ] && [ -d "${ROOT}/actions" ]; then
+            RESOLVABLE=1
+          else
+            RESOLVABLE=0
+          fi
+
+          # --- Marker extractor (grep/sed only) --------------------------
+          read_marker() {
+            grep -m1 -iE '^#?[[:space:]]*template[ _]version:[[:space:]]*[0-9]' "$1" 2>/dev/null \
+              | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true
+          }
+
+          # --- template-of-record path resolution (by canonical name) -----
+          record_path() {
+            case "$1" in
+              AGENTS.md)          echo "${ROOT}/templates/AGENTS.md" ;;
+              CLAUDE.md)          echo "${ROOT}/templates/CLAUDE.md" ;;
+              pr_template)        echo "${ROOT}/templates/PULL_REQUEST_TEMPLATE.md" ;;
+              surfaces_manifest)  echo "${ROOT}/templates/surfaces-manifest-template.yml" ;;
+              *)                  echo "${ROOT}/actions/$1.yml" ;;
+            esac
+          }
+
+          FAIL=0
+          echo "Surface-version sync check against template-of-record (ROOT=${ROOT}, resolvable=${RESOLVABLE}):"
+          echo ""
+
+          START_LINES=$(grep -nE '^[[:space:]]*-[[:space:]]+name:' "$MANIFEST" | cut -d: -f1)
+          if [ -z "$START_LINES" ]; then
+            echo "::error::${MANIFEST} present but no surfaces entries parsed. Non-passing."
+            exit 1
+          fi
+          TOTAL_LINES=$(wc -l < "$MANIFEST")
+          set -- $START_LINES
+          while [ "$#" -gt 0 ]; do
+            S="$1"; shift
+            if [ "$#" -gt 0 ]; then E=$(( $1 - 1 )); else E="$TOTAL_LINES"; fi
+            BLOCK=$(sed -n "${S},${E}p" "$MANIFEST")
+
+            NAME=$(printf '%s\n' "$BLOCK" | grep -m1 -E '^[[:space:]]*-[[:space:]]+name:' | sed -E 's/^.*name:[[:space:]]*//; s/[[:space:]]+#.*$//')
+            DECL=$(printf '%s\n' "$BLOCK" | grep -m1 -E '^[[:space:]]*template_version:' | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+            OPPATH=$(printf '%s\n' "$BLOCK" | grep -m1 -E '^[[:space:]]*path:' | sed -E 's/^.*path:[[:space:]]*//; s/[[:space:]]+#.*$//')
+
+            if [ -z "$DECL" ]; then
+              echo "  [FAIL] ${NAME}: manifest entry declares no template_version"
+              FAIL=1
+              continue
+            fi
+
+            REC=$(record_path "$NAME")
+            if [ "$RESOLVABLE" -eq 1 ] && [ -f "$REC" ]; then
+              RECVER=$(read_marker "$REC")
+              if [ -z "$RECVER" ]; then
+                echo "  [FAIL] ${NAME}: template-of-record ${REC} carries no readable version marker"
+                FAIL=1
+              elif [ "$DECL" = "$RECVER" ]; then
+                echo "  [ OK ] ${NAME}: declared ${DECL} == template-of-record ${RECVER}"
+              else
+                echo "  [FAIL] ${NAME}: declared ${DECL} != template-of-record ${RECVER} (stale / behind)"
+                FAIL=1
+              fi
+            else
+              echo "  [WARN/NON-PASS] ${NAME}: template-of-record not resolvable (${REC}); declared ${DECL}. Set AMAS_REFERENCE_ROOT to a vendored AMAS tree to enable currency proof."
+              FAIL=1
+            fi
+
+            # Optional advisory cross-check: comment-anchored extraction only.
+            if [ -n "$OPPATH" ] && [ -f "$OPPATH" ] && printf '%s' "$OPPATH" | grep -qE '\.ya?ml$'; then
+              SURFVER=$(grep -m1 -E '^#[[:space:]]*[Tt]emplate[_ ]version:' "$OPPATH" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true)
+              if [ -n "$SURFVER" ] && [ -n "$DECL" ] && [ "$SURFVER" != "$DECL" ]; then
+                echo "    ::warning::(advisory) ${NAME}: operational-surface marker ${SURFVER} != manifest-declared ${DECL}"
+              fi
+            fi
+          done
+
+          echo ""
+          if [ "$FAIL" -ne 0 ]; then
+            echo "::error::Surface-version sync check FAILED — one or more surfaces are stale or unresolved (see above)."
+            exit 1
+          fi
+          echo "All manifest-tracked surfaces are current against the template-of-record."

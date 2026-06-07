@@ -1,0 +1,32 @@
+# NEGATIVE FIXTURE for actions/surface-version-sync-check.yml (TASK-0051).
+#
+# This manifest deliberately declares a STALE template_version for one surface
+# so the sync-check Action's currency comparison can be exercised on its
+# failing path. It is NOT a live project manifest — it is never `.amas/
+# surfaces.yml`; it exists only to prove the Action emits a non-passing result
+# on drift (and a passing result on the current entries).
+#
+# Run (from repo root, SELF mode):
+#   AMAS_SURFACES_MANIFEST=actions/fixtures/surface-version-sync-check/stale-manifest.yml \
+#     <execute the Action's check step>
+#
+# EXPECTED OUTCOME: non-passing (exit 1).
+#   - AGENTS.md  -> [FAIL] declared 2.14.1 != template-of-record 3.0.0 (stale / behind)
+#   - CLAUDE.md  -> [ OK ] declared 3.0.0 == template-of-record 3.0.0  (control: a current
+#                          entry alongside the stale one, proving the check is selective)
+
+framework_version: 3.0.2
+reference_impl: github
+project_id: amas-framework-fixture
+status: active
+
+surfaces:
+  - name: AGENTS.md
+    path: AGENTS.md
+    template_version: 2.14.1      # STALE on purpose — template-of-record is 3.0.0
+    status: active
+
+  - name: CLAUDE.md
+    path: CLAUDE.md
+    template_version: 3.0.0       # CURRENT control entry — must remain [ OK ]
+    status: active

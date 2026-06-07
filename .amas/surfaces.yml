@@ -1,0 +1,59 @@
+# AMAS surface-file synchronization manifest (github-reference.md §7.1).
+#
+# Single canonical file per project. Enumerates every AMAS-distributed
+# templated surface in use; the surface-version-sync-check Action reads each
+# entry's `template_version` and compares it against the template-of-record
+# (github-reference.md §7.2). `path` is the ADOPTER OPERATIONAL-SURFACE path
+# (not the template-of-record path; the Action resolves that separately).
+#
+# Instantiated for the amas-framework dogfood repository (SELF mode: the AMAS
+# `templates/` + `actions/` tree IS this repo, so every template-of-record is
+# resolvable locally).
+
+framework_version: 3.0.2          # AMAS framework version this manifest anchors at
+reference_impl: github
+project_id: amas-framework
+status: active
+
+surfaces:
+  - name: AGENTS.md
+    path: AGENTS.md
+    template_version: 3.0.0       # Action reads this; template-of-record templates/AGENTS.md
+    canonical_version: 3.0.2
+    agents: [codex]               # receiving surface — Codex products (per D4 / PR-92 [C2])
+    status: active
+
+  - name: CLAUDE.md
+    path: CLAUDE.md
+    template_version: 3.0.0       # template-of-record templates/CLAUDE.md
+    canonical_version: 3.0.2
+    agents: [claude]              # receiving surface — Claude products
+    status: active
+
+  - name: pr_template
+    path: .github/PULL_REQUEST_TEMPLATE.md
+    template_version: 3.0.0       # templated, non-receiving (no agents key); template-of-record templates/PULL_REQUEST_TEMPLATE.md
+    status: active
+
+  - name: surfaces_manifest
+    path: .amas/surfaces.yml
+    template_version: 3.0.1       # template-of-record templates/surfaces-manifest-template.yml (revised at TASK-0050 / PR-92)
+    canonical_version: 3.0.2
+    status: active
+
+  # Circularity guard: this self-entry tracks the sync-check Action's own
+  # operational instantiation. Its declared template_version (3.0.0) MUST match
+  # the `# template_version:` marker the Action declares about itself
+  # (actions/surface-version-sync-check.yml) so the Action PASSES when checking
+  # itself — it does not self-fail. The Action was materialized at TASK-0051, so
+  # this entry is added post-materialization (a stub Action would not be tracked).
+  - name: surface-version-sync-check
+    path: .github/workflows/surface-version-sync-check.yml
+    template_version: 3.0.0       # template-of-record actions/surface-version-sync-check.yml
+    canonical_version: 3.0.2
+    status: active
+
+# Excluded by design: `.github/workflows/linked-pr-fix-up.yml` — shipped as an
+# operational Action at PR-21 (ADR-004) with no template-of-record under
+# `actions/`, so it is not a manifest-tracked templated surface (no record to
+# resolve currency against). See TASK-0050 §10 carry-forward.
