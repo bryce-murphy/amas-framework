@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.0
+framework_version: 3.0.1
 status: recorded
 filled_by: PR-17 (TASK-0017)
 ---
@@ -321,46 +321,74 @@ Sub-shapes per core.md §8.1.1.2 canonical text apply: each sub-shape requires e
 
 ### §7.1. Manifest format
 
-AMAS adopts a canonical surface-file synchronization manifest at `.amas/surfaces.yml` documenting all framework-versioned surfaces in the adopted project. Format:
+AMAS adopts a canonical surface-file synchronization manifest at `.amas/surfaces.yml` documenting all framework-versioned surfaces in the adopted project. The manifest is a single canonical file per project: top-level keys anchor the manifest (`framework_version`, `reference_impl`, `project_id`, `status`) and a `surfaces:` **list** enumerates every AMAS-distributed templated surface in use. Format:
 
 ```yaml
-framework_version: 3.0.0
+framework_version: 3.0.1
 reference_impl: github
-templates:
-  agents:
+project_id: <project-slug>
+status: active
+
+surfaces:
+  - name: AGENTS.md
     path: AGENTS.md
-    template_version: 3.0.0
-  claude:
+    template_version: 3.0.0      # Action reads this
+    canonical_version: 3.0.1     # framework anchor (optional)
+    agents: [claude, codex]      # receiving surface
+    status: active
+  - name: CLAUDE.md
     path: CLAUDE.md
     template_version: 3.0.0
-  pr_template:
+    canonical_version: 3.0.1
+    agents: [claude]
+    status: active
+  - name: pr_template
     path: .github/PULL_REQUEST_TEMPLATE.md
-    template_version: 3.0.0
-  branch_check:
+    template_version: 3.0.0      # templated, non-receiving (no agents key)
+    status: active
+  - name: branch_check
     path: .github/workflows/branch-name-check.yml
     template_version: 3.0.0
-  pr_check:
-    path: .github/workflows/pr-template-check.yml
-    template_version: 3.0.0
-  # ... entries for each AMAS-distributed surface in use ...
+    status: active
+  # ... one entry per AMAS-distributed templated surface in use ...
 ```
+
+**Field model.** Each `surfaces:` entry carries:
+
+- `name` (string) — REQUIRED.
+- `path` (repo-relative path) — REQUIRED. The **adopter operational-surface path** where the instantiated surface lives in the project. It is NOT the template-of-record path; the Action derives template-of-record resolution separately (§7.2).
+- `template_version` (string) — REQUIRED; the **authoritative declared sync-version** for the surface: the version of the AMAS-distributed template the surface was instantiated from / last synced to. The sync-check Action reads this value **from the manifest entry** (not from the operational surface file). Coarse / major-aligned per `core.md` §17.5.
+- `canonical_version` (string) — OPTIONAL; the fine-grained AMAS framework version the surface content is anchored to (informational framework-anchor tracking).
+- `agents` (list of agent slugs) — OPTIONAL; present **iff** the surface is a receiving surface (per-agent operating-frame file; see §7.3). Absence indicates a non-receiving templated surface.
+- `status` (`active|superseded`) — OPTIONAL (default `active`).
+- `notes` (string) — OPTIONAL.
+
+Operational surfaces are **not required** to carry an in-file version marker — the manifest entry is the per-surface version-of-record. The canonical PR template permits operational instantiations to strip frontmatter, and `CLAUDE.md` / `AGENTS.md` carry only positioning text, not `template_version`; the declared sync-version lives in the manifest, maintained by the owner/adopter at AMAS-version-bump time.
 
 The manifest is the canonical source of truth for which surfaces the adopted project synchronizes against AMAS framework releases. Adopters update the manifest at AMAS-version-bump time as part of the upgrade cycle.
 
+**Migration note (v2.30-era → v3 unified schema).** The v2.30-era surfaces manifest (filled at PR-48) used a receiving-surface-only shape keyed by `canonical_version`. The v3 unified schema is **additive**: it adds `template_version` (Action-read) and `reference_impl`, retains `canonical_version` / `agents` / `status` / `notes`, and converts the header to top-level `framework_version` / `project_id` / `status`. Adopters upgrading instantiate the v3 template and, per surface, add `template_version` (the template major the surface was instantiated from). Concrete `upgrade.md` prompt wording is deferred to the Action-materialization cycle.
+
 ### §7.2. Sync check Action
 
-AMAS-distributed `surface-version-sync-check.yml` Action validates the manifest against actual surface file versions. The Action:
+AMAS-distributed `surface-version-sync-check.yml` Action (materializes at v3.1 per ADR-008 D4; stub at v3.0.x) validates that each manifest entry's declared template-version is current against the canonical template-of-record. The Action:
 
 1. Reads `.amas/surfaces.yml` at PR head SHA
-2. For each enumerated surface, reads the surface file's `template_version` field (frontmatter or YAML comment for `.yml` files)
-3. Compares manifest-declared version against surface-file-declared version
-4. Emits status check result; stale or mismatched surfaces produce non-passing status
+2. For each entry in the `surfaces:` list, takes the entry's declared `template_version` **from the manifest entry** (not from the operational surface file) and resolves the canonical template-of-record version for that surface
+3. Compares the manifest-declared version against the template-of-record version
+4. Emits status check result; an entry whose declared version is behind the template-of-record, or whose template-of-record cannot be resolved, produces non-passing status
+
+**Proof obligation.** This Action proves declared template-version **currency** — that each manifest entry's declared `template_version` is current against the template-of-record. It does **not** prove byte/content parity of the operational surface: a manifest may declare `AGENTS.md` at `template_version: 3.0.0`, match the record, and pass while the operational body has drifted. Content/byte parity is an explicit **non-goal** (a hash comparison would false-positive on legitimately-customized operational surfaces). Marker-less Markdown operational surfaces (`CLAUDE.md`, `.github/PULL_REQUEST_TEMPLATE.md`) are not required to carry an in-file version marker; the manifest entry is the per-surface declared sync-version.
+
+**Optional surface cross-check.** For surfaces that carry a parseable in-file version marker (e.g. `.yml` workflows via a `# template_version:` comment), the Action MAY additionally cross-check the surface-declared version against the manifest entry, recovering surface-parity evidence where it exists. This is permitted, not required.
 
 ### §7.3. Templated vs non-templated surfaces
 
 Not all repository surfaces are templated. The synchronization manifest tracks only templated surfaces — surfaces whose canonical content lives in AMAS-distributed templates and is instantiated at the adopted project. Project-specific surfaces (e.g., project README, project ADRs, project handoffs) are non-templated and not tracked in the manifest.
 
 The distinction matters for sync-check scope: the Action validates manifest-tracked surfaces only, not the entire repository file set. Adopters with project-specific surfaces that warrant sync discipline may extend the manifest schema in a future minor version.
+
+Receiving surfaces — per-agent operating-frame files such as `AGENTS.md`, `CLAUDE.md`, `.cursorrules` — are a **subset** of templated surfaces and additionally carry an `agents` field naming the AI agents that read them; non-receiving templated surfaces (workflows, PR templates) omit the `agents` field.
 
 ## §8. Cross-references
 

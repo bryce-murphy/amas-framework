@@ -1,57 +1,70 @@
 # Surfaces manifest template
 #
 # Canonical template form for AMAS project surfaces manifests per github-reference.md §7
-# (surfaces-manifest reservation). A surfaces manifest enumerates the receiving-surface files
-# (per-agent operating-frame markdown such as AGENTS.md, CLAUDE.md, .cursorrules, etc.) that
-# materialize AMAS canonical content for different AI agents in the project's tool inventory.
+# (surfaces manifest schema). A surfaces manifest is the version-drift + receiving-surface
+# manifest for an AMAS-adopted project: it enumerates every framework-versioned templated
+# surface in use (workflows, PR templates, per-agent operating-frame files, etc.). Receiving
+# surfaces — per-agent operating-frame markdown such as AGENTS.md, CLAUDE.md, .cursorrules —
+# are the `agents`-bearing subset; non-receiving templated surfaces omit the `agents` field.
 #
 # Filled instances live at `.amas/surfaces.yml` (single canonical file per project; not enumerated).
 # Template form-of-record at framework-package level: templates/surfaces-manifest-template.yml.
 #
+# NOTE: this template's own `# Template version:` below is independent of each surfaces entry's
+# `template_version:` field. The former versions THIS template object; the latter records the
+# AMAS-distributed template version the tracked surface was instantiated from / last synced to.
+# They are different version axes on different objects — do not conflate.
+#
 # Status: filled
 # Filled by: PR-48 (TASK-0033)
-# Template version: 3.0.0
+# Template version: 3.0.1
 
-# Schema metadata.
-metadata:
-  # Canonical project slug matching project-brief project_id (e.g., amas-framework).
-  project_id: <project-slug>
+# Manifest anchor (top-level keys).
+framework_version: <version>   # AMAS framework version this manifest anchors at; e.g., 3.0.1
+reference_impl: github         # reference implementation; e.g., github
+project_id: <project-slug>     # canonical project slug matching project-brief project_id
+status: active                 # lifecycle state: active | archived
 
-  # AMAS canonical version when authored or last amended (e.g., v2.30).
-  framework_version: <version>
-
-  # Lifecycle state: active | archived.
-  status: active
-
-# Receiving surfaces enumeration.
+# Surfaces enumeration.
 #
-# Each entry describes one receiving-surface file with the agents that read it,
-# its repo path, the canonical AMAS version it anchors at, and its lifecycle status.
+# Each entry describes one AMAS-distributed templated surface in use.
+# REQUIRED fields: name, path, template_version. OPTIONAL: canonical_version, agents, status, notes.
 #
-# Receiving surfaces are markdown files placed at the project root or other
-# agent-discovered locations that carry per-agent operating-frame guidance derived
-# from AMAS canonical content. Per ADR-006 D2 + Batch P7 receiving-surface adapter
-# packs (forthcoming): adapter packs codify the canonical translation pattern from
-# core.md to per-agent surface format.
+#   - path is the ADOPTER OPERATIONAL-SURFACE path (where the instantiated surface lives in the
+#     project), NOT the template-of-record path; the sync-check Action resolves the
+#     template-of-record separately (github-reference.md §7.2).
+#   - template_version is the authoritative declared sync-version (the AMAS template version the
+#     surface was instantiated from / last synced to); the Action reads it from this entry, not
+#     from the operational surface file. Operational surfaces need not carry an in-file marker.
+#   - canonical_version (optional) is the fine-grained framework anchor (informational).
+#   - agents (optional) is present iff the surface is a receiving surface (per-agent operating-frame
+#     file); its absence marks a non-receiving templated surface.
 surfaces:
   - name: AGENTS.md
     path: AGENTS.md
-    agents:
-      - <agent-slug>  # canonical agent slug; e.g., codex, claude, cursor
-    canonical_version: <version>  # AMAS version anchored at; e.g., v2.30
-    status: active  # active | superseded
-    notes: <1-line notes for project-specific configuration or constraint>
+    template_version: <template-version>   # REQUIRED; Action reads this
+    canonical_version: <version>           # OPTIONAL; framework anchor
+    agents:                                # OPTIONAL; present iff receiving surface
+      - <agent-slug>                       # canonical agent slug; e.g., codex, claude, cursor
+    status: active                         # OPTIONAL; active | superseded
+    notes: <1-line notes for project-specific configuration or constraint>  # OPTIONAL
 
   - name: CLAUDE.md
     path: CLAUDE.md
+    template_version: <template-version>
+    canonical_version: <version>
     agents:
       - claude
-    canonical_version: <version>
     status: active
 
-  # Add additional surface entries as needed per project's receiving-surface posture.
-  # Examples: .cursorrules for Cursor IDE; .github/copilot-instructions.md for GitHub
-  # Copilot; custom adapter surfaces for specialized tooling.
+  - name: pr_template
+    path: .github/PULL_REQUEST_TEMPLATE.md
+    template_version: <template-version>   # templated, non-receiving (no agents key)
+    status: active
+
+  # Add additional surface entries as needed per project's templated-surface inventory.
+  # Examples: .github/workflows/*.yml deterministic Actions; .cursorrules for Cursor IDE;
+  # .github/copilot-instructions.md for GitHub Copilot; custom adapter surfaces.
 
 # Cross-references (commented for documentation; not parsed):
 #
@@ -59,6 +72,6 @@ surfaces:
 #   - core.md §17.5 template lifecycle
 #   - templates/project-brief-template.md (project brief Receiving surfaces section)
 #   - templates/tool-inventory-template.md (paired system-documentation template at Batch P1 sub-batch B.3)
-#   - github-reference.md §7 surfaces-manifest reservation
+#   - github-reference.md §7 surfaces manifest schema
 #   - ADR-006 D2 Batch P1 process templates batch
 #   - Batch P7 receiving-surface adapter packs (forthcoming)
