@@ -70,6 +70,12 @@ jobs:
     steps:
       - name: Checkout PR head
         uses: actions/checkout@v4
+        with:
+          # On pull_request: check out the PR head (not the synthetic merge
+          # commit) so the check reflects exactly what the author submitted.
+          # On workflow_dispatch: github.event.pull_request.head.sha is empty;
+          # the fallback to github.sha checks out the dispatched ref.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Surface-version sync check
         run: |
@@ -98,8 +104,11 @@ jobs:
           # `# Template version:` / `# template_version:`. Prints the X.Y.Z
           # token, or empty if none.
           read_marker() {
+            # `|| true` ensures the function exits 0 even when grep finds no
+            # marker (no match -> exit 1 + pipefail); callers receive empty
+            # string and check `[ -z "$RECVER" ]` as intended.
             grep -m1 -iE '^#?[[:space:]]*template[ _]version:[[:space:]]*[0-9]' "$1" 2>/dev/null \
-              | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1
+              | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true
           }
 
           # --- template-of-record path resolution (by canonical name) -----
@@ -169,7 +178,7 @@ jobs:
             # bare `template_version:` data keys appear in manifest entry blocks
             # and would false-warn on the manifest itself — see PR-92 [C1] class).
             if [ -n "$OPPATH" ] && [ -f "$OPPATH" ] && printf '%s' "$OPPATH" | grep -qE '\.ya?ml$'; then
-              SURFVER=$(grep -m1 -E '^#[[:space:]]*[Tt]emplate[_ ]version:' "$OPPATH" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+              SURFVER=$(grep -m1 -E '^#[[:space:]]*[Tt]emplate[_ ]version:' "$OPPATH" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true)
               if [ -n "$SURFVER" ] && [ -n "$DECL" ] && [ "$SURFVER" != "$DECL" ]; then
                 echo "    ::warning::(advisory) ${NAME}: operational-surface marker ${SURFVER} != manifest-declared ${DECL}"
               fi

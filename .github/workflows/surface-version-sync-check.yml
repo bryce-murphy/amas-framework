@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout PR head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Surface-version sync check
         run: |
@@ -53,7 +55,7 @@ jobs:
           # --- Marker extractor (grep/sed only) --------------------------
           read_marker() {
             grep -m1 -iE '^#?[[:space:]]*template[ _]version:[[:space:]]*[0-9]' "$1" 2>/dev/null \
-              | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1
+              | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true
           }
 
           # --- template-of-record path resolution (by canonical name) -----
@@ -112,7 +114,7 @@ jobs:
 
             # Optional advisory cross-check: comment-anchored extraction only.
             if [ -n "$OPPATH" ] && [ -f "$OPPATH" ] && printf '%s' "$OPPATH" | grep -qE '\.ya?ml$'; then
-              SURFVER=$(grep -m1 -E '^#[[:space:]]*[Tt]emplate[_ ]version:' "$OPPATH" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+              SURFVER=$(grep -m1 -E '^#[[:space:]]*[Tt]emplate[_ ]version:' "$OPPATH" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true)
               if [ -n "$SURFVER" ] && [ -n "$DECL" ] && [ "$SURFVER" != "$DECL" ]; then
                 echo "    ::warning::(advisory) ${NAME}: operational-surface marker ${SURFVER} != manifest-declared ${DECL}"
               fi
