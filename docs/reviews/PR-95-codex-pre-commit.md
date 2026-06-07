@@ -195,3 +195,88 @@ Core predicate untouched. [FAIL]+[OK] selective detection preserved. Exit 1. ✓
 Neither fix touches the canonical-law trio (D4/D6/D7 unchanged). Gate-A canonical re-clear on those four edits remains in force from the prior Architect clear.
 
 **Updated diff stats (post-fix re-stage):** `12 files changed, 735 insertions(+), 16 deletions(-)`.
+
+---
+
+## Codex post-PR output absorption
+
+> Append-only. Pre-commit section above is not back-edited. Three-endpoint poll per §17.7 post-PR variant.
+
+### Metadata
+
+- Binding reviewed commit: `5147fbc` (fix commit: pipefail guard + checkout ref)
+- Pre-fix reviewed commit: `0d40c5b` (FX-B substitution)
+- Poll timestamp: 2026-06-07 ~19:00 UTC
+- P2 reply posted: comment `3369924830` (2026-06-07T19:08:55Z)
+- P2 thread resolved: `PRRT_kwDOSRIPSM6HrcIS` → `isResolved: true`
+
+### Three-endpoint poll record
+
+**`/pulls/95/reviews` (formal review objects)**
+
+One Codex review object — stale, against pre-fix commit:
+```
+id:           4445607522
+state:        COMMENTED
+commit_id:    0d40c5b5f01d51b5a9023c4db12d827a13a5c579   ← pre-fix (stale)
+submitted_at: 2026-06-07T18:31:47Z
+body:         "Reviewed commit: `0d40c5b5f0`"
+```
+No new formal review object was posted against `5147fbc`. The binding clean verdict arrived via issue comment (see below).
+
+**`/pulls/95/comments` (inline review comments)**
+
+One Codex inline comment — P2, carried-forward (not freshly re-raised against `5147fbc`):
+```
+id:                   3369876239
+path:                 .github/workflows/surface-version-sync-check.yml lines 30–31
+commit_id:            5147fbc2585bda4c49fa68c81436543de04cf2b8   ← GitHub moved pin to HEAD
+original_commit_id:   0d40c5b5f01d51b5a9023c4db12d827a13a5c579   ← original raise (pre-fix)
+body (verbatim):
+  **[P2]  Check out the pull request head explicitly**
+
+  On `pull_request` runs, this step is labeled as checking out the PR head and §7.2
+  says the Action reads the manifest at the PR head SHA, but `actions/checkout` defaults
+  to the ref/SHA that triggered the workflow and its docs show
+  `ref: ${{ github.event.pull_request.head.sha }}` when the PR head is required. Without
+  that `with.ref`, this advisory workflow validates GitHub's pull-request merge ref
+  instead of the submitted head, so results can differ whenever the synthetic merge
+  includes base-branch changes not present in the PR head.
+```
+
+**`/issues/95/comments` (issue-level comments)**
+
+One Codex issue comment — clean pass verdict, posted after `5147fbc` push:
+```
+id:         4643700193
+created_at: 2026-06-07T19:00:37Z
+body (verbatim):
+  Codex Review: Didn't find any major issues. Another round soon, please!
+```
+This is the binding post-PR pass. No findings of any severity on the addressed state.
+
+### Adjudication
+
+**P2 "Check out the pull request head explicitly" — path-(a) applied at `5147fbc`.**
+
+- Finding: `actions/checkout@v4` on `pull_request` trigger checked out the synthetic merge ref, not the PR head SHA. Operational workflow could validate a different tree than the submitted head.
+- Fix: added `with: ref: ${{ github.event.pull_request.head.sha || github.sha }}` to the Checkout PR head step in `.github/workflows/surface-version-sync-check.yml`. On `pull_request` events: validates the PR head SHA per github-reference.md §7.2. On `workflow_dispatch`: `pull_request.head.sha` is empty; fallback to `github.sha` checks out the dispatched ref.
+- Scope note: `actions/surface-version-sync-check.yml` is a canonical reference template (no `jobs:` / `steps:` structure, no checkout step) — the P2 fix only applies to the operational workflow, which is the only file with a checkout step.
+- P2 reply posted to thread: `3369924830`. Thread resolved: `PRRT_kwDOSRIPSM6HrcIS` → `isResolved: true`.
+
+**CI errexit fix (pipefail guard) — also in `5147fbc`.**
+
+Root cause: `SURFVER=$(grep ... | head -1)` failed under GitHub Actions' `bash -e {0}` (errexit) when grep found no `# template_version:` comment in a `.yml` operational file (`.amas/surfaces.yml`). With `set -o pipefail`, the pipeline exit code was 1; the variable assignment failed; script exited after the `surfaces_manifest [ OK ]` line without processing `surface-version-sync-check`. Fix: `|| true` appended to `read_marker()` function body and `SURFVER=$(...)` assignment in both `.github/workflows/surface-version-sync-check.yml` and `actions/surface-version-sync-check.yml`. Local Git Bash tests had not caught this because `bash -e` was not active at invocation; GitHub Actions' `bash -e {0}` made the failure visible.
+
+### CI result at `5147fbc`
+
+```
+run 27101396443 | surface-version-sync-check (advisory) | conclusion: success | 7s
+2026-06-07T18:42:42Z
+```
+
+Advisory workflow passes on `5147fbc`. ✓
+
+### Binding verdict
+
+**Clean. No findings on the addressed state (`5147fbc`).** P2 was a carried-forward finding (original_commit_id `0d40c5b`), addressed in `5147fbc`, thread resolved. Codex post-PR clean-pass: "Didn't find any major issues."
