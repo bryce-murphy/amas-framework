@@ -5,12 +5,12 @@ pr: PR-95
 branch: feat/task-0051-surface-version-sync-check
 linked_predecessor: TASK-0050 (PR-92 squash 265d2a8; surfaces.yml schema reconciliation + release-track posture)
 linked_successor: TBD
-linked_pr: PR-95 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-95 (squash SHA b72bf45)
 framework_version_dogfooded: AMAS v3.0.2
 production_target: AMAS v3.1
 spec_source: .claude/session-handoffs/amas-cycle-kickoff-task0050-surface-version-sync-check.md + TASK-0051 re-kick directive (deltas + correction)
 date_authored: 2026-06-07
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0051 — surface-version-sync-check Action materialization
