@@ -42,11 +42,11 @@ All commands run from repo root at staged-tree state (`git add -A` applied). REL
    - Class: spec §3.1/§3.4 schema reconciliation + migration note.
 
 5. **§7.2 contract: manifest-declared-vs-template-of-record; honest proof obligation; no mandatory operational-surface read (anti-regression load-bearing).** Verifiable at pre-commit:
-   - bash: `awk '/^### .7\.2\./,/^### .7\.3\./' github-reference.md | grep -ci 'from the manifest'` returns `>=1`.
-   - bash: `awk '/^### .7\.2\./,/^### .7\.3\./' github-reference.md | grep -ci 'template-of-record'` returns `>=1`.
-   - bash: `awk '/^### .7\.2\./,/^### .7\.3\./' github-reference.md | grep -ci 'not.*content parity\|not.*byte\|currency.*not\|declared.*currency'` returns `>=1` (honest proof obligation sentence present).
-   - bash: `awk '/^### .7\.2\./,/^### .7\.3\./' github-reference.md | grep -ci 'from the operational surface\|reads.*surface.*version'` returns `0` (no mandatory surface-file read).
-   - Class: spec §3.2 + §2.3 + §2.4 anti-regression; three cross-Architect passes load-bearing settlement.
+   - bash: `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p' github-reference.md | grep -ci 'from the manifest'` returns `>=1`.
+   - bash: `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p' github-reference.md | grep -ci 'template-of-record'` returns `>=1`.
+   - bash: `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p' github-reference.md | grep -ci 'not.*content parity\|not.*byte\|currency.*not\|declared.*currency'` returns `>=1` (honest proof obligation sentence present).
+   - bash: `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p' github-reference.md | grep -ci 'not from the operational surface file'` returns `>=1` (the manifest-entry-only anti-regression phrasing is present; positive assertion that the correct "not from" language exists rather than a negative pattern that over-matches on the same phrase).
+   - Class: spec §3.2 + §2.3 + §2.4 anti-regression; three cross-Architect passes load-bearing settlement; C1 path-(a) per Codex post-PR: awk §-char range silently fails on UTF-8 locales — replaced with sed; negative grep flipped to positive assertion on the load-bearing "not from the operational surface file" phrase.
 
 6. **§7.3 receives receiving-subset sentence; agents field.** Verifiable at pre-commit:
    - bash: `awk '/^### .7\.3\./,/^## .8\./' github-reference.md | grep -c 'subset'` returns `>=1`; `| grep -c 'agents'` returns `>=1`.
@@ -170,3 +170,39 @@ Verbatim-output convention: capture the review verbatim into the review-context'
 - No Blocking, Major, or Minor findings. Staged tree passes the focused re-review. Path to commit/push is clear subject to Gate-A FINAL clear (received).
 - [F1] resolved? yes. Net-new? no. Verdict: clean.
 - Lesson logged (per §10 Battery discipline): claim 2 predicate must check prose framing *attachment* around the version number, not the version number alone. "v3.0.1 present" ≠ "v3.0.1 framed correctly"; the extended attachment predicate is the load-bearing check.
+
+---
+
+## Codex post-PR review (2026-06-07)
+
+Three-endpoint poll per `core.md` §8.1.1.1 (Builder, 2026-06-07T01:27Z UTC):
+- `pulls/92/reviews` → 1 review (`COMMENTED`, `chatgpt-codex-connector[bot]`, commit `b223c11c7b`, timestamp `2026-06-07T01:27:18Z`)
+- `issues/92/comments` → 1 comment (owner `@codex review` trigger at `2026-06-07T01:24:31Z`)
+- `pulls/92/comments` → 2 line-level comments (both from `chatgpt-codex-connector[bot]`, part of the review above)
+
+**Verdict**: COMMENTED — 1 Major (P2) + 1 Minor (P3); no Blocking.
+
+**Findings** (verbatim):
+
+> **[C1] P2 — Fix the anti-regression verification command** (line comment on `docs/reviews/PR-92-codex-pre-commit.md` line 48):
+>
+> When this battery is run against the changed `github-reference.md`, this exact grep returns `1`, not `0`, because §7.2 intentionally contains the phrase "not from the operational surface file." Since this review context is the durable verification checklist for the cycle, the advertised expected result makes the load-bearing anti-regression check unreproducible and can cause reviewers to treat the settled contract as failing; narrow the pattern to mandatory-read wording or update the expected count.
+
+> **[C2] P3 — Correct the AGENTS manifest agent list** (line comment on `github-reference.md` §7.1 worked example):
+>
+> The schema defines `agents` as the slugs that read that receiving surface, but this canonical example lists `claude` on `AGENTS.md` even though the AGENTS template targets Codex and the next entry already maps Claude to `CLAUDE.md`. Adopters copying this example would record Claude as reading both surfaces, which defeats the receiving-surface identity inventory this schema is meant to provide; keep the AGENTS entry to Codex-family agents only.
+
+**Phantom-action audit** (per `core.md` §8.1.1.2): no commits or branches claimed by Codex; findings are textual observations only. No phantom actions.
+
+**Adjudication** (per ADR-001 D11 + `core.md` §8.1.1.3):
+
+- **[C1] (P2/Major — broken anti-regression check command)**: routed **path-(a) revise**. Correct in principle. Diagnosis: the `awk '/^### .7\.2\./,/^### .7\.3\./'` range pattern silently fails on this platform because `awk` does not match the UTF-8 `§` character in the section header (the range captures nothing; grep sees empty input and returns `0` vacuously — a broken check, not a passing one). The `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p'` form works correctly. Additionally the negative pattern `'from the operational surface'` over-matches on the correct "not from the operational surface file" language. Fix: replace all four `awk` range extractions in claim 5 with `sed -n`; flip the last bash line to a positive assertion confirming the "not from the operational surface file" anti-regression phrase IS present (returns `>=1`). All four fixed commands verified correct (5a `>=1`, 5b `>=1`, 5c `>=1`, 5d `>=1`).
+- **[C2] (P3/Minor — AGENTS.md agents list in worked example)**: routed **path-(b) record-and-proceed**. The `agents: [claude, codex]` value on AGENTS.md in the §7.1 worked example is spec-prescribed (spec §2.2; Gate-A-cleared by Architect across three cross-Architect passes). Changing it requires a design judgment call: whether AGENTS.md in this framework is exclusively the Codex receiving surface (making `[codex]` the correct value) or is legitimately read by multiple agents including Claude (making `[claude, codex]` valid). Per §8.1.1.3 Minor → default path-(b): record and proceed. Carry to TASK-0051 / Architect design review as an intentional open item.
+
+**Resolution applied** (path-(a) C1):
+
+- Edit C1.1: `docs/reviews/PR-92-codex-pre-commit.md` claim 5 — all four `awk '/^### .7\.2\./,/^### .7\.3\./'` replaced with `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p'`; last bash line flipped from negative `returns 0` to positive assertion `returns >=1` (confirming the "not from the operational surface file" phrase IS present). Verified: all four commands return `>=1` as expected.
+- No canonical-law edits; no staged-tree mutations beyond the review-context file itself.
+- Shortstat for this fix: review-context only (+N/-N lines in-place edit).
+
+**Gate B status**: [C1] resolved path-(a); [C2] recorded path-(b). No Blocking; no unresolved Major. Path to owner squash-merge is clear.
