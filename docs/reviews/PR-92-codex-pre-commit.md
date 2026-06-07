@@ -35,11 +35,11 @@ All commands run from repo root at staged-tree state (`git add -A` applied). REL
    - Class: spec §5.1 R1 two-concept form; Gate-A R1.
 
 4. **§7.1 unified surfaces: list-form present; old templates: map-form gone.** Verifiable at pre-commit:
-   - bash: `awk '/^### .7\.1\./,/^### .7\.2\./' github-reference.md | grep -c '  templates:'` returns `0`.
-   - bash: `awk '/^### .7\.1\./,/^### .7\.2\./' github-reference.md | grep -c 'surfaces:'` returns `>=1`.
-   - bash: `awk '/^### .7\.1\./,/^### .7\.2\./' github-reference.md | grep -c 'template_version'` returns `>=1`; `| grep -c 'agents'` returns `>=1`.
-   - bash: `awk '/^### .7\.1\./,/^### .7\.2\./' github-reference.md | grep -ci 'operational.surface path\|adopter.*path\|path.*adopter'` returns `>=1` (path = operational-surface path stated).
-   - Class: spec §3.1/§3.4 schema reconciliation + migration note.
+   - bash: `sed -n '/^### .*7\.1\. /,/^### .*7\.2\. /p' github-reference.md | grep -c '  templates:'` returns `0`.
+   - bash: `sed -n '/^### .*7\.1\. /,/^### .*7\.2\. /p' github-reference.md | grep -c 'surfaces:'` returns `>=1`.
+   - bash: `sed -n '/^### .*7\.1\. /,/^### .*7\.2\. /p' github-reference.md | grep -c 'template_version'` returns `>=1`; `| grep -c 'agents'` returns `>=1`.
+   - bash: `sed -n '/^### .*7\.1\. /,/^### .*7\.2\. /p' github-reference.md | grep -ci 'operational.surface path\|adopter.*path\|path.*adopter'` returns `>=1` (path = operational-surface path stated).
+   - Class: spec §3.1/§3.4 schema reconciliation + migration note; C1 awk-§ class sweep extended to claim 4.
 
 5. **§7.2 contract: manifest-declared-vs-template-of-record; honest proof obligation; no mandatory operational-surface read (anti-regression load-bearing).** Verifiable at pre-commit:
    - bash: `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p' github-reference.md | grep -ci 'from the manifest'` returns `>=1`.
@@ -49,8 +49,8 @@ All commands run from repo root at staged-tree state (`git add -A` applied). REL
    - Class: spec §3.2 + §2.3 + §2.4 anti-regression; three cross-Architect passes load-bearing settlement; C1 path-(a) per Codex post-PR: awk §-char range silently fails on UTF-8 locales — replaced with sed; negative grep flipped to positive assertion on the load-bearing "not from the operational surface file" phrase.
 
 6. **§7.3 receives receiving-subset sentence; agents field.** Verifiable at pre-commit:
-   - bash: `awk '/^### .7\.3\./,/^## .8\./' github-reference.md | grep -c 'subset'` returns `>=1`; `| grep -c 'agents'` returns `>=1`.
-   - Class: spec §3.3.
+   - bash: `sed -n '/^### .*7\.3\. /,/^## /p' github-reference.md | grep -c 'subset'` returns `>=1`; `| grep -c 'agents'` returns `>=1`.
+   - Class: spec §3.3; C1 awk-§ class sweep extended to claim 6.
 
 7. **surfaces-manifest-template.yml rewritten to unified schema; template version 3.0.1; F4 disambiguation comment.** Verifiable at pre-commit:
    - bash: `grep -c '^surfaces:' templates/surfaces-manifest-template.yml` returns `1`.
@@ -202,6 +202,7 @@ Three-endpoint poll per `core.md` §8.1.1.1 (Builder, 2026-06-07T01:27Z UTC):
 **Resolution applied** (path-(a) C1):
 
 - Edit C1.1: `docs/reviews/PR-92-codex-pre-commit.md` claim 5 — all four `awk '/^### .7\.2\./,/^### .7\.3\./'` replaced with `sed -n '/^### .*7\.2\. /,/^### .*7\.3\. /p'`; last bash line flipped from negative `returns 0` to positive assertion `returns >=1` (confirming the "not from the operational surface file" phrase IS present). Verified: all four commands return `>=1` as expected.
+- Edit C1.2 (awk-§ class sweep extended to claims 4 and 6): `awk '/^### .7\.1\./,/^### .7\.2\./'` in claim 4 (all four bash lines) replaced with `sed -n '/^### .*7\.1\. /,/^### .*7\.2\. /p'`; `awk '/^### .7\.3\./,/^## .8\./'` in claim 6 replaced with `sed -n '/^### .*7\.3\. /,/^## /p'`. Re-verified all content values with reliable primitives: 4a=0 (map-form gone), 4b=3 (surfaces: present), 4c=7/8 (template_version/agents present), 4d=1 (path stated), 6a=1 (subset present), 6b=1 (agents present). Content sound; no masked defect found.
 - No canonical-law edits; no staged-tree mutations beyond the review-context file itself.
 - Shortstat for this fix: review-context only (+N/-N lines in-place edit).
 
