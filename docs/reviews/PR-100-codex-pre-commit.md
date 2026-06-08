@@ -16,8 +16,8 @@ status: drafted
 ## Builder claims to verify
 
 1. **Cumulative-diff-stats per `core.md` §23.6.1.1 (e.1) — 4 files, sum-stable.** At committed state:
-   - bash: `git diff HEAD origin/main --shortstat` returns `4 files changed, 197 insertions(+), 2 deletions(-)`
-   - bash: `git diff HEAD origin/main --numstat` returns per-file rows:
+   - bash: `git diff origin/main HEAD --shortstat` returns `4 files changed, 197 insertions(+), 2 deletions(-)`
+   - bash: `git diff origin/main HEAD --numstat` returns per-file rows:
      ```
      2	2	README.md
      119	0	docs/handoffs/TASK-0053-prose-currency-sweep.md
