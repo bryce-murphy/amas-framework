@@ -19,7 +19,7 @@ status: active
 
 - Task ID: TASK-0052 (matches PR-98 anticipated)
 - Linked Issue: none
-- Linked PR: PR-98 — URL TBD at PR-open (substituted post-merge per PMN-001 (k))
+- Linked PR: PR-98 — https://github.com/bryce-murphy/amas-framework/pull/98
 - Linked ADR(s): ADR-008 (D6 release-track bump posture — this cycle bumps patch v3.0.2 -> v3.0.3 intra-v3.1-track)
 - Linked Feature Brief: none (defect-fix patch cycle)
 - Linked review-context file: docs/reviews/PR-98-codex-pre-commit.md
@@ -28,7 +28,7 @@ status: active
 - Timestamp (UTC): 2026-06-08
 - Last synced commit SHA: d596cd3 (main HEAD at pre-flight; PR-97 TASK-0051 close-reconciliation)
 - Branch: fix/task-0052-three-endpoint-canonical-reconciliation
-- Status: drafted
+- Status: active
 - Direction: Architect -> Builder (universal handoff schema, core.md §14.1)
 - Framework version: AMAS v3.0.3 (patch bump; intra-v3.1-track per ADR-008 D6)
 - Recursive-self-instantiation salience: LOW (this cycle patches the description of review polling; the Builder-discipline polling clauses in core.md §8.1.1.1 and usage-guide.md §7.4 are unchanged; the patch governs what future cycles will read about §6.3, not the current cycle's own polling behavior)
@@ -46,11 +46,11 @@ Deliverable classes (D1-D5):
 
 ## Last completed step
 
-All seven files modified + two new cycle artifacts authored. Branch `fix/task-0052-three-endpoint-canonical-reconciliation` created from `main` at `d596cd3`. **Next: Gate A pre-commit stop-and-show — presenting staged-tree diff to owner for ratification before commit. §23.6.2 self-review to fixed-point complete (see §5).**
+PR-98 open (`https://github.com/bryce-murphy/amas-framework/pull/98`). Codex desktop pre-commit absorbed (3 Minor findings: m1 stale site-count label, m2 false stated command outputs in review-context Builder-claims, m3 pre-commit/pre-PR phase currency). Fix-up path-(a) applied: F1 handoff §4 D3 label corrected, F2 recorded in adjudication (append-only Builder-claims), F3a frontmatter `active` (3407344), F3b gate-current surfaces refreshed. F3c: append-only history suppressed per §23.6.5. Branch head: `3407344`. **Next: fix-up commit + push (§8.3); post-PR `@codex review` three-endpoint poll per §8.1.1.1; Gate B five-point hand-back.**
 
 ## Current state
 
-**Summary**: Branch at `fix/task-0052-three-endpoint-canonical-reconciliation`. Seven files modified (github-reference.md, core.md, usage-guide.md, README.md, AGENTS.md, CLAUDE.md, .amas/surfaces.yml), two new files authored (docs/handoffs/TASK-0052-three-endpoint-canonical-reconciliation.md, docs/reviews/PR-98-codex-pre-commit.md). All deliverables complete; pending Gate A owner ratification before staging + commit.
+**Summary**: PR-98 open at branch head `3407344` (`fix/task-0052-three-endpoint-canonical-reconciliation`). D1-D5 deliverables committed at `6f146f3`; handoff status-flip + §7 record at `3407344`. Codex desktop pre-commit complete: Comment/proceed (3 Minor, 0 Blocking/Major). Fix-up path-(a) applied in this commit: F1 stale §4 D3 site-count label corrected; F2 false command-output corrections recorded in review-context adjudication; F3a status active (3407344); F3b Linked PR URL + Metadata status + Last-completed-step + Current-state Summary + cumulative-diff-stats updated. F3c: pre-commit/pre-PR append-only history (execution record, session log, kickoff block) suppressed per §23.6.5. Awaiting: post-PR `@codex review` three-endpoint poll per §8.1.1.1 + Gate B five-point check + squash-merge.
 
 **Files authored / modified by Builder**:
 1. MODIFIED `github-reference.md` — D1 §6.3 full rewrite (two- -> three-endpoint; step-4 freshness rows; legacy-label clause) + D2 §7.1 example pins -> placeholders + D3 frontmatter bump 3.0.2 -> 3.0.3
@@ -64,7 +64,7 @@ All seven files modified + two new cycle artifacts authored. Branch `fix/task-00
 9. NEW `docs/reviews/PR-98-codex-pre-commit.md` — D5 pre-commit review context
 
 **Cumulative-diff-stats** (per `core.md` §23.6.1.1 (e.1) staged-tree convention):
-- Derived at Gate A pre-commit stop-and-show from `git diff --staged --shortstat origin/main` + per-file numstat. (Populated at Gate A after staging.)
+- **9 files changed, 409 insertions(+), 19 deletions(-)** — derived at fix-up commit staged tree from `git diff --staged --shortstat origin/main`. Per-file numstat: `.amas/surfaces.yml` 5/5, `AGENTS.md` 1/1, `CLAUDE.md` 1/1, `README.md` 3/1, `core.md` 1/1, `docs/handoffs/…` 205/0, `docs/reviews/PR-98-codex-pre-commit.md` 179/0, `github-reference.md` 13/9, `usage-guide.md` 1/1. Bidirectional sum-stability: ins 5+1+1+3+1+205+179+13+1=409 ✓; del 5+1+1+1+1+0+0+9+1=19 ✓.
 
 ## Decisions made
 
@@ -131,7 +131,7 @@ Enumerated under Objective above (D1-D5).
 - `canonical_version: <version>` (CLAUDE.md entry; was 3.0.1)
 - `template_version: 3.0.0` entries: unchanged
 
-**D3 — version bump 9 sites**:
+**D3 — version bump 11 sites across 7 files**:
 - core.md:2 `framework_version: 3.0.3`
 - github-reference.md:2 `framework_version: 3.0.3`
 - usage-guide.md:2 `framework_version: 3.0.3`

@@ -126,4 +126,54 @@ Verbatim-output convention: capture review verbatim into the review-context file
 
 ## Codex desktop pre-commit output absorption
 
-(Initial state: placeholder — populated post-Codex-pass.)
+### Codex desktop pre-commit review — 2026-06-08
+
+**Findings**
+
+Blocking: none.
+
+Major: none.
+
+Minor:
+
+- [m1] `docs/reviews/PR-98-codex-pre-commit.md:107` / `docs/reviews/PR-98-codex-pre-commit.md:118` / `docs/handoffs/TASK-0052-three-endpoint-canonical-reconciliation.md:134` still describe D3 as "9 sites" even though the corrected cycle scope and handoff deliverable line say 11 D3 sites across 7 files. The branch content verifies the 11-site model (trio frontmatter x3, in-dev markers x3, `.amas/surfaces.yml` framework_version + canonical_version x4 = x5). Default path-(b) is acceptable if this is left as review-context/handoff noise, but the stale labels are worth fixing if another handoff refresh happens.
+
+- [m2] Several review-context verification commands have stated outputs that do not match the current branch, even though the underlying content is correct. Examples: claim 4's `grep -c 'issues/'` over the whole §6.3 range returns `2` (GET path + bullet row), not `1`; claim 9's `grep -E '^framework_version:' core.md github-reference.md usage-guide.md` returns 4 lines because the §7.1 example now intentionally has `framework_version: <version>` at column 1; claim 13's dual-version grep returns the three valid version-positioning lines that contain current `v3.0.3` and latest published `v3.0.0`; claim 14's broad `grep -n 'template_version' github-reference.md` also returns field-model and §7.2 prose, not only the §7.1 example block. These are battery-shape defects, not substantive patch defects.
+
+- [m3] `docs/handoffs/TASK-0052-three-endpoint-canonical-reconciliation.md:22`, `:31`, `:49`, `:53`, and `:112` still describe the cycle as pre-commit / pre-PR / drafted, while the same handoff later records commit `6f146f3`, push, and PR-98 URL at §7 and the frontmatter status is `active`. The most recent record is recoverable, but the handoff's "current state" is internally contradictory for the next reader.
+
+**Verification Summary**
+
+- Review target note: local `git diff --cached` is empty and `git status` is clean at `HEAD=3407344`; I reviewed the branch delta via `origin/main...HEAD` / `git diff --staged origin/main`, because the index currently matches the branch head rather than an uncommitted staged tree.
+- PR metadata verified read-only: PR-98 is OPEN at `https://github.com/bryce-murphy/amas-framework/pull/98`, head branch `fix/task-0052-three-endpoint-canonical-reconciliation`, head SHA `34073444065ca7691b729f52ad94de1f976b932c`; `reviews=[]`, `comments=[]` at check time.
+- D1 confirmed: §6.3 title is `Three-endpoint review polling operationalization`; the preamble names three distinct endpoint/content shapes; no `either...or` / `both endpoints` binary remains in §6.3; the GET block has exactly three paths including `pulls/{pull_number}/comments`; step 4 has rows for `pulls/{pull_number}/reviews`, `issues/{issue_number}/comments`, and `pulls/{pull_number}/comments`; the legacy-label and tie-break distinction clauses are present.
+- §-citation confirmed: `core.md §8.1.1.1 (h.3)` citation appears once in §6.3; `core.md` has the §8.1.1.1 heading and `(h.3)` label at the filter-boundary definition.
+- D2 confirmed: §7.1 example uses `framework_version: <version>` and `canonical_version: <version>` x2; no `3.0.1` remains in `github-reference.md`; `template_version: 3.0.0` values are unchanged in the example.
+- D3 confirmed: trio frontmatter is `3.0.3`; README/AGENTS/CLAUDE in-development markers are `v3.0.3`; `.amas/surfaces.yml` has `framework_version: 3.0.3`, four `canonical_version: 3.0.3`, and only `template_version` values `3.0.0` / `3.0.1`; no residual `3.0.2` remains at bump targets.
+- D4 confirmed: README status note is present. I did not classify `pulls/{pr}/comments` vs `pulls/{pull_number}/comments` in the human-facing migration note as a finding because the canonical endpoint spelling is present in §6.3 and the README note is informal, but aligning the placeholder would reduce friction.
+- §18.3 protection confirmed: only the two intended historical `v3.0.2 canonicalization` strings remain; M-A7 count stays 38 and §18.3 was not substantively changed.
+- Scope protection confirmed: no `.github/workflows/review-freshness-check.yml`; no `roadmap_status` / `[v3.1-planned]` marker flips detected in the branch delta; `dual-signal` remains at exactly four HOLD sites; no `template_version` field was bumped.
+- Diff-stat check confirmed: `git diff --staged --shortstat origin/main` reports `9 files changed, 359 insertions(+), 19 deletions(-)`; numstat sums to `adds=359 dels=19`; `git diff --check origin/main...HEAD` is clean.
+
+**Recommendation**
+
+Comment / proceed. No blocking or major substantive findings against the TASK-0052 code/content patch. The minor findings are artifact and verification-battery consistency issues suitable for default path-(b), or for a small cleanup if the owner wants the review-context/handoff to be pristine before merge.
+
+### Adjudication — fix-up path-(a) (TASK-0052 Architect directive 2026-06-08)
+
+**F1 — stale "9 sites" site-count label (path-(a), class-sweep):**
+- `docs/handoffs/TASK-0052-three-endpoint-canonical-reconciliation.md:134` — "**D3 — version bump 9 sites**" → "**D3 — version bump 11 sites across 7 files**". This is the surviving current-claim instance; the iter-1 §23.6.2 correction fixed the Objective section + claim 19 but missed the §4 deliverable label.
+- `docs/reviews/PR-98-codex-pre-commit.md:107` (Reviewer focus: "exactly 9 enumerated sites bumped") — append-only pre-commit historical snapshot; §23.6.5 suppression applied. Correction recorded here only; no back-edit.
+- `docs/reviews/PR-98-codex-pre-commit.md:118` (kickoff block: "at 9 targeted sites (D3)") — verbatim text sent to Codex desktop; append-only historical snapshot; §23.6.5 suppression applied. Correction recorded here only; no back-edit.
+
+**F2 — false stated outputs in review-context Builder-claims (all append-only; recorded here, not back-edited):**
+- **Claim 4b** (`grep -c 'issues/'` stated `1`; actual `2`): The `issues/` pattern matches both the GET block line (`GET /repos/{owner}/{repo}/issues/{issue_number}/comments`) and the step-4 freshness row bullet. A correct command: `grep -cE '^\s+-\s+\x60issues/'` returns `1` (step-4 bullet row only). Underlying content is correct — one issues endpoint-specific freshness row is present.
+- **Claim 9** (`grep -E '^framework_version:' core.md github-reference.md usage-guide.md` stated `framework_version: 3.0.3` x3; actual x4): The §7.1 example block contains `framework_version: <version>` starting at column 0, which matches the `^framework_version:` pattern. A correct command: `grep -E '^framework_version: [0-9]' core.md github-reference.md usage-guide.md` returns exactly 3 lines (frontmatter only). Underlying content is correct — trio frontmatter is `3.0.3` x3.
+- **Claim 13** (dual-version grep stated `no hits`; actual 3 hits): The version-positioning sentences in README.md, AGENTS.md, CLAUDE.md correctly contain both `v3.0.3` and `v3.0.0` on the same line (current in-dev vs latest published). The command false-positives on valid content; no garbled dual-version concatenation is present. Underlying content is correct.
+- **Claim 14** (`grep -n 'template_version' github-reference.md` stated "only `3.0.0` values in the §7.1 example block"; actual includes §7.2 prose occurrences): The broad pattern matches `template_version` in §7.2 explanatory prose (lines 364, 370, 374, 381, 385, 387). A correct command to scope to example-block values: `grep -n 'template_version: 3\.' github-reference.md` returns only the `3.0.0` value lines in the §7.1 example block. Underlying content is correct — no `template_version` field was bumped.
+
+**F3a — handoff frontmatter `status: drafted -> active`:** Applied at commit `3407344` (prior to this fix-up). `linked_pr: PR-98 (Builder fills with squash SHA post-merge per PMN-001 (k))` confirmed matches MC-C canonical regex; no change needed.
+
+**F3b — gate-current surface refresh:** In this fix-up commit: (1) Metadata `- Status: drafted` → `- Status: active`; (2) Metadata `- Linked PR` URL populated; (3) `## Last completed step` updated to post-PR/Codex-absorbed/fix-up state; (4) `## Current state` Summary updated; (5) cumulative-diff-stats sentence updated with fix-up stats.
+
+**F3c — suppressed (§23.6.5, append-only history):** Codex m3 finding flagged `handoff:22`, `:31`, `:49`, `:53`, `:112` as internally contradictory. `:22` (Metadata Linked PR URL) and `:31` (Metadata Status) and `:49`/`:53` (Last-completed-step / Current-state) are gate-current surfaces — addressed by F3b. `:112` is the `## §3. Execution record` step-9 line ("Next: Gate A stop-and-show...") which is an append-only chronological execution record — §23.6.5 suppression applied; no back-edit. The Codex "false-staleness" flag on the step-by-step execution record is acknowledged and suppressed per §23.6.5.
