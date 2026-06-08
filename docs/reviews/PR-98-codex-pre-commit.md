@@ -177,3 +177,51 @@ Comment / proceed. No blocking or major substantive findings against the TASK-00
 **F3b — gate-current surface refresh:** In this fix-up commit: (1) Metadata `- Status: drafted` → `- Status: active`; (2) Metadata `- Linked PR` URL populated; (3) `## Last completed step` updated to post-PR/Codex-absorbed/fix-up state; (4) `## Current state` Summary updated; (5) cumulative-diff-stats sentence updated with fix-up stats.
 
 **F3c — suppressed (§23.6.5, append-only history):** Codex m3 finding flagged `handoff:22`, `:31`, `:49`, `:53`, `:112` as internally contradictory. `:22` (Metadata Linked PR URL) and `:31` (Metadata Status) and `:49`/`:53` (Last-completed-step / Current-state) are gate-current surfaces — addressed by F3b. `:112` is the `## §3. Execution record` step-9 line ("Next: Gate A stop-and-show...") which is an append-only chronological execution record — §23.6.5 suppression applied; no back-edit. The Codex "false-staleness" flag on the step-by-step execution record is acknowledged and suppressed per §23.6.5.
+
+## Post-PR Codex review — three-endpoint poll record
+
+### Poll timestamp
+
+Trigger: owner posted `@codex review` on PR-98 at 2026-06-08T15:37:34Z. Poll conducted 2026-06-08 after fix-up push (`3df4a4c`).
+
+### Three-endpoint poll results
+
+**Endpoint (a) — `pulls/98/reviews`:**
+```
+id: 4450692215
+user: bryce-murphy
+state: COMMENTED
+submitted_at: 2026-06-08T14:56:51Z
+commit_id: 34073444065ca7691b729f52ad94de1f976b932c  (= 3407344; pre-fix-up head; stale vs current 3df4a4c)
+body: [Codex desktop pre-commit verbatim output — see ## Codex desktop pre-commit output absorption above]
+```
+Note: posted by owner (`bryce-murphy`) as a formal review object containing the Codex desktop pre-commit output. Stale relative to current head `3df4a4c` — expected; this is the pre-commit review, not the post-PR re-review.
+
+**Endpoint (b) — `issues/98/comments`:**
+```
+id: 4650667689
+user: bryce-murphy
+created_at: 2026-06-08T15:37:34Z
+body: "@codex review"
+
+id: 4650695523
+user: chatgpt-codex-connector[bot]
+created_at: 2026-06-08T15:40:48Z
+body: "Codex Review: Didn't find any major issues. Keep it up!"
+```
+
+**Endpoint (c) — `pulls/98/comments`:** empty
+
+**PR head SHA at poll time:** `3df4a4c005e86fff13760c2dc8254ac3d85431af` (= `3df4a4c`) -- fix-up commit. ✓
+
+### Verdict
+
+`chatgpt-codex-connector[bot]` at endpoint (b): **"Didn't find any major issues."** Substantive verdict — no findings raised. Clean re-review pass. The retained append-only "9 sites" / false-output text (review-context `:107`/`:118`, claims 4b/9/13/14) was NOT re-flagged. Reach = 1 (below sec 24.6 Stop-Iteration threshold of 4).
+
+### Thread engagement (sec 7.2 rule (b))
+
+Reply posted on PR-98 at `https://github.com/bryce-murphy/amas-framework/pull/98#issuecomment-4650711517`:
+- F1 (handoff sec 4 "9 sites"): corrected to 11 at current-claim surface in `3df4a4c`.
+- F1 append-only instances (review-context :107/:118) + F2 (false stated outputs, claims 4b/9/13/14): left by design as append-only pre-commit review-invocation record per sec 13.1/sec 23.6.5; corrections recorded in adjudication.
+- F3a/F3b: status active + gate-current surfaces refreshed in `3df4a4c`.
+- F3c: sec 3 execution-record step-9 left per sec 23.6.5 suppression; acknowledged in adjudication.
