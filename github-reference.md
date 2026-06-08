@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.2
+framework_version: 3.0.3
 status: recorded
 filled_by: PR-17 (TASK-0017)
 ---
@@ -284,13 +284,14 @@ The canonical AMAS-distributed Actions ship at `actions/` (canonical source) and
 
 These ship at the AMAS-distributed Actions batch per ADR-003 Decision 2 (anticipated PR per current PMN-shifted sequence). github-reference.md forward-references them; concrete implementations land at the Actions PR.
 
-### §6.3. Two-endpoint review polling operationalization
+### §6.3. Three-endpoint review polling operationalization
 
-Per core.md §8.1.1.1 (Reviewer dual-signal output handling), AI-agent reviews may emit either as PR review objects (formal reviews with findings) or as PR issue comments (advisory / sentinel). AMAS-distributed `review-freshness-check.yml` Action operationalizes this by polling both endpoints:
+Per core.md §8.1.1.1 (Reviewer dual-signal output handling — `dual-signal` is retained as a legacy label for the established §8.1.1.1 discipline, which operationally spans three endpoint surfaces), AI-agent reviews emit across three distinct GitHub API endpoints with distinct content shapes: formal Pull Request Review objects, top-level issue-comment summaries, and line-level review comments. AMAS-distributed `review-freshness-check.yml` Action operationalizes this by polling all three endpoints:
 
 ```text
 GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-GET /repos/{owner}/{repo}/issues/{pull_number}/comments
+GET /repos/{owner}/{repo}/issues/{issue_number}/comments
+GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 ```
 
 For each endpoint, the Action:
@@ -298,10 +299,13 @@ For each endpoint, the Action:
 1. Fetches latest entries (paginated)
 2. Filters by approved bot identities (per §5)
 3. Groups by `submitted_at` / `created_at` timestamp
-4. For each entry, validates `commit_id` (reviews) or post-timestamp-vs-head-SHA-push-timestamp (comments) against current head SHA
+4. Validates freshness against current head SHA per endpoint-specific rule:
+   - `pulls/{pull_number}/reviews`: validate the formal review's `commit_id` against current head SHA (stale-review rule).
+   - `issues/{issue_number}/comments`: validate `created_at` against the current-head push timestamp; top-level issue comments carry no intrinsic `commit_id`.
+   - `pulls/{pull_number}/comments`: validate the line-level review comment's `commit_id` / commit metadata where present, with a `created_at`-vs-push-timestamp fallback where commit metadata is unavailable.
 5. Marks entries older than current head as stale; emits status check result accordingly
 
-The lexicographic tie-break form per core.md §8.1.1.1 (h.3) canonical text applies: cross-timestamp emissions pass the timestamp filter without id constraint; same-timestamp emissions tie-break by id.
+The lexicographic tie-break form per core.md §8.1.1.1 (h.3) canonical text applies symmetrically across all three endpoints: cross-timestamp emissions pass the timestamp filter without id constraint; same-timestamp emissions tie-break by id. This object-id tie-break (absorption ordering) is distinct from the per-endpoint `commit_id` staleness check at step 4.
 
 ### §6.4. Phantom-action verification operationalization
 
@@ -324,7 +328,7 @@ Sub-shapes per core.md §8.1.1.2 canonical text apply: each sub-shape requires e
 AMAS adopts a canonical surface-file synchronization manifest at `.amas/surfaces.yml` documenting all framework-versioned surfaces in the adopted project. The manifest is a single canonical file per project: top-level keys anchor the manifest (`framework_version`, `reference_impl`, `project_id`, `status`) and a `surfaces:` **list** enumerates every AMAS-distributed templated surface in use. Format:
 
 ```yaml
-framework_version: 3.0.1
+framework_version: <version>
 reference_impl: github
 project_id: <project-slug>
 status: active
@@ -333,13 +337,13 @@ surfaces:
   - name: AGENTS.md
     path: AGENTS.md
     template_version: 3.0.0      # Action reads this
-    canonical_version: 3.0.1     # framework anchor (optional)
+    canonical_version: <version>     # framework anchor (optional)
     agents: [codex]              # receiving surface (Codex products read AGENTS.md)
     status: active
   - name: CLAUDE.md
     path: CLAUDE.md
     template_version: 3.0.0
-    canonical_version: 3.0.1
+    canonical_version: <version>
     agents: [claude]
     status: active
   - name: pr_template

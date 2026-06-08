@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.2
+framework_version: 3.0.3
 status: partial
 filled_by: PR-10 (TASK-0010) Part A — verify-before-assert cluster (§8.1.1, §23.6, §24.3); Part B in TASK-0011+
 ---

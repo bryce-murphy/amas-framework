@@ -6,7 +6,9 @@ GitHub-native framework for AI-assisted projects: role separation (Architect / B
 
 **AMAS v3.0.0 is published from this repository** — the minimum-viable canonical framework canonicalized through the [ADR-003](docs/adr/ADR-003-full-package-pr-plan.md) + [ADR-006](docs/adr/ADR-006-product-delivery-pivot-pr-plan-amendment.md) + [ADR-007](docs/adr/ADR-007-part-c-materialization-scoping.md) + [ADR-008](docs/adr/ADR-008-v3-scope-amendment.md) chain. ADR-008 sets v3.0 ship scope to the minimum-viable canonical framework (canonical-law trio + Part C.1 + Part C.2 + Batches P1-P3 + release polish); v3.1 ships Batch P4 Actions (deterministic-enforcement automation); v3.2 ships Batches P5-P7 (flat appendices + project-type appendices + receiving-surface adapter packs). See [ADR-001](docs/adr/ADR-001-initial-repo-setup.md) for the standalone-repo decision.
 
-The current canonical AMAS framework version is **v3.0.2** (in development in this repository). The latest published release is **v3.0.0** — the adopter-facing version of record: adopters should reference the v3.0.0 release, governed by this version-positioning note together with the v3.0.0 release tag once the owner publishes it, until the v3.1 release.
+The current canonical AMAS framework version is **v3.0.3** (in development in this repository). The latest published release is **v3.0.0** — the adopter-facing version of record: adopters should reference the v3.0.0 release, governed by this version-positioning note together with the v3.0.0 release tag once the owner publishes it, until the v3.1 release.
+
+Adopter migration note (v3.0.3): adopters who implemented review-freshness automation from `github-reference.md` §6.3 against two endpoints should add the line-level review-comments endpoint (`pulls/{pr}/comments`) before relying on "no findings" assertions, per the three-endpoint discipline at `core.md` §8.1.1.1.
 
 ## What is AMAS?
 
