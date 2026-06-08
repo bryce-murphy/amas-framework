@@ -10,7 +10,7 @@ framework_version_dogfooded: AMAS v3.0.3
 production_target: AMAS v3.1
 spec_source: .claude/session-handoffs/TASK-0052-directive.md
 date_authored: 2026-06-08
-status: drafted
+status: active
 ---
 
 # HANDOFF: TASK-0052 — three-endpoint canonical reconciliation
@@ -175,9 +175,9 @@ Enumerated under Objective above (D1-D5).
 
 ## §7. Commit + push + PR-open record
 
-- Commit: TBD (pending Gate A owner ratification)
-- Push: TBD (§8.3 stop-and-show before push)
-- PR-98: TBD (URL substituted here post-open; §8.3 stop-and-show before `gh pr create`)
+- Commit: 6f146f3 (fix(github-reference): three-endpoint review polling + bump 3.0.2 -> 3.0.3 (TASK-0052))
+- Push: origin/fix/task-0052-three-endpoint-canonical-reconciliation (2026-06-08)
+- PR-98: https://github.com/bryce-murphy/amas-framework/pull/98
 - linked_pr squash SHA: TBD (substituted by linked-pr-fix-up Action post-merge per PMN-001 (k))
 
 ## §8. Post-PR Codex review state
