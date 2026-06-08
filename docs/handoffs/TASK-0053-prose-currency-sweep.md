@@ -47,18 +47,19 @@ Prose-currency sweep: three targeted edits across two files to close stale condi
 
 ## Last completed step
 
-Step 2 — branch created (`chore/task-0053-prose-currency-sweep`); handoff authored (status: `drafted`). Proceeding to step 3 edits.
+Codex pre-commit pass 1 complete (2026-06-08T19:45:10Z): Verdict Comment/proceed; one Minor finding (review-context lines 41 + 44 — diff direction inverted). Path-(a) fix-up in progress: correcting diff direction + restricting claim 6 scope; §8.1.1.3 pure-token-swap exemption applies (no second Codex pass).
 
 ## Current state
 
-**Summary**: branch created from `e5cfe9d`; handoff authored; 3 edits pending application.
+**Summary**: all 3 edits applied and committed; Codex pre-commit pass 1 complete (Comment/proceed); path-(a) fix-up in progress on review-context lines 41 + 44.
 
-**Files to be authored / modified by Builder:**
-1. NEW `docs/handoffs/TASK-0053-prose-currency-sweep.md` — this handoff
-2. MODIFIED `README.md` — Edits 1 + 2 (tag-language currency)
-3. MODIFIED `prompts/deep-research-design-brief.md` — Edit 3 (additive schema pointer)
+**Files authored / modified:**
+1. NEW `docs/handoffs/TASK-0053-prose-currency-sweep.md` — this handoff (status: `active`)
+2. MODIFIED `README.md` — Edits 1 + 2 (tag-language currency) ✓
+3. MODIFIED `prompts/deep-research-design-brief.md` — Edit 3 (additive schema pointer) ✓
+4. NEW `docs/reviews/PR-100-codex-pre-commit.md` — review-context (Codex fix-up in progress)
 
-**Cumulative-diff-stats**: to be re-derived at Gate A after staging (step 4).
+**Cumulative-diff-stats**: TBD — re-derived after fix-up edits staged.
 
 ## Decisions made
 

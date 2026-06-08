@@ -11,20 +11,20 @@ status: drafted
 - Cycle: TASK-0053
 - Linked handoff: docs/handoffs/TASK-0053-prose-currency-sweep.md
 - Status: drafted
-- Codex desktop session timestamp (UTC): TBD (fill at Codex pass)
+- Codex desktop session timestamp (UTC): 2026-06-08T19:45:10Z
 
 ## Builder claims to verify
 
 1. **Cumulative-diff-stats per `core.md` §23.6.1.1 (e.1) — 4 files, sum-stable.** At committed state:
-   - bash: `git diff origin/main HEAD --shortstat` returns `4 files changed, 197 insertions(+), 2 deletions(-)`
+   - bash: `git diff origin/main HEAD --shortstat` returns `4 files changed, 228 insertions(+), 2 deletions(-)`
    - bash: `git diff origin/main HEAD --numstat` returns per-file rows:
      ```
      2	2	README.md
-     119	0	docs/handoffs/TASK-0053-prose-currency-sweep.md
-     74	0	docs/reviews/PR-100-codex-pre-commit.md
+     120	0	docs/handoffs/TASK-0053-prose-currency-sweep.md
+     104	0	docs/reviews/PR-100-codex-pre-commit.md
      2	0	prompts/deep-research-design-brief.md
      ```
-   - Bidirectional sum-stable: per-file insertion sum 2+119+74+2 = 197 equals shortstat insertions; per-file deletion sum 2+0+0+0 = 2 equals shortstat deletions.
+   - Bidirectional sum-stable: per-file insertion sum 2+120+104+2 = 228 equals shortstat insertions; per-file deletion sum 2+0+0+0 = 2 equals shortstat deletions.
 
 2. **README:9 tag-clause reframed to past tense + tag-vs-release disambiguation.**
    - bash: `grep -n "git tag" README.md` returns line 9 containing `adopters should reference the published **v3.0.0** git tag` and `(The v3.0.0 git tag is published; no GitHub release page is published for v3.0.0 — adopters reference the git tag directly.)`
@@ -38,10 +38,10 @@ status: drafted
    - bash: `grep -n "framework_version: 3.0.0" prompts/deep-research-design-brief.md` returns the original `framework_version: 3.0.0` line inside the YAML block — confirming the pin is preserved verbatim
 
 5. **No Bucket B body `- Status:` edits to pre-existing handoffs.**
-   - bash: `git diff HEAD origin/main -- docs/handoffs/ | grep "^[-+]- Status:"` returns only the new handoff's `+- Status: drafted` line and no removals of pre-existing handoff body `- Status:` lines
+   - bash: `git diff origin/main HEAD -- docs/handoffs/ | grep "^[-+]- Status:"` returns only the new handoff's `+- Status: drafted` line and no removals of pre-existing handoff body `- Status:` lines
 
 6. **No `template_version`, M-A7 historical string, or negative-fixture surfaces touched.**
-   - bash: `git diff HEAD origin/main | grep -E "template_version|3\.0\.2 canonicalization|stale-manifest"` returns nothing (empty output)
+   - bash: `git diff origin/main HEAD -- README.md prompts/deep-research-design-brief.md | grep -E "template_version|3\.0\.2 canonicalization|stale-manifest"` returns nothing (empty output — the new handoff and review-context name these terms in scope-exclusion prose; restricting to the modified files confirms no `template_version` value, M-A7 historical string, or stale-manifest line was touched)
 
 7. **Handoff frontmatter `status: active` (path-(α') flip applied); body `- Status:` untouched.**
    - bash: `head -15 docs/handoffs/TASK-0053-prose-currency-sweep.md | grep "^status:"` returns `status: active`
@@ -71,4 +71,34 @@ Verbatim-output convention: capture review verbatim into docs/reviews/PR-100-cod
 
 ## Codex desktop pre-commit output absorption
 
-Codex desktop pre-commit output absorption — populated after Codex pass.
+Codex desktop pre-commit review (2026-06-08T19:45:10Z)
+
+Verdict: COMMENT / no blocking or major findings. One minor review-context verification-prose issue; substantive README and design-brief edits match scope.
+
+Blocking: None.
+
+Major: None.
+
+Minor:
+
+1. `docs/reviews/PR-100-codex-pre-commit.md:41` and `docs/reviews/PR-100-codex-pre-commit.md:44` - validation command outputs are not literally true as written. At line 41, `git diff HEAD origin/main -- docs/handoffs/ | grep "^[-+]- Status:"` emits `-- Status: drafted` because the diff direction is branch-to-base, not `+- Status: drafted`. At line 44, `git diff HEAD origin/main | grep -E "template_version|3\.0\.2 canonicalization|stale-manifest"` does not return empty output; it matches the new handoff/review-context prose that names `template_version` and `stale-manifest`. The underlying scope containment is OK (changed files are README, new handoff, new review-context, and design brief; no actual template-versioned surface, M-A7 text, stale-manifest fixture, or framework-version bump changed), but these Builder-claim commands should not be treated as successful evidence in their present form. Minor / path-(b) by requested routing unless the owner wants a cleanup commit.
+
+Verification performed:
+
+- `git diff origin/main HEAD --shortstat`: `4 files changed, 197 insertions(+), 2 deletions(-)`.
+- `git diff origin/main HEAD --numstat`: README 2/2, handoff 119/0, review-context 74/0, design brief 2/0; sums equal shortstat.
+- `git tag -l v3.0.0`: `v3.0.0`.
+- `gh release view v3.0.0`: `release not found`.
+- README line 9 and line 32 contain the requested published-git-tag / past-tense wording.
+- Design brief line 67 adds the dated editorial pointer; existing YAML markers remain at lines 73 and 75.
+- `.amas/surfaces.yml` and `templates/surfaces-manifest-template.yml` both use `surfaces:` list.
+- PR-100 does not exist yet (`gh pr view 100` could not resolve a pull request), so no formal GitHub review could be submitted.
+
+**Adjudication** (per ADR-001 D11):
+
+- Minor 1 (`docs/reviews/PR-100-codex-pre-commit.md:41` + `:44`): routed path-(a) — diff direction inverted in both bash commands (`HEAD origin/main` → `origin/main HEAD`); claim 6 bash further restricted to modified files only (`-- README.md prompts/deep-research-design-brief.md`) to exclude new-file prose that names these terms in scope-exclusion context. Underlying scope containment confirmed correct per Codex. §8.1.1.3 pure-token-swap exemption applied: no second Codex pass required.
+
+**Resolution applied** (path-(a)):
+
+- Edit F1.1: `docs/reviews/PR-100-codex-pre-commit.md:41` bash: `git diff HEAD origin/main` → `git diff origin/main HEAD`. Verifiable: `git diff origin/main HEAD -- docs/handoffs/ | grep "^[-+]- Status:"` returns `+- Status: drafted`.
+- Edit F1.2: `docs/reviews/PR-100-codex-pre-commit.md:44` bash: `git diff HEAD origin/main` → `git diff origin/main HEAD -- README.md prompts/deep-research-design-brief.md` (restricted to modified files only; excludes new-file prose matches). Verifiable: `git diff origin/main HEAD -- README.md prompts/deep-research-design-brief.md | grep -E "template_version|3\.0\.2 canonicalization|stale-manifest"` returns nothing (empty output).
