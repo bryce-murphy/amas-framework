@@ -5,12 +5,12 @@ pr: PR-98
 branch: fix/task-0052-three-endpoint-canonical-reconciliation
 linked_predecessor: TASK-0051 (PR-95 squash b72bf45 feat(actions): materialize surface-version-sync-check (TASK-0051))
 linked_successor: TBD
-linked_pr: PR-98 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-98 (squash SHA 63ac2d0)
 framework_version_dogfooded: AMAS v3.0.3
 production_target: AMAS v3.1
 spec_source: .claude/session-handoffs/TASK-0052-directive.md
 date_authored: 2026-06-08
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0052 — three-endpoint canonical reconciliation
