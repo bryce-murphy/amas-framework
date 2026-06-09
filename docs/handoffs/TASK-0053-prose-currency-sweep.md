@@ -47,11 +47,11 @@ Prose-currency sweep: three targeted edits across two files to close stale condi
 
 ## Last completed step
 
-Codex pre-commit pass 1 complete (2026-06-08T19:45:10Z): Verdict Comment/proceed; one Minor finding (review-context lines 41 + 44 — diff direction inverted). Path-(a) fix-up in progress: correcting diff direction + restricting claim 6 scope; §8.1.1.3 pure-token-swap exemption applies (no second Codex pass).
+Codex post-PR pass 1 absorbed (2026-06-08T21:23:59Z); Minor P2 (handoff gate-current stale, lines 50-54) found; path-(a) correction committed. Next: push fix-up commit then post-PR re-review then Gate B then squash.
 
 ## Current state
 
-**Summary**: all 3 edits applied and committed; Codex pre-commit pass 1 complete (Comment/proceed); path-(a) fix-up in progress on review-context lines 41 + 44.
+**Summary**: Post-PR state: fix-up commit applied (path-(a) handoff gate-current correction + review-context post-PR absorption); ready to push for post-PR re-review.
 
 **Files authored / modified:**
 1. NEW `docs/handoffs/TASK-0053-prose-currency-sweep.md` — this handoff (status: `active`)
