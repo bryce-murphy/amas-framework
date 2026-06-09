@@ -64,6 +64,8 @@ For `@claude` or any equivalent Anthropic GitHub review surface, v3 should not a
 
 For GitHub Actions, v3 should move several checks out of prose discipline and into deterministic enforcement. The highest-value actions are: **branch-name check**, **PR-template section check**, **linked-records presence check**, **AI Session Log structure check**, **review freshness check**, **stale-review checker**, and **surface-file version sync check**. Optional but useful additions are **artifact-path checks** and **filename-pattern checks** for ADRs/handoffs/reviews. GitHub’s own docs support reusable workflows and composite actions for exactly this kind of shared policy packaging, and GitHub’s review/protection docs support stale-review dismissal and required-review discipline as native platform concepts. citeturn8search0turn8search1turn8search2turn9search2turn9search7turn0search1turn0search6
 
+**Editorial note (2026-06-08, post-archival):** The `.amas/surfaces.yml` schema illustrated in this section uses the superseded `templates:` map form with `framework_version: 3.0.0` pins; the current canonical schema is a `surfaces:` **list** — see `.amas/surfaces.yml` and `templates/surfaces-manifest-template.yml`. The illustrative YAML and the review-freshness-workflow example below are preserved as the original archived design exploration (archived 2026-04-30) and do not reflect current canonical state.
+
 A representative v3 **surface sync metadata** pattern should look like this:
 
 ```yaml
