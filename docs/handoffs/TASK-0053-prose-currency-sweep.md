@@ -5,12 +5,12 @@ pr: PR-100
 branch: chore/task-0053-prose-currency-sweep
 linked_predecessor: TASK-0052 (PR-98 squash 63ac2d0 three-endpoint canonical reconciliation)
 linked_successor: TBD
-linked_pr: PR-100 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-100 (squash SHA 7502cb9)
 framework_version_dogfooded: AMAS v3.0.3
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0053-spec.md
 date_authored: 2026-06-08
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0053
