@@ -39,7 +39,7 @@ status: drafted
    - Note: the broad repo-wide `grep -r "dual-signal" --include="*.md" .` is NOT a zero-residual predicate — it additionally returns this cycle's own descriptive text (handoff + review-context files describing the rename) and append-only historical docs (prior-cycle handoffs, PMNs, prompts). Those are expected out-of-scope-for-WS3a residuals, not live canonical labels.
 
 3. **WS3b — §18.4 ADR-008 D6 citations present at both target strings.**
-   - bash: `grep "ADR-008 D6" core.md` returns two lines: one containing `canonicalized at ADR-008 D6:` and one containing `See ADR-008 D6 for the decision.`
+   - bash: `grep "ADR-008 D6" core.md` returns one line (line 610) containing both `canonicalized at ADR-008 D6:` and `See ADR-008 D6 for the decision.` (both citations appear in the same §18.4 release-track paragraph)
 
 4. **WS0 — 11 version-of-record sites bumped to 3.0.4 (3 trio frontmatter + README.md + 5 surfaces.yml + AGENTS.md + CLAUDE.md).**
    - bash: `grep "framework_version: 3.0.4" core.md github-reference.md usage-guide.md .amas/surfaces.yml` returns 4 lines (one per file)
@@ -50,7 +50,7 @@ status: drafted
 
 5. **WS1 — §24.7 Claim-artifact-parity present in core.md after §24.6.**
    - bash: `grep -n "§24.7" core.md` returns a line containing `### §24.7. Claim-artifact-parity`
-   - bash: `grep -c "Claim-artifact-parity" core.md` returns `2` (heading + body occurrence)
+   - bash: `grep -c "Claim-artifact-parity" core.md` returns `3` (the §24.7 heading, the opening paragraph, and the unifying-rule paragraph)
 
 6. **WS2 — §23.6.5 empirical grounding extended with TASK-0053 sentence.**
    - bash: `grep "TASK-0053 (PR-100)" core.md` returns the line in §23.6.5 containing `Subsequent cross-cycle reinforcement at TASK-0053 (PR-100)`
@@ -124,6 +124,7 @@ Recommendation: Request changes for the Major source-fidelity issue in `core.md`
 - **Major #1 (`core.md:724`)**: path-(a) — WS2 §23.6.5 sentence replaced with source-accurate framing: "after a post-PR fix-up commit, the handoff's gate-current fields still indicated the fix-up was in progress while that same commit recorded it as applied — a stale gate-current residual surfaced at post-PR review, confirming the gate-current predicate catches post-fix-up staleness, a case distinct from the by-design inter-gate staleness the taxonomy permits." Source-verified at edit time against lines 120-122 of PR-100 review-context (post-fix-up timing ✓, in-progress-vs-applied detail ✓, post-fix-up staleness framing ✓). §8.1.1.3 pass-2 exemption does NOT apply (content rewrite, not pure-token-swap); pass-2 required after re-staging.
 - **Minor #1** (three residuals): path-(a) — (a) handoff out-of-scope register corrected: "excluded per §7.1" → "IN scope; both bumped"; (b) review-context heading corrected: "8 files" → "10 files"; (c) kickoff block corrected: "9 version-of-record sites" → "11 version-of-record sites (3 trio frontmatter + README.md + 5 surfaces.yml + AGENTS.md + CLAUDE.md)". Routed path-(a) by owner (leaving stale claims in the cycle that canonicalizes claim-artifact-parity is off-thesis).
 - **Minor #2** (`core.md:259`, `templates/handoff-template.md:153`): path-(β) defer — body-`Status` freeze-vs-refresh cadence belongs in a dedicated future cycle; the likely-correct refresh-at-gates answer creates a ceiling (cannot reach `resolved`, which is Action-maintained on frontmatter only) making this cycle's self-instantiation non-conformant as a bolt-on. Current §13.2 / handoff-template text correct as written. Architect-ratified intentional deferral; recorded in handoff §10 deferred-ledger entry with interaction-note.
+- **Post-PR annotation (Architect — 2026-06-10):** [Architect adjudication note (post-PR): the pass-1 Validation-notes assertion above ("WS3a verifies clean: no tracked Markdown occurrence of `dual-signal` remains") was found inaccurate at post-PR review — the broad `grep -r "dual-signal" --include="*.md" .` returns the intentional §6.3 breadcrumb plus this cycle's descriptive text and append-only historical docs. The live Claim 2 was corrected at `e929889` to a per-surface verification; see `docs/reviews/PR-102-codex-post-pr.md`. The verbatim above is preserved unedited per the PMN-002 (a) verbatim convention.]
 
 ### Codex desktop pre-commit pass-2 output
 
