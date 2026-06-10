@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.3
+framework_version: 3.0.4
 status: partial
 filled_by: PR-10 (TASK-0010) Part A — verify-before-assert cluster (§8.1.1, §23.6, §24.3); Part B in TASK-0011+
 ---
@@ -18,9 +18,9 @@ The Reviewer's verdict is delivered to the Builder via the GitHub API surface ac
 
 #### §8.1.1. Reviewer-output channel handling
 
-Two leaf disciplines apply at Reviewer-output absorption: dual-signal output handling (§8.1.1.1) covering the three delivery endpoints and their reconciliation, and claimed-action verification (§8.1.1.2) covering the receiving-side verification of any reviewer-claimed action against actual repository state.
+Two leaf disciplines apply at Reviewer-output absorption: three-endpoint output handling (§8.1.1.1) covering the three delivery endpoints and their reconciliation, and claimed-action verification (§8.1.1.2) covering the receiving-side verification of any reviewer-claimed action against actual repository state.
 
-##### §8.1.1.1. Reviewer dual-signal output handling
+##### §8.1.1.1. Reviewer three-endpoint output handling
 
 When a Reviewer is invoked on a Pull Request, the review-rendering surface emits the Reviewer's output through three distinct GitHub API endpoints with distinct content shapes. The Builder absorbing Reviewer output cannot rely on single-channel polling.
 
@@ -256,7 +256,7 @@ In-cycle session records are the per-session entries that accumulate across a cy
 
 §13.2 governs the current PR-state log set and the post-handoff cycle-close content: the cycle-close ledger and close-reconciliation content authored at cycle close. It is distinct from §18.3, which governs the Architect-perspective merge-commit-body data integration at the cycle-grain; §13.2 is the session-log / handoff cycle-close surface, §18.3 the merge-commit-body surface. Both preserve durable cycle-close content at different abstraction layers.
 
-**Sole canonical cycle-close marker.** Cycle close is asserted **only** via action-filled frontmatter — the handoff `linked_pr` carrying the squash-merge SHA, the handoff `status: resolved`, and the review-context `status: recorded`. **No body surface is a cycle-close marker**: no prose sentence, ledger line, or session-log entry asserts close. This prevents a body surface from claiming a close the frontmatter has not recorded.
+**Sole canonical cycle-close marker.** Cycle close is asserted **only** via action-filled frontmatter — the handoff `linked_pr` carrying the squash-merge SHA, the handoff `status: resolved`, and the review-context `status: recorded`. **No body surface is a cycle-close marker**: no prose sentence, ledger line, or session-log entry asserts close. This prevents a body surface from claiming a close the frontmatter has not recorded. Relatedly, the handoff body `- Status:` field (in the `## Metadata` block) is a last-gate snapshot the Builder writes at hand-back, not a field the PMN-001 (k) Action maintains — the Action transitions only the frontmatter `status:` field. The body `- Status:` records the gate state at which it was written; it is not an Action-maintained mirror of frontmatter.
 
 **Checkable predicate** (canonical text a v3.1 Batch P4 Action reads to enforce; deferred to v3.1 per ADR-008): the AI Session Log section carries the §13.2 current-set / §13.1 migrated-set structure, and cycle-close is asserted only via action-filled frontmatter — never via a body surface.
 
@@ -607,7 +607,7 @@ The strict-literal alternative — bump only when a new top-level §-section is 
 
 If the Architect adjudication is ambiguous (e.g., the cycle's content sits at the patch/minor boundary), the default is to bump — under-bumping understates evolution, over-bumping is a noop for adopters who absorb incrementally.
 
-**Release-track bump posture.** During multi-cycle development of a roadmap-defined release (ADR-008 D4), per-cycle bump tiering is governed by the release-track posture canonicalized at ADR-008: intra-release-track cycles bump at patch tier; the release's aggregate minor/major bump fires once at release completion. This subordinates the per-cycle substantive-reading tiering above to the release-track during multi-cycle release development. See ADR-008 for the decision.
+**Release-track bump posture.** During multi-cycle development of a roadmap-defined release (ADR-008 D4), per-cycle bump tiering is governed by the release-track posture canonicalized at ADR-008 D6: intra-release-track cycles bump at patch tier; the release's aggregate minor/major bump fires once at release completion. This subordinates the per-cycle substantive-reading tiering above to the release-track during multi-cycle release development. See ADR-008 D6 for the decision.
 
 **Cross-reference: §18.1.** Bump-trigger criteria and PMN-trigger criteria are independent. A cycle may trigger PMN authorship without triggering a version bump (e.g., a workflow-change PMN documenting a new pre-flight discipline that doesn't add canonical text). A cycle may trigger a version bump without PMN authorship (rare; typically a substantive-content cycle without unexpected friction).
 
@@ -721,7 +721,7 @@ When a §23.6 self-review sweep — or any cycle work — cannot complete within
 
 **Checkable predicate** (canonical text a v3.1 Batch P4 review-freshness Action reads to enforce; the Action is deferred to v3.1 per ADR-008): gate-current surfaces match the latest gate state, and append-only surfaces are not back-edited. A back-edited append-only surface, or a gate-current surface stale past its last gate, is a §23.6.5 violation.
 
-**Empirical grounding.** The gate-current / append-only taxonomy held as behavioral test #1 across TASK-0046 (PR-75) and TASK-0047 (PR-80 / PR-83): zero append-only false-staleness flags, with residual staleness isolated to gate-current next-step pinning. This reaches the ADR-006 D3 evidence bar (3+ confirmations across cycles) for canonicalizing the taxonomy as canonical text this cycle. AMAS v2.14.1 §23.6.5 is the lineage source; the dogfooded taxonomy governs where the two diverge, the substrate cited as lineage only.
+**Empirical grounding.** The gate-current / append-only taxonomy held as behavioral test #1 across TASK-0046 (PR-75) and TASK-0047 (PR-80 / PR-83): zero append-only false-staleness flags, with residual staleness isolated to gate-current next-step pinning. This reaches the ADR-006 D3 evidence bar (3+ confirmations across cycles) for canonicalizing the taxonomy as canonical text this cycle. Subsequent cross-cycle reinforcement at TASK-0053 (PR-100): after a post-PR fix-up commit, the handoff's gate-current fields still indicated the fix-up was in progress while that same commit recorded it as applied — a stale gate-current residual surfaced at post-PR review, confirming the gate-current predicate catches post-fix-up staleness, a case distinct from the by-design inter-gate staleness the taxonomy permits. AMAS v2.14.1 §23.6.5 is the lineage source; the dogfooded taxonomy governs where the two diverge, the substrate cited as lineage only.
 
 **Cross-references.** §8.1.1.3; §13.1; §13.2; §14; §23.6; §23.6.2; §23.6.3; §24.5; §24.6.
 
@@ -826,3 +826,17 @@ At canonical-text amendment cycles, when iterative-catch reach at the post-PR Co
 **Cross-discipline composition.** §24.6 Stop-Iteration framework composes with §24.5 multi-surface review pipeline (load-bearing safety-net providing the iterative-catch infrastructure that Stop-Iteration framework terminates) + §23.6.3 reference-verification + role-invariance discipline (operative at surfaces 1 + 6 of §24.5 pipeline) + §8.1.1.3 cost-class refinement (one-iteration assumption at pure-token-swap class applies pre-reach-4; reach 4+ canonical boundary overrides at iterative-catch saturation per PMN-013 §6.2 reach-signal observation) + §24.3.1 Gate A + Gate B (post-Stop-Iteration trigger Gate B re-application required at post-surgical-fix or accept-residual SHA).
 
 Empirical canonicalization grounded at TASK-0035 step-15.Z3 (Codex pass-8 surfaced Finding I (XXIV.l) operationally load-bearing defect at shipped canonical; Architect honored Stop-Iteration + routed to PR-53 chore-fix-up per (XXIX) precedent — empirical positive #1 under operational-correctness stress test per PMN-013 §5.2) + TASK-0037 (pass-4 reach-4 canonical boundary fire; (XXIV.d) same-class recurrence at handoff body durable-state; accept-residual-at-merge per pre-commitment — empirical positive #2 per PMN-014 §5.1 carry-forward record) + TASK-0038 (pass-4 reach-4 canonical boundary fire with condition (B) refined application distinguishing documentary vs operationally-hazardous residuals; targeted surgical fix applied at step-15.Z' to exact named operationally-hazardous surfaces; cycle merged at PR-58 squash 369586f — empirical positive #3 with condition (B) refinement empirically grounded per PMN-015 §8 canonicalization-promotion candidates listing + TASK-0038 handoff §1 Current state record + §3 step-15.Z entries). ADR-006 D3 evidence-bar 3+ threshold reached at cross-cycle accumulation; promotion canonicalized at TASK-0039 (PR-60). Cross-domain corroboration at `bryce-murphy/employee-churn` TASK-0003 PR #10 Recommendation 10 (reviewer re-review saturation protocol) per PMN-016 §2.5 cross-domain empirical record sub-section.
+
+### §24.7. Claim-artifact-parity
+
+Claim-artifact-parity is the standing invariant that every claimed action or output — a commit, a file, a follow-up artifact, a count, a state transition — is effective only when verified against actual repository state at the surface that receives the claim. A claim is not effective because it was asserted; it is effective only when its artifact is confirmed present as claimed. This is the named property the §24.3 receiving-side caveat-disciplines enforce.
+
+The discipline is already instantiated at three surfaces; this section names them as its application set rather than restating their content:
+
+- **Reviewer-output surface** — §8.1.1.2 (Reviewer claimed-action verification): reviewer-claimed commits, files, follow-up artifacts, and identifier patterns are verified against repository state before the claim is treated as effective; sub-shapes A (entirely-fabricated) and B (correct-content-fabricated-citation) adjudicate differently.
+- **Builder hand-back surface** — §24.3.1 Points 4 and 5 (phantom-action audit + comment-content claim verification): the Architect verifies that no Builder hand-back claim lacks corresponding repository state.
+- **Architect refresh-prescription surface** — §23.6.4 (refresh-prescription state-discipline): prescribed refresh content must describe the state as complete at the resulting commit, never a phantom pre-absorption state.
+
+The unifying rule: the actor receiving a claim verifies the claimed artifact against actual state before the claim gates any downstream action. Where verification fails, the claim is informational-only and no downstream decision depends on the claimed action having occurred (per §8.1.1.2 sub-shape A adjudication). Claim-artifact-parity is the cross-surface generalization; §8.1.1.2, §24.3.1 Points 4-5, and §23.6.4 are its surface-specific applications. The naming consolidates three already-canonical surfaces; it adds no new mechanism.
+
+**Cross-references.** §8.1.1.2; §23.6.4; §24.2(a); §24.3; §24.3.1; §24.4; ADR-006 D3.

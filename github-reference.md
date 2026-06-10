@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.3
+framework_version: 3.0.4
 status: recorded
 filled_by: PR-17 (TASK-0017)
 ---
@@ -286,7 +286,7 @@ These ship at the AMAS-distributed Actions batch per ADR-003 Decision 2 (anticip
 
 ### §6.3. Three-endpoint review polling operationalization
 
-Per core.md §8.1.1.1 (Reviewer dual-signal output handling — `dual-signal` is retained as a legacy label for the established §8.1.1.1 discipline, which operationally spans three endpoint surfaces), AI-agent reviews emit across three distinct GitHub API endpoints with distinct content shapes: formal Pull Request Review objects, top-level issue-comment summaries, and line-level review comments. AMAS-distributed `review-freshness-check.yml` Action operationalizes this by polling all three endpoints:
+Per core.md §8.1.1.1 (Reviewer three-endpoint output handling — formerly labeled `dual-signal`; the discipline operationally spans three endpoint surfaces), AI-agent reviews emit across three distinct GitHub API endpoints with distinct content shapes: formal Pull Request Review objects, top-level issue-comment summaries, and line-level review comments. AMAS-distributed `review-freshness-check.yml` Action operationalizes this by polling all three endpoints:
 
 ```text
 GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
@@ -397,7 +397,7 @@ Receiving surfaces — per-agent operating-frame files such as `AGENTS.md`, `CLA
 ## §8. Cross-references
 
 - **core.md §1-§24**: canonical-law foundations cited throughout this file
-- **core.md §8.1.1.1**: Reviewer dual-signal output handling — operationalized in §6.3 above
+- **core.md §8.1.1.1**: Reviewer three-endpoint output handling — operationalized in §6.3 above
 - **core.md §8.1.1.2**: Reviewer claimed-action verification — operationalized in §6.4 above
 - **core.md §8.1.1.3**: bounded-continuation rule for iterative review-finding adjudication — referenced as routing discipline for cycle-execution iterations
 - **core.md §17 / §18 / §18.1-§18.4**: post-merge note discipline + framework version-bump trigger criteria — applies to this file's own framework version bump per cycle scope
