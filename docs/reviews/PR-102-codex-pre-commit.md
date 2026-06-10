@@ -32,8 +32,11 @@ status: drafted
      ```
    - Bidirectional sum-stable: per-file insertion sum 5+1+1+1+20+163+142+3+1+1 = 338 equals shortstat insertions; per-file deletion sum 5+1+1+1+6+0+0+3+0+1 = 18 equals shortstat deletions.
 
-2. **WS3a — zero "dual-signal" occurrences in any tracked .md file.**
-   - bash: `grep -r "dual-signal" --include="*.md" .` returns no output (empty — zero residuals)
+2. **WS3a — the `dual-signal` label is removed from all live canonical-law sites; one intentional breadcrumb retained.** The four live label occurrences (core.md ×2, github-reference.md ×2) were renamed to `three-endpoint` at b795b38. Verify per canonical surface:
+   - bash: `grep -n "dual-signal" core.md` → no matches
+   - bash: `grep -n "dual-signal" usage-guide.md` → no matches
+   - bash: `grep -n "dual-signal" github-reference.md` → exactly one match: the intentional §6.3 legacy breadcrumb (`formerly labeled \`dual-signal\``)
+   - Note: the broad repo-wide `grep -r "dual-signal" --include="*.md" .` is NOT a zero-residual predicate — it additionally returns this cycle's own descriptive text (handoff + review-context files describing the rename) and append-only historical docs (prior-cycle handoffs, PMNs, prompts). Those are expected out-of-scope-for-WS3a residuals, not live canonical labels.
 
 3. **WS3b — §18.4 ADR-008 D6 citations present at both target strings.**
    - bash: `grep "ADR-008 D6" core.md` returns two lines: one containing `canonicalized at ADR-008 D6:` and one containing `See ADR-008 D6 for the decision.`
