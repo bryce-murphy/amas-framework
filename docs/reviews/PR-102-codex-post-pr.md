@@ -178,3 +178,76 @@ Badge: `P2-yellow`
 **Finding 1 (pass-1 verbatim WS3a note) — path-(β), annotation added:**
 
 Line 114 is in the Codex pass-1 verbatim output absorption section — historical record preserved unedited per PMN-002 (a) verbatim convention and §23.6.5 append-only suppression clause. An editorial annotation was added to the author-controlled pass-1 adjudication subsection of `docs/reviews/PR-102-codex-pre-commit.md` noting the inaccuracy and the correction path; the verbatim quote itself is unchanged. If this annotation is re-raised at pass-3, it is subsequent-same-class and will be accepted at merge per §24.6 (B.i) Stop-Iteration framework (reach trajectory: pre-arm activated at reach 2→3).
+
+---
+
+## Pass-3 — three-endpoint poll record (post fix-up `9caf4ee`)
+
+- Poll timestamp (UTC): 2026-06-10T19:34:51Z (review submitted) / polled ~2026-06-10T19:38:00Z
+- Reviewed commit: 9caf4eea7529643aba205774a8f16486e9fe8c63
+
+**Endpoint 1 — `pulls/102/reviews`**: 3 entries from `chatgpt-codex-connector[bot]` — pass-1 (18:13:21Z on b795b381a0, recorded above), pass-2 (18:41:43Z on e92988966a, recorded above), pass-3 (19:34:51Z on 9caf4eea75) — state `COMMENTED`. Pass-3 body: boilerplate Codex header (no substantive content here). Substantive finding via line comment (Endpoint 3).
+
+**Endpoint 2 — `issues/102/comments`**: 3 owner invocation entries only (18:10:31Z, 18:39:15Z, 19:31:51Z). No Codex substantive content.
+
+**Endpoint 3 — `pulls/102/comments`**: 4 line comments total — pass-1 P2 (18:13:21Z, recorded above), 2 pass-2 P2 comments (18:41:43Z, recorded above), 1 new pass-3 P2 comment (19:34:51Z on 9caf4eea75). Pass-3 did NOT re-raise the pass-2 Finding 1 verbatim WS3a note as a new comment (the pass-2 comment's commit_id reflects GitHub's forward-tracking of the existing comment to the latest commit; no new comment was created at pass-3 timestamp for that finding). Verbatim below.
+
+§7.4 settling-period satisfied (substantive Endpoint-3 content present on the pass-3 review commit).
+
+## Codex post-PR pass-3 output (verbatim)
+
+### Review object (Endpoint 1) — state: COMMENTED, commit 9caf4eea75
+
+> ### 💡 Codex Review
+>
+> Here are some automated review suggestions for this pull request.
+>
+> **Reviewed commit:** `9caf4eea75`
+>
+> <details><summary>ℹ️ About Codex in GitHub</summary>
+>
+> [Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you
+> - Open a pull request for review
+> - Mark a draft as ready
+> - Comment "@codex review".
+>
+> If Codex has suggestions, it will comment; otherwise it will react with 👍.
+>
+> Codex can also answer questions or update the PR. Try commenting "@codex address that feedback".
+>
+> </details>
+
+### Line comment (Endpoint 3) — `docs/handoffs/TASK-0054-predicate-hygiene.md` line 67
+
+Badge: `P2-yellow`
+
+> **Refresh the handoff diff stats after post-PR fixups**
+>
+> In the final commit, this gate-current handoff block still reports the pre-commit staged diff (`10 files changed, 338 insertions`), but `git diff --shortstat 9b3b2f1^ 9b3b2f1` is `11 files changed, 524 insertions(+), 18 deletions(-)` because `docs/reviews/PR-102-codex-post-pr.md` and later review-context edits are included. Since `core.md` §23.6.5 treats `§Cumulative-diff-stats` as a gate-current surface, consumers using this handoff after the post-PR fixups will get a stale verification record.
+
+## Builder verification of pass-3 finding
+
+**Pass-3 finding (line 67 — stale gate-current diff stats):** Confirmed accurate as a factual observation. `git diff main...HEAD --shortstat` on the committed branch returns `11 files changed, 524 insertions(+), 18 deletions(-)`. The handoff `§Cumulative-diff-stats` block at line 65–67 records `10 files changed, 338 insertions(+), 18 deletions(-)` — correct at Gate A staging time (per §23.6.1.1 (e.1) staged-tree convention, explicitly labeled as such on line 65: "per `core.md` §23.6.1.1 (e.1) staged-tree convention"). The committed branch additionally includes:
+
+- `docs/reviews/PR-102-codex-post-pr.md`: 180/0 (new file, post-PR review record)
+- `docs/reviews/PR-102-codex-pre-commit.md`: 146/0 vs 142/0 at staging (+4 insertions from fix-up commits)
+
+Sum delta: +186 insertions, +1 file (total: 11 files, 524/18 vs 10 files, 338/18 at Gate A).
+
+**Classification note:** The handoff's `§Cumulative-diff-stats` block is a Gate A staged-tree gate-snapshot — an evidence record of the pre-commit state per §23.6.1.1 (e.1). It is explicitly annotated as a staged-tree snapshot ("per `core.md` §23.6.1.1 (e.1) staged-tree convention") and is not a live verification predicate for the post-fix-up committed tree. This is a documentary residual in an evidence file.
+
+**Reach trajectory:** This is a genuinely new P2 finding not raised in pass-1 or pass-2. Reach advances to 3 with this finding confirmed. Pass-4 is terminal per §24.6 condition (A).
+
+## Pass-3 adjudication (Architect — 2026-06-10)
+
+- **Pass-3 finding** (`docs/handoffs/TASK-0054-predicate-hygiene.md` line 67 — gate-current diff-stats staleness): **§24.6 (B.i) documentary accept-at-merge.** No refresh of the gate-current block.
+
+**Why accept, not refresh:**
+- The `§Cumulative-diff-stats` block is explicitly labeled as a `(e.1) staged-tree convention` snapshot — it is a within-cycle gate artifact, not a downstream-cycle resume input (TASK-0055 bootstraps from its own handoff).
+- Refreshing is a self-referential (e.1) cascade: the handoff file is itself part of the diff, so writing the new total changes the total — PMN-007 §2 class, genuinely-asymptotic per §8.1.1.3.
+- Third consecutive documentary claim-parity residual at the post-PR surface — iterative-catch saturation; §24.6 (B.i) explicitly lists "handoff body assertions stale relative to current post-absorption staged-tree state" as accept-at-merge.
+- Touches no canonical text and no PMN-001 (k) substitution contract.
+
+**Accepted residual + accurate value:** handoff gate-current surfaces (`§Cumulative-diff-stats`, `§Last completed step`, `§Current state Summary`) reflect the Gate A staged-tree snapshot (10 files / 338 ins / 18 del). The accurate committed-branch cumulative is **11 files changed, 524 insertions(+), 18 deletions(-)** — the +1 file / +186 insertions delta is `docs/reviews/PR-102-codex-post-pr.md` plus fix-up review-context edits across `e929889` + `9caf4ee`. The accurate value is recorded in the cycle-close ledger override-signal entry in `docs/handoffs/TASK-0054-predicate-hygiene.md` §10, satisfying claim-artifact-parity in the durable record. The labeled Gate A snapshot is accepted per (B.i) and requires no surgical fix.
+
+**Pass-4 terminal routing (pre-committed):** If pass-4 re-raises the disclosed diff-stats / gate-current staleness or any other documentary residual, accept-at-merge per (B.i) (already disclosed); Architect authors squash-merge body. Operationally-hazardous residual (not expected) receives surgical fix per (B.ii).

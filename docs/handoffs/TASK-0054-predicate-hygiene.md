@@ -160,6 +160,13 @@ Self-review pass 1 (2026-06-10): dual-signal grep residual check PASS (zero occu
 
 **Candidate ledger item — patch-precise version in positioning files:** Whether `AGENTS.md` / `CLAUDE.md` should carry patch-precise `v3.0.4` vs. ADR-008 D5 "v3.0 minimum-viable" major-positioning intent is an open adjudication question. TASK-0054 keeps them current as-is (per prior-cycle precedent and accuracy principle). Future cycle should adjudicate the canonical positioning convention. Not a TASK-0054 scope item.
 
+**§24.6 Stop-Iteration override-signal — cycle-close (2026-06-10):**
+- **Trigger**: post-PR pass-3, reach 3 (pass-4 terminal per §24.6 condition (A)); sub-shape = gate-current cumulative-diff-stats staleness post-fix-up (handoff `§Cumulative-diff-stats` records Gate A staged-tree snapshot while committed branch includes post-PR fix-up documentation commits).
+- **Condition invoked**: (B.i) documentary — within-cycle gate artifact in evidence file; not a downstream-cycle resume input; self-referential (e.1) refresh cascade per PMN-007 §2; iterative-catch saturation at third consecutive documentary post-PR P2.
+- **(B.ii) surgical fixes**: none.
+- **Accepted residual + accurate value**: handoff gate-current surfaces (`§Cumulative-diff-stats`, `§Last completed step`, `§Current state Summary`) reflect the Gate A staged-tree snapshot (10 files / 338 insertions / 18 deletions). **Accurate committed-branch cumulative: 11 files changed, 524 insertions(+), 18 deletions(-).** The +1 file / +186 insertions delta is `docs/reviews/PR-102-codex-post-pr.md` (new file, 180/0) plus fix-up review-context edits in `docs/reviews/PR-102-codex-pre-commit.md` across fix-up commits `e929889` + `9caf4ee`. Recording the accurate value here satisfies claim-artifact-parity in the durable record while the labeled Gate A snapshot is accepted per (B.i).
+- **Rationale**: within-cycle artifact; self-referential refresh cascade (handoff is part of its own diff); not downstream-consumed by TASK-0055 or any operative surface.
+
 ## §11. Session log archive
 
 *(Builder session record appended at Gate B / PR-open.)*
