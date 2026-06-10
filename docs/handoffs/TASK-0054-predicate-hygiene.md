@@ -5,12 +5,12 @@ pr: PR-102
 branch: fix/task-0054-predicate-hygiene
 linked_predecessor: TASK-0053 (PR-100 squash 7502cb9 prose-currency sweep)
 linked_successor: TBD
-linked_pr: PR-102 (Builder fills with squash SHA post-merge per PMN-001 (k))
+linked_pr: PR-102 (squash SHA d5473f9)
 framework_version_dogfooded: AMAS v3.0.4
 production_target: AMAS v3.0
 spec_source: .claude/session-handoffs/TASK-0054-spec.md
 date_authored: 2026-06-10
-status: active
+status: resolved
 ---
 
 # HANDOFF: TASK-0054
