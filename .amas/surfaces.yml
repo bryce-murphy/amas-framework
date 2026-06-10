@@ -10,7 +10,7 @@
 # `templates/` + `actions/` tree IS this repo, so every template-of-record is
 # resolvable locally).
 
-framework_version: 3.0.3          # AMAS framework version this manifest anchors at
+framework_version: 3.0.4          # AMAS framework version this manifest anchors at
 reference_impl: github
 project_id: amas-framework
 status: active
@@ -19,14 +19,14 @@ surfaces:
   - name: AGENTS.md
     path: AGENTS.md
     template_version: 3.0.0       # Action reads this; template-of-record templates/AGENTS.md
-    canonical_version: 3.0.3
+    canonical_version: 3.0.4
     agents: [codex]               # receiving surface — Codex products (per D4 / PR-92 [C2])
     status: active
 
   - name: CLAUDE.md
     path: CLAUDE.md
     template_version: 3.0.0       # template-of-record templates/CLAUDE.md
-    canonical_version: 3.0.3
+    canonical_version: 3.0.4
     agents: [claude]              # receiving surface — Claude products
     status: active
 
@@ -38,7 +38,7 @@ surfaces:
   - name: surfaces_manifest
     path: .amas/surfaces.yml
     template_version: 3.0.1       # template-of-record templates/surfaces-manifest-template.yml (revised at TASK-0050 / PR-92)
-    canonical_version: 3.0.3
+    canonical_version: 3.0.4
     status: active
 
   # Circularity guard: this self-entry tracks the sync-check Action's own
@@ -50,7 +50,7 @@ surfaces:
   - name: surface-version-sync-check
     path: .github/workflows/surface-version-sync-check.yml
     template_version: 3.0.0       # template-of-record actions/surface-version-sync-check.yml
-    canonical_version: 3.0.3
+    canonical_version: 3.0.4
     status: active
 
 # Excluded by design: `.github/workflows/linked-pr-fix-up.yml` — shipped as an

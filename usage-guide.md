@@ -1,5 +1,5 @@
 ---
-framework_version: 3.0.3
+framework_version: 3.0.4
 status: recorded
 filled_by: PR-29 (TASK-0024)
 ---
